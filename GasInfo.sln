@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GasInfo", "GasInfo\GasInfo.csproj", "{E694A579-7F7D-4498-AD82-84EA1D7912D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GasInfo", "GasInfo\GasInfo.csproj", "{E694A579-7F7D-4498-AD82-84EA1D7912D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DAL\DataAccess.csproj", "{EC469A14-65E9-40A6-AB51-DFF5EB45773D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{EC469A14-65E9-40A6-AB51-DFF5EB45773D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bussiness", "Bussiness\Bussiness.csproj", "{F48388C9-65EC-493D-A377-49795989C73F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bussiness", "Bussiness\Bussiness.csproj", "{F48388C9-65EC-493D-A377-49795989C73F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{DF7F081D-3C6E-451F-A7FF-786DAE1692BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{DF7F081D-3C6E-451F-A7FF-786DAE1692BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
