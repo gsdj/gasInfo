@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GasInfo", "GasInfo\GasInfo.csproj", "{E694A579-7F7D-4498-AD82-84EA1D7912D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{EC469A14-65E9-40A6-AB51-DFF5EB45773D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{EC469A14-65E9-40A6-AB51-DFF5EB45773D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bussiness", "Bussiness\Bussiness.csproj", "{F48388C9-65EC-493D-A377-49795989C73F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{DF7F081D-3C6E-451F-A7FF-786DAE1692BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GasInfoAdmin", "GasInfoAdmin\GasInfoAdmin.csproj", "{AE59740E-540C-4F82-B77E-D84000F49A34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DF7F081D-3C6E-451F-A7FF-786DAE1692BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF7F081D-3C6E-451F-A7FF-786DAE1692BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF7F081D-3C6E-451F-A7FF-786DAE1692BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE59740E-540C-4F82-B77E-D84000F49A34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE59740E-540C-4F82-B77E-D84000F49A34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE59740E-540C-4F82-B77E-D84000F49A34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE59740E-540C-4F82-B77E-D84000F49A34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
