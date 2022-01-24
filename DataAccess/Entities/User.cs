@@ -2,12 +2,12 @@
 
 namespace DataAccess.Entities
 {
-   public class User
+   public class User : IEntity
    {
-      public Guid Guid { get; set; }
+      public Guid Id { get; set; }
       public string Login { get; set; }
       public string Password { get; set; }
-      public Guid? RoleGuid { get; set; }
+      public Guid? RoleId { get; set; }
       public Role Role { get; set; }
    }
 }

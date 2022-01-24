@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
-   public interface IRepository<TEntity> where TEntity: class, IEntity
+   public interface IGenericRepository<TEntity> where TEntity: class, IEntity
    {
       /// <summary>
       /// Returns data for the current month

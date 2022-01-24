@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
-   public class PressureRepository : IRepository<Pressure>
+   public class PressureRepository : IGenericRepository<Pressure>
    {
+      private GasInfoDbContext _context;
+      public PressureRepository(GasInfoDbContext context)
+      {
+         _context = context;
+      }
       public void Add(Pressure entity)
       {
          throw new NotImplementedException();
