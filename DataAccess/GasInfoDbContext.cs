@@ -11,6 +11,7 @@ namespace DataAccess
 {
    public class GasInfoDbContext : DbContext
    {
+      public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options) : base(options) { }
       public DbSet<Pressure> Pressure { get; set; }
       public DbSet<DevicesKip> DevicesKip { get; set; }
       public DbSet<CharacteristicsDgAll> CharacteristicsDg { get; set; }
@@ -22,14 +23,16 @@ namespace DataAccess
       public DbSet<OutputMultipliers> Multipliers { get; set; }
       public DbSet<Asdue> Asdue { get; set; }
       public DbSet<DgPgChmkEb> DgPgChmkEb { get; set; }
-      public GasInfoDbContext()
-      {
-         Database.EnsureCreated();
-      }
-      protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-      {
-         optionsBuilder.UseSqlServer("Server=(locadb)\\mssqllocaldb;Database=GasInfoDb;Trusted_Connection=True;");
-      }
+      public DbSet<User> Users { get; set; }
+      public DbSet<Role> Roles { get; set; }
+      //public GasInfoDbContext()
+      //{
+      //   Database.EnsureCreated();
+      //}
+      //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+      //{
+      //   optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=GasInfoDb;Trusted_Connection=True;");
+      //}
       protected override void OnModelCreating(ModelBuilder modelBuilder)
       {
          modelBuilder.ApplyConfiguration(new PressureConfiguration());
@@ -43,6 +46,22 @@ namespace DataAccess
          modelBuilder.ApplyConfiguration(new DgPgChmkEbConfiguration());
          modelBuilder.ApplyConfiguration(new KgChmkEbConfiguration());
          modelBuilder.ApplyConfiguration(new TecConfiguration());
+         modelBuilder.ApplyConfiguration(new UsersConfiguration());
+         modelBuilder.ApplyConfiguration(new RolesConfiguration());
+
+         string adminRoleName = "Admin";
+         string userRoleName = "User";
+
+         string adminLogin = "AsupAdmin";
+         string adminPassword = "55914";
+
+         Role adminRole = new Role { Id = Guid.NewGuid(), Name = adminRoleName };
+         Role userRole = new Role { Id = Guid.NewGuid(), Name = userRoleName };
+
+         User adminUser = new User { Id = Guid.NewGuid(), Login = adminLogin, Password = adminPassword, RoleId = adminRole.Id };
+
+         modelBuilder.Entity<Role>().HasData(new Role[] { adminRole, userRole });
+         modelBuilder.Entity<User>().HasData(new User[] { adminUser });
       }
    }
 }

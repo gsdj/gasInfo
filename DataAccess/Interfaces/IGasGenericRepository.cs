@@ -1,13 +1,14 @@
 ﻿using DataAccess.Entities;
+using DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Repository
+namespace DataAccess.Interfaces
 {
-   public interface IGenericRepository<TEntity> where TEntity: class, IEntity
+   public interface IGasGenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class, IGasEntity
    {
       /// <summary>
       /// Returns data for the current month
@@ -32,9 +33,6 @@ namespace DataAccess.Repository
       /// <param name="Year"></param>
       /// <returns></returns>
       IEnumerable<TEntity> GetPerYear(int Year);
-      TEntity FindById(Guid guid);
-      void Add(TEntity entity);
-      void Remove(TEntity entity);
-      void Update(TEntity entity);
+      TEntity GetByDate(DateTime Date);
    }
 }

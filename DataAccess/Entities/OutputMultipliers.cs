@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Entities
 {
-   public class OutputMultipliers : CokeBattery<decimal>, IEntity
+   public class OutputMultipliers : CokeBattery<decimal>, IGasEntity
    {
       public Guid Id { get; set; }
       public DateTime Date { get; set; }

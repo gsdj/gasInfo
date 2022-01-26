@@ -1,5 +1,10 @@
+using DataAccess;
+using DataAccess.Interfaces;
+using DataAccess.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +28,16 @@ namespace GasInfo
       public void ConfigureServices(IServiceCollection services)
       {
          services.AddControllersWithViews();
+         services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+               options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+               options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+            });
+         services.AddDbContext<GasInfoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("GasInfoMSSql")));
+         services.AddScoped<IUnitOfWork, UnitOfWork>();
+         services.AddScoped(typeof(IGenericRepository<>), typeof(EFGenericRepository<>));
+         services.AddScoped(typeof(IGasGenericRepository<>), typeof(GasGenericRepository<>));
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +55,7 @@ namespace GasInfo
 
          app.UseRouting();
 
+         app.UseAuthentication();
          app.UseAuthorization();
 
          app.UseEndpoints(endpoints =>
