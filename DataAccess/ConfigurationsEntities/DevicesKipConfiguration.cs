@@ -1,4 +1,5 @@
 ﻿using DataAccess.Entities;
+using DataAccess.Entities.Devices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -17,6 +18,16 @@ namespace DataAccess.ConfigurationsEntities
          builder.HasKey(p => p.Id);
          builder.HasIndex(p => p.Date).IsUnique();
          builder.Property(p => p.Date).IsRequired().HasColumnType("Date");
+         ///
+         var cb1 = builder.OwnsOne(p => p.Cb1);
+         var cb1SC = cb1.OwnsOne(p => p.SteamCharacteristics);
+         cb1.Property(p => p.Temperature).HasColumnType("numeric").HasPrecision(5, 1);
+         cb1SC.Property(p => p.Fkg).HasColumnType("numeric").HasPrecision(15);
+         cb1SC.Property(p => p.PKg).HasColumnType("numeric").HasPrecision(15);
+         cb1SC.Property(p => p.PPa).HasColumnType("numeric").HasPrecision(15);
+         cb1SC.Property(p => p.Rh).HasColumnType("numeric").HasPrecision(15);
+         ///
+
          builder.Property(p => p.Cu1.Temperature).HasColumnType("numeric").HasPrecision(5, 1);
          builder.Property(p => p.Cu2.Temperature).HasColumnType("numeric").HasPrecision(5, 1);
          builder.Property(p => p.Spo.Temperature).HasColumnType("numeric").HasPrecision(5, 1);

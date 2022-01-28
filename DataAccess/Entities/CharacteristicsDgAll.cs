@@ -14,10 +14,5 @@ namespace DataAccess.Entities
       public DateTime Date { get; set; }
       public DG Kc1 { get; set; }
       public DG Kc2 { get; set; }
-      public CharacteristicsDgAll()
-      {
-         Kc1 = new DG();
-         Kc2 = new DG();
-      }
    }
 }
