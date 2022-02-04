@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bussiness.Interfaces
+namespace Bussiness.Interfaces.Services
 {
-   public interface IEntitiesCalculations<T> where T : class
+   public interface IProductionService
    {
-      IEnumerable<T> Calc();
    }
 }
