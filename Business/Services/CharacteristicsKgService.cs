@@ -8,11 +8,11 @@ using System.Collections.Generic;
 
 namespace Business.Services
 {
-   public class CharacteristicsService : ICharacteristicsService<CharacteristicsKgDTO>
+   public class CharacteristicsKgService : ICharacteristicsService<CharacteristicsKgDTO>
    {
       IUnitOfWork db;
       ICalcCharacteristicsKg _clcKg;
-      public CharacteristicsService(IUnitOfWork uof, ICalcCharacteristicsKg clcKg)
+      public CharacteristicsKgService(IUnitOfWork uof, ICalcCharacteristicsKg clcKg)
       {
          db = uof;
          _clcKg = clcKg;

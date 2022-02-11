@@ -10,6 +10,6 @@ namespace Business.DTO
    {
       public DateTime Date { get; set; }
       public decimal Value { get; set; }
-      public decimal ValuePa { get; set; }
+      public decimal ValuePa => Value * 133.3224m;
    }
 }

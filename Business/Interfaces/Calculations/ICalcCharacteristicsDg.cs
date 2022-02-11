@@ -11,8 +11,8 @@ namespace Business.Interfaces.Calculations
 {
    public interface ICalcCharacteristicsDg
    {
-      IEnumerable<CharacteristicsDgDTO> CalcEntities(IEnumerable<CharacteristicsDgAll> _kgs);
-      CharacteristicsDgDTO CalcEntity(CharacteristicsDgAll kg);
+      IEnumerable<CharacteristicsDgDTO> CalcEntities(IEnumerable<CharacteristicsDgAll> _dgs);
+      CharacteristicsDgDTO CalcEntity(CharacteristicsDgAll dg);
       decimal SumComponents(params decimal[] components);
       decimal Qn(decimal H2, decimal CO);
       decimal Density(decimal H2, decimal CO, decimal CO2, decimal N2);
