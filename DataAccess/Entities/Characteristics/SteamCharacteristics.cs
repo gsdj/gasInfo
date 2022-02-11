@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,10 @@ namespace DataAccess.Entities.Characteristics
 {
    public class SteamCharacteristics
    {
-      public decimal PPa { get; set; }
-      public decimal PKg { get; set; }
-      //Содержание водяных паров в 1 м³ насыщенного газа, f кг/нм³
-      public decimal Fkg { get; set; }
-      //относительная влажность φ
-      public decimal Rh { get; set; }
+      public int Id { get; set; }
+      public int Temp { get; set; }
+      public decimal Pmm { get; set; }
+      public decimal Pgm { get; set; }
+      public decimal Ptopp { get; set; }
    }
 }

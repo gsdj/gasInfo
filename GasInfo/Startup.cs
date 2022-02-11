@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,9 +18,11 @@ namespace GasInfo
 {
    public class Startup
    {
-      public Startup(IConfiguration configuration)
+      IWebHostEnvironment _env;
+      public Startup(IConfiguration configuration, IWebHostEnvironment env)
       {
          Configuration = configuration;
+         _env = env;
       }
 
       public IConfiguration Configuration { get; }
@@ -27,6 +30,7 @@ namespace GasInfo
       // This method gets called by the runtime. Use this method to add services to the container.
       public void ConfigureServices(IServiceCollection services)
       {
+         string path = Path.Combine(_env.WebRootPath, "files", "SteamCharacteristics.json");
          services.AddControllersWithViews();
          services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
@@ -36,6 +40,7 @@ namespace GasInfo
             });
          services.AddDbContext<GasInfoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("GasInfoMSSql")));
          services.AddScoped<IUnitOfWork, UnitOfWork>();
+         services.AddScoped(x => new SteamJsonReader(path));
          services.AddScoped(typeof(IGenericRepository<>), typeof(EFGenericRepository<>));
          services.AddScoped(typeof(IGasGenericRepository<>), typeof(GasGenericRepository<>));
       }

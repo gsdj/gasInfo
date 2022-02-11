@@ -13,7 +13,7 @@ namespace DataAccess
                         IGasGenericRepository<CharacteristicsKgAll> repChKg, IGasGenericRepository<DevicesKip> repKip,
                         IGasGenericRepository<DgPgChmkEb> repDgPgChmk, IGasGenericRepository<KgChmkEb> repKgChmk,
                         IGasGenericRepository<OutputMultipliers> repMultipliers, IGasGenericRepository<QualityAll> repQ,
-                        IGasGenericRepository<Tec> repTec)
+                        IGasGenericRepository<Tec> repTec, ISteamRepository steam)
       {
          db = context;
          Users = repUser;
@@ -29,6 +29,7 @@ namespace DataAccess
          Multipliers = repMultipliers;
          Quality = repQ;
          Tec = repTec;
+         SteamCharacteristics = steam;
       }
 
       public IGenericRepository<User> Users { get; private set; }
@@ -56,6 +57,7 @@ namespace DataAccess
       public IGasGenericRepository<QualityAll> Quality { get; private set; }
 
       public IGasGenericRepository<Tec> Tec { get; private set; }
+      public ISteamRepository SteamCharacteristics { get; private set; }
 
       public void Save()
       {

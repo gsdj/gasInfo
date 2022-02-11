@@ -1,5 +1,6 @@
 ﻿using DataAccess.ConfigurationsEntities;
 using DataAccess.Entities;
+using DataAccess.Entities.Characteristics;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,13 @@ namespace DataAccess
 {
    public class GasInfoDbContext : DbContext
    {
-      public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options) : base(options) { }
+      SteamJsonReader _steamJson;
+      public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options, SteamJsonReader steamJson) : base(options) 
+      {
+         _steamJson = steamJson;
+      }
       public DbSet<Pressure> Pressure { get; set; }
+      public DbSet<SteamCharacteristics> SteamCharacteristics { get; set; }
       public DbSet<DevicesKip> DevicesKip { get; set; }
       public DbSet<CharacteristicsDgAll> CharacteristicsDg { get; set; }
       public DbSet<CharacteristicsKgAll> CharacteristicsKg { get; set; }
@@ -48,6 +54,7 @@ namespace DataAccess
          modelBuilder.ApplyConfiguration(new TecConfiguration());
          modelBuilder.ApplyConfiguration(new UsersConfiguration());
          modelBuilder.ApplyConfiguration(new RolesConfiguration());
+         //modelBuilder.ApplyConfiguration(new SteamCharacteristicsConfiguration());
 
          string adminRoleName = "Admin";
          string userRoleName = "User";
@@ -62,6 +69,7 @@ namespace DataAccess
 
          modelBuilder.Entity<Role>().HasData(new Role[] { adminRole, userRole });
          modelBuilder.Entity<User>().HasData(new User[] { adminUser });
+         modelBuilder.Entity<SteamCharacteristics>().HasData(_steamJson.GetAllSteamCharacteristics());
       }
    }
 }

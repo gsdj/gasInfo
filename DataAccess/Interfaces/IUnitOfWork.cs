@@ -17,6 +17,7 @@ namespace DataAccess.Interfaces
       IGasGenericRepository<OutputMultipliers> Multipliers { get; }
       IGasGenericRepository<QualityAll> Quality { get; }
       IGasGenericRepository<Tec> Tec { get; }
+      ISteamRepository SteamCharacteristics { get; }
       void Save();
    }
 }
