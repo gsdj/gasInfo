@@ -9,15 +9,15 @@ namespace Business.DTO
    public class EbChmkDTO
    {
       public DateTime Date { get; set; }
-      public decimal ConsDgKb1 { get; set; }
-      public decimal ConsDgKb2 { get; set; }
-      public decimal ConsDgKb3 { get; set; }
-      public decimal ConsDgKb4 { get; set; }
+      public decimal ConsDgCb1 { get; set; }
+      public decimal ConsDgCb2 { get; set; }
+      public decimal ConsDgCb3 { get; set; }
+      public decimal ConsDgCb4 { get; set; }
       public decimal ConsDgKc1 { get; set; }
-      public int UdConsKb1 { get; set; }
-      public int UdConsKb2 { get; set; }
-      public int UdConsKb3 { get; set; }
-      public int UdConsKb4 { get; set; }
+      public int UdConsCb1 { get; set; }
+      public int UdConsCb2 { get; set; }
+      public int UdConsCb3 { get; set; }
+      public int UdConsCb4 { get; set; }
       public int UdConsKc1 { get; set; }
       public decimal ConsPgGru1 { get; set; }
       public decimal ConsPgGru2 { get; set; }

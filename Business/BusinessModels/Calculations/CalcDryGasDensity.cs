@@ -1,5 +1,7 @@
 ﻿using Business.DTO;
+using Business.DTO.Characteristics;
 using Business.Interfaces.Calculations;
+using Bussiness.BusinessModels;
 using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,9 +13,12 @@ namespace Business.BusinessModels.Calculations
 {
    public class CalcDryGasDensity : ICalcDryGasDensity
    {
+      private Dictionary<int, SteamCharacteristicsDTO> _steam;
       public IEnumerable<DensityDTO> CalcEntities(IEnumerable<PressureDTO> pressure, IEnumerable<CharacteristicsKgDTO> kgs, 
-                                                  IEnumerable<CharacteristicsDgDTO> dgs, IEnumerable<DevicesKip> kip)
+                                                  IEnumerable<CharacteristicsDgDTO> dgs, IEnumerable<DevicesKip> kip,
+                                                  Dictionary<int, SteamCharacteristicsDTO> steam)
       {
+         _steam = steam;
          var d =
              from t1p in pressure
              join t2kgs in kgs on new { t1p.Date } equals new { t2kgs.Date }
@@ -60,17 +65,30 @@ namespace Business.BusinessModels.Calculations
 
       public decimal DryGas(decimal pkg, decimal PPa, decimal pOver, decimal temp)
       {
-         throw new NotImplementedException();
+         int tempRounded = Convert.ToInt32(Math.Round(temp, MidpointRounding.ToEven));
+         var steam = _steam[tempRounded];
+         decimal rH = steam.Rh;
+         decimal pMax = steam.PPa;
+
+         decimal result = DryGas(pkg, PPa, pOver, temp, rH, pMax);
+         return Math.Round(result, 15);
       }
 
       public decimal DryGas(decimal pkg, decimal PPa, decimal pOver, decimal temp, decimal tempDo)
       {
-         throw new NotImplementedException();
+         int tempRounded = Convert.ToInt32(Math.Round(temp, MidpointRounding.ToEven));
+         int tempDoRounded = Convert.ToInt32(Math.Round(tempDo, MidpointRounding.ToEven));
+         decimal pMax = _steam[tempRounded].PPa;
+         decimal rH = _steam[tempDoRounded].Rh;
+
+         decimal result = DryGas(pkg, PPa, pOver, temp, rH, pMax);
+         return Math.Round(result, 15);
       }
 
       public decimal DryGas(decimal pkg, decimal PPa, decimal pOver, decimal temp, decimal rH, decimal pMax)
       {
-         throw new NotImplementedException();
+         decimal result = pkg * (Constants.Tc * ((PPa + pOver * Constants.PexcC) - rH * pMax)) / (Constants.Pc * (Constants.TpC + temp) * Constants.K);
+         return result;
       }
    }
 }

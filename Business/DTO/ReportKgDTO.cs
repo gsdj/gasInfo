@@ -25,12 +25,12 @@ namespace Business.DTO
       public decimal ConsKgCb6 { get; set; }
       public decimal ConsKgCb7 { get; set; }
       public decimal ConsKgCb8 { get; set; }
-      public decimal ConsKgKc2 => Math.Round((ConsKgCb5 + ConsKgCb6 + ConsKgCb7 + ConsKgCb8), 10);
+      public decimal ConsKgKc2 { get; set; }// => Math.Round((ConsKgCb5 + ConsKgCb6 + ConsKgCb7 + ConsKgCb8), 10);
       public decimal ConsKgSpo { get; set; }
       public decimal ConsKgPkp { get; set; }
       public decimal ConsKgUvtp { get; set; }
-      public decimal ConsKgCpsPpk => Math.Round((ConsKgSpo + ConsKgPkp + ConsKgUvtp), 10);
-      public decimal ConsKgMk => Math.Round((ConsKgKc2 + ConsKgCpsPpk), 10);
+      public decimal ConsKgCpsPpk { get; set; }// => Math.Round((ConsKgSpo + ConsKgPkp + ConsKgUvtp), 10);
+      public decimal ConsKgMk { get; set; }// => Math.Round((ConsKgKc2 + ConsKgCpsPpk), 10);
 
       public decimal ConsFvCb5 { get; set; }
       public decimal ConsFvCb6 { get; set; }

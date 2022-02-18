@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Entities.Devices
+namespace Business.DTO.Devices
 {
    public abstract class Device
    {

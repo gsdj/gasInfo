@@ -1,5 +1,5 @@
 ﻿using Business.DTO;
-using Bussiness.Interfaces;
+using Business.Interfaces;
 using DataAccess.Entities;
 using System;
 using System.Collections.Generic;

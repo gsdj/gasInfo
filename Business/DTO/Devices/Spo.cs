@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Entities.Devices
+namespace Business.DTO.Devices
 {
-   public abstract class Device
+   public class Spo : Device
    {
-      public int Pressure { get; set; } = 0;
-      public decimal Temperature { get; set; } = 0;
+      public int Consumption { get; set; } = 0;
    }
 }

@@ -1,4 +1,5 @@
 ﻿using Business.DTO;
+using Business.DTO.Characteristics;
 using Business.Interfaces.Calculations;
 using DataAccess.Entities;
 using System;
@@ -11,8 +12,10 @@ namespace Business.BusinessModels.Calculations
 {
    public class CalcWetGasDensity : ICalcWetGasDensity
    {
-      public IEnumerable<DensityDTO> CalcEntities(IEnumerable<DensityDTO> dryGas, IEnumerable<DevicesKip> kip)
+      private Dictionary<int, SteamCharacteristicsDTO> _steam;
+      public IEnumerable<DensityDTO> CalcEntities(IEnumerable<DensityDTO> dryGas, IEnumerable<DevicesKip> kip, Dictionary<int, SteamCharacteristicsDTO> steam)
       {
+         _steam = steam;
          var d =
              from t1dry in dryGas
              join t2kip in kip on new { t1dry.Date } equals new { t2kip.Date }
@@ -54,13 +57,13 @@ namespace Business.BusinessModels.Calculations
 
       public decimal WetGas(decimal dryGas, decimal temp)
       {
-         //var steam = ConstLib.FindSteam(temp);
-         //decimal rH = steam.Rh;
-         //decimal pMax = steam.PKg;
+         int tempRounded = Convert.ToInt32(Math.Round(temp, MidpointRounding.ToEven));
+         var steam = _steam[tempRounded];
+         decimal rH = steam.Rh;
+         decimal pMax = steam.PKg;
 
-         //decimal result = dryGas + rH * pMax;
-         //return Math.Round(result, 15);
-         throw new NotImplementedException();
+         decimal result = dryGas + rH * pMax;
+         return Math.Round(result, 15);
       }
    }
 }

@@ -1,3 +1,5 @@
+using Business.BusinessModels.Calculations;
+using Business.Interfaces.Calculations;
 using DataAccess;
 using DataAccess.Interfaces;
 using DataAccess.Repositories;
@@ -43,6 +45,7 @@ namespace GasInfo
          services.AddScoped(x => new SteamJsonReader(path));
          services.AddScoped(typeof(IGenericRepository<>), typeof(EFGenericRepository<>));
          services.AddScoped(typeof(IGasGenericRepository<>), typeof(GasGenericRepository<>));
+         services.AddCalculations();
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +72,14 @@ namespace GasInfo
                    name: "default",
                    pattern: "{controller=Home}/{action=Index}/{id?}");
          });
+      }
+   }
+   public static class IServiceCollectionExtensions
+   {
+      public static IServiceCollection AddCalculations(this IServiceCollection services)
+      {
+         services.AddScoped<ICalcCharacteristicsKg, CalcCharacteristicsKG>();
+         return services;
       }
    }
 }

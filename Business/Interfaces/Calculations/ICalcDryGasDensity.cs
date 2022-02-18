@@ -1,4 +1,5 @@
 ﻿using Business.DTO;
+using Business.DTO.Characteristics;
 using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Business.Interfaces.Calculations
    public interface ICalcDryGasDensity
    {
       IEnumerable<DensityDTO> CalcEntities(IEnumerable<PressureDTO> pressure, IEnumerable<CharacteristicsKgDTO> kgs, 
-                                           IEnumerable<CharacteristicsDgDTO> dgs,IEnumerable<DevicesKip> kip);
+                                           IEnumerable<CharacteristicsDgDTO> dgs,IEnumerable<DevicesKip> kip, Dictionary<int, SteamCharacteristicsDTO> steam);
       DensityDTO CalcEntity(PressureDTO pressure, CharacteristicsKgDTO kg, 
                             CharacteristicsDgDTO dg, DevicesKip kip);
       decimal DryGas(decimal pkg, decimal PPa, decimal pOver, decimal temp);

@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Business.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bussiness.Interfaces.Services
+namespace Business.Interfaces.Services
 {
-   public interface IProductionService
+   public interface IProductionService : IGasService<ProductionDTO>
    {
    }
 }
