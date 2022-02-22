@@ -12,11 +12,7 @@ namespace Business.DTO
       public DateTime Date { get; set; }
       public CharacteristicsDG Kc1 { get; set; }
       public CharacteristicsDG Kc2 { get; set; }
-      public decimal H2Avg { get; set; }
-      public decimal COAvg { get; set; }
-      public decimal CO2Avg { get; set; }
-      public decimal N2Avg { get; set; }
-      public decimal Qn { get; set; }
-      public decimal Denstity { get; set; }
+      public GasComponents ComponentsAVG { get; set; }
+      public CharacteristicsGas CharacteristicsAVG { get; set; }
    }
 }

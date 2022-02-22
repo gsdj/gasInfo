@@ -41,18 +41,18 @@ namespace Business.BusinessModels.Calculations
          return new OutputKgDTO
          {
             Date = wetGas.Date,
-            QcRcCu1 = QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Density),
-            QcRcCu2 = QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Density),
-            Cu14000 = Qn4000(QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Density), charKg.Kc1.Qn),
-            Cu24000 = Qn4000(QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Density), charKg.Kc1.Qn),
-            Cu1Cb16 = Qn4000(QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Density), charKg.Kc1.Qn) / prod.Cb16Sv,
-            Cu2Cb78 = Qn4000(QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Density), charKg.Kc1.Qn) / prod.Cb78Sv,
-            PrMk = QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Density) + 
-                     QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Density),
-            PrMk4000 = Qn4000(QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Density), charKg.Kc1.Qn) +
-                        Qn4000(QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Density), charKg.Kc1.Qn),
-            OutCgSh = (Qn4000(QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Density), charKg.Kc1.Qn) +
-                        Qn4000(QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Density), charKg.Kc1.Qn)) / (prod.Cb16Sv + prod.Cb78Sv)
+            QcRcCu1 = QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density),
+            QcRcCu2 = QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density),
+            Cu14000 = Qn4000(QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn),
+            Cu24000 = Qn4000(QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn),
+            Cu1Cb16 = Qn4000(QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn) / prod.Cb16Sv,
+            Cu2Cb78 = Qn4000(QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn) / prod.Cb78Sv,
+            PrMk = QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density) + 
+                     QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density),
+            PrMk4000 = Qn4000(QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn) +
+                        Qn4000(QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn),
+            OutCgSh = (Qn4000(QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn) +
+                        Qn4000(QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn)) / (prod.Cb16Sv + prod.Cb78Sv)
          };
       }
 

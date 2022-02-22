@@ -44,8 +44,8 @@ namespace Business.BusinessModels.Calculations
                V = quality.Kc1.V,
                Vc = Vc(quality.Kc1.V, quality.Kc1.A),
                KgFv = KgFv(quality.Kc1.V, quality.Kc1.A, quality.Kc1.W),
-               KgFh = KgFh(quality.Kc1.V, quality.Kc1.A, quality.Kc1.W, charKg.Kc1.Density),
-               Density = charKg.Kc1.Density,
+               KgFh = KgFh(quality.Kc1.V, quality.Kc1.A, quality.Kc1.W, charKg.Kc1.Characteristics.Density),
+               Density = charKg.Kc1.Characteristics.Density,
             },
             Kc2 =
             {
@@ -54,8 +54,8 @@ namespace Business.BusinessModels.Calculations
                V = quality.Kc2.V,
                Vc = Vc(quality.Kc2.V, quality.Kc2.A),
                KgFv = KgFv(quality.Kc2.V, quality.Kc2.A, quality.Kc2.W),
-               KgFh = KgFh(quality.Kc2.V, quality.Kc2.A, quality.Kc2.W, charKg.Kc2.Density),
-               Density = charKg.Kc2.Density,
+               KgFh = KgFh(quality.Kc2.V, quality.Kc2.A, quality.Kc2.W, charKg.Kc2.Characteristics.Density),
+               Density = charKg.Kc2.Characteristics.Density,
             }
          };
       }

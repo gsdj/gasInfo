@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Business.DTO.Consumption;
+using Business.DTO.QcRc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +11,8 @@ namespace Business.DTO
    public class ConsumptionDgDTO
    {
       public DateTime Date { get; set; }
-      public decimal QcRcCb1 { get; set; }
-      public decimal Cb11000 { get; set; }
-      public decimal QcRcCb2 { get; set; }
-      public decimal Cb21000 { get; set; }
-      public decimal QcRcCb3 { get; set; }
-      public decimal Cb31000 { get; set; }
-      public decimal QcRcCb4 { get; set; }
-      public decimal Cb41000 { get; set; }
-      public decimal MKSum1000 { get; set; }
+      public QcRcKc1 QcRc { get; set; }
+      public ConsumptionKc1 ConsumptionDg { get; set; }
+      public decimal ConsumptionDgMk { get; set; }
    }
 }

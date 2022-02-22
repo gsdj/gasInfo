@@ -39,11 +39,11 @@ namespace Business.BusinessModels.Calculations
          var data = new
          {
             Date = wetGas.Date,
-            Qn = charDg.Qn,
-            QcRcCb1 = QcRc(kip.Cb1.Consumption, wetGas.Cb1, kip.Cb1.Temperature, charDg.Denstity),
-            QcRcCb2 = QcRc(kip.Cb2.Consumption, wetGas.Cb2, kip.Cb2.Temperature, charDg.Denstity),
-            QcRcCb3 = QcRc(kip.Cb3.Consumption, wetGas.Cb3, kip.Cb3.Temperature, charDg.Denstity),
-            QcRcCb4 = QcRc(kip.Cb4.Consumption, wetGas.Cb4, kip.Cb4.Temperature, charDg.Denstity),
+            Qn = charDg.CharacteristicsAVG.Qn,
+            QcRcCb1 = QcRc(kip.Cb1.Consumption, wetGas.Cb1, kip.Cb1.Temperature, charDg.CharacteristicsAVG.Density),
+            QcRcCb2 = QcRc(kip.Cb2.Consumption, wetGas.Cb2, kip.Cb2.Temperature, charDg.CharacteristicsAVG.Density),
+            QcRcCb3 = QcRc(kip.Cb3.Consumption, wetGas.Cb3, kip.Cb3.Temperature, charDg.CharacteristicsAVG.Density),
+            QcRcCb4 = QcRc(kip.Cb4.Consumption, wetGas.Cb4, kip.Cb4.Temperature, charDg.CharacteristicsAVG.Density),
          };
          return new ConsumptionDgDTO
          {

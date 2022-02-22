@@ -46,10 +46,10 @@ namespace Business.BusinessModels.Calculations
          {
             CbsConsFvSum = prod.Cb1ConsFv + prod.Cb2ConsFv + prod.Cb3ConsFv + prod.Cb4ConsFv +
                            prod.Cb5ConsFv + prod.Cb6ConsFv + prod.Cb7ConsFv + prod.Cb8ConsFv,
-            QcRcDgCb1 = QcRc(kip.Cb1.Consumption, wetGas.Cb1, kip.Cb1.Temperature, charDg.Kc1.Density),
-            QcRcDgCb2 = QcRc(kip.Cb2.Consumption, wetGas.Cb2, kip.Cb2.Temperature, charDg.Kc1.Density),
-            QcRcDgCb3 = QcRc(kip.Cb3.Consumption, wetGas.Cb3, kip.Cb3.Temperature, charDg.Kc2.Density),
-            QcRcDgCb4 = QcRc(kip.Cb4.Consumption, wetGas.Cb4, kip.Cb4.Temperature, charDg.Kc2.Density),
+            QcRcDgCb1 = QcRc(kip.Cb1.Consumption, wetGas.Cb1, kip.Cb1.Temperature, charDg.Kc1.Characteristics.Density),
+            QcRcDgCb2 = QcRc(kip.Cb2.Consumption, wetGas.Cb2, kip.Cb2.Temperature, charDg.Kc1.Characteristics.Density),
+            QcRcDgCb3 = QcRc(kip.Cb3.Consumption, wetGas.Cb3, kip.Cb3.Temperature, charDg.Kc2.Characteristics.Density),
+            QcRcDgCb4 = QcRc(kip.Cb4.Consumption, wetGas.Cb4, kip.Cb4.Temperature, charDg.Kc2.Characteristics.Density),
             ConsPgKc1 = ConsPg(kip.Grp4.Consumption, pressure.ValuePa, kip.Grp4.Pressure, kip.Grp4.Temperature),
             ConsPgGru1 = ConsPg(kip.Gru1.Consumption, pressure.ValuePa, kip.Gru1.Pressure, kip.Gru1.Temperature),
             ConsPgGru2 = ConsPg(kip.Gru2.Consumption, pressure.ValuePa, kip.Gru2.Pressure, kip.Gru2.Temperature),
@@ -57,24 +57,24 @@ namespace Business.BusinessModels.Calculations
 
          var data2 = new
          {
-            ConsDgCb1 = Qn1000(data.QcRcDgCb1, charDg.Kc1.Qn),
-            ConsDgCb2 = Qn1000(data.QcRcDgCb2, charDg.Kc1.Qn),
-            ConsDgCb3 = Qn1000(data.QcRcDgCb3, charDg.Kc2.Qn),
-            ConsDgCb4 = Qn1000(data.QcRcDgCb4, charDg.Kc2.Qn),
-            Kc1Sum = Qn1000(data.QcRcDgCb1, charDg.Kc1.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Qn) + 
-                     Qn1000(data.QcRcDgCb3, charDg.Kc2.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Qn),
-            ConsPgCb1 = ConsPgCb(Qn1000(data.QcRcDgCb1, charDg.Kc1.Qn), data.ConsPgKc1,
-                                    Qn1000(data.QcRcDgCb1, charDg.Kc1.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Qn) +
-                                    Qn1000(data.QcRcDgCb3, charDg.Kc2.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Qn)),
-            ConsPgCb2 = ConsPgCb(Qn1000(data.QcRcDgCb2, charDg.Kc1.Qn), data.ConsPgKc1,
-                                    Qn1000(data.QcRcDgCb1, charDg.Kc1.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Qn) +
-                                    Qn1000(data.QcRcDgCb3, charDg.Kc2.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Qn)),
-            ConsPgCb3 = ConsPgCb(Qn1000(data.QcRcDgCb3, charDg.Kc2.Qn), data.ConsPgKc1,
-                                    Qn1000(data.QcRcDgCb1, charDg.Kc1.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Qn) +
-                                    Qn1000(data.QcRcDgCb3, charDg.Kc2.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Qn)),
-            ConsPgCb4 = ConsPgCb(Qn1000(data.QcRcDgCb4, charDg.Kc2.Qn), data.ConsPgKc1,
-                                    Qn1000(data.QcRcDgCb1, charDg.Kc1.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Qn) +
-                                    Qn1000(data.QcRcDgCb3, charDg.Kc2.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Qn)),
+            ConsDgCb1 = Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn),
+            ConsDgCb2 = Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn),
+            ConsDgCb3 = Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn),
+            ConsDgCb4 = Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn),
+            Kc1Sum = Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn) + 
+                     Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn),
+            ConsPgCb1 = ConsPgCb(Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn), data.ConsPgKc1,
+                                    Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn) +
+                                    Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn)),
+            ConsPgCb2 = ConsPgCb(Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn), data.ConsPgKc1,
+                                    Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn) +
+                                    Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn)),
+            ConsPgCb3 = ConsPgCb(Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn), data.ConsPgKc1,
+                                    Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn) +
+                                    Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn)),
+            ConsPgCb4 = ConsPgCb(Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn), data.ConsPgKc1,
+                                    Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn) +
+                                    Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn)),
             UdConsPgGru1 = data.ConsPgGru1 / (data.CbsConsFvSum / 0.4m),
             UdConsPgGru2 = data.ConsPgGru2 / (data.CbsConsFvSum / 0.6m),
          };

@@ -39,17 +39,17 @@ namespace Business.BusinessModels.Calculations
          var data = new
          {
             Date = wetGas.Date,
-            QcRcCb5 = QcRc(kip.Cb5.Consumption, wetGas.Cb5, kip.Cb5.TempBeforeHeating, charKg.Kc1.Density, true),
-            QcRcCb6 = QcRc(kip.Cb6.Consumption, wetGas.Cb6, kip.Cb6.TempBeforeHeating, charKg.Kc1.Density, true),
-            QcRcCb7Ms = QcRc(kip.Cb7.ConsumptionMs, wetGas.Cb7, kip.Cb7.TempBeforeHeating, charKg.Kc2.Density),
-            QcRcCb7Ks = QcRc(kip.Cb7.ConsumptionKs, wetGas.Cb7, kip.Cb7.TempBeforeHeating, charKg.Kc2.Density),
-            QcRcCb8Ms = QcRc(kip.Cb8.ConsumptionMs, wetGas.Cb8, kip.Cb8.TempBeforeHeating, charKg.Kc2.Density),
-            QcRcCb8Ks = QcRc(kip.Cb8.ConsumptionKs, wetGas.Cb8, kip.Cb8.TempBeforeHeating, charKg.Kc2.Density),
-            QcRcPkcMs = QcRc(kip.Pkc.ConsumptionMs, wetGas.Pkc, kip.Pkc.Temperature, charKg.Kc1.Density),
-            QcRcPkcKs = QcRc(kip.Pkc.ConsumptionKs, wetGas.Pkc, kip.Pkc.Temperature, charKg.Kc1.Density),
-            QcRcUvtp = QcRc(kip.Uvtp.Consumption, wetGas.Uvtp, kip.Uvtp.Temperature, charKg.Kc1.Density),
-            QcRcSpo = QcRc(kip.Spo.Consumption, wetGas.Spo, kip.Spo.Temperature, charKg.Kc1.Density),
-            QcRcGsuf = QcRc(kip.Gsuf45.Consumption, wetGas.Gsuf, kip.Gsuf45.Temperature, charKg.Kc1.Density),
+            QcRcCb5 = QcRc(kip.Cb5.Consumption, wetGas.Cb5, kip.Cb5.TempBeforeHeating, charKg.Kc1.Characteristics.Density, true),
+            QcRcCb6 = QcRc(kip.Cb6.Consumption, wetGas.Cb6, kip.Cb6.TempBeforeHeating, charKg.Kc1.Characteristics.Density, true),
+            QcRcCb7Ms = QcRc(kip.Cb7.ConsumptionMs, wetGas.Cb7, kip.Cb7.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
+            QcRcCb7Ks = QcRc(kip.Cb7.ConsumptionKs, wetGas.Cb7, kip.Cb7.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
+            QcRcCb8Ms = QcRc(kip.Cb8.ConsumptionMs, wetGas.Cb8, kip.Cb8.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
+            QcRcCb8Ks = QcRc(kip.Cb8.ConsumptionKs, wetGas.Cb8, kip.Cb8.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
+            QcRcPkcMs = QcRc(kip.Pkc.ConsumptionMs, wetGas.Pkc, kip.Pkc.Temperature, charKg.Kc1.Characteristics.Density),
+            QcRcPkcKs = QcRc(kip.Pkc.ConsumptionKs, wetGas.Pkc, kip.Pkc.Temperature, charKg.Kc1.Characteristics.Density),
+            QcRcUvtp = QcRc(kip.Uvtp.Consumption, wetGas.Uvtp, kip.Uvtp.Temperature, charKg.Kc1.Characteristics.Density),
+            QcRcSpo = QcRc(kip.Spo.Consumption, wetGas.Spo, kip.Spo.Temperature, charKg.Kc1.Characteristics.Density),
+            QcRcGsuf = QcRc(kip.Gsuf45.Consumption, wetGas.Gsuf, kip.Gsuf45.Temperature, charKg.Kc1.Characteristics.Density),
          };
          return new ConsumptionKgDTO
          {
@@ -65,27 +65,27 @@ namespace Business.BusinessModels.Calculations
             QcRcUvtp = data.QcRcUvtp,
             QcRcSpo = data.QcRcSpo,
             QcRcGsuf = data.QcRcGsuf,
-            Cb54000 = Qn4000(data.QcRcCb5, charKg.Kc1.Qn),
-            Cb64000 = Qn4000(data.QcRcCb6, charKg.Kc1.Qn),
+            Cb54000 = Qn4000(data.QcRcCb5, charKg.Kc1.Characteristics.Qn),
+            Cb64000 = Qn4000(data.QcRcCb6, charKg.Kc1.Characteristics.Qn),
             QcRcCb7 = (data.QcRcCb7Ks + data.QcRcCb7Ms) * 24,
-            Cb74000 = Qn4000((data.QcRcCb7Ks + data.QcRcCb7Ms) * 24, charKg.Kc2.Qn),
+            Cb74000 = Qn4000((data.QcRcCb7Ks + data.QcRcCb7Ms) * 24, charKg.Kc2.Characteristics.Qn),
             QcRcCb8 = (data.QcRcCb8Ks + data.QcRcCb8Ms) * 24,
-            Cb84000 = Qn4000((data.QcRcCb8Ks + data.QcRcCb8Ms) * 24, charKg.Kc2.Qn),
-            Kc2Sum = Qn4000(data.QcRcCb5, charKg.Kc1.Qn) + Qn4000(data.QcRcCb6, charKg.Kc1.Qn) + Qn4000((data.QcRcCb7Ks + data.QcRcCb7Ms) * 24, charKg.Kc2.Qn) + Qn4000((data.QcRcCb8Ks + data.QcRcCb8Ms) * 24, charKg.Kc2.Qn),
+            Cb84000 = Qn4000((data.QcRcCb8Ks + data.QcRcCb8Ms) * 24, charKg.Kc2.Characteristics.Qn),
+            Kc2Sum = Qn4000(data.QcRcCb5, charKg.Kc1.Characteristics.Qn) + Qn4000(data.QcRcCb6, charKg.Kc1.Characteristics.Qn) + Qn4000((data.QcRcCb7Ks + data.QcRcCb7Ms) * 24, charKg.Kc2.Characteristics.Qn) + Qn4000((data.QcRcCb8Ks + data.QcRcCb8Ms) * 24, charKg.Kc2.Characteristics.Qn),
             PkoSum = data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp,
-            Pko4000 = Qn4000(data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp, charKg.Kc1.Qn),
-            Spo4000 = Qn4000(data.QcRcSpo, charKg.Kc1.Qn),
-            CpsppkSum4000 = Qn4000(data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp, charKg.Kc1.Qn) + Qn4000(data.QcRcSpo, charKg.Kc1.Qn),
-            MkSum4000 = Qn4000(data.QcRcCb5, charKg.Kc1.Qn) + Qn4000(data.QcRcCb6, charKg.Kc1.Qn) +
-                            Qn4000((data.QcRcCb7Ks + data.QcRcCb7Ms) * 24, charKg.Kc2.Qn) +
-                            Qn4000((data.QcRcCb8Ks + data.QcRcCb8Ms) * 24, charKg.Kc2.Qn) +
-                            Qn4000(data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp, charKg.Kc1.Qn) + Qn4000(data.QcRcSpo, charKg.Kc1.Qn),
-            Gsuf4000 = Qn4000(data.QcRcGsuf, charKg.Kc1.Qn),
-            MkGsufSum4000 = Qn4000(data.QcRcCb5, charKg.Kc1.Qn) + Qn4000(data.QcRcCb6, charKg.Kc1.Qn) +
-                            Qn4000((data.QcRcCb7Ks + data.QcRcCb7Ms) * 24, charKg.Kc2.Qn) +
-                            Qn4000((data.QcRcCb8Ks + data.QcRcCb8Ms) * 24, charKg.Kc2.Qn) +
-                            Qn4000(data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp, charKg.Kc1.Qn) +
-                            Qn4000(data.QcRcSpo, charKg.Kc1.Qn) + Qn4000(data.QcRcGsuf, charKg.Kc1.Qn),
+            Pko4000 = Qn4000(data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp, charKg.Kc1.Characteristics.Qn),
+            Spo4000 = Qn4000(data.QcRcSpo, charKg.Kc1.Characteristics.Qn),
+            CpsppkSum4000 = Qn4000(data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp, charKg.Kc1.Characteristics.Qn) + Qn4000(data.QcRcSpo, charKg.Kc1.Characteristics.Qn),
+            MkSum4000 = Qn4000(data.QcRcCb5, charKg.Kc1.Characteristics.Qn) + Qn4000(data.QcRcCb6, charKg.Kc1.Characteristics.Qn) +
+                            Qn4000((data.QcRcCb7Ks + data.QcRcCb7Ms) * 24, charKg.Kc2.Characteristics.Qn) +
+                            Qn4000((data.QcRcCb8Ks + data.QcRcCb8Ms) * 24, charKg.Kc2.Characteristics.Qn) +
+                            Qn4000(data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp, charKg.Kc1.Characteristics.Qn) + Qn4000(data.QcRcSpo, charKg.Kc1.Characteristics.Qn),
+            Gsuf4000 = Qn4000(data.QcRcGsuf, charKg.Kc1.Characteristics.Qn),
+            MkGsufSum4000 = Qn4000(data.QcRcCb5, charKg.Kc1.Characteristics.Qn) + Qn4000(data.QcRcCb6, charKg.Kc1.Characteristics.Qn) +
+                            Qn4000((data.QcRcCb7Ks + data.QcRcCb7Ms) * 24, charKg.Kc2.Characteristics.Qn) +
+                            Qn4000((data.QcRcCb8Ks + data.QcRcCb8Ms) * 24, charKg.Kc2.Characteristics.Qn) +
+                            Qn4000(data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp, charKg.Kc1.Characteristics.Qn) +
+                            Qn4000(data.QcRcSpo, charKg.Kc1.Characteristics.Qn) + Qn4000(data.QcRcGsuf, charKg.Kc1.Characteristics.Qn),
          };
       }
 

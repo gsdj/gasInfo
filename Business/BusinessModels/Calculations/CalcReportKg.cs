@@ -53,10 +53,10 @@ namespace Business.BusinessModels.Calculations
             ConsKgCb7 = Math.Round(consKg.Cb74000),
             ConsKgCb8 = Math.Round(consKg.Cb84000),
             ConsKgSpo = Math.Round(consKg.Spo4000),
-            ConsKgPkp = (consKg.QcRcPkcKs + consKg.QcRcPkcMs) == 0 || charKg.Kc1.Qn == 0 ? 0 :
-                        Math.Round((consKg.QcRcPkcKs + consKg.QcRcPkcMs) * charKg.Kc1.Qn / 4000, 10),
-            ConsKgUvtp = consKg.QcRcUvtp == 0 || charKg.Kc1.Qn == 0 ? 0 :
-                        Math.Round(consKg.QcRcUvtp * charKg.Kc1.Qn / 4000, 10),
+            ConsKgPkp = (consKg.QcRcPkcKs + consKg.QcRcPkcMs) == 0 || charKg.Kc1.Characteristics.Qn == 0 ? 0 :
+                        Math.Round((consKg.QcRcPkcKs + consKg.QcRcPkcMs) * charKg.Kc1.Characteristics.Qn / 4000, 10),
+            ConsKgUvtp = consKg.QcRcUvtp == 0 || charKg.Kc1.Characteristics.Qn == 0 ? 0 :
+                        Math.Round(consKg.QcRcUvtp * charKg.Kc1.Characteristics.Qn / 4000, 10),
             ConsFvCb5 = UdConsKgFv(consKg.Cb54000, prod.Cb5ConsFv),
             ConsFvCb6 = UdConsKgFv(consKg.Cb64000, prod.Cb6ConsFv),
             ConsFvCb7 = UdConsKgFv(consKg.Cb74000, prod.Cb7ConsFv),

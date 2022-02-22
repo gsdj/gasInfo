@@ -25,29 +25,41 @@ namespace Business.BusinessModels.Calculations
             Date = kg.Date,
             Kc1 =
             {
-                    CO = kg.Kc1.CO,
-                    CO2 = kg.Kc1.CO2,
-                    H2 = kg.Kc1.H2,
-                    N2 = kg.Kc1.N2,
-                    CH4 = kg.Kc1.CH4,
-                    CnHm = kg.Kc1.CnHm,
-                    O2 = kg.Kc1.O2,
-                    SumComponents = SumComponents(kg.Kc1.CO, kg.Kc1.CO2, kg.Kc1.H2, kg.Kc1.N2, kg.Kc1.CH4, kg.Kc1.CnHm, kg.Kc1.O2),
-                    Qn = Qn(kg.Kc1.CO, kg.Kc1.CnHm, kg.Kc1.CH4, kg.Kc1.H2),
-                    Density = Density(kg.Kc1.CO2, kg.Kc1.O2, kg.Kc1.CO, kg.Kc1.CnHm, kg.Kc1.CH4, kg.Kc1.H2, kg.Kc1.N2),
+               Components = 
+               {
+                  CO = kg.Kc1.CO,
+                  CO2 = kg.Kc1.CO2,
+                  H2 = kg.Kc1.H2,
+                  N2 = kg.Kc1.N2,
+                  CH4 = kg.Kc1.CH4,
+                  CnHm = kg.Kc1.CnHm,
+                  O2 = kg.Kc1.O2,
+               },
+               SumComponents = SumComponents(kg.Kc1.CO, kg.Kc1.CO2, kg.Kc1.H2, kg.Kc1.N2, kg.Kc1.CH4, kg.Kc1.CnHm, kg.Kc1.O2),
+               Characteristics =
+               {
+                  Qn = Qn(kg.Kc1.CO, kg.Kc1.CnHm, kg.Kc1.CH4, kg.Kc1.H2),
+                  Density = Density(kg.Kc1.CO2, kg.Kc1.O2, kg.Kc1.CO, kg.Kc1.CnHm, kg.Kc1.CH4, kg.Kc1.H2, kg.Kc1.N2),
+               },
             },
             Kc2 =
             {
-                    CO = kg.Kc2.CO,
-                    CO2 = kg.Kc2.CO2,
-                    H2 = kg.Kc2.H2,
-                    N2 = kg.Kc2.N2,
-                    CH4 = kg.Kc2.CH4,
-                    CnHm = kg.Kc2.CnHm,
-                    O2 = kg.Kc2.O2,
-                    SumComponents = SumComponents(kg.Kc2.CO, kg.Kc2.CO2, kg.Kc2.H2, kg.Kc2.N2, kg.Kc2.CH4, kg.Kc2.CnHm, kg.Kc2.O2),
-                    Qn = Qn(kg.Kc2.CO, kg.Kc2.CnHm, kg.Kc2.CH4, kg.Kc2.H2),
-                    Density = Density(kg.Kc2.CO2, kg.Kc2.O2, kg.Kc2.CO, kg.Kc2.CnHm, kg.Kc2.CH4, kg.Kc2.H2, kg.Kc2.N2),
+               Components =
+               {
+                  CO = kg.Kc2.CO,
+                  CO2 = kg.Kc2.CO2,
+                  H2 = kg.Kc2.H2,
+                  N2 = kg.Kc2.N2,
+                  CH4 = kg.Kc2.CH4,
+                  CnHm = kg.Kc2.CnHm,
+                  O2 = kg.Kc2.O2,
+               },
+               SumComponents = SumComponents(kg.Kc2.CO, kg.Kc2.CO2, kg.Kc2.H2, kg.Kc2.N2, kg.Kc2.CH4, kg.Kc2.CnHm, kg.Kc2.O2),
+               Characteristics =
+               {
+                  Qn = Qn(kg.Kc2.CO, kg.Kc2.CnHm, kg.Kc2.CH4, kg.Kc2.H2),
+                  Density = Density(kg.Kc2.CO2, kg.Kc2.O2, kg.Kc2.CO, kg.Kc2.CnHm, kg.Kc2.CH4, kg.Kc2.H2, kg.Kc2.N2),
+               },
             }
          };
       }

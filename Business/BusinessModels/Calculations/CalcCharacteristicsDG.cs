@@ -24,30 +24,49 @@ namespace Business.BusinessModels.Calculations
             Date = Dg.Date,
             Kc1 =
             {
-                    CO = Dg.Kc1.CO,
-                    CO2 = Dg.Kc1.CO2,
-                    H2 = Dg.Kc1.H2,
-                    N2 = Dg.Kc1.N2,
-                    SumComponents = SumComponents(Dg.Kc1.CO, Dg.Kc1.CO2, Dg.Kc1.H2, Dg.Kc1.N2),
-                    Qn = Qn(Dg.Kc1.CO, Dg.Kc1.H2),
-                    Density = Density(Dg.Kc1.CO2, Dg.Kc1.CO, Dg.Kc1.H2, Dg.Kc1.N2),
+               Components = 
+               {
+                  CO = Dg.Kc1.CO,
+                  CO2 = Dg.Kc1.CO2,
+                  H2 = Dg.Kc1.H2,
+                  N2 = Dg.Kc1.N2,
+               },
+               SumComponents = SumComponents(Dg.Kc1.CO, Dg.Kc1.CO2, Dg.Kc1.H2, Dg.Kc1.N2),
+               Characteristics = 
+               {
+                  Qn = Qn(Dg.Kc1.CO, Dg.Kc1.H2),
+                  Density = Density(Dg.Kc1.CO2, Dg.Kc1.CO, Dg.Kc1.H2, Dg.Kc1.N2),
+               },
             },
             Kc2 =
             {
-                    CO = Dg.Kc2.CO,
-                    CO2 = Dg.Kc2.CO2,
-                    H2 = Dg.Kc2.H2,
-                    N2 = Dg.Kc2.N2,
-                    SumComponents = SumComponents(Dg.Kc2.CO, Dg.Kc2.CO2, Dg.Kc2.H2, Dg.Kc2.N2),
-                    Qn = Qn(Dg.Kc2.CO, Dg.Kc2.H2),
-                    Density = Density(Dg.Kc2.CO2, Dg.Kc2.CO, Dg.Kc2.H2, Dg.Kc2.N2),
+               Components = 
+               {
+                  CO = Dg.Kc2.CO,
+                  CO2 = Dg.Kc2.CO2,
+                  H2 = Dg.Kc2.H2,
+                  N2 = Dg.Kc2.N2
+               },
+               SumComponents = SumComponents(Dg.Kc2.CO, Dg.Kc2.CO2, Dg.Kc2.H2, Dg.Kc2.N2),
+               Characteristics =
+               {
+                  Qn = Qn(Dg.Kc2.CO, Dg.Kc2.H2),
+                  Density = Density(Dg.Kc2.CO2, Dg.Kc2.CO, Dg.Kc2.H2, Dg.Kc2.N2),
+               },
+
             },
-            H2Avg = AvgC(Dg.Kc1.H2, Dg.Kc2.H2),
-            COAvg = AvgC(Dg.Kc1.CO, Dg.Kc2.CO),
-            CO2Avg = AvgC(Dg.Kc1.CO2, Dg.Kc2.CO2),
-            N2Avg = AvgC(Dg.Kc1.N2, Dg.Kc2.N2),
-            Qn = AvgQn(AvgC(Dg.Kc1.H2, Dg.Kc2.H2), AvgC(Dg.Kc1.CO, Dg.Kc2.CO), AvgC(Dg.Kc1.CO2, Dg.Kc2.CO2), AvgC(Dg.Kc1.N2, Dg.Kc2.N2)),
-            Denstity = AvgDensity(AvgC(Dg.Kc1.H2, Dg.Kc2.H2), AvgC(Dg.Kc1.CO, Dg.Kc2.CO), AvgC(Dg.Kc1.CO2, Dg.Kc2.CO2), AvgC(Dg.Kc1.N2, Dg.Kc2.N2)),
+            ComponentsAVG =
+            {
+               H2 = AvgC(Dg.Kc1.H2, Dg.Kc2.H2),
+               CO = AvgC(Dg.Kc1.CO, Dg.Kc2.CO),
+               CO2 = AvgC(Dg.Kc1.CO2, Dg.Kc2.CO2),
+               N2 = AvgC(Dg.Kc1.N2, Dg.Kc2.N2),
+            },
+            CharacteristicsAVG =
+            {
+               Qn = AvgQn(AvgC(Dg.Kc1.H2, Dg.Kc2.H2), AvgC(Dg.Kc1.CO, Dg.Kc2.CO), AvgC(Dg.Kc1.CO2, Dg.Kc2.CO2), AvgC(Dg.Kc1.N2, Dg.Kc2.N2)),
+               Density = AvgDensity(AvgC(Dg.Kc1.H2, Dg.Kc2.H2), AvgC(Dg.Kc1.CO, Dg.Kc2.CO), AvgC(Dg.Kc1.CO2, Dg.Kc2.CO2), AvgC(Dg.Kc1.N2, Dg.Kc2.N2)),
+            },
          };
       }
       /// <summary>

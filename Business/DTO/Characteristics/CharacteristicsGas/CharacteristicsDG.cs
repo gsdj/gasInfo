@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Business.DTO.Characteristics.CharacteristicsGas
 {
-   public class CharacteristicsDG : CharacteristicsBase
+   public class CharacteristicsDG 
    {
+      public GasComponents Components { get; set; }
       public decimal SumComponents { get; set; }
-      public decimal Qn { get; set; }
-      public decimal Density { get; set; }
+      public CharacteristicsGas Characteristics { get; set; }
    }
 }
