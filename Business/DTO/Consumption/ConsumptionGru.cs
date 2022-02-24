@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Business.DTO.Consumption
 {
-   public class ConsumptionGru
+   public class ConsumptionGru<T>
    {
-      public decimal Gru1 { get; set; }
-      public decimal Gru2 { get; set; }
+      public T Gru1 { get; set; }
+      public T Gru2 { get; set; }
    }
 }

@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Business.DTO.QcRc
 {
-   public class QcRcEtc
+   public class QcRcCpsPpk
    {
       public QcRcWithMsKs Pko { get; set; }
       public decimal Uvtp { get; set; }
       public decimal Spo { get; set; }
-      public decimal Gsuf { get; set; }
    }
 }

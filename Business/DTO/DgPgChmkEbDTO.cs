@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.DTO.Consumption;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +10,9 @@ namespace Business.DTO
    public class DgPgChmkEbDTO
    {
       public DateTime Date { get; set; }
-      public int ConsDgCb1 { get; set; } = 0;
-      public int ConsDgCb2 { get; set; } = 0;
-      public int ConsDgCb3 { get; set; } = 0;
-      public int ConsDgCb4 { get; set; } = 0;
-      public int ConsDgKc1 { get; set; }// => ConsDgCb1 + ConsDgCb2 + ConsDgCb3 + ConsDgCb4;
-      public int ConsPgGru1 { get; set; } = 0;
-      public int ConsPgGru2 { get; set; } = 0;
+      public ConsumptionKc1<int> ConsumptionDgKc1 { get; set; }
+      public int ConsDgKc1Sum { get; set; }// => ConsDgCb1 + ConsDgCb2 + ConsDgCb3 + ConsDgCb4;
+      public ConsumptionGru<int> ConsumptionPgGru { get; set; }
       public int ConsPgUpc { get; set; }// => ConsPgGru1 + ConsPgGru2;
    }
 }

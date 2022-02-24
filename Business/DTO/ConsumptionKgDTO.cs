@@ -12,13 +12,15 @@ namespace Business.DTO
    {
       public DateTime Date { get; set; }
       public QcRcKc2 QcRcCb { get; set; }
-      public ConsumptionKc2 Consumption { get; set; }
-      public QcRcEtc QcRcEtc { get; set; }
-      public ConsumptionEtc ConsumptionEtc { get; set; }
-      public decimal QcRcKc2 { get; set; }
+      public ConsumptionKc2 ConsumptionCb { get; set; }
+      public QcRcCpsPpk QcRcCpsPpk { get; set; }
+      public ConsumptionCpsPpk ConsumptionCpsPpk { get; set; }
+      public decimal QcRcGsuf { get; set; }
+      public decimal ConsumptionGsuf { get; set; }
+      public decimal ConsumptionKc2Sum { get; set; }
       public decimal PkoSum { get; set; }
-      public decimal CpsppkSum4000 { get; set; }
-      public decimal MkSum4000 { get; set; }
-      public decimal MkGsufSum4000 { get; set; }
+      public decimal ConsumptionCpsPpkSum { get; set; }
+      public decimal ConsumptionMkSum { get; set; }
+      public decimal ConsumptionMkGsufSum { get; set; }
    }
 }
