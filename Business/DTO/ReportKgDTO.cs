@@ -22,29 +22,16 @@ namespace Business.DTO
       public decimal OutKgDryCb78 { get; set; }//=> Math.Round((OutKgKb78 == 0 || ConsSuhKb78 == 0) ? 0 : (OutKgKb78 / ConsSuhKb78), 10);
       public decimal OutKgDryMk { get; set; }//=> Math.Round((OutKgKb18 == 0 || TnConsSuh == 0) ? 0 : (OutKgKb18 / TnConsSuh), 10);
 
-      public ConsumptionKc2 ConsumptionKc2 { get; set; }
-      //public decimal ConsKgCb5 { get; set; }
-      //public decimal ConsKgCb6 { get; set; }
-      //public decimal ConsKgCb7 { get; set; }
-      //public decimal ConsKgCb8 { get; set; }
+      public ConsumptionKc2<decimal> ConsumptionKc2 { get; set; }
       public decimal ConsKgKc2Sum { get; set; }// => Math.Round((ConsKgCb5 + ConsKgCb6 + ConsKgCb7 + ConsKgCb8), 10);
       public ConsumptionCpsPpk ConsumptionCpsPpk { get; set; }
-      //public decimal ConsKgSpo { get; set; }
-      //public decimal ConsKgPkp { get; set; }
       public decimal ConsKgUvtp { get; set; }
       public decimal ConsKgCpsPpkSum { get; set; }// => Math.Round((ConsKgSpo + ConsKgPkp + ConsKgUvtp), 10);
       public decimal ConsKgMk { get; set; }// => Math.Round((ConsKgKc2 + ConsKgCpsPpk), 10);
-      public ConsumptionKc2 ConsumptionFvKc2 { get; set; }
-      //public decimal ConsFvCb5 { get; set; }
-      //public decimal ConsFvCb6 { get; set; }
-      //public decimal ConsFvCb7 { get; set; }
-      //public decimal ConsFvCb8 { get; set; }
+      public ConsumptionKc2<decimal> ConsumptionFvKc2 { get; set; }
       public decimal ConsFvKc2Sum { get; set; }
       public ConsumptionCpsPpk ConsumptionFvCpsPpk { get; set; }
-      //public decimal ConsFvSpo { get; set; }
-      //public decimal ConsFvPko { get; set; }
       public decimal ConsFvCpsPpkSum { get; set; }
-
       public decimal ConsGsuf { get; set; }
       public decimal TradeGasChmk { get; set; }
    }

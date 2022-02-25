@@ -1,5 +1,7 @@
 ﻿using Business.DTO;
 using Business.DTO.Characteristics;
+using Business.DTO.Consumption;
+using Business.DTO.QcRc;
 using Business.Interfaces.Calculations;
 using System;
 using System.Collections.Generic;
@@ -36,56 +38,65 @@ namespace Business.BusinessModels.Calculations
 
       public ConsumptionKgDTO CalcEntity(DensityDTO wetGas, DevicesKipDTO kip, CharacteristicsKgDTO charKg)
       {
-         var data = new
+         var qcrcAll = new
          {
-            Date = wetGas.Date,
-            QcRcCb5 = QcRc(kip.Cb5.Consumption, wetGas.Cb5, kip.Cb5.TempBeforeHeating, charKg.Kc1.Characteristics.Density, true),
-            QcRcCb6 = QcRc(kip.Cb6.Consumption, wetGas.Cb6, kip.Cb6.TempBeforeHeating, charKg.Kc1.Characteristics.Density, true),
-            QcRcCb7Ms = QcRc(kip.Cb7.ConsumptionMs, wetGas.Cb7, kip.Cb7.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
-            QcRcCb7Ks = QcRc(kip.Cb7.ConsumptionKs, wetGas.Cb7, kip.Cb7.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
-            QcRcCb8Ms = QcRc(kip.Cb8.ConsumptionMs, wetGas.Cb8, kip.Cb8.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
-            QcRcCb8Ks = QcRc(kip.Cb8.ConsumptionKs, wetGas.Cb8, kip.Cb8.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
-            QcRcPkcMs = QcRc(kip.Pkc.ConsumptionMs, wetGas.Pkc, kip.Pkc.Temperature, charKg.Kc1.Characteristics.Density),
-            QcRcPkcKs = QcRc(kip.Pkc.ConsumptionKs, wetGas.Pkc, kip.Pkc.Temperature, charKg.Kc1.Characteristics.Density),
-            QcRcUvtp = QcRc(kip.Uvtp.Consumption, wetGas.Uvtp, kip.Uvtp.Temperature, charKg.Kc1.Characteristics.Density),
-            QcRcSpo = QcRc(kip.Spo.Consumption, wetGas.Spo, kip.Spo.Temperature, charKg.Kc1.Characteristics.Density),
+            QcRcCb = new QcRcKc2
+            {
+               Cb5 = QcRc(kip.Cb5.Consumption, wetGas.Cb5, kip.Cb5.TempBeforeHeating, charKg.Kc1.Characteristics.Density, true),
+               Cb6 = QcRc(kip.Cb6.Consumption, wetGas.Cb6, kip.Cb6.TempBeforeHeating, charKg.Kc1.Characteristics.Density, true),
+               Cb7 =
+               {
+                  Ms = QcRc(kip.Cb7.ConsumptionMs, wetGas.Cb7, kip.Cb7.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
+                  Ks = QcRc(kip.Cb7.ConsumptionKs, wetGas.Cb7, kip.Cb7.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
+               },
+               Cb8 =
+               {
+                  Ms = QcRc(kip.Cb8.ConsumptionMs, wetGas.Cb8, kip.Cb8.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
+                  Ks = QcRc(kip.Cb8.ConsumptionKs, wetGas.Cb8, kip.Cb8.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
+               },
+            },
+            QcRcCpsPpk = new QcRcCpsPpk
+            {
+               Pko =
+               {
+                  Ms = QcRc(kip.Pkc.ConsumptionMs, wetGas.Pkc, kip.Pkc.Temperature, charKg.Kc1.Characteristics.Density),
+                  Ks = QcRc(kip.Pkc.ConsumptionKs, wetGas.Pkc, kip.Pkc.Temperature, charKg.Kc1.Characteristics.Density),
+               },
+               Uvtp = QcRc(kip.Uvtp.Consumption, wetGas.Uvtp, kip.Uvtp.Temperature, charKg.Kc1.Characteristics.Density),
+               Spo = QcRc(kip.Spo.Consumption, wetGas.Spo, kip.Spo.Temperature, charKg.Kc1.Characteristics.Density),
+            },
             QcRcGsuf = QcRc(kip.Gsuf45.Consumption, wetGas.Gsuf, kip.Gsuf45.Temperature, charKg.Kc1.Characteristics.Density),
          };
+
+         var consCb = new ConsumptionKc2<decimal>
+         {
+            Cb5 = Qn4000(qcrcAll.QcRcCb.Cb5, charKg.Kc1.Characteristics.Qn),
+            Cb6 = Qn4000(qcrcAll.QcRcCb.Cb6, charKg.Kc1.Characteristics.Qn),
+            Cb7 = Qn4000(qcrcAll.QcRcCb.Cb7.Value, charKg.Kc2.Characteristics.Qn),
+            Cb8 = Qn4000(qcrcAll.QcRcCb.Cb8.Value, charKg.Kc2.Characteristics.Qn),
+         };
+
+         var consCpsPpk = new ConsumptionCpsPpk
+         {
+            Pko = Qn4000(qcrcAll.QcRcCpsPpk.Pko.Value + qcrcAll.QcRcCpsPpk.Uvtp, charKg.Kc1.Characteristics.Qn),
+            Spo = Qn4000(qcrcAll.QcRcCpsPpk.Spo, charKg.Kc1.Characteristics.Qn),
+         };
+
          return new ConsumptionKgDTO
          {
-            Date = data.Date,
-            QcRcCb5 = data.QcRcCb5,
-            QcRcCb6 = data.QcRcCb6,
-            QcRcCb7Ms = data.QcRcCb7Ms,
-            QcRcCb7Ks = data.QcRcCb7Ks,
-            QcRcCb8Ms = data.QcRcCb8Ms,
-            QcRcCb8Ks = data.QcRcCb8Ks,
-            QcRcPkcMs = data.QcRcPkcMs,
-            QcRcPkcKs = data.QcRcPkcKs,
-            QcRcUvtp = data.QcRcUvtp,
-            QcRcSpo = data.QcRcSpo,
-            QcRcGsuf = data.QcRcGsuf,
-            Cb54000 = Qn4000(data.QcRcCb5, charKg.Kc1.Characteristics.Qn),
-            Cb64000 = Qn4000(data.QcRcCb6, charKg.Kc1.Characteristics.Qn),
-            QcRcCb7 = (data.QcRcCb7Ks + data.QcRcCb7Ms) * 24,
-            Cb74000 = Qn4000((data.QcRcCb7Ks + data.QcRcCb7Ms) * 24, charKg.Kc2.Characteristics.Qn),
-            QcRcCb8 = (data.QcRcCb8Ks + data.QcRcCb8Ms) * 24,
-            Cb84000 = Qn4000((data.QcRcCb8Ks + data.QcRcCb8Ms) * 24, charKg.Kc2.Characteristics.Qn),
-            Kc2Sum = Qn4000(data.QcRcCb5, charKg.Kc1.Characteristics.Qn) + Qn4000(data.QcRcCb6, charKg.Kc1.Characteristics.Qn) + Qn4000((data.QcRcCb7Ks + data.QcRcCb7Ms) * 24, charKg.Kc2.Characteristics.Qn) + Qn4000((data.QcRcCb8Ks + data.QcRcCb8Ms) * 24, charKg.Kc2.Characteristics.Qn),
-            PkoSum = data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp,
-            Pko4000 = Qn4000(data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp, charKg.Kc1.Characteristics.Qn),
-            Spo4000 = Qn4000(data.QcRcSpo, charKg.Kc1.Characteristics.Qn),
-            CpsppkSum4000 = Qn4000(data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp, charKg.Kc1.Characteristics.Qn) + Qn4000(data.QcRcSpo, charKg.Kc1.Characteristics.Qn),
-            MkSum4000 = Qn4000(data.QcRcCb5, charKg.Kc1.Characteristics.Qn) + Qn4000(data.QcRcCb6, charKg.Kc1.Characteristics.Qn) +
-                            Qn4000((data.QcRcCb7Ks + data.QcRcCb7Ms) * 24, charKg.Kc2.Characteristics.Qn) +
-                            Qn4000((data.QcRcCb8Ks + data.QcRcCb8Ms) * 24, charKg.Kc2.Characteristics.Qn) +
-                            Qn4000(data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp, charKg.Kc1.Characteristics.Qn) + Qn4000(data.QcRcSpo, charKg.Kc1.Characteristics.Qn),
-            Gsuf4000 = Qn4000(data.QcRcGsuf, charKg.Kc1.Characteristics.Qn),
-            MkGsufSum4000 = Qn4000(data.QcRcCb5, charKg.Kc1.Characteristics.Qn) + Qn4000(data.QcRcCb6, charKg.Kc1.Characteristics.Qn) +
-                            Qn4000((data.QcRcCb7Ks + data.QcRcCb7Ms) * 24, charKg.Kc2.Characteristics.Qn) +
-                            Qn4000((data.QcRcCb8Ks + data.QcRcCb8Ms) * 24, charKg.Kc2.Characteristics.Qn) +
-                            Qn4000(data.QcRcPkcKs + data.QcRcPkcMs + data.QcRcUvtp, charKg.Kc1.Characteristics.Qn) +
-                            Qn4000(data.QcRcSpo, charKg.Kc1.Characteristics.Qn) + Qn4000(data.QcRcGsuf, charKg.Kc1.Characteristics.Qn),
+            Date = wetGas.Date,
+            QcRcCb = qcrcAll.QcRcCb,
+            QcRcCpsPpk = qcrcAll.QcRcCpsPpk,
+            QcRcGsuf = qcrcAll.QcRcGsuf,
+            ConsumptionCb = consCb,
+            ConsumptionKc2Sum = consCb.Cb5 + consCb.Cb6 + consCb.Cb7 + consCb.Cb8,
+            PkoSum = qcrcAll.QcRcCpsPpk.Pko.Value + qcrcAll.QcRcCpsPpk.Uvtp,
+            ConsumptionCpsPpk = consCpsPpk,
+            ConsumptionCpsPpkSum = Qn4000(qcrcAll.QcRcCpsPpk.Pko.Value + qcrcAll.QcRcCpsPpk.Uvtp, charKg.Kc1.Characteristics.Qn) + Qn4000(qcrcAll.QcRcCpsPpk.Spo, charKg.Kc1.Characteristics.Qn),
+            ConsumptionMkSum = consCb.Cb5 + consCb.Cb6 + consCb.Cb7 + consCb.Cb8 + consCpsPpk.Pko + consCpsPpk.Spo,
+            ConsumptionGsuf = Qn4000(qcrcAll.QcRcGsuf, charKg.Kc1.Characteristics.Qn),
+            ConsumptionMkGsufSum = consCb.Cb5 + consCb.Cb6 + consCb.Cb7 + consCb.Cb8 + consCpsPpk.Pko + consCpsPpk.Spo +
+                                    Qn4000(qcrcAll.QcRcGsuf, charKg.Kc1.Characteristics.Qn),
          };
       }
 

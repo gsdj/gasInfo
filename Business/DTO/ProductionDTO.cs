@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.DTO.Consumption;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,16 +15,7 @@ namespace Business.DTO
       public decimal KpeC { get; set; }
 
       public DateTime Date { get; set; }
-      public int Cb1 { get; set; }
-      public int Cb2 { get; set; }
-      public int Cb3 { get; set; }
-      public int Cb4 { get; set; }
-      public int Cb5 { get; set; }
-      public int Cb6 { get; set; }
-      public int Cb7 { get; set; }
-      public int Cb8 { get; set; }
-      public int PKP { get; set; }
-
+      public AmmountCb<int> AmmountCb { get; set; }
       public int Cb1Cb2 { get; set; }// => (Cb1 + Cb2);
       public int Cb3Cb4 { get; set; }// => (Cb3 + Cb4);
       public int Cb5Cb6 { get; set; }// => (Cb5 + Cb6);
@@ -48,14 +40,16 @@ namespace Business.DTO
       public decimal TnConsDry { get; set; }// => (Cb16ConsDry + Cb78ConsDry);
 
       //Расход шихты в ф.в.
-      public decimal Cb1ConsFv { get; set; }
-      public decimal Cb2ConsFv { get; set; }
-      public decimal Cb3ConsFv { get; set; }
-      public decimal Cb4ConsFv { get; set; }
-      public decimal Cb5ConsFv { get; set; }
-      public decimal Cb6ConsFv { get; set; }
-      public decimal Cb7ConsFv { get; set; }
-      public decimal Cb8ConsFv { get; set; }
+      public ConsumptionKc1<decimal> ConsumptionFvKc1 { get; set; }
+      public ConsumptionKc2<decimal> ConsumptionFvKc2 { get; set; }
+      //public decimal Cb1ConsFv { get; set; }
+      //public decimal Cb2ConsFv { get; set; }
+      //public decimal Cb3ConsFv { get; set; }
+      //public decimal Cb4ConsFv { get; set; }
+      //public decimal Cb5ConsFv { get; set; }
+      //public decimal Cb6ConsFv { get; set; }
+      //public decimal Cb7ConsFv { get; set; }
+      //public decimal Cb8ConsFv { get; set; }
 
       //Расход шихты в с.в.
       public decimal Cb16Sv { get; set; }// => Cb16ConsDry;

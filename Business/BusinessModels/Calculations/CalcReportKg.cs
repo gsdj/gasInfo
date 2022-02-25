@@ -1,4 +1,5 @@
 ﻿using Business.DTO;
+using Business.DTO.Consumption;
 using Business.Interfaces.Calculations;
 using Bussiness.BusinessModels;
 using System;
@@ -42,36 +43,34 @@ namespace Business.BusinessModels.Calculations
       public ReportKgDTO CalcEntity(ProductionDTO prod, ConsumptionKgDTO consKg, OutputKgDTO outputKg,
                                     DevicesKipDTO kip, CharacteristicsKgDTO charKg, TecDTO tec)
       {
+         var consKc2 = new ConsumptionKc2<decimal>
+         {
+            Cb5 = Math.Round(consKg.ConsumptionCb.Cb5),
+            Cb6 = Math.Round(consKg.ConsumptionCb.Cb6),
+            Cb7 = Math.Round(consKg.ConsumptionCb.Cb7),
+            Cb8 = Math.Round(consKg.ConsumptionCb.Cb8),
+         };
+
+         var consCpsPpk = new ConsumptionCpsPpk
+         {
+            Spo = Math.Round(consKg.ConsumptionCpsPpk.Spo),
+            Pko = Math.Round(consKg.QcRcCpsPpk.Pko.Value * charKg.Kc1.Characteristics.Qn / 4000),
+         };
+
+         var consFvKc2 = new ConsumptionKc2<decimal>
+         {
+            Cb5 = UdConsKgFv(consKg.ConsumptionCb.Cb5, prod.ConsumptionFvKc2.Cb5),
+            Cb6 = UdConsKgFv(consKg.ConsumptionCb.Cb6, prod.ConsumptionFvKc2.Cb6),
+            Cb7 = UdConsKgFv(consKg.ConsumptionCb.Cb7, prod.ConsumptionFvKc2.Cb7),
+            Cb8 = UdConsKgFv(consKg.ConsumptionCb.Cb8, prod.ConsumptionFvKc2.Cb8),
+         };
+
          var data = new
          {
-            prod.KpeDry,
-            prod.SpoPerKus,
-            outputKg.PrMk4000,
-            SumKgCbsSpoGsuf = consKg.Cb54000 + consKg.Cb64000 + consKg.Cb74000 + consKg.Cb84000 + consKg.Spo4000 + consKg.Gsuf4000,
-            ConsKgCb5 = Math.Round(consKg.Cb54000),
-            ConsKgCb6 = Math.Round(consKg.Cb64000),
-            ConsKgCb7 = Math.Round(consKg.Cb74000),
-            ConsKgCb8 = Math.Round(consKg.Cb84000),
-            ConsKgSpo = Math.Round(consKg.Spo4000),
-            ConsKgPkp = (consKg.QcRcPkcKs + consKg.QcRcPkcMs) == 0 || charKg.Kc1.Characteristics.Qn == 0 ? 0 :
-                        Math.Round((consKg.QcRcPkcKs + consKg.QcRcPkcMs) * charKg.Kc1.Characteristics.Qn / 4000, 10),
-            ConsKgUvtp = consKg.QcRcUvtp == 0 || charKg.Kc1.Characteristics.Qn == 0 ? 0 :
-                        Math.Round(consKg.QcRcUvtp * charKg.Kc1.Characteristics.Qn / 4000, 10),
-            ConsFvCb5 = UdConsKgFv(consKg.Cb54000, prod.Cb5ConsFv),
-            ConsFvCb6 = UdConsKgFv(consKg.Cb64000, prod.Cb6ConsFv),
-            ConsFvCb7 = UdConsKgFv(consKg.Cb74000, prod.Cb7ConsFv),
-            ConsFvCb8 = UdConsKgFv(consKg.Cb84000, prod.Cb8ConsFv),
-            ConsFvKc2 = UdConsKgFv(consKg.Cb54000 + consKg.Cb64000 + consKg.Cb74000 + consKg.Cb84000,
-                                        prod.Cb5ConsFv + prod.Cb6ConsFv + prod.Cb7ConsFv + prod.Cb8ConsFv),
+            SumKgCbsSpoGsuf = consKg.ConsumptionCb.Cb5 + consKg.ConsumptionCb.Cb6 + consKg.ConsumptionCb.Cb7 + consKg.ConsumptionCb.Cb8 + consCpsPpk.Spo + consKg.ConsumptionGsuf,
+            ConsKgUvtp = consKg.QcRcCpsPpk.Uvtp == 0 || charKg.Kc1.Characteristics.Qn == 0 ? 0 :
+                        Math.Round(consKg.QcRcCpsPpk.Uvtp * charKg.Kc1.Characteristics.Qn / 4000, 10),
 
-            ConsFvSpo = UdConsKgFv(consKg.Spo4000, prod.SpoPerKus),
-            ConsGsuf = Math.Round(consKg.Gsuf4000, 10),
-            CbsMk = prod.MK,
-            Cbs16 = prod.Cb1Cb6,
-            Cbs78 = prod.Cb7Cb8,
-            Cb16ConsDry = Math.Round(prod.Cb16ConsDry, 10),
-            Cb78ConsDry = Math.Round(prod.Cb78ConsDry, 10),
-            TnConsDry = Math.Round(prod.TnConsDry, 10),
             OutKgDryPkp = Math.Round((prod.KpeDry * prod.KpeC) / prod.KpeDry, 10),
             OutKgPko = Math.Round(prod.KpeDry * prod.KpeC, 10),
          };
@@ -79,20 +78,27 @@ namespace Business.BusinessModels.Calculations
          var data2 = new
          {
             TradeGasChmk = Math.Round(tec.ChmkTecSum * 1000, 10),
-            OutKgMk = Math.Round((data.SumKgCbsSpoGsuf + data.ConsKgPkp + data.ConsKgUvtp) + (tec.ChmkTecSum * 1000), 10),
-            KipSpr = Math.Round(data.PrMk4000 + data.ConsKgPkp + data.ConsKgUvtp, 10),
-            OutKgCb18 = ((data.SumKgCbsSpoGsuf + data.ConsKgPkp + data.ConsKgUvtp) + (tec.ChmkTecSum * 1000)) - data.OutKgPko,
-            ConsFvPko = Math.Round((data.ConsKgPkp + data.ConsKgUvtp) / data.KpeDry * Constants.consFvC, 10),
-            ConsFvCpsPpk = Math.Round((data.ConsKgSpo + data.ConsKgPkp + data.ConsKgUvtp) / data.SpoPerKus * Constants.consFvC, 10),
+            OutKgMk = Math.Round((data.SumKgCbsSpoGsuf + consCpsPpk.Pko + data.ConsKgUvtp) + (tec.ChmkTecSum * 1000), 10),
+            KipSpr = Math.Round(outputKg.PrMk4000 + consCpsPpk.Pko + data.ConsKgUvtp, 10),
+            OutKgCb18 = ((data.SumKgCbsSpoGsuf + consCpsPpk.Pko + data.ConsKgUvtp) + (tec.ChmkTecSum * 1000)) - data.OutKgPko,
+            ConsFvPko = Math.Round((consCpsPpk.Pko + data.ConsKgUvtp) / prod.KpeDry * Constants.consFvC, 10),
+            ConsFvCpsPpk = Math.Round((consCpsPpk.Spo + consCpsPpk.Pko + data.ConsKgUvtp) / prod.SpoPerKus * Constants.consFvC, 10),
 
-            OutKgCb16 = (data.Cbs16 == 0 || data.CbsMk == 0) ? 0 :
-                        (((data.SumKgCbsSpoGsuf + data.ConsKgPkp + data.ConsKgUvtp) +
-                        (tec.ChmkTecSum * 1000)) - data.OutKgPko) * data.Cbs16 / data.CbsMk,
+            OutKgCb16 = (prod.Cb1Cb6 == 0 || prod.MK == 0) ? 0 :
+                        (((data.SumKgCbsSpoGsuf + consCpsPpk.Pko + data.ConsKgUvtp) +
+                        (tec.ChmkTecSum * 1000)) - data.OutKgPko) * prod.Cb1Cb6 / prod.MK,
 
-            OutKgCb78 = (data.Cbs78 == 0 || data.CbsMk == 0) ? 0 :
-                        (((data.SumKgCbsSpoGsuf + data.ConsKgPkp + data.ConsKgUvtp) +
-                        (tec.ChmkTecSum * 1000)) - data.OutKgPko) * data.Cbs78 / data.CbsMk,
+            OutKgCb78 = (prod.Cb7Cb8 == 0 || prod.MK == 0) ? 0 :
+                        (((data.SumKgCbsSpoGsuf + consCpsPpk.Pko + data.ConsKgUvtp) +
+                        (tec.ChmkTecSum * 1000)) - data.OutKgPko) * prod.Cb7Cb8 / prod.MK,
          };
+
+         var consFvCpsPpk = new ConsumptionCpsPpk
+         {
+            Spo = UdConsKgFv(consKg.ConsumptionCpsPpk.Spo, prod.SpoPerKus),
+            Pko = Math.Round((consKg.ConsumptionCpsPpk.Pko + data.ConsKgUvtp) / prod.KpeDry * Constants.consFvC, 10),
+         };
+
          return new ReportKgDTO
          {
             Date = prod.Date,
@@ -103,26 +109,21 @@ namespace Business.BusinessModels.Calculations
             OutKgMk = data2.OutKgMk,
             KipSpr = data2.KipSpr,
             OutKgDryPkp = data.OutKgDryPkp,
-            OutKgDryCb16 = (data.Cbs16 == 0 || data.CbsMk == 0 || data.Cb16ConsDry == 0) ? 0 : Math.Round(data2.OutKgCb16 / data.Cb16ConsDry, 10),
-            OutKgDryCb78 = (data.Cbs78 == 0 || data.CbsMk == 0 || data.Cb78ConsDry == 0) ? 0 : Math.Round(data2.OutKgCb78 / data.Cb78ConsDry, 10),
-            OutKgDryMk = (data2.OutKgCb18 == 0 || data.TnConsDry == 0) ? 0 : Math.Round(data2.OutKgCb18 / data.TnConsDry, 10),
-            ConsKgCb5 = data.ConsKgCb5,
-            ConsKgCb6 = data.ConsKgCb6,
-            ConsKgCb7 = data.ConsKgCb7,
-            ConsKgCb8 = data.ConsKgCb8,
-            ConsKgSpo = data.ConsKgSpo,
-            ConsKgPkp = data.ConsKgPkp,
+            OutKgDryCb16 = (prod.Cb1Cb6 == 0 || prod.MK == 0 || prod.Cb16ConsDry == 0) ? 0 : Math.Round(data2.OutKgCb16 / prod.Cb16ConsDry, 10),
+            OutKgDryCb78 = (prod.Cb7Cb8 == 0 || prod.MK == 0 || prod.Cb78ConsDry == 0) ? 0 : Math.Round(data2.OutKgCb78 / prod.Cb78ConsDry, 10),
+            OutKgDryMk = (data2.OutKgCb18 == 0 || prod.TnConsDry == 0) ? 0 : Math.Round(data2.OutKgCb18 / prod.TnConsDry, 10),
+            ConsumptionKc2 = consKc2,
+            ConsKgKc2Sum = consKc2.Cb5 + consKc2.Cb6 + consKc2.Cb7 + consKc2.Cb8,
+            ConsumptionCpsPpk = consCpsPpk, 
             ConsKgUvtp = data.ConsKgUvtp,
-            ConsFvCb5 = data.ConsFvCb5,
-            ConsFvCb6 = data.ConsFvCb6,
-            ConsFvCb7 = data.ConsFvCb7,
-            ConsFvCb8 = data.ConsFvCb8,
-            ConsFvKc2 = data.ConsFvKc2,
-            ConsFvSpo = data.ConsFvSpo,
-            ConsFvPko = data.ConsFvSpo,
-            ConsFvCpsPpk = data2.ConsFvCpsPpk,
-            ConsGsuf = data.ConsGsuf,
-            TradeGasChmk = data2.TradeGasChmk,
+            ConsumptionFvKc2 = consFvKc2,
+            ConsFvKc2Sum = consFvKc2.Cb5 + consFvKc2.Cb6 + consFvKc2.Cb7 + consFvKc2.Cb8,
+            ConsumptionFvCpsPpk = consFvCpsPpk,
+            ConsKgCpsPpkSum = consFvCpsPpk.Pko + consFvCpsPpk.Spo + data.ConsKgUvtp,
+            ConsKgMk = consKc2.Cb5 + consKc2.Cb6 + consKc2.Cb7 + consKc2.Cb8 + consFvCpsPpk.Pko + consFvCpsPpk.Spo + data.ConsKgUvtp,
+            ConsFvCpsPpkSum = Math.Round((consFvCpsPpk.Pko + consFvCpsPpk.Spo + data.ConsKgUvtp) / prod.KpeDry * Constants.consFvC, 10),
+            ConsGsuf = consKg.ConsumptionGsuf,
+            TradeGasChmk = Math.Round(tec.ChmkTecSum * 1000, 10),
          };
          
       }

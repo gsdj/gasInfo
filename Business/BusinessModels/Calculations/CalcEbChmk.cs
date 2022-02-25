@@ -25,15 +25,23 @@ namespace Business.BusinessModels.Calculations
 
       public EbChmkDTO CalcEntity(IEnumerable<ProductionDTO> prod, DgPgChmkEbDTO eb)
       {
-         decimal sumCb1 = prod.Sum(p => p.Cb1ConsFv);
-         decimal sumCb2 = prod.Sum(p => p.Cb2ConsFv);
-         decimal sumCb3 = prod.Sum(p => p.Cb3ConsFv);
-         decimal sumCb4 = prod.Sum(p => p.Cb4ConsFv);
-         decimal sumGru = (sumCb1 + sumCb2 + sumCb3 + sumCb4) + prod.Sum(p => p.Cb5ConsFv + p.Cb6ConsFv + p.Cb7ConsFv + p.Cb8ConsFv);
+         decimal sumCb1 = prod.Sum(p => p.ConsumptionFvKc1.Cb1);
+         decimal sumCb2 = prod.Sum(p => p.ConsumptionFvKc1.Cb2);
+         decimal sumCb3 = prod.Sum(p => p.ConsumptionFvKc1.Cb3);
+         decimal sumCb4 = prod.Sum(p => p.ConsumptionFvKc1.Cb4);
+         decimal sumGru = (sumCb1 + sumCb2 + sumCb3 + sumCb4) + 
+            prod.Sum(p => p.ConsumptionFvKc2.Cb5 + p.ConsumptionFvKc2.Cb6 + p.ConsumptionFvKc2.Cb7 + p.ConsumptionFvKc2.Cb8);
 
          return new EbChmkDTO
          { 
             Date = eb.Date,
+            //ConsumptionKc1 = eb.ConsumptionDgKc1
+            //{
+            //   Cb1 = eb.ConsumptionDgKc1.Cb1,
+            //   Cb2 = eb.ConsumptionDgKc1.Cb1,
+            //   Cb3 = eb.ConsumptionDgKc1.Cb1,
+            //   Cb4 = eb.ConsumptionDgKc1.Cb1,
+            //},
             ConsDgCb1 = eb.ConsDgCb1,
             ConsDgCb2 = eb.ConsDgCb1,
             ConsDgCb3 = eb.ConsDgCb1,

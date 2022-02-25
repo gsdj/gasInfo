@@ -26,15 +26,18 @@ namespace Business.BusinessModels.Calculations
          return new ProductionDTO
          {
             Date = cbs.Date,
-            Cb1 = cbs.Cb1,
-            Cb2 = cbs.Cb2,
-            Cb3 = cbs.Cb3,
-            Cb4 = cbs.Cb4,
-            Cb5 = cbs.Cb5,
-            Cb6 = cbs.Cb6,
-            Cb7 = cbs.Cb7,
-            Cb8 = cbs.Cb8,
-            PKP = cbs.PKP,
+            AmmountCb =
+            {
+               Cb1 = cbs.Cb1,
+               Cb2 = cbs.Cb2,
+               Cb3 = cbs.Cb3,
+               Cb4 = cbs.Cb4,
+               Cb5 = cbs.Cb5,
+               Cb6 = cbs.Cb6,
+               Cb7 = cbs.Cb7,
+               Cb8 = cbs.Cb8,
+               PKP = cbs.PKP,
+            },
             Cb16Val = Math.Round(((cbs.Cb1 * cbs.OutputMultipliers.Cb1) + (cbs.Cb2 * cbs.OutputMultipliers.Cb2) + 
                                     (cbs.Cb3 * cbs.OutputMultipliers.Cb3) + (cbs.Cb4 * cbs.OutputMultipliers.Cb4) +
                                     (cbs.Cb5 * cbs.OutputMultipliers.Cb5) + (cbs.Cb6 * cbs.OutputMultipliers.Cb6)), 4),
@@ -52,14 +55,20 @@ namespace Business.BusinessModels.Calculations
                                        CbDry(cbs.Cb5, cbs.OutputMultipliers.Cb5) + CbDry(cbs.Cb6, cbs.OutputMultipliers.Cb6)) * cbs.OutputMultipliers.Sv), 4),
 
             Cb78ConsDry = Math.Round((CbDry(cbs.Cb7, cbs.OutputMultipliers.Cb7) + CbDry(cbs.Cb8, cbs.OutputMultipliers.Cb8)) * cbs.OutputMultipliers.Sv, 4),
-            Cb1ConsFv = ConsFv(cbs.Cb1, cbs.OutputMultipliers.Cb1, cbs.OutputMultipliers.Fv),
-            Cb2ConsFv = ConsFv(cbs.Cb2, cbs.OutputMultipliers.Cb2, cbs.OutputMultipliers.Fv),
-            Cb3ConsFv = ConsFv(cbs.Cb3, cbs.OutputMultipliers.Cb3, cbs.OutputMultipliers.Fv),
-            Cb4ConsFv = ConsFv(cbs.Cb4, cbs.OutputMultipliers.Cb4, cbs.OutputMultipliers.Fv),
-            Cb5ConsFv = ConsFv(cbs.Cb5, cbs.OutputMultipliers.Cb5, cbs.OutputMultipliers.Fv),
-            Cb6ConsFv = ConsFv(cbs.Cb6, cbs.OutputMultipliers.Cb6, cbs.OutputMultipliers.Fv),
-            Cb7ConsFv = ConsFv(cbs.Cb7, cbs.OutputMultipliers.Cb7, cbs.OutputMultipliers.Fv),
-            Cb8ConsFv = ConsFv(cbs.Cb8, cbs.OutputMultipliers.Cb8, cbs.OutputMultipliers.Fv),
+            ConsumptionFvKc1 = 
+            {
+               Cb1 = ConsFv(cbs.Cb1, cbs.OutputMultipliers.Cb1, cbs.OutputMultipliers.Fv),
+               Cb2 = ConsFv(cbs.Cb2, cbs.OutputMultipliers.Cb2, cbs.OutputMultipliers.Fv),
+               Cb3 = ConsFv(cbs.Cb3, cbs.OutputMultipliers.Cb3, cbs.OutputMultipliers.Fv),
+               Cb4 = ConsFv(cbs.Cb4, cbs.OutputMultipliers.Cb4, cbs.OutputMultipliers.Fv),
+            },
+            ConsumptionFvKc2 =
+            {
+               Cb5 = ConsFv(cbs.Cb5, cbs.OutputMultipliers.Cb5, cbs.OutputMultipliers.Fv),
+               Cb6 = ConsFv(cbs.Cb6, cbs.OutputMultipliers.Cb6, cbs.OutputMultipliers.Fv),
+               Cb7 = ConsFv(cbs.Cb7, cbs.OutputMultipliers.Cb7, cbs.OutputMultipliers.Fv),
+               Cb8 = ConsFv(cbs.Cb8, cbs.OutputMultipliers.Cb8, cbs.OutputMultipliers.Fv),
+            },
             PkoKpe = (cbs.OutputMultipliers.Peka == 0) ? 0 : Math.Round(cbs.OutputMultipliers.Peka / 100, 4),
             SpoPerKus = (cbs.OutputMultipliers.Peka == 0) ? 0 : Math.Round(((cbs.PKP * cbs.OutputMultipliers.PKP) * Constants.SpoC) / (cbs.OutputMultipliers.Peka / 100), 4),
             SvC = cbs.OutputMultipliers.Sv,

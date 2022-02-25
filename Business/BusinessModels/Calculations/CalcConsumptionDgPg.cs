@@ -1,5 +1,7 @@
 ﻿using Business.DTO;
 using Business.DTO.Characteristics;
+using Business.DTO.Consumption;
+using Business.DTO.QcRc;
 using Business.Interfaces.Calculations;
 using Bussiness.BusinessModels;
 using System;
@@ -44,65 +46,69 @@ namespace Business.BusinessModels.Calculations
       {
          var data = new
          {
-            CbsConsFvSum = prod.Cb1ConsFv + prod.Cb2ConsFv + prod.Cb3ConsFv + prod.Cb4ConsFv +
-                           prod.Cb5ConsFv + prod.Cb6ConsFv + prod.Cb7ConsFv + prod.Cb8ConsFv,
-            QcRcDgCb1 = QcRc(kip.Cb1.Consumption, wetGas.Cb1, kip.Cb1.Temperature, charDg.Kc1.Characteristics.Density),
-            QcRcDgCb2 = QcRc(kip.Cb2.Consumption, wetGas.Cb2, kip.Cb2.Temperature, charDg.Kc1.Characteristics.Density),
-            QcRcDgCb3 = QcRc(kip.Cb3.Consumption, wetGas.Cb3, kip.Cb3.Temperature, charDg.Kc2.Characteristics.Density),
-            QcRcDgCb4 = QcRc(kip.Cb4.Consumption, wetGas.Cb4, kip.Cb4.Temperature, charDg.Kc2.Characteristics.Density),
+            CbsConsFvSum = prod.ConsumptionFvKc1.Cb1 + prod.ConsumptionFvKc1.Cb2 + prod.ConsumptionFvKc1.Cb3 + prod.ConsumptionFvKc1.Cb4 +
+                           prod.ConsumptionFvKc2.Cb5 + prod.ConsumptionFvKc2.Cb6 + prod.ConsumptionFvKc2.Cb7 + prod.ConsumptionFvKc2.Cb8,
+            Kc1ConsFvSum = prod.ConsumptionFvKc1.Cb1 + prod.ConsumptionFvKc1.Cb2 + prod.ConsumptionFvKc1.Cb3 + prod.ConsumptionFvKc1.Cb4,
+            Kc2ConsFvSum = prod.ConsumptionFvKc2.Cb5 + prod.ConsumptionFvKc2.Cb6 + prod.ConsumptionFvKc2.Cb7 + prod.ConsumptionFvKc2.Cb8,
             ConsPgKc1 = ConsPg(kip.Grp4.Consumption, pressure.ValuePa, kip.Grp4.Pressure, kip.Grp4.Temperature),
-            ConsPgGru1 = ConsPg(kip.Gru1.Consumption, pressure.ValuePa, kip.Gru1.Pressure, kip.Gru1.Temperature),
-            ConsPgGru2 = ConsPg(kip.Gru2.Consumption, pressure.ValuePa, kip.Gru2.Pressure, kip.Gru2.Temperature),
          };
 
-         var data2 = new
+         var qcrcDg = new QcRcKc1
          {
-            ConsDgCb1 = Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn),
-            ConsDgCb2 = Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn),
-            ConsDgCb3 = Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn),
-            ConsDgCb4 = Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn),
-            Kc1Sum = Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn) + 
-                     Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn),
-            ConsPgCb1 = ConsPgCb(Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn), data.ConsPgKc1,
-                                    Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn) +
-                                    Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn)),
-            ConsPgCb2 = ConsPgCb(Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn), data.ConsPgKc1,
-                                    Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn) +
-                                    Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn)),
-            ConsPgCb3 = ConsPgCb(Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn), data.ConsPgKc1,
-                                    Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn) +
-                                    Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn)),
-            ConsPgCb4 = ConsPgCb(Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn), data.ConsPgKc1,
-                                    Qn1000(data.QcRcDgCb1, charDg.Kc1.Characteristics.Qn) + Qn1000(data.QcRcDgCb2, charDg.Kc1.Characteristics.Qn) +
-                                    Qn1000(data.QcRcDgCb3, charDg.Kc2.Characteristics.Qn) + Qn1000(data.QcRcDgCb4, charDg.Kc2.Characteristics.Qn)),
-            UdConsPgGru1 = data.ConsPgGru1 / (data.CbsConsFvSum / 0.4m),
-            UdConsPgGru2 = data.ConsPgGru2 / (data.CbsConsFvSum / 0.6m),
+            Cb1 = QcRc(kip.Cb1.Consumption, wetGas.Cb1, kip.Cb1.Temperature, charDg.Kc1.Characteristics.Density),
+            Cb2 = QcRc(kip.Cb2.Consumption, wetGas.Cb2, kip.Cb2.Temperature, charDg.Kc1.Characteristics.Density),
+            Cb3 = QcRc(kip.Cb3.Consumption, wetGas.Cb3, kip.Cb3.Temperature, charDg.Kc2.Characteristics.Density),
+            Cb4 = QcRc(kip.Cb4.Consumption, wetGas.Cb4, kip.Cb4.Temperature, charDg.Kc2.Characteristics.Density),
+         };
+
+         var consDg = new ConsumptionKc1<decimal>
+         {
+            Cb1 = Qn1000(qcrcDg.Cb1, charDg.Kc1.Characteristics.Qn),
+            Cb2 = Qn1000(qcrcDg.Cb2, charDg.Kc1.Characteristics.Qn),
+            Cb3 = Qn1000(qcrcDg.Cb3, charDg.Kc2.Characteristics.Qn),
+            Cb4 = Qn1000(qcrcDg.Cb4, charDg.Kc2.Characteristics.Qn),
+         };
+
+         var consPgGru = new ConsumptionGru<decimal>
+         {
+            Gru1 = ConsPg(kip.Gru1.Consumption, pressure.ValuePa, kip.Gru1.Pressure, kip.Gru1.Temperature),
+            Gru2 = ConsPg(kip.Gru2.Consumption, pressure.ValuePa, kip.Gru2.Pressure, kip.Gru2.Temperature),
+         };
+
+         var consPgCb = new ConsumptionKc1<decimal>
+         {
+            Cb1 = ConsPgCb(consDg.Cb1, data.ConsPgKc1, consDg.Cb1 + consDg.Cb2 + consDg.Cb3 + consDg.Cb4),
+            Cb2 = ConsPgCb(consDg.Cb2, data.ConsPgKc1, consDg.Cb1 + consDg.Cb2 + consDg.Cb3 + consDg.Cb4),
+            Cb3 = ConsPgCb(consDg.Cb3, data.ConsPgKc1, consDg.Cb1 + consDg.Cb2 + consDg.Cb3 + consDg.Cb4),
+            Cb4 = ConsPgCb(consDg.Cb4, data.ConsPgKc1, consDg.Cb1 + consDg.Cb2 + consDg.Cb3 + consDg.Cb4),
+         };
+
+         var udConsPgGru = new ConsumptionGru<decimal>
+         {
+            Gru1 = consPgGru.Gru1 / data.CbsConsFvSum / 0.4m,
+            Gru2 = consPgGru.Gru2 / data.CbsConsFvSum / 0.6m,
+         };
+
+         var udConsKgFv = new ConsumptionKc1<decimal>
+         {
+            Cb1 = UdConsDgFv(consDg.Cb1, consPgCb.Cb1, prod.ConsumptionFvKc1.Cb1),
+            Cb2 = UdConsDgFv(consDg.Cb2, consPgCb.Cb2, prod.ConsumptionFvKc1.Cb2),
+            Cb3 = UdConsDgFv(consDg.Cb3, consPgCb.Cb3, prod.ConsumptionFvKc1.Cb3),
+            Cb4 = UdConsDgFv(consDg.Cb4, consPgCb.Cb4, prod.ConsumptionFvKc1.Cb4),
          };
 
          return new ConsumptionDgPgDTO
          {
             Date = wetGas.Date,
-            ConsDgCb1 = data2.ConsDgCb1,
-            ConsDgCb2 = data2.ConsDgCb2,
-            ConsDgCb3 = data2.ConsDgCb3,
-            ConsDgCb4 = data2.ConsDgCb4,
-            Kc1Sum = data2.Kc1Sum,
-            ConsPgCb1 = data2.ConsPgCb1,
-            ConsPgCb2 = data2.ConsPgCb2,
-            ConsPgCb3 = data2.ConsPgCb3,
-            ConsPgCb4 = data2.ConsPgCb4,
-            ConsPgKc1 = data.ConsPgKc1,
-            ConsPgGru1 = data.ConsPgGru1,
-            ConsPgGru2 = data.ConsPgGru2,
-            UdConsPgGru1 = data2.UdConsPgGru1,
-            UdConsPgGru2 = data2.UdConsPgGru2,
-            UdConsKgFvCb1 = UdConsDgFv(data2.ConsDgCb1, data2.ConsPgCb1, prod.Cb1ConsFv),
-            UdConsKgFvCb2 = UdConsDgFv(data2.ConsDgCb2, data2.ConsPgCb2, prod.Cb2ConsFv),
-            UdConsKgFvCb3 = UdConsDgFv(data2.ConsDgCb3, data2.ConsPgCb3, prod.Cb3ConsFv),
-            UdConsKgFvCb4 = UdConsDgFv(data2.ConsDgCb4, data2.ConsPgCb4, prod.Cb4ConsFv),
-            UdConsKgFvKc1 = UdConsDgFv(data2.Kc1Sum, data.ConsPgKc1, prod.Cb1ConsFv + prod.Cb2ConsFv + prod.Cb3ConsFv + prod.Cb4ConsFv),
+            ConsumptionDgCb = consDg,
+            ConsumptionDgKc1 = consDg.Cb1 + consDg.Cb2 + consDg.Cb3 + consDg.Cb4,
+            ConsumptionPgCb = consPgCb,
+            ConsumptionPgKc1 = data.ConsPgKc1,
+            ConsumptionPgGru = consPgGru,
+            UdConsumptionPgGru = udConsPgGru,
+            UdConsumptionKgFvCb = udConsKgFv,
+            UdConsumptionKgFvKc1 = UdConsDgFv(consDg.Cb1 + consDg.Cb2 + consDg.Cb3 + consDg.Cb4, data.ConsPgKc1, data.Kc1ConsFvSum),
          };
-
       }
 
       public decimal ConsPg(decimal cons, decimal PPa, decimal pressure, decimal temp)

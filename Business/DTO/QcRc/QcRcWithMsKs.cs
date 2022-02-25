@@ -10,5 +10,9 @@ namespace Business.DTO.QcRc
    {
       public decimal Ms { get; set; }
       public decimal Ks { get; set; }
+      public decimal Value
+      {
+         get { return (this.Ms + this.Ks) * 24; }
+      }
    }
 }

@@ -12,7 +12,7 @@ namespace Business.DTO
    {
       public DateTime Date { get; set; }
       public QcRcKc2 QcRcCb { get; set; }
-      public ConsumptionKc2 ConsumptionCb { get; set; }
+      public ConsumptionKc2<decimal> ConsumptionCb { get; set; }
       public QcRcCpsPpk QcRcCpsPpk { get; set; }
       public ConsumptionCpsPpk ConsumptionCpsPpk { get; set; }
       public decimal QcRcGsuf { get; set; }

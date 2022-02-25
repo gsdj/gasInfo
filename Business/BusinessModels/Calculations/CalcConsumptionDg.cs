@@ -1,5 +1,7 @@
 ﻿using Business.DTO;
 using Business.DTO.Characteristics;
+using Business.DTO.Consumption;
+using Business.DTO.QcRc;
 using Business.Interfaces.Calculations;
 using System;
 using System.Collections.Generic;
@@ -36,27 +38,28 @@ namespace Business.BusinessModels.Calculations
 
       public ConsumptionDgDTO CalcEntity(DensityDTO wetGas, DevicesKipDTO kip, CharacteristicsDgDTO charDg)
       {
-         var data = new
+         var qcrc = new QcRcKc1
          {
-            Date = wetGas.Date,
-            Qn = charDg.CharacteristicsAVG.Qn,
-            QcRcCb1 = QcRc(kip.Cb1.Consumption, wetGas.Cb1, kip.Cb1.Temperature, charDg.CharacteristicsAVG.Density),
-            QcRcCb2 = QcRc(kip.Cb2.Consumption, wetGas.Cb2, kip.Cb2.Temperature, charDg.CharacteristicsAVG.Density),
-            QcRcCb3 = QcRc(kip.Cb3.Consumption, wetGas.Cb3, kip.Cb3.Temperature, charDg.CharacteristicsAVG.Density),
-            QcRcCb4 = QcRc(kip.Cb4.Consumption, wetGas.Cb4, kip.Cb4.Temperature, charDg.CharacteristicsAVG.Density),
+            Cb1 = QcRc(kip.Cb1.Consumption, wetGas.Cb1, kip.Cb1.Temperature, charDg.CharacteristicsAVG.Density),
+            Cb2 = QcRc(kip.Cb2.Consumption, wetGas.Cb2, kip.Cb2.Temperature, charDg.CharacteristicsAVG.Density),
+            Cb3 = QcRc(kip.Cb3.Consumption, wetGas.Cb3, kip.Cb3.Temperature, charDg.CharacteristicsAVG.Density),
+            Cb4 = QcRc(kip.Cb4.Consumption, wetGas.Cb4, kip.Cb4.Temperature, charDg.CharacteristicsAVG.Density),
          };
+
+         var cons = new ConsumptionKc1<decimal>
+         {
+            Cb1 = Qn1000(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
+            Cb2 = Qn1000(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
+            Cb3 = Qn1000(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
+            Cb4 = Qn1000(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
+         };
+
          return new ConsumptionDgDTO
          {
-            Date = data.Date,
-            QcRcCb1 = data.QcRcCb1,
-            QcRcCb2 = data.QcRcCb2,
-            QcRcCb3 = data.QcRcCb3,
-            QcRcCb4 = data.QcRcCb4,
-            Cb11000 = Qn1000(data.QcRcCb1, data.Qn),
-            Cb21000 = Qn1000(data.QcRcCb2, data.Qn),
-            Cb31000 = Qn1000(data.QcRcCb3, data.Qn),
-            Cb41000 = Qn1000(data.QcRcCb4, data.Qn),
-            MKSum1000 = Qn1000(data.QcRcCb1, data.Qn) + Qn1000(data.QcRcCb2, data.Qn) + Qn1000(data.QcRcCb3, data.Qn) + Qn1000(data.QcRcCb4, data.Qn),
+            Date = wetGas.Date,
+            QcRc = qcrc,
+            ConsumptionDg = cons,
+            ConsumptionDgMk = cons.Cb1 + cons.Cb2 + cons.Cb3 + cons.Cb4,
          };
       }
 
