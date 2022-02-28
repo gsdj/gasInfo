@@ -9,10 +9,10 @@ namespace Business.DTO.InfoSheet
 {
    public class ConsumptionKg
    {
-      public ConsumptionKc2 MonthCb { get; set; } // ст.м³ с начала месяца
-      public ConsumptionKc2 DayCb { get; set; } // ст.м³ (4000кКал/м³)
-      public ConsumptionKc2 HourCb { get; set; } // ст.м³/час
-      public ConsumptionKc2 UdSvCb { get; set; } // Удельный, ст.м³/тн. шихты в c.в.
+      public ConsumptionKc2<decimal> MonthCb { get; set; } // ст.м³ с начала месяца
+      public ConsumptionKc2<decimal> DayCb { get; set; } // ст.м³ (4000кКал/м³)
+      public ConsumptionKc2<decimal> HourCb { get; set; } // ст.м³/час
+      public ConsumptionKc2<decimal> UdSvCb { get; set; } // Удельный, ст.м³/тн. шихты в c.в.
       public ConsumptionCpsPpk MonthCpsPpk { get; set; } // ст.м³ с начала месяца
       public ConsumptionCpsPpk DayCpsPpk { get; set; } // ст.м³ (4000кКал/м³)
       public ConsumptionCpsPpk HourCpsPpk { get; set; } // ст.м³/час

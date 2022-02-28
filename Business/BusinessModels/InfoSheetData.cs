@@ -9,6 +9,7 @@ namespace Business.BusinessModels
 {
    public class InfoSheetData
    {
+      public DateTime Date { get; set; }
       public CharacteristicsKgDTO CharacteristicsKg { get; set; }
       public CharacteristicsDgDTO CharacteristicsDg { get; set; }
       public List<OutputKgDTO> OutputKgDTOs { get; set; }

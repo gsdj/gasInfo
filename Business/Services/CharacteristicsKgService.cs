@@ -55,23 +55,23 @@ namespace Business.Services
             Kc1 =
             {
 
-               CO = entity.Kc1.CO,
-               CO2 = entity.Kc1.CO2,
-               H2 = entity.Kc1.H2,
-               N2 = entity.Kc1.N2,
-               CH4 = entity.Kc1.CH4,
-               CnHm = entity.Kc1.CnHm,
-               O2 = entity.Kc1.O2,
+               CO = entity.Kc1.Components.CO,
+               CO2 = entity.Kc1.Components.CO2,
+               H2 = entity.Kc1.Components.H2,
+               N2 = entity.Kc1.Components.N2,
+               CH4 = entity.Kc1.Components.CH4,
+               CnHm = entity.Kc1.Components.CnHm,
+               O2 = entity.Kc1.Components.O2,
             },
             Kc2 =
             {
-               CO = entity.Kc2.CO,
-               CO2 = entity.Kc2.CO2,
-               H2 = entity.Kc2.H2,
-               N2 = entity.Kc2.N2,
-               CH4 = entity.Kc2.CH4,
-               CnHm = entity.Kc2.CnHm,
-               O2 = entity.Kc2.O2,
+               CO = entity.Kc2.Components.CO,
+               CO2 = entity.Kc2.Components.CO2,
+               H2 = entity.Kc2.Components.H2,
+               N2 = entity.Kc2.Components.N2,
+               CH4 = entity.Kc2.Components.CH4,
+               CnHm = entity.Kc2.Components.CnHm,
+               O2 = entity.Kc2.Components.O2,
             }
          };
          db.CharacteristicsKg.Add(kg);

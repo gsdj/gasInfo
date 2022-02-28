@@ -45,8 +45,8 @@ namespace Business.BusinessModels.Calculations
       {
          var data = new
          {
-            Kc2Sum = (consKg.Kc2Sum == 0 && consKg.CpsppkSum4000 == 0) ? 0 : (consKg.Kc2Sum + consKg.CpsppkSum4000) / 24,
-            GSUF4000 = (consKg.Gsuf4000 == 0) ? 0 : consKg.Gsuf4000 / 24,
+            Kc2Sum = (consKg.ConsumptionKc2Sum == 0 && consKg.ConsumptionCpsPpkSum == 0) ? 0 : (consKg.ConsumptionKc2Sum + consKg.ConsumptionCpsPpkSum) / 24,
+            GSUF4000 = (consKg.ConsumptionGsuf == 0) ? 0 : consKg.ConsumptionGsuf / 24,
             PrMk4000 = (outputKg.PrMk4000 == 0) ? 0 : outputKg.PrMk4000 / 24,
 
             TradeGasEB = kgChmk.Consumption,

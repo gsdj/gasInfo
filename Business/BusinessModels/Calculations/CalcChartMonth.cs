@@ -45,8 +45,8 @@ namespace Business.BusinessModels.Calculations
       {
          var data = new
          {
-            Kc2Sum = (consKg.Kc2Sum + consKg.CpsppkSum4000) / 24,
-            Gsuf4000 = consKg.Gsuf4000 / 24,
+            Kc2Sum = (consKg.ConsumptionKc2Sum + consKg.ConsumptionCpsPpkSum) / 24,
+            Gsuf4000 = consKg.ConsumptionGsuf / 24,
             Asdue = (asdue.StmDay / 24) * charKg.Kc1.Characteristics.Qn / 4000,
             Oper = outputKg.PrMk4000 / prod.TnConsDry,
          };

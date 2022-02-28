@@ -29,33 +29,39 @@ namespace Business.BusinessModels.Calculations
          decimal sumCb2 = prod.Sum(p => p.ConsumptionFvKc1.Cb2);
          decimal sumCb3 = prod.Sum(p => p.ConsumptionFvKc1.Cb3);
          decimal sumCb4 = prod.Sum(p => p.ConsumptionFvKc1.Cb4);
-         decimal sumGru = (sumCb1 + sumCb2 + sumCb3 + sumCb4) + 
-            prod.Sum(p => p.ConsumptionFvKc2.Cb5 + p.ConsumptionFvKc2.Cb6 + p.ConsumptionFvKc2.Cb7 + p.ConsumptionFvKc2.Cb8);
+         decimal sumKc1 = sumCb1 + sumCb2 + sumCb3 + sumCb4;
+         decimal sumGru = sumKc1 + prod.Sum(p => p.ConsumptionFvKc2.Cb5 + p.ConsumptionFvKc2.Cb6 + p.ConsumptionFvKc2.Cb7 + p.ConsumptionFvKc2.Cb8);
 
          return new EbChmkDTO
          { 
             Date = eb.Date,
-            //ConsumptionKc1 = eb.ConsumptionDgKc1
-            //{
-            //   Cb1 = eb.ConsumptionDgKc1.Cb1,
-            //   Cb2 = eb.ConsumptionDgKc1.Cb1,
-            //   Cb3 = eb.ConsumptionDgKc1.Cb1,
-            //   Cb4 = eb.ConsumptionDgKc1.Cb1,
-            //},
-            ConsDgCb1 = eb.ConsDgCb1,
-            ConsDgCb2 = eb.ConsDgCb1,
-            ConsDgCb3 = eb.ConsDgCb1,
-            ConsDgCb4 = eb.ConsDgCb1,
-            UdConsCb1 = (eb.ConsDgCb1 == 0) ? 0 : (int)Math.Round((eb.ConsDgCb1 * Constants.UdDgC) / sumCb1, MidpointRounding.ToEven),
-            UdConsCb2 = (eb.ConsDgCb2 == 0) ? 0 : (int)Math.Round((eb.ConsDgCb2 * Constants.UdDgC) / sumCb2, MidpointRounding.ToEven),
-            UdConsCb3 = (eb.ConsDgCb3 == 0) ? 0 : (int)Math.Round((eb.ConsDgCb3 * Constants.UdDgC) / sumCb3, MidpointRounding.ToEven),
-            UdConsCb4 = (eb.ConsDgCb4 == 0) ? 0 : (int)Math.Round((eb.ConsDgCb4 * Constants.UdDgC) / sumCb4, MidpointRounding.ToEven),
-            UdConsKc1 = (eb.ConsDgKc1 == 0) ? 0 : (int)Math.Round((eb.ConsDgKc1 * Constants.UdDgC) / (sumCb1 + sumCb2 + sumCb3 + sumCb4), MidpointRounding.ToEven),
-            ConsPgGru1 = eb.ConsPgGru1,
-            ConsPgGru2 = eb.ConsPgGru2,
+            ConsumptionKc1 = 
+            {
+               Cb1 = eb.ConsumptionDgKc1.Cb1,
+               Cb2 = eb.ConsumptionDgKc1.Cb1,
+               Cb3 = eb.ConsumptionDgKc1.Cb1,
+               Cb4 = eb.ConsumptionDgKc1.Cb1,
+            },
+            ConsDgKc1Sum = eb.ConsDgKc1Sum,
+            UdConsumptionKc1 =
+            {
+               Cb1 = (eb.ConsumptionDgKc1.Cb1 == 0) ? 0 : (int)Math.Round((eb.ConsumptionDgKc1.Cb1 * Constants.UdDgC) / sumCb1, MidpointRounding.ToEven),
+               Cb2 = (eb.ConsumptionDgKc1.Cb2 == 0) ? 0 : (int)Math.Round((eb.ConsumptionDgKc1.Cb2 * Constants.UdDgC) / sumCb2, MidpointRounding.ToEven),
+               Cb3 = (eb.ConsumptionDgKc1.Cb3 == 0) ? 0 : (int)Math.Round((eb.ConsumptionDgKc1.Cb3 * Constants.UdDgC) / sumCb3, MidpointRounding.ToEven),
+               Cb4 = (eb.ConsumptionDgKc1.Cb4 == 0) ? 0 : (int)Math.Round((eb.ConsumptionDgKc1.Cb4 * Constants.UdDgC) / sumCb4, MidpointRounding.ToEven),
+            },
+            UdConsKc1Sum = (eb.ConsDgKc1Sum == 0) ? 0 : (int)Math.Round((eb.ConsDgKc1Sum * Constants.UdDgC) / sumKc1, MidpointRounding.ToEven),
+            ConsumptionGru =
+            {
+               Gru1 = eb.ConsumptionPgGru.Gru1,
+               Gru2 = eb.ConsumptionPgGru.Gru2,
+            },
             ConsPgUpc = eb.ConsPgUpc,
-            UdConsGru1 = Math.Round((eb.ConsPgGru1 == 0) ? 0 : (eb.ConsPgGru1 * Constants.UdPgC) / (sumGru * 0.4m), 2),
-            UdConsGru2 = Math.Round((eb.ConsPgGru2 == 0) ? 0 : (eb.ConsPgGru2 * Constants.UdPgC) / (sumGru * 0.6m), 2),
+            UdConsumptionGru =
+            {
+               Gru1 = Math.Round((eb.ConsumptionPgGru.Gru1 == 0) ? 0 : (eb.ConsumptionPgGru.Gru1 * Constants.UdPgC) / (sumGru * 0.4m), 2),
+               Gru2 = Math.Round((eb.ConsumptionPgGru.Gru2 == 0) ? 0 : (eb.ConsumptionPgGru.Gru2 * Constants.UdPgC) / (sumGru * 0.6m), 2),
+            },
          };
       }
    }
