@@ -1,4 +1,5 @@
 ﻿using Business.DTO;
+using Business.Interfaces.Calculations;
 using Business.Interfaces.Services;
 using DataAccess.Interfaces;
 using System;
@@ -8,31 +9,26 @@ namespace Bussiness.Services
 {
    public class ProductionService : IProductionService
    {
-      IUnitOfWork uof;
-
-      public IEnumerable<ProductionDTO> GetAllByMonth(DateTime Date)
+      IUnitOfWork db;
+      ICalcProduction CalcProduction;
+      public ProductionService(IUnitOfWork uof, ICalcProduction calcProd)
       {
-         throw new NotImplementedException();
+         db = uof;
+         CalcProduction = calcProd;
+      }
+      public IEnumerable<ProductionDTO> GetItemsByMonth(DateTime Date)
+      {
+         var ammountCb = db.AmmountCb.GetPerMonth(Date.Year, Date.Month);
+         var result = CalcProduction.CalcEntities(ammountCb);
+         return result;
       }
 
-      public IEnumerable<ProductionDTO> GetAllByNowMonth()
+      public IEnumerable<ProductionDTO> GetItemsByNowMonth()
       {
-         throw new NotImplementedException();
-      }
-
-      public IEnumerable<ProductionDTO> GetAllByNowYear()
-      {
-         throw new NotImplementedException();
-      }
-
-      public IEnumerable<ProductionDTO> GetAllByYear(int Year)
-      {
-         throw new NotImplementedException();
-      }
-
-      public ProductionDTO GetByDate(DateTime Date)
-      {
-         throw new NotImplementedException();
+         DateTime dateNow = DateTime.Now;
+         var ammountCb = db.AmmountCb.GetPerMonth(dateNow.Year, dateNow.Month);
+         var result = CalcProduction.CalcEntities(ammountCb);
+         return result;
       }
    }
 }

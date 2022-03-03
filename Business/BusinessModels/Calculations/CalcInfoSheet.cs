@@ -18,8 +18,8 @@ namespace Business.BusinessModels.Calculations
       {
          Data = data;
          var consDgPgPerDate = Data.ConsumptionDgPgDTOs.FirstOrDefault(p => p.Date == Data.Date);
-         var outKgPerDate = Data.OutputKgDTOs.First(p => p.Date == Data.Date);
-         var consKgPerDate = Data.ConsumptionKgDTOs.First(p => p.Date == Data.Date);
+         var outKgPerDate = Data.OutputKgDTOs.FirstOrDefault(p => p.Date == Data.Date);
+         var consKgPerDate = Data.ConsumptionKgDTOs.FirstOrDefault(p => p.Date == Data.Date);
          var repKgPerDate = Data.ReportKgDTOs.FirstOrDefault(p => p.Date == Data.Date);
 
          var sumCu1 = Data.ConsumptionKgDTOs.Sum(p => p.PkoSum) + Data.OutputKgDTOs.Sum(p => p.Cu14000);
@@ -61,7 +61,7 @@ namespace Business.BusinessModels.Calculations
 
       private OutputKg OutputKg(OutputKgDTO outKg, ConsumptionKgDTO consKg, decimal sumCu1, decimal sumCu2)
       {
-         var prodPerDate = Data.ProductionDTOs.First(p => p.Date == Data.Date);
+         var prodPerDate = Data.ProductionDTOs.FirstOrDefault(p => p.Date == Data.Date);
 
          return new OutputKg
          {

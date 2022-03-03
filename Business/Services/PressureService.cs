@@ -17,31 +17,22 @@ namespace Business.Services
       {
          db = uof;
       }
-      public IEnumerable<PressureDTO> GetAllByMonth(DateTime Date)
+
+      public PressureDTO GetItemByDate(DateTime Date)
       {
          throw new NotImplementedException();
       }
 
-      public IEnumerable<PressureDTO> GetAllByNowMonth()
+      public IEnumerable<PressureDTO> GetItemsByMonth(DateTime Date)
       {
-         return db.Pressure.GetPerMonth().Select(p => new PressureDTO 
+         return db.Pressure.GetPerMonth(Date.Year, Date.Month).Select(p => new PressureDTO
          {
             Date = p.Date,
             Value = p.Value,
          });
       }
 
-      public IEnumerable<PressureDTO> GetAllByNowYear()
-      {
-         throw new NotImplementedException();
-      }
-
-      public IEnumerable<PressureDTO> GetAllByYear(int Year)
-      {
-         throw new NotImplementedException();
-      }
-
-      public PressureDTO GetByDate(DateTime Date)
+      public IEnumerable<PressureDTO> GetItemsByNowMonth()
       {
          throw new NotImplementedException();
       }

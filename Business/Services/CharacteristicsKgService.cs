@@ -18,33 +18,21 @@ namespace Business.Services
          _clcKg = clcKg;
       }
 
-      public IEnumerable<CharacteristicsKgDTO> GetAllByMonth(DateTime Date)
-      {
-         throw new NotImplementedException();
-      }
-
-      public IEnumerable<CharacteristicsKgDTO> GetAllByNowMonth()
-      {
-         var charKg = db.CharacteristicsKg.GetPerMonth();
-         var result = _clcKg.CalcEntities(charKg);
-         return result;
-      }
-
-      public IEnumerable<CharacteristicsKgDTO> GetAllByNowYear()
-      {
-         throw new NotImplementedException();
-      }
-
-      public IEnumerable<CharacteristicsKgDTO> GetAllByYear(int Year)
-      {
-         throw new NotImplementedException();
-      }
-
-      public CharacteristicsKgDTO GetByDate(DateTime Date)
+      public CharacteristicsKgDTO GetItemByDate(DateTime Date)
       {
          var charKg = db.CharacteristicsKg.GetByDate(Date);
          var result = _clcKg.CalcEntity(charKg);
          return result;
+      }
+
+      public IEnumerable<CharacteristicsKgDTO> GetItemsByMonth(DateTime Date)
+      {
+         throw new NotImplementedException();
+      }
+
+      public IEnumerable<CharacteristicsKgDTO> GetItemsByNowMonth()
+      {
+         throw new NotImplementedException();
       }
 
       public void Insert(CharacteristicsKgDTO entity)

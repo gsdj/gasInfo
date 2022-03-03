@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces.Services
 {
-   public interface ICharacteristicsService<T> : IGasService<T> where T : class
+   public interface ICharacteristicsService<T> : IWritable<T>, IMonthable<T>, IDatable<T> where T : class
    {
-      void Insert(T entity);
-      void Upsert(T entity);
    }
 }

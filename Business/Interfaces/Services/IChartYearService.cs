@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces.Services
 {
-   public interface IPressureService : IWritable<PressureDTO>, IDatable<PressureDTO>, IMonthable<PressureDTO>
+   public interface IChartYearService : IYearable<ChartYearDTO>
    {
    }
 }

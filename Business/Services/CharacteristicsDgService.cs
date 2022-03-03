@@ -1,4 +1,5 @@
 ﻿using Business.DTO;
+using Business.Interfaces;
 using Business.Interfaces.Calculations;
 using Business.Interfaces.Services;
 using DataAccess.Interfaces;
@@ -14,33 +15,25 @@ namespace Business.Services
    {
       IUnitOfWork db;
       ICalcCharacteristicsDg _clcDg;
-      public CharacteristicsDgService(IUnitOfWork uof, ICalcCharacteristicsDg clcDg)
+      IValidationDictionary _validationDictionary;
+      public CharacteristicsDgService(IUnitOfWork uof, ICalcCharacteristicsDg clcDg, IValidationDictionary validation)
       {
+         _validationDictionary = validation;
          db = uof;
          _clcDg = clcDg;
       }
 
-      public IEnumerable<CharacteristicsDgDTO> GetAllByMonth(DateTime Date)
+      public CharacteristicsDgDTO GetItemByDate(DateTime Date)
       {
          throw new NotImplementedException();
       }
 
-      public IEnumerable<CharacteristicsDgDTO> GetAllByNowMonth()
+      public IEnumerable<CharacteristicsDgDTO> GetItemsByMonth(DateTime Date)
       {
          throw new NotImplementedException();
       }
 
-      public IEnumerable<CharacteristicsDgDTO> GetAllByNowYear()
-      {
-         throw new NotImplementedException();
-      }
-
-      public IEnumerable<CharacteristicsDgDTO> GetAllByYear(int Year)
-      {
-         throw new NotImplementedException();
-      }
-
-      public CharacteristicsDgDTO GetByDate(DateTime Date)
+      public IEnumerable<CharacteristicsDgDTO> GetItemsByNowMonth()
       {
          throw new NotImplementedException();
       }

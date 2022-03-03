@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces.Services
 {
-   public interface IProductionService : IGasService<ProductionDTO>
+   public interface IProductionService : IMonthable<ProductionDTO>
    {
    }
 }
