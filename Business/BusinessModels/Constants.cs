@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bussiness.BusinessModels
+namespace Business.BusinessModels
 {
    public static class Constants
    {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces
 {
+   //Оставить только Upsert?
    public interface IWritable<T> where T: class
    {
       void Insert(T entity);

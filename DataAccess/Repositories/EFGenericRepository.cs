@@ -18,7 +18,7 @@ namespace DataAccess.Repositories
          _context = context;
          _dbSet = context.Set<TEntity>();
       }
-      public virtual void Add(TEntity entity)
+      public virtual void Create(TEntity entity)
       {
          _dbSet.Add(entity);
       }
@@ -28,7 +28,7 @@ namespace DataAccess.Repositories
          return _dbSet.Find(guid);
       }
 
-      public virtual void Remove(TEntity entity)
+      public virtual void Delete(TEntity entity)
       {
          _dbSet.Remove(entity);
       }
