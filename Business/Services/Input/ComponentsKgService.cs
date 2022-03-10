@@ -1,4 +1,5 @@
 ﻿using Business.DTO;
+using Business.Interfaces;
 using Business.Interfaces.Calculations;
 using Business.Interfaces.Services;
 using DataAccess.Entities;
@@ -6,16 +7,15 @@ using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
 
-namespace Business.Services
+namespace Business.Services.Input
 {
-   public class CharacteristicsKgService : ICharacteristicsService<CharacteristicsKgDTO>
+   public class ComponentsKgService : IGasComponentsService<ComponentsKgDTO> // IComponentsService<ComponentsKg>
    {
       IUnitOfWork db;
-      ICalcCharacteristicsKg _clcKg;
-      public CharacteristicsKgService(IUnitOfWork uof, ICalcCharacteristicsKg clcKg)
+      IValidationDictionary _validationDictionary;
+      public ComponentsKgService(IUnitOfWork uof, IValidationDictionary validation)
       {
          db = uof;
-         _clcKg = clcKg;
       }
 
       public CharacteristicsKgDTO GetItemByDate(DateTime Date)
@@ -62,7 +62,7 @@ namespace Business.Services
                O2 = entity.Kc2.Components.O2,
             }
          };
-         db.CharacteristicsKg.Add(kg);
+         db.CharacteristicsKg.Create(kg);
          db.Save();
       }
 

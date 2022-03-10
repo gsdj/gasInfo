@@ -1,7 +1,7 @@
-﻿using Business.DTO;
+﻿using Business.BusinessModels.DataForCalculations;
+using Business.DTO;
 using Business.DTO.Characteristics;
 using Business.Interfaces.Calculations;
-using Bussiness.BusinessModels;
 using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,41 +11,21 @@ using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcDryGasDensity : ICalcDryGasDensity
+   public class CalcDryGasDensity : ICalculations<DensityDTO>// ICalcDryGasDensity
    {
       private Dictionary<int, SteamCharacteristicsDTO> _steam;
-      public IEnumerable<DensityDTO> CalcEntities(IEnumerable<PressureDTO> pressure, IEnumerable<CharacteristicsKgDTO> kgs, 
-                                                  IEnumerable<CharacteristicsDgDTO> dgs, IEnumerable<DevicesKip> kip,
-                                                  Dictionary<int, SteamCharacteristicsDTO> steam)
+      public DensityDTO CalcEntity(Data data)
       {
-         _steam = steam;
-         var d =
-             from t1p in pressure
-             join t2kgs in kgs on new { t1p.Date } equals new { t2kgs.Date }
-             join t3dgs in dgs on new { t2kgs.Date } equals new { t3dgs.Date }
-             join t4kip in kip on new { t3dgs.Date } equals new { t4kip.Date }
-             select new
-             {
-                Pressure = t1p,
-                Kgs = t2kgs,
-                Dgs = t3dgs,
-                Kip = t4kip
-             };
+         GasDensityData Data = data as GasDensityData;
+         var kip = Data.Kip;
+         var pressure = Data.Pressure;
+         var dg = Data.CharacteristicsDg;
+         var kg = Data.CharacteristicsKg;
+         _steam = Data.Steam;
 
-         List<DensityDTO> densityDry = new List<DensityDTO>(d.Count());
-         foreach (var item in d)
-         {
-            densityDry.Add(CalcEntity(item.Pressure, item.Kgs, item.Dgs, item.Kip));
-         }
-         return densityDry;
-      }
-
-      public DensityDTO CalcEntity(PressureDTO pressure, CharacteristicsKgDTO kg, 
-                                   CharacteristicsDgDTO dg, DevicesKip kip)
-      {
          return new DensityDTO
          {
-            Date = pressure.Date,
+            Date = Data.Pressure.Date,
             Cu1 = (kip.Cu1.Pressure == 0) ? 0 : DryGas(kg.Kc1.Characteristics.Density, pressure.ValuePa, kip.Cu1.Pressure, kip.Cu1.Temperature),
             Cu2 = (kip.Cu2.Pressure == 0) ? 0 : DryGas(kg.Kc2.Characteristics.Density, pressure.ValuePa, kip.Cu2.Pressure, kip.Cu2.Temperature),
             Cb5 = (kip.Cb5.Pressure == 0) ? 0 : DryGas(kg.Kc1.Characteristics.Density, pressure.ValuePa, kip.Cb5.Pressure, kip.Cb5.Temperature, kip.Cb5.TempBeforeHeating),
@@ -61,6 +41,7 @@ namespace Business.BusinessModels.Calculations
             Cb3 = (dg.CharacteristicsAVG.Density == 0 || kip.Cb3.Pressure == 0) ? 0 : DryGas(dg.CharacteristicsAVG.Density, pressure.ValuePa, kip.Cb3.Pressure, kip.Cb3.Temperature),
             Cb4 = (dg.CharacteristicsAVG.Density == 0 || kip.Cb4.Pressure == 0) ? 0 : DryGas(dg.CharacteristicsAVG.Density, pressure.ValuePa, kip.Cb4.Pressure, kip.Cb4.Temperature),
          };
+         
       }
 
       public decimal DryGas(decimal pkg, decimal PPa, decimal pOver, decimal temp)

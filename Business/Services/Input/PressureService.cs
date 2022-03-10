@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Services
+namespace Business.Services.Input
 {
    public class PressureService : IPressureService
    {
@@ -25,16 +25,23 @@ namespace Business.Services
 
       public IEnumerable<PressureDTO> GetItemsByMonth(DateTime Date)
       {
-         return db.Pressure.GetPerMonth(Date.Year, Date.Month).Select(p => new PressureDTO
-         {
-            Date = p.Date,
-            Value = p.Value,
-         });
+         return GetItemsByDate(Date);
       }
 
       public IEnumerable<PressureDTO> GetItemsByNowMonth()
       {
-         throw new NotImplementedException();
+         DateTime dateNow = DateTime.Now;
+         return GetItemsByDate(dateNow);
+      }
+
+      private IEnumerable<PressureDTO> GetItemsByDate(DateTime Date)
+      {
+         return db.Pressure.GetPerMonth(Date.Year, Date.Month).Select(p => new PressureDTO
+         {
+            Date = p.Date,
+            Value = p.Value,
+            ValuePa = p.Value * 133.3224m,
+         });
       }
 
       public void Insert(PressureDTO entity)

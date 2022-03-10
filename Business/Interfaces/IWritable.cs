@@ -9,7 +9,6 @@ namespace Business.Interfaces
    //Оставить только Upsert?
    public interface IWritable<T> where T: class
    {
-      void Insert(T entity);
-      void Upsert(T entity);
+      bool Upsert(T entity);
    }
 }

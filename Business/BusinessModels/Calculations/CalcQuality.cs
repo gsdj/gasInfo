@@ -1,4 +1,5 @@
-﻿using Business.DTO;
+﻿using Business.BusinessModels.DataForCalculations;
+using Business.DTO;
 using Business.Interfaces.Calculations;
 using Bussiness.BusinessModels;
 using DataAccess.Entities;
@@ -10,30 +11,62 @@ using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcQuality : ICalcQuality
+   public class CalcQuality : ICalculations<QualityDTO>// ICalcQuality
    {
-      public IEnumerable<QualityDTO> CalcEntities(IEnumerable<QualityAll> qualityAll, IEnumerable<CharacteristicsKgDTO> charKgs)
+      //public IEnumerable<QualityDTO> CalcEntities(IEnumerable<QualityAll> qualityAll, IEnumerable<CharacteristicsKgDTO> charKgs)
+      //{
+      //   List<QualityDTO> qDTO = new List<QualityDTO>(qualityAll.Count());
+
+      //   var data =
+      //      from t1q in qualityAll
+      //      join t2charKg in charKgs on new { t1q.Date } equals new { t2charKg.Date }
+      //      select new
+      //      {
+      //         Quality = t1q,
+      //         CharKg = t2charKg
+      //      };
+
+      //   foreach (var item in data)
+      //   {
+      //      qDTO.Add(CalcEntity(item.Quality, item.CharKg));
+      //   }
+      //   return qDTO;
+      //}
+
+      //public QualityDTO CalcEntity(QualityAll quality, CharacteristicsKgDTO charKg)
+      //{
+      //   return new QualityDTO
+      //   {
+      //      Date = quality.Date,
+      //      Kc1 =
+      //      {
+      //         W = quality.Kc1.W,
+      //         A = quality.Kc1.A,
+      //         V = quality.Kc1.V,
+      //         Vc = Vc(quality.Kc1.V, quality.Kc1.A),
+      //         KgFv = KgFv(quality.Kc1.V, quality.Kc1.A, quality.Kc1.W),
+      //         KgFh = KgFh(quality.Kc1.V, quality.Kc1.A, quality.Kc1.W, charKg.Kc1.Characteristics.Density),
+      //         Density = charKg.Kc1.Characteristics.Density,
+      //      },
+      //      Kc2 =
+      //      {
+      //         W = quality.Kc2.W,
+      //         A = quality.Kc2.A,
+      //         V = quality.Kc2.V,
+      //         Vc = Vc(quality.Kc2.V, quality.Kc2.A),
+      //         KgFv = KgFv(quality.Kc2.V, quality.Kc2.A, quality.Kc2.W),
+      //         KgFh = KgFh(quality.Kc2.V, quality.Kc2.A, quality.Kc2.W, charKg.Kc2.Characteristics.Density),
+      //         Density = charKg.Kc2.Characteristics.Density,
+      //      }
+      //   };
+      //}
+
+      public QualityDTO CalcEntity(Data data)
       {
-         List<QualityDTO> qDTO = new List<QualityDTO>(qualityAll.Count());
+         QualityData Data = data as QualityData;
+         var quality = Data.Qualities;
+         var charKg = Data.Kg;
 
-         var data =
-            from t1q in qualityAll
-            join t2charKg in charKgs on new { t1q.Date } equals new { t2charKg.Date }
-            select new
-            {
-               Quality = t1q,
-               CharKg = t2charKg
-            };
-
-         foreach (var item in data)
-         {
-            qDTO.Add(CalcEntity(item.Quality, item.CharKg));
-         }
-         return qDTO;
-      }
-
-      public QualityDTO CalcEntity(QualityAll quality, CharacteristicsKgDTO charKg)
-      {
          return new QualityDTO
          {
             Date = quality.Date,

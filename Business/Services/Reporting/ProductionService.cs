@@ -5,7 +5,7 @@ using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
 
-namespace Bussiness.Services
+namespace Bussiness.Services.Reporting
 {
    public class ProductionService : IProductionService
    {
@@ -18,17 +18,13 @@ namespace Bussiness.Services
       }
       public IEnumerable<ProductionDTO> GetItemsByMonth(DateTime Date)
       {
-         var ammountCb = db.AmmountCb.GetPerMonth(Date.Year, Date.Month);
-         var result = CalcProduction.CalcEntities(ammountCb);
-         return result;
+         return CalcProduction.CalcEntities(db.AmmountCb.GetPerMonth(Date.Year, Date.Month));
       }
 
       public IEnumerable<ProductionDTO> GetItemsByNowMonth()
       {
          DateTime dateNow = DateTime.Now;
-         var ammountCb = db.AmmountCb.GetPerMonth(dateNow.Year, dateNow.Month);
-         var result = CalcProduction.CalcEntities(ammountCb);
-         return result;
+         return CalcProduction.CalcEntities(db.AmmountCb.GetPerMonth(dateNow.Year, dateNow.Month));
       }
    }
 }

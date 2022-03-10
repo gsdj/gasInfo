@@ -1,6 +1,6 @@
-﻿using Business.DTO;
+﻿using Business.BusinessModels.DataForCalculations;
+using Business.DTO;
 using Business.Interfaces.Calculations;
-using Bussiness.BusinessModels;
 using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcEbChmk : ICalcEbChmk
+   public class CalcEbChmk : ICalculations<EbChmkDTO>// ICalcEbChmk
    {
       public IEnumerable<EbChmkDTO> CalcEntities(IEnumerable<ProductionDTO> prod, IEnumerable<DgPgChmkEbDTO> dgpgChmkEbs)
       {
@@ -63,6 +63,11 @@ namespace Business.BusinessModels.Calculations
                Gru2 = Math.Round((eb.ConsumptionPgGru.Gru2 == 0) ? 0 : (eb.ConsumptionPgGru.Gru2 * Constants.UdPgC) / (sumGru * 0.6m), 2),
             },
          };
+      }
+
+      public EbChmkDTO CalcEntity(Data data)
+      {
+         throw new NotImplementedException();
       }
    }
 }
