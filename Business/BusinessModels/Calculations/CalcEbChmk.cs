@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcEbChmk : ICalculations<EbChmkDTO>// ICalcEbChmk
+   public class CalcEbChmk : ICalculation<EbChmkDTO>// ICalcEbChmk
    {
       public IEnumerable<EbChmkDTO> CalcEntities(IEnumerable<ProductionDTO> prod, IEnumerable<DgPgChmkEbDTO> dgpgChmkEbs)
       {

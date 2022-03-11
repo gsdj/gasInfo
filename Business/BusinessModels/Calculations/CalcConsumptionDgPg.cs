@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcConsumptionDgPg : ICalculations<ConsumptionDgPgDTO> // ICalcConsumptionDgPg
+   public class CalcConsumptionDgPg : ICalculation<ConsumptionDgPgDTO> // ICalcConsumptionDgPg
    {
       private Dictionary<int, SteamCharacteristicsDTO> _steam;
       //public IEnumerable<ConsumptionDgPgDTO> CalcEntities(IEnumerable<DensityDTO> wetGas, IEnumerable<DevicesKipDTO> kips, 

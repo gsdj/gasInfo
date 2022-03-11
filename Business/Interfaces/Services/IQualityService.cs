@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces.Services
 {
-   public interface IQualityService : IWritable<QualityDTO>, IDatable<QualityDTO>
+   public interface IQualityService : IWritable<QualityComponentsDTO>, IDatable<QualityComponentsDTO>
    {
    }
 }

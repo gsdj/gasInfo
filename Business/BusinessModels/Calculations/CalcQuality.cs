@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcQuality : ICalculations<QualityDTO>// ICalcQuality
+   public class CalcQuality : ICalculation<QualityDTO>// ICalcQuality
    {
       //public IEnumerable<QualityDTO> CalcEntities(IEnumerable<QualityAll> qualityAll, IEnumerable<CharacteristicsKgDTO> charKgs)
       //{

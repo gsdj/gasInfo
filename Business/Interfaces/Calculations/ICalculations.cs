@@ -1,6 +1,4 @@
-﻿using Business.BusinessModels;
-using Business.BusinessModels.DataForCalculations;
-using DataAccess.Interfaces;
+﻿using Business.BusinessModels.DataForCalculations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +9,6 @@ namespace Business.Interfaces.Calculations
 {
    public interface ICalculations<T>
    {
-      T CalcEntity(Data data);
+      IEnumerable<T> CalcEntities(EnumerableData data);
    }
 }

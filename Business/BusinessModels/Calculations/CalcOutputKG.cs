@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcOutputKG : ICalculations<OutputKgDTO>// ICalcOutputKg
+   public class CalcOutputKG : ICalculation<OutputKgDTO>// ICalcOutputKg
    {
       private Dictionary<int, SteamCharacteristicsDTO> _steam;
       //public IEnumerable<OutputKgDTO> CalcEntities(IEnumerable<DensityDTO> wetGas, IEnumerable<ProductionDTO> prod, 

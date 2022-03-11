@@ -5,16 +5,16 @@ namespace Business.Interfaces
 {
    public interface IUnitOfCalc
    {
-      public ICalculations<DensityDTO> WetGas { get; }
-      public ICalculations<QualityDTO> Quality { get; }
-      public ICalculations<ChartMonthDTO> ChartMonth { get; }
-      public ICalculations<ChartYearDTO> ChartYear { get; }
-      public ICalculations<ConsumptionKgDTO> ConsumptionKg { get; }
-      public ICalculations<ConsumptionDgDTO> ConsumptionDg { get; }
-      public ICalculations<ConsumptionDgPgDTO> ConsumptionDgPg { get; }
-      public ICalculations<EbChmkDTO> EbChmk { get; }
-      public ICalculations<OutputKgDTO> OutputKg { get; }
-      public ICalculations<ReportKgDTO> ReportKg { get; }
+      public ICalculation<DensityDTO> WetGas { get; }
+      public ICalculation<QualityDTO> Quality { get; }
+      public ICalculation<ChartMonthDTO> ChartMonth { get; }
+      public ICalculation<ChartYearDTO> ChartYear { get; }
+      public ICalculation<ConsumptionKgDTO> ConsumptionKg { get; }
+      public ICalculation<ConsumptionDgDTO> ConsumptionDg { get; }
+      public ICalculation<ConsumptionDgPgDTO> ConsumptionDgPg { get; }
+      public ICalculation<EbChmkDTO> EbChmk { get; }
+      public ICalculation<OutputKgDTO> OutputKg { get; }
+      public ICalculation<ReportKgDTO> ReportKg { get; }
       public ICalcCharacteristicsDg CharacteristicsDg { get; }
       public ICalcCharacteristicsKg CharacteristicsKg { get; }
       public ICalcCharacteristicsSteam CharacteristicsSteam { get; }

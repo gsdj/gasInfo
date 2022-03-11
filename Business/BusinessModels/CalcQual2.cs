@@ -5,7 +5,7 @@ using System;
 
 namespace Business.BusinessModels
 {
-   public class CalcQual2 : ICalculations<QualityDTO>
+   public class CalcQual2 : ICalculation<QualityDTO>
    {
       public QualityDTO CalcEntity(Data data)
       {

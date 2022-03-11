@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcChartYear : ICalculations<ChartYearDTO> //ICalcChart<ChartYearDTO>
+   public class CalcChartYear : ICalculation<ChartYearDTO> //ICalcChart<ChartYearDTO>
    {
       //public IEnumerable<ChartYearDTO> CalcEntities(IEnumerable<ProductionDTO> prod, IEnumerable<CharacteristicsKgDTO> charKg, 
       //                                                IEnumerable<QualityDTO> quality, IEnumerable<OutputKgDTO> outputKg, 

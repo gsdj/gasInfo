@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcReportKg : ICalculations<ReportKgDTO>// ICalcReportKg
+   public class CalcReportKg : ICalculation<ReportKgDTO>// ICalcReportKg
    {
       //public IEnumerable<ReportKgDTO> CalcEntities(IEnumerable<ProductionDTO> prod, IEnumerable<ConsumptionKgDTO> consKg, 
       //                                             IEnumerable<DevicesKipDTO> kips, IEnumerable<CharacteristicsKgDTO> charKgs, 

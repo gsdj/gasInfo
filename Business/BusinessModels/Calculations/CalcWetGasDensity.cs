@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcWetGasDensity : ICalculations<DensityDTO>// ICalcWetGasDensity
+   public class CalcWetGasDensity : ICalculation<DensityDTO>// ICalcWetGasDensity
    {
       private Dictionary<int, SteamCharacteristicsDTO> _steam;
       private DensityDTO CalcDryGasDensity(PressureDTO pressure, CharacteristicsKgDTO kg, CharacteristicsDgDTO dg, DevicesKip kip)

@@ -16,59 +16,82 @@ namespace Business.Services.Input
       public ComponentsKgService(IUnitOfWork uof, IValidationDictionary validation)
       {
          db = uof;
+         _validationDictionary = validation;
       }
 
-      public CharacteristicsKgDTO GetItemByDate(DateTime Date)
+      protected bool ValidateComponents(ComponentsKgDTO dg)
       {
-         var charKg = db.CharacteristicsKg.GetByDate(Date);
-         var result = _clcKg.CalcEntity(charKg);
-         return result;
+         return _validationDictionary.IsValid;
       }
 
-      public IEnumerable<CharacteristicsKgDTO> GetItemsByMonth(DateTime Date)
+      public ComponentsKgDTO GetItemByDate(DateTime Date)
       {
-         throw new NotImplementedException();
-      }
-
-      public IEnumerable<CharacteristicsKgDTO> GetItemsByNowMonth()
-      {
-         throw new NotImplementedException();
-      }
-
-      public void Insert(CharacteristicsKgDTO entity)
-      {
-         CharacteristicsKgAll kg = new CharacteristicsKgAll
+         var kg = db.CharacteristicsKg.GetByDate(Date);
+         return new ComponentsKgDTO
          {
-            Date = entity.Date,
+            Date = kg.Date,
             Kc1 =
             {
-
-               CO = entity.Kc1.Components.CO,
-               CO2 = entity.Kc1.Components.CO2,
-               H2 = entity.Kc1.Components.H2,
-               N2 = entity.Kc1.Components.N2,
-               CH4 = entity.Kc1.Components.CH4,
-               CnHm = entity.Kc1.Components.CnHm,
-               O2 = entity.Kc1.Components.O2,
+               CO2 = kg.Kc1.CO2,
+               CO = kg.Kc1.CO,
+               N2 = kg.Kc1.N2,
+               H2 = kg.Kc1.H2,
+               O2 = kg.Kc1.O2,
+               CnHm = kg.Kc1.CnHm,
+               CH4 = kg.Kc1.CH4,
             },
             Kc2 =
             {
-               CO = entity.Kc2.Components.CO,
-               CO2 = entity.Kc2.Components.CO2,
-               H2 = entity.Kc2.Components.H2,
-               N2 = entity.Kc2.Components.N2,
-               CH4 = entity.Kc2.Components.CH4,
-               CnHm = entity.Kc2.Components.CnHm,
-               O2 = entity.Kc2.Components.O2,
+               CO2 = kg.Kc2.CO2,
+               CO = kg.Kc2.CO,
+               N2 = kg.Kc2.N2,
+               H2 = kg.Kc2.H2,
+               O2 = kg.Kc2.O2,
+               CnHm = kg.Kc2.CnHm,
+               CH4 = kg.Kc2.CH4,
             }
          };
-         db.CharacteristicsKg.Create(kg);
-         db.Save();
       }
 
-      public void Upsert(CharacteristicsKgDTO entity)
+      public bool Upsert(ComponentsKgDTO entity)
       {
-         throw new NotImplementedException();
+         if (!ValidateComponents(entity))
+            return false;
+
+         try
+         {
+            CharacteristicsKgAll kg = new CharacteristicsKgAll
+            {
+               Date = entity.Date,
+               Kc1 =
+               {
+                  CO2 = entity.Kc1.CO2,
+                  CO = entity.Kc1.CO,
+                  N2 = entity.Kc1.N2,
+                  H2 = entity.Kc1.H2,
+                  O2 = entity.Kc1.O2,
+                  CnHm = entity.Kc1.CnHm,
+                  CH4 = entity.Kc1.CH4,
+               },
+               Kc2 =
+               {
+                  CO2 = entity.Kc2.CO2,
+                  CO = entity.Kc2.CO,
+                  N2 = entity.Kc2.N2,
+                  H2 = entity.Kc2.H2,
+                  O2 = entity.Kc2.O2,
+                  CnHm = entity.Kc2.CnHm,
+                  CH4 = entity.Kc2.CH4,
+               }
+            };
+            db.CharacteristicsKg.Create(kg);
+            db.Save();
+         }
+         catch (Exception)
+         {
+            return false;
+         }
+         return true;
       }
    }
 }

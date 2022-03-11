@@ -1,6 +1,8 @@
 ﻿using Business.DTO;
+using Business.Interfaces;
 using Business.Interfaces.Calculations;
 using Business.Interfaces.Services;
+using DataAccess.Entities;
 using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,14 +15,26 @@ namespace Business.Services.Input
    public class PressureService : IPressureService
    {
       IUnitOfWork db;
-      public PressureService(IUnitOfWork uof)
+      IValidationDictionary _validationDictionary;
+      public PressureService(IUnitOfWork uof, IValidationDictionary validation)
       {
          db = uof;
+         _validationDictionary = validation;
+      }
+
+      protected bool ValidateComponents(PressureDTO dg)
+      {
+         return _validationDictionary.IsValid;
       }
 
       public PressureDTO GetItemByDate(DateTime Date)
       {
-         throw new NotImplementedException();
+         var pressure = db.Pressure.GetByDate(Date);
+         return new PressureDTO
+         {
+            Date = pressure.Date,
+            Value = pressure.Value,
+         };
       }
 
       public IEnumerable<PressureDTO> GetItemsByMonth(DateTime Date)
@@ -44,14 +58,26 @@ namespace Business.Services.Input
          });
       }
 
-      public void Insert(PressureDTO entity)
+      public bool Upsert(PressureDTO entity)
       {
-         throw new NotImplementedException();
-      }
+         if (!ValidateComponents(entity))
+            return false;
 
-      public void Upsert(PressureDTO entity)
-      {
-         throw new NotImplementedException();
+         try
+         {
+            Pressure pressure = new Pressure
+            {
+               Date = entity.Date,
+               Value = entity.Value,
+            };
+            db.Pressure.Create(pressure);
+            db.Save();
+         }
+         catch (Exception)
+         {
+            return false;
+         }
+         return true;
       }
    }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.DTO.Characteristics.Quality
 {
-   public class QualityBase
+   public class QualityComponents
    {
       public decimal W { get; set; }
       public decimal A { get; set; }
