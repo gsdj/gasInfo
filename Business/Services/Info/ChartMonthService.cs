@@ -47,12 +47,12 @@ namespace Business.Services.Info
          var pressure = Pressure.GetItemsByMonth(Date);
          var kip = DevicesKip.GetItemsByMonth(Date);
 
-         var qdl = new QualityDataList
+         var qdl = new QualityEnumData
          {
             Qualities = quality,
             Kg = charKg,
          };
-         var q2 = new CalcQualities(new CalcQual2()).CalcEntities(qdl);
+         var q2 = new CalcQualities();
 
          var qualityData = from t1charKg in charKg
                            join t2qual in quality on new { t1charKg.Date } equals new { t2qual.Date }
