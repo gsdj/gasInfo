@@ -1,30 +1,51 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
+using Business.Interfaces;
 using Business.Interfaces.Calculations;
 using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcEbChmk : ICalculation<EbChmkDTO>// ICalcEbChmk
+   public class CalcEbChmk : ICalculation<EbChmkDTO>, ICalculations<EbChmkDTO>
    {
-      public IEnumerable<EbChmkDTO> CalcEntities(IEnumerable<ProductionDTO> prod, IEnumerable<DgPgChmkEbDTO> dgpgChmkEbs)
+      private IConstantsAll _cAll;
+      private Constants Constants;
+      public CalcEbChmk(IConstantsAll cAll)
       {
-         List<EbChmkDTO> ebDTO = new List<EbChmkDTO>(dgpgChmkEbs.Count());
-         foreach (var item in dgpgChmkEbs)
+         _cAll = cAll;
+         Constants = _cAll.GetConstants();
+      }
+
+      public IEnumerable<EbChmkDTO> CalcEntities(EnumerableData data)
+      {
+         var Data = data as EbChmkEnumData;
+
+         List<EbChmkDTO> ebDTO = new List<EbChmkDTO>(Data.DgPgChmkEb.Count());
+
+         foreach (var item in Data.DgPgChmkEb)
          {
-            var prod2 = prod.Where(p => p.Date <= item.Date);
-            ebDTO.Add(CalcEntity(prod2, item));
+            var prod2 = Data.Production.Where(p => p.Date <= item.Date);
+
+            EbChmkData ebData = new EbChmkData
+            {
+               DgPgChmkEb = item,
+               Production = prod2,
+            };
+
+            ebDTO.Add(CalcEntity(ebData));
          }
          return ebDTO;
       }
 
-      public EbChmkDTO CalcEntity(IEnumerable<ProductionDTO> prod, DgPgChmkEbDTO eb)
+      public EbChmkDTO CalcEntity(Data data)
       {
+         var Data = data as EbChmkData;
+         var prod = Data.Production;
+         var eb = Data.DgPgChmkEb;
+
          decimal sumCb1 = prod.Sum(p => p.ConsumptionFvKc1.Cb1);
          decimal sumCb2 = prod.Sum(p => p.ConsumptionFvKc1.Cb2);
          decimal sumCb3 = prod.Sum(p => p.ConsumptionFvKc1.Cb3);
@@ -33,9 +54,9 @@ namespace Business.BusinessModels.Calculations
          decimal sumGru = sumKc1 + prod.Sum(p => p.ConsumptionFvKc2.Cb5 + p.ConsumptionFvKc2.Cb6 + p.ConsumptionFvKc2.Cb7 + p.ConsumptionFvKc2.Cb8);
 
          return new EbChmkDTO
-         { 
+         {
             Date = eb.Date,
-            ConsumptionKc1 = 
+            ConsumptionKc1 =
             {
                Cb1 = eb.ConsumptionDgKc1.Cb1,
                Cb2 = eb.ConsumptionDgKc1.Cb1,
@@ -63,11 +84,6 @@ namespace Business.BusinessModels.Calculations
                Gru2 = Math.Round((eb.ConsumptionPgGru.Gru2 == 0) ? 0 : (eb.ConsumptionPgGru.Gru2 * Constants.UdPgC) / (sumGru * 0.6m), 2),
             },
          };
-      }
-
-      public EbChmkDTO CalcEntity(Data data)
-      {
-         throw new NotImplementedException();
       }
    }
 }

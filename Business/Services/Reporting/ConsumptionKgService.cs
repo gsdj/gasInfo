@@ -1,4 +1,6 @@
-﻿using Business.BusinessModels.DataForCalculations;
+﻿using Business.BusinessModels;
+using Business.BusinessModels.Calculations;
+using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.Interfaces;
 using Business.Interfaces.Services;
@@ -37,44 +39,27 @@ namespace Business.Services.Reporting
       {
          var charKg = Calc.CharacteristicsKg.CalcEntities(db.CharacteristicsKg.GetPerMonth(Date.Year, Date.Month));
          var charDg = Calc.CharacteristicsDg.CalcEntities(db.CharacteristicsDg.GetPerMonth(Date.Year, Date.Month));
-         var steam = Calc.CharacteristicsSteam.CalcEntities(db.SteamCharacteristics.GetAll());
          var pressure = Pressure.GetItemsByMonth(Date);
          var kip = DevicesKip.GetItemsByMonth(Date);
 
-         var wetGasData = from t1charKg in charKg
-                          join t2charDg in charDg on new { t1charKg.Date } equals new { t2charDg.Date }
-                          join t3kip in kip on new { t2charDg.Date } equals new { t3kip.Date }
-                          join t4pressure in pressure on new { t3kip.Date } equals new { t4pressure.Date }
-                          select new GasDensityData
-                          {
-                             CharacteristicsKg = t1charKg,
-                             CharacteristicsDg = t2charDg,
-                             Kip = t3kip,
-                             Pressure = t4pressure,
-                             Steam = steam,
-                          };
-
-         List<DensityDTO> wetGas = new List<DensityDTO>(wetGasData.Count());
-         foreach (var item in wetGasData)
+         var wetGasData = new GasDensityEnumData
          {
-            wetGas.Add(Calc.WetGas.CalcEntity(item));
-         }
-         var consKgData = from t1charKg in charKg
-                          join t2wetGas in wetGas on new { t1charKg.Date } equals new { t2wetGas.Date }
-                          join t3kip in kip on new { t2wetGas.Date } equals new { t3kip.Date }
-                          select new ConsumptionKgData
-                          {
-                             WetGas = t2wetGas,
-                             Kip = t3kip,
-                             CharacteristicsKg = t1charKg,
-                             Steam = steam,
-                          };
+            CharacteristicsDg = charDg,
+            CharacteristicsKg = charKg,
+            Kip = kip,
+            Pressure = pressure,
+         };
 
-         List<ConsumptionKgDTO> consKg = new List<ConsumptionKgDTO>(consKgData.Count());
-         foreach (var item in consKgData)
+         var wetGas = Calc.WetGas.CalcEntities(wetGasData);
+
+         var consKgData = new ConsumptionKgEnumData
          {
-            consKg.Add(Calc.ConsumptionKg.CalcEntity(item));
-         }
+            CharacteristicsKg = charKg,
+            Kip = kip,
+            WetGas = wetGas,
+         };
+
+         var consKg = Calc.ConsumptionKg.CalcEntities(consKgData);
 
          return consKg;
       }

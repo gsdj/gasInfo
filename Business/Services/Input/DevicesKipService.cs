@@ -1,5 +1,6 @@
 ﻿using Business.DTO;
 using Business.Interfaces.Services;
+using DataAccess.Entities;
 using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -23,140 +24,146 @@ namespace Business.Services.Input
 
       public IEnumerable<DevicesKipDTO> GetItemsByMonth(DateTime Date)
       {
-         return GetItemsByDate(Date);
+         return db.DevicesKip.GetPerMonth(Date.Year, Date.Month).Select(p => ToDTO(p));
       }
 
       public IEnumerable<DevicesKipDTO> GetItemsByNowMonth()
       {
          DateTime dateNow = DateTime.Now;
-         return GetItemsByDate(dateNow);         
+         return db.DevicesKip.GetPerMonth(dateNow.Year,dateNow.Month).Select(p => ToDTO(p));
       }
 
-      private IEnumerable<DevicesKipDTO> GetItemsByDate(DateTime Date)
+      private DevicesKipDTO ToDTO(DevicesKip kip)
       {
-         return db.DevicesKip.GetPerMonth(Date.Year, Date.Month).Select(p => new DevicesKipDTO
+         return new DevicesKipDTO
          {
-            Date = p.Date,
+            Date = kip.Date,
             Cb1 =
             {
-               Pressure = p.Cb1.Pressure,
-               Consumption = p.Cb1.Consumption,
-               Temperature = p.Cb1.Temperature,
+               Pressure = kip.Cb1.Pressure,
+               Consumption = kip.Cb1.Consumption,
+               Temperature = kip.Cb1.Temperature,
             },
             Cb2 =
             {
-               Pressure = p.Cb2.Pressure,
-               Consumption = p.Cb2.Consumption,
-               Temperature = p.Cb2.Temperature,
+               Pressure = kip.Cb2.Pressure,
+               Consumption = kip.Cb2.Consumption,
+               Temperature = kip.Cb2.Temperature,
             },
             Cb3 =
             {
-               Pressure = p.Cb3.Pressure,
-               Consumption = p.Cb3.Consumption,
-               Temperature = p.Cb3.Temperature,
+               Pressure = kip.Cb3.Pressure,
+               Consumption = kip.Cb3.Consumption,
+               Temperature = kip.Cb3.Temperature,
             },
             Cb4 =
             {
-               Pressure = p.Cb4.Pressure,
-               Consumption = p.Cb4.Consumption,
-               Temperature = p.Cb4.Temperature,
+               Pressure = kip.Cb4.Pressure,
+               Consumption = kip.Cb4.Consumption,
+               Temperature = kip.Cb4.Temperature,
             },
             Cb5 =
             {
-               Pressure = p.Cb5.Pressure,
-               Consumption = p.Cb5.Consumption,
-               Temperature = p.Cb5.Temperature,
-               TempBeforeHeating = p.Cb5.TempBeforeHeating,
+               Pressure = kip.Cb5.Pressure,
+               Consumption = kip.Cb5.Consumption,
+               Temperature = kip.Cb5.Temperature,
+               TempBeforeHeating = kip.Cb5.TempBeforeHeating,
             },
             Cb6 =
             {
-               Pressure = p.Cb6.Pressure,
-               Consumption = p.Cb6.Consumption,
-               Temperature = p.Cb6.Temperature,
-               TempBeforeHeating = p.Cb6.TempBeforeHeating,
+               Pressure = kip.Cb6.Pressure,
+               Consumption = kip.Cb6.Consumption,
+               Temperature = kip.Cb6.Temperature,
+               TempBeforeHeating = kip.Cb6.TempBeforeHeating,
             },
             Cb7 =
             {
-               Pressure = p.Cb7.Pressure,
-               ConsumptionMs = p.Cb7.ConsumptionMs,
-               ConsumptionKs = p.Cb7.ConsumptionKs,
-               Temperature = p.Cb7.Temperature,
-               TempBeforeHeating = p.Cb7.TempBeforeHeating
+               Pressure = kip.Cb7.Pressure,
+               ConsumptionMs = kip.Cb7.ConsumptionMs,
+               ConsumptionKs = kip.Cb7.ConsumptionKs,
+               Temperature = kip.Cb7.Temperature,
+               TempBeforeHeating = kip.Cb7.TempBeforeHeating
             },
             Cb8 =
             {
-               Pressure = p.Cb8.Pressure,
-               ConsumptionMs = p.Cb8.ConsumptionMs,
-               ConsumptionKs = p.Cb8.ConsumptionKs,
-               Temperature = p.Cb8.Temperature,
-               TempBeforeHeating = p.Cb8.TempBeforeHeating
+               Pressure = kip.Cb8.Pressure,
+               ConsumptionMs = kip.Cb8.ConsumptionMs,
+               ConsumptionKs = kip.Cb8.ConsumptionKs,
+               Temperature = kip.Cb8.Temperature,
+               TempBeforeHeating = kip.Cb8.TempBeforeHeating
             },
             Cu1 =
             {
-               Pressure = p.Cu1.Pressure,
-               Consumption = p.Cu1.Consumption,
-               Temperature = p.Cu1.Temperature,
+               Pressure = kip.Cu1.Pressure,
+               Consumption = kip.Cu1.Consumption,
+               Temperature = kip.Cu1.Temperature,
             },
             Cu2 =
             {
-               Pressure = p.Cu2.Pressure,
-               Consumption = p.Cu2.Consumption,
-               Temperature = p.Cu2.Temperature,
+               Pressure = kip.Cu2.Pressure,
+               Consumption = kip.Cu2.Consumption,
+               Temperature = kip.Cu2.Temperature,
             },
             Pkc =
             {
-               Pressure = p.Pkc.Pressure,
-               ConsumptionMs = p.Pkc.ConsumptionMs,
-               ConsumptionKs = p.Pkc.ConsumptionKs,
-               Temperature = p.Pkc.Temperature,
+               Pressure = kip.Pkc.Pressure,
+               ConsumptionMs = kip.Pkc.ConsumptionMs,
+               ConsumptionKs = kip.Pkc.ConsumptionKs,
+               Temperature = kip.Pkc.Temperature,
             },
             Spo =
             {
-               Pressure = p.Spo.Pressure,
-               Consumption = p.Spo.Consumption,
-               Temperature = p.Spo.Temperature,
+               Pressure = kip.Spo.Pressure,
+               Consumption = kip.Spo.Consumption,
+               Temperature = kip.Spo.Temperature,
             },
             Uvtp =
             {
-               Pressure = p.Uvtp.Pressure,
-               Consumption = p.Uvtp.Consumption,
-               Temperature = p.Uvtp.Temperature,
+               Pressure = kip.Uvtp.Pressure,
+               Consumption = kip.Uvtp.Consumption,
+               Temperature = kip.Uvtp.Temperature,
             },
-            Gru1 = 
+            Gru1 =
             {
-               Pressure = p.Gru1.Pressure,
-               Consumption = p.Gru1.Consumption,
-               Temperature = p.Gru1.Temperature,
+               Pressure = kip.Gru1.Pressure,
+               Consumption = kip.Gru1.Consumption,
+               Temperature = kip.Gru1.Temperature,
             },
             Gru2 =
             {
-               Pressure = p.Gru2.Pressure,
-               Consumption = p.Gru2.Consumption,
-               Temperature = p.Gru2.Temperature,
+               Pressure = kip.Gru2.Pressure,
+               Consumption = kip.Gru2.Consumption,
+               Temperature = kip.Gru2.Temperature,
             },
             Gsuf45 =
             {
-               Pressure = p.Gsuf45.Pressure,
-               Consumption = p.Gsuf45.Consumption,
-               Temperature = p.Gsuf45.Temperature,
+               Pressure = kip.Gsuf45.Pressure,
+               Consumption = kip.Gsuf45.Consumption,
+               Temperature = kip.Gsuf45.Temperature,
             },
             Grp4 =
             {
-               Pressure = p.Grp4.Pressure,
-               Consumption = p.Grp4.Consumption,
-               Temperature = p.Grp4.Temperature,
+               Pressure = kip.Grp4.Pressure,
+               Consumption = kip.Grp4.Consumption,
+               Temperature = kip.Grp4.Temperature,
             },
-         });
+         }
       }
 
-      public void Insert(DevicesKipDTO entity)
+      public bool Upsert(DevicesKipDTO entity)
       {
          throw new NotImplementedException();
       }
 
-      public void Upsert(DevicesKipDTO entity)
+      public IEnumerable<DevicesKipDTO> GetItemsByYear(int Year)
       {
-         throw new NotImplementedException();
+         return db.DevicesKip.GetPerYear(Year).Select(p => ToDTO(p));
+      }
+
+      public IEnumerable<DevicesKipDTO> GetItemsByNowYear()
+      {
+         int Year = DateTime.Now.Year;
+         return db.DevicesKip.GetPerYear(Year).Select(p => ToDTO(p));
       }
    }
 }

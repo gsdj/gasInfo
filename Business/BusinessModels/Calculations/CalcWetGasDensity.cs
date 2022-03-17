@@ -1,20 +1,28 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.DTO.Characteristics;
+using Business.Interfaces;
+using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.Calculations;
 using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcWetGasDensity : ICalculation<DensityDTO>// ICalcWetGasDensity
+   public class CalcWetGasDensity : ICalculations<DensityDTO>, ICalculation<DensityDTO>, IWetDensity, IDryDensity
    {
       private Dictionary<int, SteamCharacteristicsDTO> _steam;
-      private DensityDTO CalcDryGasDensity(PressureDTO pressure, CharacteristicsKgDTO kg, CharacteristicsDgDTO dg, DevicesKip kip)
+      private IConstantsAll _cAll;
+      private Constants Constants;
+      public CalcWetGasDensity(IConstantsAll cAll)
+      {
+         _cAll = cAll;
+         Constants = _cAll.GetConstants();
+         _steam = _cAll.GetSteamCharacteristics();
+      }
+      private DensityDTO CalcDryGasDensity(PressureDTO pressure, CharacteristicsKgDTO kg, CharacteristicsDgDTO dg, DevicesKipDTO kip)
       {
          return new DensityDTO
          {
@@ -38,7 +46,7 @@ namespace Business.BusinessModels.Calculations
       public DensityDTO CalcEntity(Data data)
       {
          GasDensityData Data = data as GasDensityData;
-         _steam = Data.Steam;
+
          var dryGas = CalcDryGasDensity(Data.Pressure, Data.CharacteristicsKg, Data.CharacteristicsDg, Data.Kip);
          var kip = Data.Kip;
 
@@ -60,6 +68,35 @@ namespace Business.BusinessModels.Calculations
             Cb3 = WetGas(dryGas.Cb3, kip.Cb3.Temperature),
             Cb4 = WetGas(dryGas.Cb4, kip.Cb4.Temperature),
          };
+      }
+
+      public IEnumerable<DensityDTO> CalcEntities(EnumerableData data)
+      {
+         var Data = data as GasDensityEnumData;
+
+         var kip = Data.Kip;
+         var charKg = Data.CharacteristicsKg;
+         var charDg = Data.CharacteristicsDg;
+         var pressure = Data.Pressure;
+
+         var d = from t1charKg in charKg
+                 join t2charDg in charDg on new { t1charKg.Date } equals new { t2charDg.Date }
+                 join t3kip in kip on new { t2charDg.Date } equals new { t3kip.Date }
+                 join t4pressure in pressure on new { t3kip.Date } equals new { t4pressure.Date }
+                 select new GasDensityData
+                 {
+                    CharacteristicsKg = t1charKg,
+                    CharacteristicsDg = t2charDg,
+                    Kip = t3kip,
+                    Pressure = t4pressure,
+                 };
+
+         List<DensityDTO> densityWet = new List<DensityDTO>(d.Count());
+         foreach (var item in d)
+         {
+            densityWet.Add(CalcEntity(item));
+         }
+         return densityWet;
       }
 
       public decimal WetGas(decimal dryGas, decimal temp)
@@ -100,45 +137,5 @@ namespace Business.BusinessModels.Calculations
          decimal result = pkg * (Constants.Tc * ((PPa + pOver * Constants.PexcC) - rH * pMax)) / (Constants.Pc * (Constants.TpC + temp) * Constants.K);
          return result;
       }
-      //public DensityDTO CalcEntity(DensityDTO dryGas, DevicesKip kip)
-      //{
-      //   return new DensityDTO
-      //   {
-      //      Date = dryGas.Date,
-      //      Cu1 = WetGas(dryGas.Cu1, kip.Cu1.Temperature),
-      //      Cu2 = WetGas(dryGas.Cu2, kip.Cu2.Temperature),
-      //      Cb5 = WetGas(dryGas.Cb5, kip.Cb5.Temperature),
-      //      Cb6 = WetGas(dryGas.Cb6, kip.Cb6.Temperature),
-      //      Cb7 = WetGas(dryGas.Cb7, kip.Cb7.Temperature),
-      //      Cb8 = WetGas(dryGas.Cb8, kip.Cb8.Temperature),
-      //      Pkc = WetGas(dryGas.Pkc, kip.Pkc.Temperature),
-      //      Uvtp = WetGas(dryGas.Uvtp, kip.Uvtp.Temperature),
-      //      Spo = WetGas(dryGas.Spo, kip.Spo.Temperature),
-      //      Gsuf = WetGas(dryGas.Gsuf, kip.Gsuf45.Temperature),
-      //      Cb1 = WetGas(dryGas.Cb1, kip.Cb1.Temperature),
-      //      Cb2 = WetGas(dryGas.Cb2, kip.Cb2.Temperature),
-      //      Cb3 = WetGas(dryGas.Cb3, kip.Cb3.Temperature),
-      //      Cb4 = WetGas(dryGas.Cb4, kip.Cb4.Temperature),
-      //   };
-      //}
-      //public IEnumerable<DensityDTO> CalcEntities(IEnumerable<DensityDTO> dryGas, IEnumerable<DevicesKip> kip, Dictionary<int, SteamCharacteristicsDTO> steam)
-      //{
-      //   _steam = steam;
-      //   var d =
-      //       from t1dry in dryGas
-      //       join t2kip in kip on new { t1dry.Date } equals new { t2kip.Date }
-      //       select new
-      //       {
-      //          DryGas = t1dry,
-      //          Kip = t2kip
-      //       };
-
-      //   List<DensityDTO> densityWet = new List<DensityDTO>(d.Count());
-      //   foreach (var item in d)
-      //   {
-      //      densityWet.Add(CalcEntity(item.DryGas, item.Kip));
-      //   }
-      //   return densityWet;
-      //}
    }
 }

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Business.Services.Input
 {
-   public class ComponentsKgService : IGasComponentsService<ComponentsKgDTO> // IComponentsService<ComponentsKg>
+   public class ComponentsKgService : IGasComponentsService<ComponentsKgDTO>
    {
       IUnitOfWork db;
       IValidationDictionary _validationDictionary;

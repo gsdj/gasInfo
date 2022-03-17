@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.BusinessModels
 {
-   public static class Constants
+   public static class ConstantsStatic
    {
       /// <summary>
       /// коэффициент избыточного давления KipDevices.press * 9.80665

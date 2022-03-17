@@ -1,4 +1,7 @@
+using Business.BusinessModels.BaseCalculations;
 using Business.BusinessModels.Calculations;
+using Business.DTO;
+using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.Calculations;
 using DataAccess;
 using DataAccess.Interfaces;
@@ -42,7 +45,10 @@ namespace GasInfo
             });
          services.AddDbContext<GasInfoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("GasInfoMSSql")));
          services.AddScoped<IUnitOfWork, UnitOfWork>();
-         services.AddScoped(x => new SteamJsonReader(path));
+         services.AddScoped(x => new ConstantsJsonReader(path));
+         services.AddScoped<ICalculations<ConsumptionKgDTO>, CalcConsumptionKg>();
+         services.AddScoped<ICalcQcRc<QcRcDefault>, QcRcDefault>();
+
          services.AddScoped(typeof(IGenericRepository<>), typeof(EFGenericRepository<>));
          services.AddScoped(typeof(IGasGenericRepository<>), typeof(GasGenericRepository<>));
          services.AddCalculations();

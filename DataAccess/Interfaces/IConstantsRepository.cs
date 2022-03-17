@@ -1,17 +1,14 @@
 ﻿using DataAccess.Entities;
 using DataAccess.Entities.Characteristics;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Interfaces
 {
-   public interface ISteamRepository
+   public interface IConstantsRepository
    {
+      AllConstants GetAllConstants();
       SteamCharacteristics GetByTemp(decimal temp);
-      IEnumerable<SteamCharacteristics> GetAll();
+      IEnumerable<SteamCharacteristics> GetAllSteamCharacteristics();
       Constants GetConstants();
    }
 }

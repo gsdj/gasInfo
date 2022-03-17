@@ -3,66 +3,51 @@ using Business.DTO;
 using Business.DTO.Characteristics;
 using Business.DTO.Consumption;
 using Business.DTO.QcRc;
+using Business.Interfaces;
+using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.Calculations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcConsumptionDg : ICalculation<ConsumptionDgDTO>// ICalcConsumptionDg
+   public class CalcConsumptionDg : ICalculation<ConsumptionDgDTO>, ICalculations<ConsumptionDgDTO>, IQcRc, IQn
    {
       private Dictionary<int, SteamCharacteristicsDTO> _steam;
-      //public IEnumerable<ConsumptionDgDTO> CalcEntities(IEnumerable<DensityDTO> wetGas, IEnumerable<DevicesKipDTO> kips, 
-      //   IEnumerable<CharacteristicsDgDTO> charDgs, Dictionary<int, SteamCharacteristicsDTO> steam)
-      //{
-      //   _steam = steam;
-      //   List<ConsumptionDgDTO> consdgDTO = new List<ConsumptionDgDTO>(wetGas.Count());
-      //   var data =
-      //      from t1wetGas in wetGas
-      //      join t2kip in kips on new { t1wetGas.Date } equals new { t2kip.Date }
-      //      join t3charDg in charDgs on new { t2kip.Date } equals new { t3charDg.Date }
-      //      select new
-      //      {
-      //         WetGas = t1wetGas,
-      //         Kip = t2kip,
-      //         CharDg = t3charDg
-      //      };
-      //   foreach (var item in data)
-      //   {
-      //      consdgDTO.Add(CalcEntity(item.WetGas, item.Kip, item.CharDg));
-      //   }
-      //   return consdgDTO;
-      //}
+      private IConstantsAll _cAll;
+      public CalcConsumptionDg(IConstantsAll cAll)
+      {
+         _cAll = cAll;
+         _steam = _cAll.GetSteamCharacteristics();
+      }
+      public IEnumerable<ConsumptionDgDTO> CalcEntities(EnumerableData data)
+      {
+         var Data = data as ConsumptionDgEnumData;
+         var wetGas = Data.WetGas;
+         var charDg = Data.CharacteristicsDg;
+         var kip = Data.Kip;
 
-      //public ConsumptionDgDTO CalcEntity(DensityDTO wetGas, DevicesKipDTO kip, CharacteristicsDgDTO charDg)
-      //{
-      //   var qcrc = new QcRcKc1
-      //   {
-      //      Cb1 = QcRc(kip.Cb1.Consumption, wetGas.Cb1, kip.Cb1.Temperature, charDg.CharacteristicsAVG.Density),
-      //      Cb2 = QcRc(kip.Cb2.Consumption, wetGas.Cb2, kip.Cb2.Temperature, charDg.CharacteristicsAVG.Density),
-      //      Cb3 = QcRc(kip.Cb3.Consumption, wetGas.Cb3, kip.Cb3.Temperature, charDg.CharacteristicsAVG.Density),
-      //      Cb4 = QcRc(kip.Cb4.Consumption, wetGas.Cb4, kip.Cb4.Temperature, charDg.CharacteristicsAVG.Density),
-      //   };
+         
+         var d =
+            from t1wetGas in wetGas
+            join t2kip in kip on new { t1wetGas.Date } equals new { t2kip.Date }
+            join t3charDg in charDg on new { t2kip.Date } equals new { t3charDg.Date }
+            select new ConsumptionDgData
+            {
+               WetGas = t1wetGas,
+               Kip = t2kip,
+               CharacteristicsDg = t3charDg
+            };
 
-      //   var cons = new ConsumptionKc1<decimal>
-      //   {
-      //      Cb1 = Qn1000(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
-      //      Cb2 = Qn1000(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
-      //      Cb3 = Qn1000(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
-      //      Cb4 = Qn1000(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
-      //   };
+         List<ConsumptionDgDTO> consdgDTO = new List<ConsumptionDgDTO>(d.Count());
 
-      //   return new ConsumptionDgDTO
-      //   {
-      //      Date = wetGas.Date,
-      //      QcRc = qcrc,
-      //      ConsumptionDg = cons,
-      //      ConsumptionDgMk = cons.Cb1 + cons.Cb2 + cons.Cb3 + cons.Cb4,
-      //   };
-      //}
+         foreach (var item in d)
+         {
+            consdgDTO.Add(CalcEntity(item));
+         }
+         return consdgDTO;
+      }
 
       public ConsumptionDgDTO CalcEntity(Data data)
       {
@@ -70,7 +55,6 @@ namespace Business.BusinessModels.Calculations
          var kip = Data.Kip;
          var wetGas = Data.WetGas;
          var charDg = Data.CharacteristicsDg;
-         _steam = Data.Steam;
 
          var qcrc = new QcRcKc1
          {
@@ -82,10 +66,10 @@ namespace Business.BusinessModels.Calculations
 
          var cons = new ConsumptionKc1<decimal>
          {
-            Cb1 = Qn1000(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
-            Cb2 = Qn1000(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
-            Cb3 = Qn1000(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
-            Cb4 = Qn1000(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
+            Cb1 = Qn(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
+            Cb2 = Qn(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
+            Cb3 = Qn(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
+            Cb4 = Qn(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
          };
 
          return new ConsumptionDgDTO
@@ -97,7 +81,7 @@ namespace Business.BusinessModels.Calculations
          };
       }
 
-      public decimal QcRc(decimal cons, decimal wetGas, decimal temp, decimal density)
+      public decimal QcRc(decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour = false)
       {
          if (cons == 0 || wetGas == 0 || density == 0)
             return 0;
@@ -105,11 +89,19 @@ namespace Business.BusinessModels.Calculations
          int tempRounded = Convert.ToInt32(Math.Round(temp, MidpointRounding.ToEven));
          decimal Fkg = _steam[tempRounded].Fkg;
 
-         decimal result = (cons * wetGas) * (1 - Fkg / wetGas) * 1 / density;
-         return Math.Round(result, 10);
+         if (!perHour)
+         {
+            decimal result = (cons * wetGas) * (1 - Fkg / wetGas) * 1 / density;
+            return Math.Round(result, 10);
+         }
+         else
+         {
+            decimal result = (cons * 24 * wetGas) * (1 - Fkg / wetGas) * 1 / density;
+            return Math.Round(result, 10);
+         }
       }
 
-      public decimal Qn1000(decimal qcrc, decimal qn)
+      public decimal Qn(decimal qcrc, decimal qn)
       {
          if (qcrc == 0 || qn == 0)
             return 0;

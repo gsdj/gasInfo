@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces.Services
 {
-   public interface IDevicesKipService : IWritable<DevicesKipDTO>, IDatable<DevicesKipDTO>, IMonthable<DevicesKipDTO>, IYearable<DevicesKipDTO>
+   public interface IAsdueService : IMonthable<AsdueDTO>, IDatable<AsdueDTO>, IWritable<AsdueDTO>, IYearable<AsdueDTO>
    {
    }
 }

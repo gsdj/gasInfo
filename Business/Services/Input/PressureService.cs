@@ -39,23 +39,13 @@ namespace Business.Services.Input
 
       public IEnumerable<PressureDTO> GetItemsByMonth(DateTime Date)
       {
-         return GetItemsByDate(Date);
+         return db.Pressure.GetPerMonth(Date.Year, Date.Month).Select(p => ToDTO(p));
       }
 
       public IEnumerable<PressureDTO> GetItemsByNowMonth()
       {
          DateTime dateNow = DateTime.Now;
-         return GetItemsByDate(dateNow);
-      }
-
-      private IEnumerable<PressureDTO> GetItemsByDate(DateTime Date)
-      {
-         return db.Pressure.GetPerMonth(Date.Year, Date.Month).Select(p => new PressureDTO
-         {
-            Date = p.Date,
-            Value = p.Value,
-            ValuePa = p.Value * 133.3224m,
-         });
+         return db.Pressure.GetPerMonth(dateNow.Year, dateNow.Month).Select(p => ToDTO(p));
       }
 
       public bool Upsert(PressureDTO entity)
@@ -78,6 +68,27 @@ namespace Business.Services.Input
             return false;
          }
          return true;
+      }
+
+      public IEnumerable<PressureDTO> GetItemsByYear(int Year)
+      {
+         return db.Pressure.GetPerYear(Year).Select(p => ToDTO(p));
+      }
+
+      public IEnumerable<PressureDTO> GetItemsByNowYear()
+      {
+         int Year = DateTime.Now.Year;
+         return db.Pressure.GetPerYear(Year).Select(p => ToDTO(p));
+      }
+
+      private PressureDTO ToDTO(Pressure pressure)
+      {
+         return new PressureDTO
+         {
+            Date = pressure.Date,
+            Value = pressure.Value,
+            ValuePa = pressure.Value * 133.3224m,
+         };
       }
    }
 }

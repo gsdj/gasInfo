@@ -1,12 +1,8 @@
-﻿using Business.DTO;
-using Business.DTO.Characteristics.CharacteristicsGas;
+﻿using Business.BusinessModels.DataForCalculations;
+using Business.DTO;
 using Business.DTO.InfoSheet;
 using Business.Interfaces.Calculations;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.BusinessModels.Calculations
 {

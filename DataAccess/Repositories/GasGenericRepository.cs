@@ -33,7 +33,7 @@ namespace DataAccess.Repositories
       public IEnumerable<TEntity> GetPerYear(int Year)
       {
          DateTime FirstDate = new DateTime(Year, 1, 1);
-         DateTime LastDate = new DateTime(Year, 12, DateTime.DaysInMonth(Year, 12));
+         DateTime LastDate = new DateTime(Year, 12, 31);
          return _dbSet.Where(p => p.Date >= FirstDate && p.Date <= LastDate);
       }
    }

@@ -16,24 +16,24 @@ namespace Business.Services.Info
       IUnitOfCalc Calc;
       private IMonthable<DevicesKipDTO> DevicesKip;
       private IMonthable<PressureDTO> Pressure;
-      public ChartMonthService(IUnitOfWork uof, IUnitOfCalc calc, IMonthable<DevicesKipDTO> kip, IMonthable<PressureDTO> pressure)
+      private IMonthable<AsdueDTO> Asdue;
+      public ChartMonthService(IUnitOfWork uof, IUnitOfCalc calc, IMonthable<DevicesKipDTO> kip, IMonthable<PressureDTO> pressure, IMonthable<AsdueDTO> asd)
       {
          db = uof;
          Calc = calc;
          DevicesKip = kip;
          Pressure = pressure;
+         Asdue = asd;
       }
       public IEnumerable<ChartMonthDTO> GetItemsByMonth(DateTime Date)
       {
-         DateTime fDate = new DateTime(Date.Year, Date.Month, 1);
-         DateTime lDate = new DateTime(Date.Year, Date.Month, DateTime.DaysInMonth(Date.Year, Date.Month));
-         
-         throw new NotImplementedException();
+         return GetItemsByDate(Date);
       }
 
       public IEnumerable<ChartMonthDTO> GetItemsByNowMonth()
       {
-         throw new NotImplementedException();
+         DateTime dateNow = DateTime.Now;
+         return GetItemsByDate(dateNow);
       }
 
       private IEnumerable<ChartMonthDTO> GetItemsByDate(DateTime Date)
@@ -41,93 +41,57 @@ namespace Business.Services.Info
          var prod = Calc.Production.CalcEntities(db.AmmountCb.GetPerMonth(Date.Year, Date.Month));
          var charKg = Calc.CharacteristicsKg.CalcEntities(db.CharacteristicsKg.GetPerMonth(Date.Year, Date.Month));
          var charDg = Calc.CharacteristicsDg.CalcEntities(db.CharacteristicsDg.GetPerMonth(Date.Year, Date.Month));
-         var steam = Calc.CharacteristicsSteam.CalcEntities(db.SteamCharacteristics.GetAll());
          var KgChmkEb = db.KgChmkEb.GetPerMonth(Date.Year, Date.Month);
          var quality = db.Quality.GetPerMonth(Date.Year, Date.Month);
          var pressure = Pressure.GetItemsByMonth(Date);
          var kip = DevicesKip.GetItemsByMonth(Date);
+         var asdue = Asdue.GetItemsByMonth(Date);
 
-         var qdl = new QualityEnumData
+         var qualityData = new QualityEnumData
          {
             Qualities = quality,
             Kg = charKg,
          };
-         var q2 = new CalcQualities();
+         var qualities = Calc.Quality.CalcEntities(qualityData);
 
-         var qualityData = from t1charKg in charKg
-                           join t2qual in quality on new { t1charKg.Date } equals new { t2qual.Date }
-                           select new QualityData
-                           {
-                              Kg = t1charKg,
-                              Qualities = t2qual
-                           };
-
-         List<QualityDTO> qualities = new List<QualityDTO>(qualityData.Count());
-         foreach (var item in qualityData)
+         var wetGasData = new GasDensityEnumData
          {
-            qualities.Add(Calc.Quality.CalcEntity(item));
-         }
+            CharacteristicsDg = charDg,
+            CharacteristicsKg = charKg,
+            Kip = kip,
+            Pressure = pressure,
+         };
+         var wetGas = Calc.WetGas.CalcEntities(wetGasData);
 
-         var wetGasData = from t1charKg in charKg
-                          join t2charDg in charDg on new { t1charKg.Date } equals new { t2charDg.Date }
-                          join t3kip in kip on new { t2charDg.Date } equals new { t3kip.Date }
-                          join t4pressure in pressure on new { t3kip.Date } equals new { t4pressure.Date }
-                          select new GasDensityData
-                          {
-                             CharacteristicsKg = t1charKg,
-                             CharacteristicsDg = t2charDg,
-                             Kip = t3kip,
-                             Pressure = t4pressure,
-                             Steam = steam,
-                          };
-
-         List<DensityDTO> wetGas = new List<DensityDTO>(wetGasData.Count());
-         foreach (var item in wetGasData)
+         var consKgData = new ConsumptionKgEnumData
          {
-            wetGas.Add(Calc.WetGas.CalcEntity(item));
-         }
+            CharacteristicsKg = charKg,
+            Kip = kip,
+            WetGas = wetGas,
+         };
+         var consKg = Calc.ConsumptionKg.CalcEntities(consKgData);
 
-         var consKgData = from t1charKg in charKg
-                          join t2wetGas in wetGas on new { t1charKg.Date } equals new { t2wetGas.Date }
-                          join t3kip in kip on new { t2wetGas.Date } equals new { t3kip.Date }
-                          select new ConsumptionKgData
-                          {
-                             WetGas = t2wetGas,
-                             Kip = t3kip,
-                             CharacteristicsKg = t1charKg,
-                             Steam = steam,
-                          };
-
-         List<ConsumptionKgDTO> consKg = new List<ConsumptionKgDTO>(consKgData.Count());
-         foreach (var item in consKgData)
+         var outputKgData = new OutputKgEnumData
          {
-            consKg.Add(Calc.ConsumptionKg.CalcEntity(item));
-         }
+            WetGas = wetGas,
+            CharacteristicsKg = charKg,
+            Kip = kip,
+            Production = prod,
+         };
+         var outputKg = Calc.OutputKg.CalcEntities(outputKgData);
 
-         var outputKgData = from t1wetGas in wetGas
-                            join t2prod in prod on new { t1wetGas.Date } equals new { t2prod.Date }
-                            join t3kip in kip on new { t2prod.Date } equals new { t3kip.Date }
-                            join t4charKg in charKg on new { t3kip.Date } equals new { t4charKg.Date }
-                            select new OutputKgData
-                            {
-                               WetGas = t1wetGas,
-                               Production = t2prod,
-                               Kip = t3kip,
-                               CharacteristicsKg = t4charKg,
-                               Steam = steam,
-                            };
-
-         List<OutputKgDTO> outputKg = new List<OutputKgDTO>(outputKgData.Count());
-         foreach (var item in outputKgData)
+         var chartData = new ChartEnumData
          {
-            outputKg.Add(Calc.OutputKg.CalcEntity(item));
-         }
-
-         var chartData = from t1prod in prod
-                         join t2charKg in charKg on new { t1prod.Date } equals new { t2charKg.Date }
-                         join t3qual in qualities on new { t2charKg.Date } equals new { t3qual.Date }
-                         join t4outputKg in outputKg on new { t3qual.Date } equals new { t4outputKg.Date }
-                         join t5consKg in consKg on new { t4outputKg.Date } equals new { t5consKg.Date }
+            CharacteristicsKg = charKg,
+            ConsKg = consKg,
+            OutputKg = outputKg,
+            Production = prod,
+            Quality = qualities,
+            KgChmkEb = KgChmkEb,
+            Asdue = asdue,
+         };
+         var chartMonth = Calc.ChartMonth.CalcEntities(chartData);
+         return chartMonth;
 
       }
    }

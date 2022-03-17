@@ -4,13 +4,19 @@ using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Business.Interfaces;
 
 namespace Business.BusinessModels.Calculations
 {
    public class CalcProduction : ICalcProduction
    {
+      private IConstantsAll _cAll;
+      private Constants Constants;
+      public CalcProduction(IConstantsAll cAll)
+      {
+         _cAll = cAll;
+         Constants = _cAll.GetConstants();
+      }
       public IEnumerable<ProductionDTO> CalcEntities(IEnumerable<AmmountCb> cbs)
       {
          List<ProductionDTO> prod = new List<ProductionDTO>(cbs.Count());
