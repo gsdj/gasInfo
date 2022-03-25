@@ -1,9 +1,9 @@
 ﻿namespace Business.Interfaces.BaseCalculations
 {
-   public interface IQn<T>
+   public interface IDensity<T>
    {
       /// <summary>
-      /// Калорийность газа
+      /// Плотность газа
       /// </summary>
       /// <param name="obj"></param>
       /// <returns></returns>

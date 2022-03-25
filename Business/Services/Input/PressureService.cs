@@ -16,10 +16,12 @@ namespace Business.Services.Input
    {
       IUnitOfWork db;
       IValidationDictionary _validationDictionary;
-      public PressureService(IUnitOfWork uof, IValidationDictionary validation)
+      IValidator<PressureDTO> Validator;
+      public PressureService(IUnitOfWork uof, IValidationDictionary validation, IValidator<PressureDTO> validator)
       {
          db = uof;
          _validationDictionary = validation;
+         Validator = validator;
       }
 
       protected bool ValidateComponents(PressureDTO dg)
@@ -51,6 +53,9 @@ namespace Business.Services.Input
       public bool Upsert(PressureDTO entity)
       {
          if (!ValidateComponents(entity))
+            return false;
+
+         if (!Validator.Validate(entity))
             return false;
 
          try

@@ -147,7 +147,7 @@ namespace Business.Services.Input
                Consumption = kip.Grp4.Consumption,
                Temperature = kip.Grp4.Temperature,
             },
-         }
+         };
       }
 
       public bool Upsert(DevicesKipDTO entity)

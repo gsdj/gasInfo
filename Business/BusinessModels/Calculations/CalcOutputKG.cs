@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcOutputKG : ICalculation<OutputKgDTO>, ICalculations<OutputKgDTO>, IQn, IQcRc
+   public class CalcOutputKG : ICalculation<OutputKgDTO>, ICalculations<OutputKgDTO>, IQn1, IQcRc
    {
       private Dictionary<int, SteamCharacteristicsDTO> _steam;
       private IConstantsAll _cAll;

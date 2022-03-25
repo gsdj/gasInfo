@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Business.BusinessModels
+﻿namespace Business.BusinessModels
 {
    public static class ConstantsStatic
    {
@@ -28,10 +22,6 @@ namespace Business.BusinessModels
       /// коэффициент сжимаемости газа принимается равным - 1,0
       /// </summary>
       public const decimal K = 1m;
-      /// <summary>
-      /// поправка на температуру (SteamDictionary index/key = 0 - temp = -20, должно быть index/key = 0 - temp = 0)
-      /// </summary>
-      public const int tempCorr = 20;
       /// <summary>
       /// коэффициент расчета Пр-ва кокса сух.
       /// </summary>

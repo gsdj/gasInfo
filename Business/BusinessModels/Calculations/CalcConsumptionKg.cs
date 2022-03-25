@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcConsumptionKg : ICalculation<ConsumptionKgDTO>, ICalculations<ConsumptionKgDTO>, IQn, IQcRc
+   public class CalcConsumptionKg : ICalculation<ConsumptionKgDTO>, ICalculations<ConsumptionKgDTO>, IQn1, IQcRc
    {
       private Dictionary<int, SteamCharacteristicsDTO> _steam;
       private IConstantsAll _cAll;

@@ -12,10 +12,10 @@ namespace DataAccess
 {
    public class GasInfoDbContext : DbContext
    {
-      SteamJsonReader _steamJson;
-      public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options, SteamJsonReader steamJson) : base(options) 
+      //SteamJsonReader _steamJson;
+      public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options/*, SteamJsonReader steamJson*/) : base(options) 
       {
-         _steamJson = steamJson;
+         //_steamJson = steamJson;
       }
       public DbSet<Pressure> Pressure { get; set; }
       public DbSet<SteamCharacteristics> SteamCharacteristics { get; set; }
@@ -69,7 +69,7 @@ namespace DataAccess
 
          modelBuilder.Entity<Role>().HasData(new Role[] { adminRole, userRole });
          modelBuilder.Entity<User>().HasData(new User[] { adminUser });
-         modelBuilder.Entity<SteamCharacteristics>().HasData(_steamJson.GetAllSteamCharacteristics());
+         //modelBuilder.Entity<SteamCharacteristics>().HasData(_steamJson.GetAllSteamCharacteristics());
       }
    }
 }

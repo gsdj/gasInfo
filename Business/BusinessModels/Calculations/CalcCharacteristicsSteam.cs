@@ -46,7 +46,7 @@ namespace Business.BusinessModels.Calculations
 
       public decimal PPa(decimal pmm)
       {
-         return Math.Round((pmm * 133.322m), 15);
+         return Math.Round((pmm * 133.3224m), 15);
       }
 
       public decimal Rh(decimal fkg, decimal pkg)

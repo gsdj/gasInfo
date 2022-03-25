@@ -13,8 +13,8 @@ namespace Business.Interfaces.Calculations
    {
       IEnumerable<CharacteristicsKgDTO> CalcEntities(IEnumerable<CharacteristicsKgAll> _kgs);
       CharacteristicsKgDTO CalcEntity(CharacteristicsKgAll kg);
-      decimal SumComponents(params decimal[] components);
-      decimal Qn(decimal CO, decimal CnHm, decimal CH4, decimal H2);
-      decimal Density(decimal CO2, decimal O2, decimal CO, decimal CnHm, decimal CH4, decimal H2, decimal N2);
+      //decimal SumComponents(params decimal[] components);
+      //decimal Qn(decimal CO, decimal CnHm, decimal CH4, decimal H2);
+      //decimal Density(decimal CO2, decimal O2, decimal CO, decimal CnHm, decimal CH4, decimal H2, decimal N2);
    }
 }

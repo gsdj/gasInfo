@@ -1,7 +1,5 @@
-using Business.BusinessModels.BaseCalculations;
 using Business.BusinessModels.Calculations;
 using Business.DTO;
-using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.Calculations;
 using DataAccess;
 using DataAccess.Interfaces;
@@ -13,11 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GasInfo
 {
@@ -47,7 +41,6 @@ namespace GasInfo
          services.AddScoped<IUnitOfWork, UnitOfWork>();
          services.AddScoped(x => new ConstantsJsonReader(path));
          services.AddScoped<ICalculations<ConsumptionKgDTO>, CalcConsumptionKg>();
-         services.AddScoped<ICalcQcRc<QcRcDefault>, QcRcDefault>();
 
          services.AddScoped(typeof(IGenericRepository<>), typeof(EFGenericRepository<>));
          services.AddScoped(typeof(IGasGenericRepository<>), typeof(GasGenericRepository<>));

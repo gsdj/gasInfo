@@ -1,4 +1,5 @@
-﻿using DataAccess.Entities.Characteristics;
+﻿using DataAccess.Entities;
+using DataAccess.Entities.Characteristics;
 using DataAccess.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,7 +13,7 @@ namespace DataAccess.Repositories
    public class SteamRepository : ISteamRepository
    {
       private GasInfoDbContext _context;
-      private SteamJsonReader _reader;
+      private ConstantsJsonReader _reader;
       public SteamRepository(GasInfoDbContext context)
       {
          _context = context;
@@ -39,6 +40,11 @@ namespace DataAccess.Repositories
       {
          int tempRounded = Convert.ToInt32(Math.Round(temp, MidpointRounding.ToEven));
          return _context.SteamCharacteristics.AsNoTracking().FirstOrDefault(p => p.Temp == tempRounded);
+      }
+
+      public Constants GetConstants()
+      {
+         throw new NotImplementedException();
       }
    }
 }
