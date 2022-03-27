@@ -54,12 +54,20 @@ namespace Business.BusinessModels.Calculations
                                  CbDry(cbs.Cb5, cbs.OutputMultipliers.Cb5) + CbDry(cbs.Cb6, cbs.OutputMultipliers.Cb6), 4),
 
             Cb78Dry = Math.Round(CbDry(cbs.Cb7, cbs.OutputMultipliers.Cb7) + CbDry(cbs.Cb8, cbs.OutputMultipliers.Cb8), 4),
+            TnDry = Math.Round(CbDry(cbs.Cb1, cbs.OutputMultipliers.Cb1) + CbDry(cbs.Cb2, cbs.OutputMultipliers.Cb2) +
+                                 CbDry(cbs.Cb3, cbs.OutputMultipliers.Cb3) + CbDry(cbs.Cb4, cbs.OutputMultipliers.Cb4) +
+                                 CbDry(cbs.Cb5, cbs.OutputMultipliers.Cb5) + CbDry(cbs.Cb6, cbs.OutputMultipliers.Cb6) +
+                                 CbDry(cbs.Cb7, cbs.OutputMultipliers.Cb7) + CbDry(cbs.Cb8, cbs.OutputMultipliers.Cb8), 4),
             KpeDry = Math.Round(cbs.PKP * cbs.OutputMultipliers.PKP, 4),
             Cb16ConsDry = Math.Round(((CbDry(cbs.Cb1, cbs.OutputMultipliers.Cb1) + CbDry(cbs.Cb2, cbs.OutputMultipliers.Cb2) + 
                                        CbDry(cbs.Cb3, cbs.OutputMultipliers.Cb3) + CbDry(cbs.Cb4, cbs.OutputMultipliers.Cb4) + 
                                        CbDry(cbs.Cb5, cbs.OutputMultipliers.Cb5) + CbDry(cbs.Cb6, cbs.OutputMultipliers.Cb6)) * cbs.OutputMultipliers.Sv), 4),
 
             Cb78ConsDry = Math.Round((CbDry(cbs.Cb7, cbs.OutputMultipliers.Cb7) + CbDry(cbs.Cb8, cbs.OutputMultipliers.Cb8)) * cbs.OutputMultipliers.Sv, 4),
+            TnConsDry = Math.Round(((CbDry(cbs.Cb1, cbs.OutputMultipliers.Cb1) + CbDry(cbs.Cb2, cbs.OutputMultipliers.Cb2) +
+                                       CbDry(cbs.Cb3, cbs.OutputMultipliers.Cb3) + CbDry(cbs.Cb4, cbs.OutputMultipliers.Cb4) +
+                                       CbDry(cbs.Cb5, cbs.OutputMultipliers.Cb5) + CbDry(cbs.Cb6, cbs.OutputMultipliers.Cb6) +
+                                       CbDry(cbs.Cb7, cbs.OutputMultipliers.Cb7) + CbDry(cbs.Cb8, cbs.OutputMultipliers.Cb8)) * cbs.OutputMultipliers.Sv), 4),
             ConsumptionFvKc1 = 
             {
                Cb1 = ConsFv(cbs.Cb1, cbs.OutputMultipliers.Cb1, cbs.OutputMultipliers.Fv),
