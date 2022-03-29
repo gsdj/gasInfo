@@ -13,16 +13,14 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcConsumptionDgPg : ICalculation<ConsumptionDgPgDTO>, ICalculations<ConsumptionDgPgDTO>, IQcRc, IQn1, IConsPg, IConsPgCb, IUdConsDgFv
+   public class CalcConsumptionDgPg : ICalculation<ConsumptionDgPgDTO>, ICalculations<ConsumptionDgPgDTO>, IQcRc, IConsGasQn<CalcConsumptionDgPg>, IConsPg, IConsPgCb, IUdConsDgFv
    {
       private Dictionary<int, SteamCharacteristicsDTO> _steam;
-      private IConstantsAll _cAll;
-      private Constants Constants;
-      public CalcConsumptionDgPg(IConstantsAll cAll)
+      //private IConstantsAll _cAll;
+      public CalcConsumptionDgPg(ISteamCharacteristicsService st)
       {
-         _cAll = cAll;
-         Constants = _cAll.GetConstants();
-         _steam = _cAll.GetSteamCharacteristics();
+         //_cAll = cAll;
+         _steam = st.GetCharacteristics();
       }
 
       public IEnumerable<ConsumptionDgPgDTO> CalcEntities(EnumerableData data)
@@ -79,18 +77,18 @@ namespace Business.BusinessModels.Calculations
 
          var qcrcDg = new QcRcKc1
          {
-            Cb1 = QcRc(kip.Cb1.Consumption, wetGas.Cb1, kip.Cb1.Temperature, charDg.Kc1.Characteristics.Density),
-            Cb2 = QcRc(kip.Cb2.Consumption, wetGas.Cb2, kip.Cb2.Temperature, charDg.Kc1.Characteristics.Density),
-            Cb3 = QcRc(kip.Cb3.Consumption, wetGas.Cb3, kip.Cb3.Temperature, charDg.Kc2.Characteristics.Density),
-            Cb4 = QcRc(kip.Cb4.Consumption, wetGas.Cb4, kip.Cb4.Temperature, charDg.Kc2.Characteristics.Density),
+            Cb1 = Calc(kip.Cb1.Consumption, wetGas.Cb1, kip.Cb1.Temperature, charDg.Kc1.Characteristics.Density),
+            Cb2 = Calc(kip.Cb2.Consumption, wetGas.Cb2, kip.Cb2.Temperature, charDg.Kc1.Characteristics.Density),
+            Cb3 = Calc(kip.Cb3.Consumption, wetGas.Cb3, kip.Cb3.Temperature, charDg.Kc2.Characteristics.Density),
+            Cb4 = Calc(kip.Cb4.Consumption, wetGas.Cb4, kip.Cb4.Temperature, charDg.Kc2.Characteristics.Density),
          };
 
          var consDg = new ConsumptionKc1<decimal>
          {
-            Cb1 = Qn(qcrcDg.Cb1, charDg.Kc1.Characteristics.Qn),
-            Cb2 = Qn(qcrcDg.Cb2, charDg.Kc1.Characteristics.Qn),
-            Cb3 = Qn(qcrcDg.Cb3, charDg.Kc2.Characteristics.Qn),
-            Cb4 = Qn(qcrcDg.Cb4, charDg.Kc2.Characteristics.Qn),
+            Cb1 = Calc(qcrcDg.Cb1, charDg.Kc1.Characteristics.Qn),
+            Cb2 = Calc(qcrcDg.Cb2, charDg.Kc1.Characteristics.Qn),
+            Cb3 = Calc(qcrcDg.Cb3, charDg.Kc2.Characteristics.Qn),
+            Cb4 = Calc(qcrcDg.Cb4, charDg.Kc2.Characteristics.Qn),
          };
 
          var consPgGru = new ConsumptionGru<decimal>
@@ -140,7 +138,7 @@ namespace Business.BusinessModels.Calculations
          if (cons == 0 || pressure == 0)
             return 0;
 
-         decimal result = cons * Constants.Tc * (PPa + pressure * Constants.PexcC) / ((Constants.TpC + temp) * Constants.Pc * 1);
+         decimal result = cons * GasConstants.Tc * (PPa + pressure * GasConstants.PexcC) / ((GasConstants.TpC + temp) * GasConstants.Pc * 1);
          return Math.Round(result, 10);
       }
 
@@ -153,7 +151,7 @@ namespace Business.BusinessModels.Calculations
          return Math.Round(result, 10);
       }
 
-      public decimal QcRc(decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour = false)
+      public decimal Calc(decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour = false)
       {
          if (cons == 0 || wetGas == 0 || density == 0)
             return 0;
@@ -173,7 +171,7 @@ namespace Business.BusinessModels.Calculations
          }
       }
 
-      public decimal Qn(decimal qcrc, decimal qn)
+      public decimal Calc(decimal qcrc, decimal qn)
       {
          if (qcrc == 0 || qn == 0)
             return 0;
@@ -186,7 +184,7 @@ namespace Business.BusinessModels.Calculations
          if (consDg == 0 || consPg == 0 || consFv == 0)
             return 0;
 
-         decimal result = ((consDg * Constants.UdDgC) + (consPg * Constants.UdPgC)) / consFv;
+         decimal result = ((consDg * GasConstants.UdDgC) + (consPg * GasConstants.UdPgC)) / consFv;
          return Math.Round(result, 10);
       }
    }

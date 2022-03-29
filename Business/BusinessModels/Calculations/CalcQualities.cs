@@ -1,5 +1,6 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
+using Business.DTO.Characteristics;
 using Business.Interfaces;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.Calculations;
@@ -12,12 +13,11 @@ namespace Business.BusinessModels.Calculations
 {
    public class CalcQualities : ICalculations<QualityDTO>, ICalculation<QualityDTO>, IKgFh, IKgFv, IVc
    {
-      private IConstantsAll _cAll;
-      private Constants Constants;
-      public CalcQualities(IConstantsAll cAll)
+      //private IConstantsAll _cAll;
+      private Dictionary<int, SteamCharacteristicsDTO> _steam;
+      public CalcQualities(ISteamCharacteristicsService st)
       {
-         _cAll = cAll;
-         Constants = _cAll.GetConstants();
+         _steam = st.GetCharacteristics();
       }
       public IEnumerable<QualityDTO> CalcEntities(EnumerableData Data)
       {
@@ -84,7 +84,7 @@ namespace Business.BusinessModels.Calculations
 
       public decimal KgFv(decimal V, decimal A, decimal W)
       {
-         decimal result = Math.Round((Constants.PropC * (decimal)Math.Sqrt((double)Vc(V, A)) * ((100 - W) / 100)), 10);
+         decimal result = Math.Round((GasConstants.PropC * (decimal)Math.Sqrt((double)Vc(V, A)) * ((100 - W) / 100)), 10);
          return result;
       }
 

@@ -31,9 +31,10 @@ namespace Business.BusinessModels.DataForCalculations
    }
    public class ConsumptionKgEnumData : EnumerableData
    {
-      public IEnumerable<DensityDTO> WetGas;
-      public IEnumerable<DevicesKipDTO> Kip;
+      public IEnumerable<PressureDTO> Pressure;
       public IEnumerable<CharacteristicsKgDTO> CharacteristicsKg;
+      public IEnumerable<CharacteristicsDgDTO> CharacteristicsDg;
+      public IEnumerable<DevicesKipDTO> Kip;
    }
    public class ConsumptionDgEnumData : EnumerableData
    {

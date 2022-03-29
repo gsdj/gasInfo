@@ -9,6 +9,12 @@ namespace Business.DTO
 {
    public class ProductionDTO
    {
+      public ProductionDTO()
+      {
+         AmmountCb = new AmmountCb<int>();
+         ConsumptionFvKc1 = new ConsumptionKc1<decimal>();
+         ConsumptionFvKc2 = new ConsumptionKc2<decimal>();
+      }
       //Коэффициенты/выхода
       public decimal SvC { get; set; }
       public decimal FvC { get; set; }

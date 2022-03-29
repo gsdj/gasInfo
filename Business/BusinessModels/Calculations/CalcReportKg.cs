@@ -1,10 +1,10 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
+using Business.DTO.Characteristics;
 using Business.DTO.Consumption;
 using Business.Interfaces;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.Calculations;
-using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +13,11 @@ namespace Business.BusinessModels.Calculations
 {
    public class CalcReportKg : ICalculation<ReportKgDTO>, ICalculations<ReportKgDTO>, IUdConsKgFv
    {
-      private IConstantsAll _cAll;
-      private Constants Constants;
-      public CalcReportKg(IConstantsAll cAll)
+      //private IConstantsAll _cAll;
+      private Dictionary<int, SteamCharacteristicsDTO> _steam;
+      public CalcReportKg(ISteamCharacteristicsService st)
       {
-         _cAll = cAll;
-         Constants = _cAll.GetConstants();
+         _steam = st.GetCharacteristics();
       }
 
       public IEnumerable<ReportKgDTO> CalcEntities(EnumerableData data)
@@ -105,8 +104,8 @@ namespace Business.BusinessModels.Calculations
             OutKgMk = Math.Round((data1.SumKgCbsSpoGsuf + consCpsPpk.Pko + data1.ConsKgUvtp) + (tec.ChmkTecSum * 1000), 10),
             KipSpr = Math.Round(outputKg.PrMk4000 + consCpsPpk.Pko + data1.ConsKgUvtp, 10),
             OutKgCb18 = ((data1.SumKgCbsSpoGsuf + consCpsPpk.Pko + data1.ConsKgUvtp) + (tec.ChmkTecSum * 1000)) - data1.OutKgPko,
-            ConsFvPko = Math.Round((consCpsPpk.Pko + data1.ConsKgUvtp) / prod.KpeDry * Constants.ConsFvC, 10),
-            ConsFvCpsPpk = Math.Round((consCpsPpk.Spo + consCpsPpk.Pko + data1.ConsKgUvtp) / prod.SpoPerKus * Constants.ConsFvC, 10),
+            ConsFvPko = Math.Round((consCpsPpk.Pko + data1.ConsKgUvtp) / prod.KpeDry * GasConstants.ConsFvC, 10),
+            ConsFvCpsPpk = Math.Round((consCpsPpk.Spo + consCpsPpk.Pko + data1.ConsKgUvtp) / prod.SpoPerKus * GasConstants.ConsFvC, 10),
 
             OutKgCb16 = (prod.Cb1Cb6 == 0 || prod.MK == 0) ? 0 :
                         (((data1.SumKgCbsSpoGsuf + consCpsPpk.Pko + data1.ConsKgUvtp) +
@@ -120,7 +119,7 @@ namespace Business.BusinessModels.Calculations
          var consFvCpsPpk = new ConsumptionCpsPpk
          {
             Spo = UdConsKgFv(consKg.ConsumptionCpsPpk.Spo, prod.SpoPerKus),
-            Pko = Math.Round((consKg.ConsumptionCpsPpk.Pko + data1.ConsKgUvtp) / prod.KpeDry * Constants.ConsFvC, 10),
+            Pko = Math.Round((consKg.ConsumptionCpsPpk.Pko + data1.ConsKgUvtp) / prod.KpeDry * GasConstants.ConsFvC, 10),
          };
 
          return new ReportKgDTO
@@ -145,7 +144,7 @@ namespace Business.BusinessModels.Calculations
             ConsumptionFvCpsPpk = consFvCpsPpk,
             ConsKgCpsPpkSum = consFvCpsPpk.Pko + consFvCpsPpk.Spo + data1.ConsKgUvtp,
             ConsKgMk = consKc2.Cb5 + consKc2.Cb6 + consKc2.Cb7 + consKc2.Cb8 + consFvCpsPpk.Pko + consFvCpsPpk.Spo + data1.ConsKgUvtp,
-            ConsFvCpsPpkSum = Math.Round((consFvCpsPpk.Pko + consFvCpsPpk.Spo + data1.ConsKgUvtp) / prod.KpeDry * Constants.ConsFvC, 10),
+            ConsFvCpsPpkSum = Math.Round((consFvCpsPpk.Pko + consFvCpsPpk.Spo + data1.ConsKgUvtp) / prod.KpeDry * GasConstants.ConsFvC, 10),
             ConsGsuf = consKg.ConsumptionGsuf,
             TradeGasChmk = Math.Round(tec.ChmkTecSum * 1000, 10),
          };
@@ -156,7 +155,7 @@ namespace Business.BusinessModels.Calculations
          if (consKg == 0 || consKgFv == 0)
             return 0;
 
-         return Math.Round((consKg / consKgFv * Constants.ConsFvC), 10);
+         return Math.Round((consKg / consKgFv * GasConstants.ConsFvC), 10);
       }
    }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Business.BusinessModels
 {
-   public static class ConstantsStatic
+   public static class GasConstants
    {
       /// <summary>
       /// коэффициент избыточного давления KipDevices.press * 9.80665
@@ -41,10 +41,10 @@
       /// <summary>
       /// Коэфициент пропорциональности(3-3,3)
       /// </summary>
-      public const decimal propC = 3.15m;
+      public const decimal PropC = 3.15m;
       /// <summary>
       /// Коэффициент расчета удельного расхода кгУТ/тн шихты в ф.в. (на тн.КУС)
       /// </summary>
-      public const decimal consFvC = 0.57m;
+      public const decimal ConsFvC = 0.57m;
    }
 }

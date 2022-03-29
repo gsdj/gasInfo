@@ -10,14 +10,14 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcOutputKG : ICalculation<OutputKgDTO>, ICalculations<OutputKgDTO>, IQn1, IQcRc
+   public class CalcOutputKG : ICalculation<OutputKgDTO>, ICalculations<OutputKgDTO>, IConsGasQn<CalcOutputKG>, IQcRc
    {
       private Dictionary<int, SteamCharacteristicsDTO> _steam;
-      private IConstantsAll _cAll;
-      public CalcOutputKG(IConstantsAll cAll)
+      //private IConstantsAll _cAll;
+      public CalcOutputKG(ISteamCharacteristicsService st)
       {
-         _cAll = cAll;
-         _steam = _cAll.GetSteamCharacteristics();
+         //_cAll = cAll;
+         _steam = st.GetCharacteristics();
       }
 
       public IEnumerable<OutputKgDTO> CalcEntities(EnumerableData data)
@@ -62,22 +62,22 @@ namespace Business.BusinessModels.Calculations
          return new OutputKgDTO
          {
             Date = wetGas.Date,
-            QcRcCu1 = QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density),
-            QcRcCu2 = QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density),
-            Cu14000 = Qn(QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn),
-            Cu24000 = Qn(QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn),
-            Cu1Cb16 = Qn(QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn) / prod.Cb16ConsDry,
-            Cu2Cb78 = Qn(QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn) / prod.Cb78ConsDry,
-            PrMk = QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density) +
-            QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density),
-            PrMk4000 = Qn(QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn) +
-               Qn(QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn),
-            OutCgSh = (Qn(QcRc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn) +
-               Qn(QcRc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn)) / (prod.Cb16ConsDry + prod.Cb78ConsDry)
+            QcRcCu1 = Calc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density),
+            QcRcCu2 = Calc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density),
+            Cu14000 = Calc(Calc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn),
+            Cu24000 = Calc(Calc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn),
+            Cu1Cb16 = Calc(Calc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn) / prod.Cb16ConsDry,
+            Cu2Cb78 = Calc(Calc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn) / prod.Cb78ConsDry,
+            PrMk = Calc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density) +
+            Calc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density),
+            PrMk4000 = Calc(Calc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn) +
+               Calc(Calc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn),
+            OutCgSh = (Calc(Calc(kip.Cu1.Consumption, wetGas.Cu1, kip.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn) +
+               Calc(Calc(kip.Cu2.Consumption, wetGas.Cu2, kip.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn)) / (prod.Cb16ConsDry + prod.Cb78ConsDry)
          };
       }
 
-      public decimal QcRc(decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour = false)
+      public decimal Calc(decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour = false)
       {
          if (cons == 0 || wetGas == 0 || density == 0)
             return 0;
@@ -97,7 +97,7 @@ namespace Business.BusinessModels.Calculations
          }
       }
 
-      public decimal Qn(decimal qcrc, decimal qn)
+      public decimal Calc(decimal qcrc, decimal qn)
       {
          if (qcrc == 0 || qn == 0)
             return 0;

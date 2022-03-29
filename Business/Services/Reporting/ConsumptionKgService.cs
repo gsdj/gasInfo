@@ -56,7 +56,7 @@ namespace Business.Services.Reporting
          {
             CharacteristicsKg = charKg,
             Kip = kip,
-            WetGas = wetGas,
+            //WetGas = wetGas,
          };
 
          var consKg = Calc.ConsumptionKg.CalcEntities(consKgData);

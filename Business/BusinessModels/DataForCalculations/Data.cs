@@ -31,9 +31,10 @@ namespace Business.BusinessModels.DataForCalculations
    }
    public class ConsumptionKgData : Data
    {
-      public DensityDTO WetGas;
-      public DevicesKipDTO Kip;
+      public PressureDTO Pressure;
       public CharacteristicsKgDTO CharacteristicsKg;
+      public CharacteristicsDgDTO CharacteristicsDg;
+      public DevicesKipDTO Kip;
    }
    public class ConsumptionDgData : Data
    {

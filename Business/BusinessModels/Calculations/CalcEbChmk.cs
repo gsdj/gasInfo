@@ -1,5 +1,6 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
+using Business.DTO.Characteristics;
 using Business.Interfaces;
 using Business.Interfaces.Calculations;
 using DataAccess.Entities;
@@ -11,12 +12,10 @@ namespace Business.BusinessModels.Calculations
 {
    public class CalcEbChmk : ICalculation<EbChmkDTO>, ICalculations<EbChmkDTO>
    {
-      private IConstantsAll _cAll;
-      private Constants Constants;
-      public CalcEbChmk(IConstantsAll cAll)
+      private Dictionary<int, SteamCharacteristicsDTO> _steam;
+      public CalcEbChmk(ISteamCharacteristicsService st)
       {
-         _cAll = cAll;
-         Constants = _cAll.GetConstants();
+         _steam = st.GetCharacteristics();
       }
 
       public IEnumerable<EbChmkDTO> CalcEntities(EnumerableData data)
@@ -66,12 +65,12 @@ namespace Business.BusinessModels.Calculations
             ConsDgKc1Sum = eb.ConsDgKc1Sum,
             UdConsumptionKc1 =
             {
-               Cb1 = (eb.ConsumptionDgKc1.Cb1 == 0) ? 0 : (int)Math.Round((eb.ConsumptionDgKc1.Cb1 * Constants.UdDgC) / sumCb1, MidpointRounding.ToEven),
-               Cb2 = (eb.ConsumptionDgKc1.Cb2 == 0) ? 0 : (int)Math.Round((eb.ConsumptionDgKc1.Cb2 * Constants.UdDgC) / sumCb2, MidpointRounding.ToEven),
-               Cb3 = (eb.ConsumptionDgKc1.Cb3 == 0) ? 0 : (int)Math.Round((eb.ConsumptionDgKc1.Cb3 * Constants.UdDgC) / sumCb3, MidpointRounding.ToEven),
-               Cb4 = (eb.ConsumptionDgKc1.Cb4 == 0) ? 0 : (int)Math.Round((eb.ConsumptionDgKc1.Cb4 * Constants.UdDgC) / sumCb4, MidpointRounding.ToEven),
+               Cb1 = (eb.ConsumptionDgKc1.Cb1 == 0) ? 0 : (int)Math.Round((eb.ConsumptionDgKc1.Cb1 * GasConstants.UdDgC) / sumCb1, MidpointRounding.ToEven),
+               Cb2 = (eb.ConsumptionDgKc1.Cb2 == 0) ? 0 : (int)Math.Round((eb.ConsumptionDgKc1.Cb2 * GasConstants.UdDgC) / sumCb2, MidpointRounding.ToEven),
+               Cb3 = (eb.ConsumptionDgKc1.Cb3 == 0) ? 0 : (int)Math.Round((eb.ConsumptionDgKc1.Cb3 * GasConstants.UdDgC) / sumCb3, MidpointRounding.ToEven),
+               Cb4 = (eb.ConsumptionDgKc1.Cb4 == 0) ? 0 : (int)Math.Round((eb.ConsumptionDgKc1.Cb4 * GasConstants.UdDgC) / sumCb4, MidpointRounding.ToEven),
             },
-            UdConsKc1Sum = (eb.ConsDgKc1Sum == 0) ? 0 : (int)Math.Round((eb.ConsDgKc1Sum * Constants.UdDgC) / sumKc1, MidpointRounding.ToEven),
+            UdConsKc1Sum = (eb.ConsDgKc1Sum == 0) ? 0 : (int)Math.Round((eb.ConsDgKc1Sum * GasConstants.UdDgC) / sumKc1, MidpointRounding.ToEven),
             ConsumptionGru =
             {
                Gru1 = eb.ConsumptionPgGru.Gru1,
@@ -80,8 +79,8 @@ namespace Business.BusinessModels.Calculations
             ConsPgUpc = eb.ConsPgUpc,
             UdConsumptionGru =
             {
-               Gru1 = Math.Round((eb.ConsumptionPgGru.Gru1 == 0) ? 0 : (eb.ConsumptionPgGru.Gru1 * Constants.UdPgC) / (sumGru * 0.4m), 2),
-               Gru2 = Math.Round((eb.ConsumptionPgGru.Gru2 == 0) ? 0 : (eb.ConsumptionPgGru.Gru2 * Constants.UdPgC) / (sumGru * 0.6m), 2),
+               Gru1 = Math.Round((eb.ConsumptionPgGru.Gru1 == 0) ? 0 : (eb.ConsumptionPgGru.Gru1 * GasConstants.UdPgC) / (sumGru * 0.4m), 2),
+               Gru2 = Math.Round((eb.ConsumptionPgGru.Gru2 == 0) ? 0 : (eb.ConsumptionPgGru.Gru2 * GasConstants.UdPgC) / (sumGru * 0.6m), 2),
             },
          };
       }

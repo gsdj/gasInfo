@@ -9,6 +9,26 @@ namespace Business.DTO
 {
    public class DevicesKipDTO
    {
+      public DevicesKipDTO()
+      {
+         Cu1 = new Cu1();
+         Cu2 = new Cu2();
+         Cb5 = new Cb5();
+         Cb6 = new Cb6();
+         Cb7 = new Cb7();
+         Cb8 = new Cb8();
+         Pkc = new Pkc();
+         Uvtp = new Uvtp();
+         Spo = new Spo();
+         Gsuf45 = new Gsuf45();
+         Cb1 = new Cb1();
+         Cb2 = new Cb2();
+         Cb3 = new Cb3();
+         Cb4 = new Cb4();
+         Gru1 = new Gru1();
+         Gru2 = new Gru2();
+         Grp4 = new Grp4();
+      }
       public DateTime Date { get; set; }
       public Cu1 Cu1 { get; set; }
       public Cu2 Cu2 { get; set; }

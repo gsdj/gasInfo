@@ -8,6 +8,6 @@ namespace Business.Interfaces.BaseCalculations
 {
    public interface IQcRc
    {
-      decimal QcRc(decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour = false);
+      decimal Calc(decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour = false);
    }
 }

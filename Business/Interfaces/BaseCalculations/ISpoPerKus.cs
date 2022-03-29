@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces.BaseCalculations
 {
-   public interface IWetDensity
+   public interface ISpoPerKus<T>
    {
-      ISteamCharacteristicsService SteamCharacteristicsService { get; set; }
-      decimal Calc(decimal dryGas, decimal temp);
+      decimal Calc(decimal Pkp, decimal coefPkp, decimal CoefPeka);
    }
 }

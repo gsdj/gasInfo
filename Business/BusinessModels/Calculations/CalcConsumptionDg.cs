@@ -12,14 +12,12 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcConsumptionDg : ICalculation<ConsumptionDgDTO>, ICalculations<ConsumptionDgDTO>, IQcRc, IQn1
+   public class CalcConsumptionDg : ICalculation<ConsumptionDgDTO>, ICalculations<ConsumptionDgDTO>, IQcRc, IConsGasQn<CalcConsumptionDg>
    {
       private Dictionary<int, SteamCharacteristicsDTO> _steam;
-      private IConstantsAll _cAll;
-      public CalcConsumptionDg(IConstantsAll cAll)
+      public CalcConsumptionDg(ISteamCharacteristicsService st)
       {
-         _cAll = cAll;
-         _steam = _cAll.GetSteamCharacteristics();
+         _steam = st.GetCharacteristics();
       }
       public IEnumerable<ConsumptionDgDTO> CalcEntities(EnumerableData data)
       {
@@ -58,18 +56,18 @@ namespace Business.BusinessModels.Calculations
 
          var qcrc = new QcRcKc1
          {
-            Cb1 = QcRc(kip.Cb1.Consumption, wetGas.Cb1, kip.Cb1.Temperature, charDg.CharacteristicsAVG.Density),
-            Cb2 = QcRc(kip.Cb2.Consumption, wetGas.Cb2, kip.Cb2.Temperature, charDg.CharacteristicsAVG.Density),
-            Cb3 = QcRc(kip.Cb3.Consumption, wetGas.Cb3, kip.Cb3.Temperature, charDg.CharacteristicsAVG.Density),
-            Cb4 = QcRc(kip.Cb4.Consumption, wetGas.Cb4, kip.Cb4.Temperature, charDg.CharacteristicsAVG.Density),
+            Cb1 = Calc(kip.Cb1.Consumption, wetGas.Cb1, kip.Cb1.Temperature, charDg.CharacteristicsAVG.Density),
+            Cb2 = Calc(kip.Cb2.Consumption, wetGas.Cb2, kip.Cb2.Temperature, charDg.CharacteristicsAVG.Density),
+            Cb3 = Calc(kip.Cb3.Consumption, wetGas.Cb3, kip.Cb3.Temperature, charDg.CharacteristicsAVG.Density),
+            Cb4 = Calc(kip.Cb4.Consumption, wetGas.Cb4, kip.Cb4.Temperature, charDg.CharacteristicsAVG.Density),
          };
 
          var cons = new ConsumptionKc1<decimal>
          {
-            Cb1 = Qn(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
-            Cb2 = Qn(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
-            Cb3 = Qn(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
-            Cb4 = Qn(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
+            Cb1 = Calc(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
+            Cb2 = Calc(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
+            Cb3 = Calc(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
+            Cb4 = Calc(qcrc.Cb1, charDg.CharacteristicsAVG.Qn),
          };
 
          return new ConsumptionDgDTO
@@ -81,7 +79,7 @@ namespace Business.BusinessModels.Calculations
          };
       }
 
-      public decimal QcRc(decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour = false)
+      public decimal Calc(decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour = false)
       {
          if (cons == 0 || wetGas == 0 || density == 0)
             return 0;
@@ -101,7 +99,7 @@ namespace Business.BusinessModels.Calculations
          }
       }
 
-      public decimal Qn(decimal qcrc, decimal qn)
+      public decimal Calc(decimal qcrc, decimal qn)
       {
          if (qcrc == 0 || qn == 0)
             return 0;

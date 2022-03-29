@@ -12,7 +12,7 @@ namespace Business.Interfaces.Calculations
    {
       IEnumerable<ProductionDTO> CalcEntities(IEnumerable<AmmountCb> cbs);
       ProductionDTO CalcEntity(AmmountCb cbs);
-      decimal CbDry(int Cb, decimal CbCoef);
-      decimal ConsFv(int Cb, decimal CbCoef, decimal FvCoef);
+      //decimal CbDry(int Cb, decimal CbCoef);
+      //decimal ConsFv(int Cb, decimal CbCoef, decimal FvCoef);
    }
 }
