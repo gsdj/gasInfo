@@ -1,8 +1,5 @@
-﻿using Business.BusinessModels.Constants;
-using Business.Interfaces.BaseCalculations;
+﻿using Business.Interfaces.BaseCalculations;
 using DataAccess.Entities.Characteristics;
-using System;
-using System.Configuration;
 
 namespace Business.BusinessModels.BaseCalculations
 {

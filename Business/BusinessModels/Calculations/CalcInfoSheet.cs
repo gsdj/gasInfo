@@ -18,7 +18,7 @@ namespace Business.BusinessModels.Calculations
          var consKgPerDate = Data.ConsumptionKgDTOs.FirstOrDefault(p => p.Date == Data.Date);
          var repKgPerDate = Data.ReportKgDTOs.FirstOrDefault(p => p.Date == Data.Date);
 
-         var sumCu1 = Data.ConsumptionKgDTOs.Sum(p => p.PkoSum) + Data.OutputKgDTOs.Sum(p => p.Cu14000);
+         var sumCu1 = Data.ConsumptionKgDTOs.Sum(p => p.PkoQcRcSum) + Data.OutputKgDTOs.Sum(p => p.Cu14000);
          var sumCu2 = Data.OutputKgDTOs.Sum(p => p.Cu24000);
 
          return new InfoSheetDTO
@@ -61,9 +61,9 @@ namespace Business.BusinessModels.Calculations
 
          return new OutputKg
          {
-            OutKgStCu1 = outKg.Cu14000 + consKg.PkoSum,
-            OutKgUdSvCu1 = (outKg.Cu14000 + consKg.PkoSum) / prodPerDate.Cb16ConsDry,
-            OutKgSthCu1 = (outKg.Cu14000 + consKg.PkoSum) / 24,
+            OutKgStCu1 = outKg.Cu14000 + consKg.PkoQcRcSum,
+            OutKgUdSvCu1 = (outKg.Cu14000 + consKg.PkoQcRcSum) / prodPerDate.Cb16ConsDry,
+            OutKgSthCu1 = (outKg.Cu14000 + consKg.PkoQcRcSum) / 24,
             SumOutKgCu1 = sumCu1,
 
             OutKgStCu2 = outKg.Cu24000,
@@ -71,9 +71,9 @@ namespace Business.BusinessModels.Calculations
             OutKgSthCu2 = outKg.Cu24000 / 24,
             SumOutKgCu2 = sumCu2,
 
-            OutKgUdSvMk = (outKg.Cu14000 + consKg.PkoSum + outKg.Cu24000) / prodPerDate.TnConsDry,
-            OutKgStMk = outKg.Cu14000 + consKg.PkoSum + outKg.Cu24000,
-            OutKgSthMk = (outKg.Cu14000 + consKg.PkoSum + outKg.Cu24000) / 24,
+            OutKgUdSvMk = (outKg.Cu14000 + consKg.PkoQcRcSum + outKg.Cu24000) / prodPerDate.TnConsDry,
+            OutKgStMk = outKg.Cu14000 + consKg.PkoQcRcSum + outKg.Cu24000,
+            OutKgSthMk = (outKg.Cu14000 + consKg.PkoQcRcSum + outKg.Cu24000) / 24,
             SumOutKgMk = sumCu1 + sumCu2,
 
             UdOutKgTradeTheor = Data.ChartMonth.TheorOutKg,
@@ -180,8 +180,8 @@ namespace Business.BusinessModels.Calculations
             TradeKgNorthH = outKg.Cu24000 - (consKg.ConsumptionCb.Cb7 + consKg.ConsumptionCb.Cb8) / 24,
             TradeKgNorthM = sumCu2 - Data.ConsumptionKgDTOs.Sum(p => p.ConsumptionCb.Cb7 + p.ConsumptionCb.Cb8),
 
-            TradeKgSouth4000 = (outKg.Cu14000 + consKg.PkoSum) - (consKg.ConsumptionCpsPpk.Spo - consKg.ConsumptionGsuf),
-            TradeKgSouthH = ((outKg.Cu14000 + consKg.PkoSum) - (consKg.ConsumptionCpsPpk.Spo - consKg.ConsumptionGsuf)) / 24,
+            TradeKgSouth4000 = (outKg.Cu14000 + consKg.PkoQcRcSum) - (consKg.ConsumptionCpsPpk.Spo - consKg.ConsumptionGsuf),
+            TradeKgSouthH = ((outKg.Cu14000 + consKg.PkoQcRcSum) - (consKg.ConsumptionCpsPpk.Spo - consKg.ConsumptionGsuf)) / 24,
             TradeKgSouthM = sumCu1 - Data.ConsumptionKgDTOs.Sum(p => p.ConsumptionCpsPpk.Spo),
 
             Gsuf4000 = repKg.ConsGsuf,

@@ -6,13 +6,20 @@ using System.Threading.Tasks;
 
 namespace Business.DTO.QcRc
 {
-   public class QcRcWithMsKs
+   public class QcRcMsKsDefault
    {
       public decimal Ms { get; set; }
       public decimal Ks { get; set; }
-      public decimal Value
+      public virtual decimal Value
+      {
+         get { return (this.Ms + this.Ks); }
+      }
+   }
+   public class QcRcMsKsOnMultiplier : QcRcMsKsDefault
+   {
+      public override decimal Value
       {
          get { return (this.Ms + this.Ks) * 24; }
-      }
+      } 
    }
 }

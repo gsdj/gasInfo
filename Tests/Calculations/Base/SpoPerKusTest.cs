@@ -18,7 +18,7 @@ namespace Tests.Calculations.Base
          decimal pkp = 12;
          decimal pkpCoef = 6.94m;
          decimal pekaCoef = 420;
-         decimal expected = 24.3495m;
+         decimal expected = 24.3494857143m;
 
          Assert.Equal(expected, target.Calc(pkp, pkpCoef, pekaCoef));
       }

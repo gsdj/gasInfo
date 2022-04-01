@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Business.DTO.Characteristics.Quality
+﻿namespace Business.DTO.Characteristics.Quality
 {
    public class QualityCharacteristics : QualityComponents
    {

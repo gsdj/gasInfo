@@ -5,29 +5,26 @@ using Business.Interfaces;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.Calculations;
 using DataAccess.Entities;
+using DataAccess.Entities.Characteristics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcQualities : ICalculations<QualityDTO>, ICalculation<QualityDTO>, IKgFh, IKgFv, IVc
+   public class CalcQualities : ICalcQuality, IKgFh, IKgFv, IVc
    {
-      //private IConstantsAll _cAll;
-      private Dictionary<int, SteamCharacteristicsDTO> _steam;
-      public CalcQualities(ISteamCharacteristicsService st)
+      private IDensity<KG> Density;
+      public CalcQualities(IDensity<KG> density)
       {
-         _steam = st.GetCharacteristics();
+         Density = density;
       }
-      public IEnumerable<QualityDTO> CalcEntities(EnumerableData Data)
-      {
-         var data = Data as QualityEnumData;
-         var charKg = data.Kg;
-         var quality = data.Qualities;
 
-         var qualityData = from t1charKg in charKg
-                           join t2qual in quality on new { t1charKg.Date } equals new { t2qual.Date }
-                           select new QualityData
+      public IEnumerable<QualityDTO> CalcEntities(IEnumerable<QualityAll> qual, IEnumerable<CharacteristicsKgAll> kgs)
+      {
+         var qualityData = from t1charKg in kgs
+                           join t2qual in qual on new { t1charKg.Date } equals new { t2qual.Date }
+                           select new
                            {
                               Kg = t1charKg,
                               Qualities = t2qual
@@ -35,17 +32,13 @@ namespace Business.BusinessModels.Calculations
          List<QualityDTO> qualities = new List<QualityDTO>(qualityData.Count());
          foreach (var item in qualityData)
          {
-            qualities.Add(CalcEntity(item));
+            qualities.Add(CalcEntity(item.Qualities, item.Kg));
          }
          return qualities;
       }
 
-      public QualityDTO CalcEntity(Data data)
+      public QualityDTO CalcEntity(QualityAll qual, CharacteristicsKgAll kg)
       {
-         var Data = data as QualityData;
-         var qual = Data.Qualities;
-         var kg = Data.Kg;
-
          return new QualityDTO
          {
             Date = qual.Date,
@@ -56,8 +49,8 @@ namespace Business.BusinessModels.Calculations
                V = qual.Kc1.V,
                Vc = Vc(qual.Kc1.V, qual.Kc1.A),
                KgFv = KgFv(qual.Kc1.V, qual.Kc1.A, qual.Kc1.W),
-               KgFh = KgFh(qual.Kc1.V, qual.Kc1.A, qual.Kc1.W, kg.Kc1.Characteristics.Density),
-               Density = kg.Kc1.Characteristics.Density,
+               KgFh = KgFh(qual.Kc1.V, qual.Kc1.A, qual.Kc1.W, Density.Calc(kg.Kc1)),
+               Density = Density.Calc(kg.Kc1),
             },
             Kc2 =
             {
@@ -66,11 +59,12 @@ namespace Business.BusinessModels.Calculations
                V = qual.Kc2.V,
                Vc = Vc(qual.Kc2.V, qual.Kc2.A),
                KgFv = KgFv(qual.Kc2.V, qual.Kc2.A, qual.Kc2.W),
-               KgFh = KgFh(qual.Kc2.V, qual.Kc2.A, qual.Kc2.W, kg.Kc2.Characteristics.Density),
-               Density = kg.Kc2.Characteristics.Density,
+               KgFh = KgFh(qual.Kc2.V, qual.Kc2.A, qual.Kc2.W, Density.Calc(kg.Kc2)),
+               Density = Density.Calc(kg.Kc2),
             }
          };
       }
+
       public decimal KgFh(decimal V, decimal A, decimal W, decimal density)
       {
          decimal Fv = KgFv(V, A, W);

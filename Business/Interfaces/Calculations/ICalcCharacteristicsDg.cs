@@ -13,11 +13,5 @@ namespace Business.Interfaces.Calculations
    {
       IEnumerable<CharacteristicsDgDTO> CalcEntities(IEnumerable<CharacteristicsDgAll> _dgs);
       CharacteristicsDgDTO CalcEntity(CharacteristicsDgAll dg);
-      //decimal SumComponents(params decimal[] components);
-      //decimal Qn(decimal H2, decimal CO);
-      //decimal Density(decimal H2, decimal CO, decimal CO2, decimal N2);
-      //decimal AvgC(decimal componentA, decimal componentB);
-      //decimal AvgQn(decimal H2, decimal CO, decimal CO2, decimal N2);
-      //decimal AvgDensity(decimal H2, decimal CO, decimal CO2, decimal N2);
    }
 }

@@ -39,10 +39,8 @@ namespace Business.BusinessModels.Calculations
       }
       public DensityDTO CalcEntity(Data data)
       {
-         GasDensityData Data = data as GasDensityData;
-
-         var dryGas = CalcDryGasDensity(Data.Pressure, Data.CharacteristicsKg, Data.CharacteristicsDg, Data.Kip);
-         var kip = Data.Kip;
+         var dryGas = CalcDryGasDensity(data.Pressure, data.CharacteristicsKg, data.CharacteristicsDg, data.Kip);
+         var kip = data.Kip;
 
          return new DensityDTO
          {
@@ -66,18 +64,11 @@ namespace Business.BusinessModels.Calculations
 
       public IEnumerable<DensityDTO> CalcEntities(EnumerableData data)
       {
-         var Data = data as GasDensityEnumData;
-
-         var kip = Data.Kip;
-         var charKg = Data.CharacteristicsKg;
-         var charDg = Data.CharacteristicsDg;
-         var pressure = Data.Pressure;
-
-         var d = from t1charKg in charKg
-                 join t2charDg in charDg on new { t1charKg.Date } equals new { t2charDg.Date }
-                 join t3kip in kip on new { t2charDg.Date } equals new { t3kip.Date }
-                 join t4pressure in pressure on new { t3kip.Date } equals new { t4pressure.Date }
-                 select new GasDensityData
+         var d = from t1charKg in data.CharacteristicsKg
+                 join t2charDg in data.CharacteristicsDg on new { t1charKg.Date } equals new { t2charDg.Date }
+                 join t3kip in data.Kip on new { t2charDg.Date } equals new { t3kip.Date }
+                 join t4pressure in data.Pressure on new { t3kip.Date } equals new { t4pressure.Date }
+                 select new Data
                  {
                     CharacteristicsKg = t1charKg,
                     CharacteristicsDg = t2charDg,

@@ -66,7 +66,7 @@ namespace Tests.Calculations.Base
          decimal dryGas = 0.409731518254958m;
          decimal temp = 31;
 
-         decimal expected = 0.441830718254958m;
+         decimal expected = 0.4418307183m;
          Assert.Equal(expected, target.Calc(dryGas,temp));
       }
    }

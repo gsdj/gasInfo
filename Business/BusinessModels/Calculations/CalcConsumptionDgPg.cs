@@ -1,4 +1,5 @@
-﻿using Business.BusinessModels.DataForCalculations;
+﻿using Business.BusinessModels.BaseCalculations;
+using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.DTO.Characteristics;
 using Business.DTO.Consumption;
@@ -15,37 +16,58 @@ namespace Business.BusinessModels.Calculations
 {
    public class CalcConsumptionDgPg : ICalculation<ConsumptionDgPgDTO>, ICalculations<ConsumptionDgPgDTO>, IQcRc, IConsGasQn<CalcConsumptionDgPg>, IConsPg, IConsPgCb, IUdConsDgFv
    {
-      private Dictionary<int, SteamCharacteristicsDTO> _steam;
-      //private IConstantsAll _cAll;
-      public CalcConsumptionDgPg(ISteamCharacteristicsService st)
+      private Dictionary<int, SteamCharacteristicsDTO> SteamCharacteristics;
+      private ISteamCharacteristicsService steamService;
+      private ICalculation<DensityDTO> WetGas;
+      private IConsPg ConsPg;
+      private IConsPgCb ConsPgCb;
+      private IConsGasQn<ConsGasQn1000> ConsGasQn;
+      private IQcRc QcRc;
+      private IUdConsDgFv UdConsDgFv;
+      private IChargeConsFV<DefaultChargeConsFV> ConsCbFv;
+      public CalcConsumptionDgPg(ICalculation<DensityDTO> wetGas, IConsPg consPg, IConsPgCb consPgCb, 
+         IConsGasQn<ConsGasQn1000> consGasQn, IQcRc qcRc, IUdConsDgFv udConsDgFv, IChargeConsFV<DefaultChargeConsFV> consFv)
       {
-         //_cAll = cAll;
-         _steam = st.GetCharacteristics();
+         steamService = st;
+         SteamCharacteristics = steamService.GetCharacteristics();
+         ConsPg = consPg;
+         ConsPgCb = consPgCb;
+         consGasQn = consGasQn;
+         QcRc = qcRc;
+         UdConsDgFv = udConsDgFv;
+         ConsCbFv = consFv;
       }
 
+      public ISteamCharacteristicsService SteamCharacteristicsService
+      {
+         get
+         {
+            return steamService;
+         }
+         set
+         {
+            steamService = value;
+            if (SteamCharacteristics == null || SteamCharacteristics.Count == 0)
+               SteamCharacteristics = value.GetCharacteristics();
+         }
+      }
       public IEnumerable<ConsumptionDgPgDTO> CalcEntities(EnumerableData data)
       {
-         var Data = data as ConsumptionDgPgEnumData;
-         var wetGas = Data.WetGas;
-         var kip = Data.Kip;
-         var charDg = Data.CharacteristicsDg;
-         var prod = Data.Production;
-         var pressure = Data.Pressure;
+         var Data = data as OutputKgEnumData;
 
-         
          var d =
-            from t1wetGas in wetGas
-            join t2kip in kip on new { t1wetGas.Date } equals new { t2kip.Date }
-            join t3charDg in charDg on new { t2kip.Date } equals new { t3charDg.Date }
-            join t4prod in prod on new { t3charDg.Date } equals new { t4prod.Date }
-            join t5p in pressure on new { t4prod.Date } equals new { t5p.Date }
-            select new ConsumptionDgPgData
+            from t1charDg in Data.CharacteristicsDg
+            join t2kip in Data.Kip on new { t1charDg.Date } equals new { t2kip.Date }
+            join t3charKg in Data.CharacteristicsKg on new { t2kip.Date } equals new { t3charKg.Date }
+            join t4pressure in Data.Pressure on new { t3charKg.Date } equals new { t4pressure.Date }
+            join t5ammountCb in Data.AmmountCbs on new { t4pressure.Date } equals new { t5ammountCb.Date }
+            select new OutputKgData
             {
-               WetGas = t1wetGas,
+               CharacteristicsDg = t1charDg,
                Kip = t2kip,
-               CharacteristicsDg = t3charDg,
-               Production = t4prod,
-               Pressure = t5p,
+               CharacteristicsKg = t3charKg,
+               Pressure = t4pressure,
+               AmmountCb = t5ammountCb,
             };
 
          List<ConsumptionDgPgDTO> consdgpgDTO = new List<ConsumptionDgPgDTO>(d.Count());
@@ -59,12 +81,28 @@ namespace Business.BusinessModels.Calculations
 
       public ConsumptionDgPgDTO CalcEntity(Data data)
       {
-         ConsumptionDgPgData Data = data as ConsumptionDgPgData;
-         var prod = Data.Production;
-         var pressure = Data.Pressure;
-         var kip = Data.Kip;
-         var wetGas = Data.WetGas;
-         var charDg = Data.CharacteristicsDg;
+         OutputKgData Data = data as OutputKgData;
+         var kip = data.Kip;
+         var charKg = data.CharacteristicsKg;
+         var cbs = Data.AmmountCb;
+
+         var wetGas = WetGas.CalcEntity(data);
+
+         var ConsFvKc1 = new ConsumptionKc1<decimal>
+         {
+            Cb1 = ConsCbFv.Calc(cbs.Cb1, cbs.OutputMultipliers.Cb1, cbs.OutputMultipliers.Fv),
+            Cb2 = ConsCbFv.Calc(cbs.Cb2, cbs.OutputMultipliers.Cb2, cbs.OutputMultipliers.Fv),
+            Cb3 = ConsCbFv.Calc(cbs.Cb3, cbs.OutputMultipliers.Cb3, cbs.OutputMultipliers.Fv),
+            Cb4 = ConsCbFv.Calc(cbs.Cb4, cbs.OutputMultipliers.Cb4, cbs.OutputMultipliers.Fv),
+         };
+
+         var ConsFvKc2 = new ConsumptionKc2<decimal>
+         {
+            Cb5 = ConsCbFv.Calc(cbs.Cb5, cbs.OutputMultipliers.Cb5, cbs.OutputMultipliers.Fv),
+            Cb6 = ConsCbFv.Calc(cbs.Cb6, cbs.OutputMultipliers.Cb6, cbs.OutputMultipliers.Fv),
+            Cb7 = ConsCbFv.Calc(cbs.Cb7, cbs.OutputMultipliers.Cb7, cbs.OutputMultipliers.Fv),
+            Cb8 = ConsCbFv.Calc(cbs.Cb8, cbs.OutputMultipliers.Cb8, cbs.OutputMultipliers.Fv),
+         },
 
          var data1 = new
          {
@@ -157,7 +195,7 @@ namespace Business.BusinessModels.Calculations
             return 0;
 
          int tempRounded = Convert.ToInt32(Math.Round(temp, MidpointRounding.ToEven));
-         decimal Fkg = _steam[tempRounded].Fkg;
+         decimal Fkg = SteamCharacteristics[tempRounded].Fkg;
 
          if (!perHour)
          {

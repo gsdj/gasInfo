@@ -12,7 +12,7 @@ namespace Business.BusinessModels.BaseCalculations
       }
       public decimal Calc(int Cb, decimal CbCoef, decimal FvCoef)
       {
-         return Math.Round(DryCoke.Calc(Cb, CbCoef) * FvCoef, 4);
+         return Math.Round(DryCoke.Calc(Cb, CbCoef) * FvCoef, 10);
       }
    }
 }

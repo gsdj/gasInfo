@@ -7,7 +7,7 @@ namespace Business.BusinessModels.BaseCalculations
    {
       public decimal Calc(decimal Pkp, decimal coefPkp, decimal CoefPeka)
       {
-         return Math.Round(((Pkp * coefPkp) * GasConstants.SpoC) / (CoefPeka / 100), 4);
+         return Math.Round(((Pkp * coefPkp) * GasConstants.SpoC) / (CoefPeka / 100), 10);
       }
    }
 }

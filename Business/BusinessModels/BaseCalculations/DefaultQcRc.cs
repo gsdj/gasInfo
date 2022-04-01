@@ -8,10 +8,26 @@ namespace Business.BusinessModels.BaseCalculations
 {
    public class DefaultQcRc : IQcRc
    {
-      private readonly Dictionary<int, SteamCharacteristicsDTO> _steam;
+      private Dictionary<int, SteamCharacteristicsDTO> SteamCharacteristics;
+      private ISteamCharacteristicsService steamService;
       public DefaultQcRc(ISteamCharacteristicsService st)
       {
-         _steam = st.GetCharacteristics();
+         steamService = st;
+         SteamCharacteristics = steamService.GetCharacteristics();
+      }
+
+      public ISteamCharacteristicsService SteamCharacteristicsService
+      {
+         get
+         {
+            return steamService;
+         }
+         set
+         {
+            steamService = value;
+            if (SteamCharacteristics == null || SteamCharacteristics.Count == 0)
+               SteamCharacteristics = value.GetCharacteristics();
+         }
       }
       public decimal Calc(decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour = false)
       {
@@ -19,7 +35,7 @@ namespace Business.BusinessModels.BaseCalculations
             return 0;
 
          int tempRounded = Convert.ToInt32(Math.Round(temp, MidpointRounding.ToEven));
-         decimal Fkg = _steam[tempRounded].Fkg;
+         decimal Fkg = SteamCharacteristics[tempRounded].Fkg;
 
          if (!perHour)
          {

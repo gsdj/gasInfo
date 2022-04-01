@@ -69,7 +69,7 @@ namespace Tests.Calculations.Base
          decimal p = 744;
          decimal temp = 31;
 
-         decimal expected = 0.409731518254958m;
+         decimal expected = 0.4097315183m;
          Assert.Equal(expected, target.Calc(pkg, Ppa, p, temp));
       }
       //Cb5
@@ -90,7 +90,7 @@ namespace Tests.Calculations.Base
          decimal temp = 61;
          decimal tempDo = 26;
 
-         decimal expected = 0.323220797535828m;
+         decimal expected = 0.3232207975m;
          Assert.Equal(expected, target.Calc(pkg, Ppa, p, temp, tempDo));
       }
    }

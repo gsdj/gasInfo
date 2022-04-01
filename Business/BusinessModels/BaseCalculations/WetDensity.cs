@@ -38,7 +38,7 @@ namespace Business.BusinessModels.BaseCalculations
          decimal pMax = steam.PKg;
 
          decimal result = dryGas + rH * pMax;
-         return Math.Round(result, 15);
+         return Math.Round(result, 10);
       }
    }
 }

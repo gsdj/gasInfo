@@ -21,7 +21,7 @@ namespace Tests.Calculations.Base
 
          IChargeConsFV<DefaultChargeConsFV> target = new DefaultChargeConsFV(mock.Object);
 
-         decimal expected = 975.1971m;
+         decimal expected = 975.1970592m;
 
          Assert.Equal(expected, target.Calc(cb, coef, FvCoef));
 

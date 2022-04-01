@@ -38,7 +38,7 @@ namespace Business.BusinessModels.BaseCalculations
          decimal pMax = steam.PPa;
 
          decimal result = Calc(pkg, PPa, pOver, temp, rH, pMax);
-         return Math.Round(result, 15);
+         return Math.Round(result, 10);
       }
 
       public decimal Calc(decimal pkg, decimal PPa, decimal pOver, decimal temp, decimal tempDo)
@@ -49,7 +49,7 @@ namespace Business.BusinessModels.BaseCalculations
          decimal rH = SteamCharacteristics[tempDoRounded].Rh;
 
          decimal result = Calc(pkg, PPa, pOver, temp, rH, pMax);
-         return Math.Round(result, 15);
+         return Math.Round(result, 10);
       }
 
       public decimal Calc(decimal pkg, decimal PPa, decimal pOver, decimal temp, decimal rH, decimal pMax)
