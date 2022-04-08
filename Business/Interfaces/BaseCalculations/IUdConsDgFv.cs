@@ -8,6 +8,6 @@ namespace Business.Interfaces.BaseCalculations
 {
    public interface IUdConsDgFv
    {
-      decimal UdConsDgFv(decimal consDg, decimal consPg, decimal consFv);
+      decimal Calc(decimal consDg, decimal consPg, decimal consFv);
    }
 }

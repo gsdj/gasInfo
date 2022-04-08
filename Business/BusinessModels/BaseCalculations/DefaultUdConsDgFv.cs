@@ -4,7 +4,7 @@ namespace Business.BusinessModels.BaseCalculations
 {
    public class DefaultUdConsDgFv : IUdConsDgFv
    {
-      public decimal UdConsDgFv(decimal consDg, decimal consPg, decimal consFv)
+      public decimal Calc(decimal consDg, decimal consPg, decimal consFv)
       {
          if (consDg == 0 || consPg == 0 || consFv == 0)
             return 0;

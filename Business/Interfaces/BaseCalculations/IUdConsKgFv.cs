@@ -8,6 +8,6 @@ namespace Business.Interfaces.BaseCalculations
 {
    public interface IUdConsKgFv
    {
-      decimal UdConsKgFv(decimal consKg, decimal consKgFv);
+      decimal Calc(decimal consKg, decimal consKgFv);
    }
 }

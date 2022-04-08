@@ -25,7 +25,7 @@ namespace Tests.Calculations.Entities
       private ICalculation<ConsumptionKgDTO> ConsKg;
       private Mock<IQcRc> MockQcRc;
       private Mock<IConsGasQn<ConsGasQn4000>> MockConsGasQn;
-      private GasDensityData Data;
+      private Data Data;
       public ConsumtionKgTest()
       {
          MockSteam = new Mock<ISteamCharacteristicsService>();
@@ -55,7 +55,7 @@ namespace Tests.Calculations.Entities
 
          ConsKg = new CalcConsumptionKg(WetGasDensity, MockQcRc.Object, MockConsGasQn.Object);
 
-         Data = new GasDensityData
+         Data = new Data
          {
             CharacteristicsDg = TestHelper.CharacteristicsDgData(),
             CharacteristicsKg = TestHelper.CharacteristicsKgData(),

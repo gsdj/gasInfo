@@ -13,8 +13,7 @@ namespace Business.BusinessModels.DataForCalculations
    }
    public class ChartEnumData : EnumerableData
    {
-      public IEnumerable<ProductionDTO> Production;
-      public IEnumerable<CharacteristicsKgDTO> CharacteristicsKg;
+      public IEnumerable<AmmountCb> AmmountCbs;
       public IEnumerable<QualityDTO> Quality;
       public IEnumerable<OutputKgDTO> OutputKg;
       public IEnumerable<ConsumptionKgDTO> ConsKg;
@@ -27,7 +26,7 @@ namespace Business.BusinessModels.DataForCalculations
    }
    public class ReportKgEnumData : EnumerableData
    {
-      public IEnumerable<AmmountCb> Production;
+      public IEnumerable<AmmountCb> AmmountCbs;
       public IEnumerable<TecDTO> Tec;
    }
 }

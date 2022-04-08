@@ -89,7 +89,7 @@ namespace Business.BusinessModels.Calculations
                Cb8 = ChargeConsFV.Calc(cbs.Cb8, cbs.OutputMultipliers.Cb8, cbs.OutputMultipliers.Fv),
             },
             PkoKpe = (cbs.OutputMultipliers.Peka == 0) ? 0 : Math.Round(cbs.OutputMultipliers.Peka / 100, 4),
-            SpoPerKus = (cbs.OutputMultipliers.Peka == 0) ? 0 : SpoPerKus.Calc(cbs.PKP,cbs.OutputMultipliers.PKP,cbs.OutputMultipliers.Peka),
+            SpoPerKus = (cbs.OutputMultipliers.Peka == 0) ? 0 : SpoPerKus.Calc(cbs.PKP, cbs.OutputMultipliers.PKP, cbs.OutputMultipliers.Peka),
             SvC = cbs.OutputMultipliers.Sv,
             FvC = cbs.OutputMultipliers.Fv,
             KpeC = cbs.OutputMultipliers.Peka,

@@ -10,7 +10,7 @@ namespace Business.Interfaces.Calculations
 {
    public interface ICalcEbChmk
    {
-      IEnumerable<EbChmkDTO> CalcEntities(IEnumerable<AmmountCb> cbs, IEnumerable<DgPgChmkEbDTO> dgpgs);
-      EbChmkDTO CalcEntity(IEnumerable<AmmountCb> cb, DgPgChmkEbDTO dgpg);
+      IEnumerable<EbChmkDTO> CalcEntities(IEnumerable<AmmountCb> cbs, IEnumerable<DgPgChmkEb> dgpgs);
+      EbChmkDTO CalcEntity(IEnumerable<AmmountCb> cb, DgPgChmkEb dgpg);
    }
 }
