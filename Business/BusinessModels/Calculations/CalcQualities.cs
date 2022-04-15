@@ -1,8 +1,6 @@
-﻿using Business.BusinessModels.DataForCalculations;
-using Business.DTO;
-using Business.DTO.Characteristics;
-using Business.Interfaces;
+﻿using Business.DTO;
 using Business.Interfaces.BaseCalculations;
+using Business.Interfaces.BaseCalculations.Density;
 using Business.Interfaces.Calculations;
 using DataAccess.Entities;
 using DataAccess.Entities.Characteristics;

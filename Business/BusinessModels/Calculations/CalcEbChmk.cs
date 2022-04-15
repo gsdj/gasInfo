@@ -1,7 +1,7 @@
-﻿using Business.BusinessModels.BaseCalculations;
+﻿using Business.BusinessModels.BaseCalculations.Consumption;
 using Business.DTO;
 using Business.DTO.Consumption;
-using Business.Interfaces.BaseCalculations;
+using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
 using DataAccess.Entities;
 using System;

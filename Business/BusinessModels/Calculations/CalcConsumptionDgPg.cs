@@ -1,9 +1,11 @@
-﻿using Business.BusinessModels.BaseCalculations;
+﻿using Business.BusinessModels.BaseCalculations.Consumption;
+using Business.BusinessModels.BaseCalculations.Qn;
 using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.DTO.Consumption;
 using Business.DTO.QcRc;
 using Business.Interfaces.BaseCalculations;
+using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
 using System.Collections.Generic;
 using System.Linq;

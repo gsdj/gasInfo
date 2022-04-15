@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Business.Interfaces.BaseCalculations;
 using Business.BusinessModels.BaseCalculations;
+using Business.Interfaces.BaseCalculations.Consumption;
+using Business.BusinessModels.BaseCalculations.Consumption;
 
 namespace Business.BusinessModels.Calculations
 {

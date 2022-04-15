@@ -1,14 +1,14 @@
-﻿using DataAccess.Entities.Characteristics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business.DTO.Consumption;
 
 namespace Business.DTO.Devices
 {
-   public abstract class Device
+   public class Device
    {
+      public Device()
+      {
+         Consumption = new ConsumptionGas();
+      }
+      public ConsumptionGas Consumption { get; set; }
       public int Pressure { get; set; } = 0;
       public decimal Temperature { get; set; } = 0;
    }
