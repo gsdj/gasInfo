@@ -214,7 +214,7 @@ namespace Business.BusinessModels.Calculations
             ConsumptionFvCpsPpk = consFvCpsPpk,
             ConsKgCpsPpkSum = consFvCpsPpk.Pko + consFvCpsPpk.Spo + data1.ConsKgUvtp,
             ConsKgMk = ConsKgCb.Cb5 + ConsKgCb.Cb6 + ConsKgCb.Cb7 + ConsKgCb.Cb8 + consFvCpsPpk.Pko + consFvCpsPpk.Spo + data1.ConsKgUvtp,
-            ConsFvCpsPpkSum = Math.Round((consFvCpsPpk.Pko + consFvCpsPpk.Spo + data1.ConsKgUvtp) / KpeDry * GasConstants.ConsFvC, 10),
+            ConsFvCpsPpkSum = Math.Round((consFvCpsPpk.Pko + consFvCpsPpk.Spo + data1.ConsKgUvtp) / KpeDry * GasConstants.ConsFvC, 10),//UdConsKgCpsPpk
             ConsGsuf = consGsuf,
             TradeGasChmk = Math.Round(tec.ChmkTecSum * 1000, 10),
          };

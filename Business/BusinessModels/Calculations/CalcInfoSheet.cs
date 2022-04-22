@@ -117,7 +117,7 @@ namespace Business.BusinessModels.Calculations
                Pko = Data.ReportKgDTOs.Sum(p => p.ConsumptionCpsPpk.Pko),
                Spo = Data.ReportKgDTOs.Sum(p => p.ConsumptionCpsPpk.Spo),
             },
-            ConsKgUdSvCpsPpk = repKg.ConsKgCpsPpkSum,
+            ConsKgUdSvCpsPpk = repKg.ConsFvCpsPpkSum,
             ConsKgDayCpsPpk = repKg.ConsKgCpsPpkSum,
             ConsKgHourCpsPpk = repKg.ConsKgCpsPpkSum / 24,
             ConsKgMonthCpsPpk = Data.ReportKgDTOs.Sum(p => p.ConsKgCpsPpkSum),

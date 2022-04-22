@@ -1,10 +1,12 @@
 ﻿using Business.BusinessModels.BaseCalculations.Qn;
+using Business.BusinessModels.Calculations.ConsGasQn;
 using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.DTO.Consumption;
 using Business.DTO.QcRc;
 using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
+using Business.Interfaces.Calculations.ConsGasQn;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,12 +18,16 @@ namespace Business.BusinessModels.Calculations
       private IConsGasQn<ConsGasQn4000> ConsGasQn;
       private ICalcQcRc<QcRcKc2> QcRcKc2;
       private ICalcQcRc<QcRcCpsPpk> QcRcCpsPpk;
-      public CalcConsumptionKg(ICalculation<DensityDTO> wetGas, IConsGasQn<ConsGasQn4000> gasQn, ICalcQcRc<QcRcKc2> qcrcKc2, ICalcQcRc<QcRcCpsPpk> qcrcCpsPpk)
+      private ICalcConsGasQnKc2<CalcConsQnKc2> Kc2Qn;
+      private ICalcConsGasQnCpsPpk<CalcConsQnCpsPpk> CpsPpkQn;
+      public CalcConsumptionKg(ICalculation<DensityDTO> wetGas, ICalcConsGasQnKc2<CalcConsQnKc2> kc2Qn, ICalcConsGasQnCpsPpk<CalcConsQnCpsPpk> cpsppkQn, IConsGasQn<ConsGasQn4000> gasQn, ICalcQcRc<QcRcKc2> qcrcKc2, ICalcQcRc<QcRcCpsPpk> qcrcCpsPpk)
       {
          WetGas = wetGas;
          QcRcKc2 = qcrcKc2;
          QcRcCpsPpk = qcrcCpsPpk;
          ConsGasQn = gasQn;
+         Kc2Qn = kc2Qn;
+         CpsPpkQn = cpsppkQn;
       }
 
       public IEnumerable<ConsumptionKgDTO> CalcEntities(EnumerableData data)
@@ -73,6 +79,13 @@ namespace Business.BusinessModels.Calculations
             Cb7 = ConsGasQn.Calc(qcrcKc2.Cb7.Value, charKg.Kc2.Characteristics.Qn),
             Cb8 = ConsGasQn.Calc(qcrcKc2.Cb8.Value, charKg.Kc2.Characteristics.Qn),
          };
+         //---v2---
+         var qcrcKc2_2 = Kc2Qn.CalcQcRcKc2.Calc(QcRcKgData);
+         var concCb_2 = Kc2Qn.Calc(qcrcKc2_2, charKg);
+
+         var qcrcCpsPpk_2 = CpsPpkQn.CalcQcRcCpsPpk.Calc(QcRcKgData);
+         var consCpsPpk_2 = CpsPpkQn.Calc(qcrcCpsPpk_2, charKg);
+         //--------
 
          var consCpsPpk = new ConsumptionCpsPpk
          {
