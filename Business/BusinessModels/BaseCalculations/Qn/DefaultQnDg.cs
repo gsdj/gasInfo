@@ -1,4 +1,5 @@
-﻿using Business.Interfaces.BaseCalculations;
+﻿using Business.BusinessModels.Constants;
+using Business.Interfaces.BaseCalculations;
 using DataAccess.Entities.Characteristics;
 
 namespace Business.BusinessModels.BaseCalculations.Qn
@@ -12,7 +13,8 @@ namespace Business.BusinessModels.BaseCalculations.Qn
       /// <returns></returns>
       public decimal Calc(DG dg)
       {
-         return (0.01m * (dg.H2 * 2400 + dg.CO * 2810));
+         //return (0.01m * (dg.H2 * 2400 + dg.CO * 2810));
+         return (0.01m * (dg.H2 * QGasComponents.H2 + dg.CO * QGasComponents.CO));
       }
    }
 }
