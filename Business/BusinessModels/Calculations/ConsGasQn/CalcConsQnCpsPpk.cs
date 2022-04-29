@@ -2,6 +2,7 @@
 using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.DTO.Consumption;
+using Business.DTO.General;
 using Business.DTO.QcRc;
 using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
@@ -12,23 +13,28 @@ namespace Business.BusinessModels.Calculations.ConsGasQn
    public class CalcConsQnCpsPpk : ICalcConsGasQnCpsPpk<CalcConsQnCpsPpk>
    {
       private IConsGasQn<ConsGasQn4000> ConsGasQn;
-      public CalcConsQnCpsPpk(ICalcQcRc<QcRcCpsPpk> qcrc, IConsGasQn<ConsGasQn4000> consGasQn)
+      public CalcConsQnCpsPpk(ICalcQcRc<CpsPpkQcRc> qcrc, IConsGasQn<ConsGasQn4000> consGasQn)
       {
          CalcQcRcCpsPpk = qcrc;
          ConsGasQn = consGasQn;
       }
-      public ICalcQcRc<QcRcCpsPpk> CalcQcRcCpsPpk { get; private set; }
+      public ICalcQcRc<CpsPpkQcRc> CalcQcRcCpsPpk { get; private set; }
 
-      public ConsumptionCpsPpk Calc(QcRcCpsPpk qcrc, CharacteristicsKgDTO cGas)
+      public CpsPpkConsumption Calc(CpsPpkQcRc qcrc, CharacteristicsKgDTO cGas)
       {
-         return new ConsumptionCpsPpk
+         return new CpsPpkConsumption
          {
-            Pko = ConsGasQn.Calc(qcrc.Pko.Value + qcrc.Uvtp, cGas.Kc1.Characteristics.Qn),
+            Pko = 
+            {
+               Pkp = ConsGasQn.Calc(qcrc.Pko.Pkp.Value, cGas.Kc1.Characteristics.Qn),
+               Uvtp = ConsGasQn.Calc(qcrc.Pko.Uvtp, cGas.Kc1.Characteristics.Qn),
+            },
+            //Pko = ConsGasQn.Calc(qcrc.Pko.Value + qcrc.Uvtp, cGas.Kc1.Characteristics.Qn),
             Spo = ConsGasQn.Calc(qcrc.Spo, cGas.Kc1.Characteristics.Qn),
          };
       }
 
-      public ConsumptionCpsPpk Calc(QcRcData data)
+      public CpsPpkConsumption Calc(QcRcData data)
       {
          var d1 = data as QcRcKgData;
          var charKg = d1.CharacteristicsKg;
