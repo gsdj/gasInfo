@@ -1,6 +1,5 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO.General;
-using Business.DTO.QcRc;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.Calculations;
 

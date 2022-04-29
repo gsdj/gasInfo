@@ -23,8 +23,8 @@ namespace Business.BusinessModels.Calculations.ConsGasQn
       {
          return new ConsumptionKc2<decimal>
          {
-            Cb5 = ConsGasQn.Calc(qcrc.Cb5, cGas.Kc1.Characteristics.Qn),
-            Cb6 = ConsGasQn.Calc(qcrc.Cb6, cGas.Kc1.Characteristics.Qn),
+            Cb5 = ConsGasQn.Calc(qcrc.Cb5.Value, cGas.Kc1.Characteristics.Qn),
+            Cb6 = ConsGasQn.Calc(qcrc.Cb6.Value, cGas.Kc1.Characteristics.Qn),
             Cb7 = ConsGasQn.Calc(qcrc.Cb7.Value, cGas.Kc2.Characteristics.Qn),
             Cb8 = ConsGasQn.Calc(qcrc.Cb8.Value, cGas.Kc2.Characteristics.Qn),
          };

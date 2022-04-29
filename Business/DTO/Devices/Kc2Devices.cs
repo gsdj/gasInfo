@@ -5,15 +5,15 @@ namespace Business.DTO.Devices
    {
       public Kc2Devices()
             {
-               Cb5 = new Kc2Device();
-               Cb6 = new Kc2Device();
-               Cb7 = new Kc2Device();
-               Cb8 = new Kc2Device();
+               Cb1 = new Kc2Device();
+               Cb2 = new Kc2Device();
+               Cb3 = new Kc2Device();
+               Cb4 = new Kc2Device();
             }
-      public Kc2Device Cb5 { get; set; }
-      public Kc2Device Cb6 { get; set; }
-      public Kc2Device Cb7 { get; set; }
-      public Kc2Device Cb8 { get; set; }
+      public Kc2Device Cb1 { get; set; }
+      public Kc2Device Cb2 { get; set; }
+      public Kc2Device Cb3 { get; set; }
+      public Kc2Device Cb4 { get; set; }
    }
 
    public class Kc2Device : Device

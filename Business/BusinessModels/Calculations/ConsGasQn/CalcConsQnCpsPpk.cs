@@ -20,9 +20,9 @@ namespace Business.BusinessModels.Calculations.ConsGasQn
       }
       public ICalcQcRc<CpsPpkQcRc> CalcQcRcCpsPpk { get; private set; }
 
-      public CpsPpkConsumption Calc(CpsPpkQcRc qcrc, CharacteristicsKgDTO cGas)
+      public CpsPpk Calc(CpsPpkQcRc qcrc, CharacteristicsKgDTO cGas)
       {
-         return new CpsPpkConsumption
+         return new CpsPpk
          {
             Pko = 
             {
@@ -34,7 +34,7 @@ namespace Business.BusinessModels.Calculations.ConsGasQn
          };
       }
 
-      public CpsPpkConsumption Calc(QcRcData data)
+      public CpsPpk Calc(QcRcData data)
       {
          var d1 = data as QcRcKgData;
          var charKg = d1.CharacteristicsKg;

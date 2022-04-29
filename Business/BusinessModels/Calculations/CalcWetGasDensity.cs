@@ -29,9 +29,9 @@ namespace Business.BusinessModels.Calculations
             Kc2 =
             {
                Cb1 = DryDensity.Calc(kg.Kc1.Characteristics.Density, pressure.ValuePa, kip.Kc2.Cb5.Pressure, kip.Kc2.Cb5.Temperature, kip.Kc2.Cb5.TempBeforeHeating),
-               Cb2 = DryDensity.Calc(kg.Kc1.Characteristics.Density, pressure.ValuePa, kip.Kc2.Cb6.Pressure, kip.Kc2.Cb6.Temperature, kip.Kc2.Cb6.TempBeforeHeating),
-               Cb3 = DryDensity.Calc(kg.Kc2.Characteristics.Density, pressure.ValuePa, kip.Kc2.Cb7.Pressure, kip.Kc2.Cb7.Temperature, kip.Kc2.Cb7.TempBeforeHeating),
-               Cb4 = DryDensity.Calc(kg.Kc2.Characteristics.Density, pressure.ValuePa, kip.Kc2.Cb8.Pressure, kip.Kc2.Cb8.Temperature, kip.Kc2.Cb8.TempBeforeHeating),
+               Cb2 = DryDensity.Calc(kg.Kc1.Characteristics.Density, pressure.ValuePa, kip.Kc2.Cb2.Pressure, kip.Kc2.Cb2.Temperature, kip.Kc2.Cb2.TempBeforeHeating),
+               Cb3 = DryDensity.Calc(kg.Kc2.Characteristics.Density, pressure.ValuePa, kip.Kc2.Cb3.Pressure, kip.Kc2.Cb3.Temperature, kip.Kc2.Cb3.TempBeforeHeating),
+               Cb4 = DryDensity.Calc(kg.Kc2.Characteristics.Density, pressure.ValuePa, kip.Kc2.Cb4.Pressure, kip.Kc2.Cb4.Temperature, kip.Kc2.Cb4.TempBeforeHeating),
             },
             CpsPpk =
             {
@@ -68,9 +68,9 @@ namespace Business.BusinessModels.Calculations
             Kc2 =
             {
                Cb1 = WetDensity.Calc(dryGas.Kc2.Cb1, kip.Kc2.Cb5.Temperature),
-               Cb2 = WetDensity.Calc(dryGas.Kc2.Cb2, kip.Kc2.Cb6.Temperature),
-               Cb3 = WetDensity.Calc(dryGas.Kc2.Cb3, kip.Kc2.Cb7.Temperature),
-               Cb4 = WetDensity.Calc(dryGas.Kc2.Cb4, kip.Kc2.Cb8.Temperature),
+               Cb2 = WetDensity.Calc(dryGas.Kc2.Cb2, kip.Kc2.Cb2.Temperature),
+               Cb3 = WetDensity.Calc(dryGas.Kc2.Cb3, kip.Kc2.Cb3.Temperature),
+               Cb4 = WetDensity.Calc(dryGas.Kc2.Cb4, kip.Kc2.Cb4.Temperature),
             },
             CpsPpk =
             {

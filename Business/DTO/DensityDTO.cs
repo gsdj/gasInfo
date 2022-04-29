@@ -1,9 +1,5 @@
 ﻿using Business.DTO.General;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.DTO
 {
@@ -12,7 +8,7 @@ namespace Business.DTO
       public DateTime Date { get; set; }
       public Cu Cu { get; set; }
       public CbKc Kc2 { get; set; }
-      public CpsPpkConsumption CpsPpk { get; set; }
+      public CpsPpk CpsPpk { get; set; }
       //public decimal Cu1 { get; set; }
       //public decimal Cu2 { get; set; }
       //public decimal Cb5 { get; set; }

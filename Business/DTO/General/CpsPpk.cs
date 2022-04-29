@@ -3,9 +3,9 @@ using Business.DTO.Consumption;
 
 namespace Business.DTO.General
 {
-   public class CpsPpkConsumption
+   public class CpsPpk
    {
-      public CpsPpkConsumption()
+      public CpsPpk()
       {
          Pko = new PkoConsumption();
       }
