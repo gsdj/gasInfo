@@ -1,7 +1,7 @@
 ﻿using Business.BusinessModels.BaseCalculations.Qn;
 using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
-using Business.DTO.Consumption;
+using Business.DTO.General;
 using Business.DTO.QcRc;
 using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
@@ -19,9 +19,9 @@ namespace Business.BusinessModels.Calculations.ConsGasQn
       }
       public ICalcQcRc<QcRcKc1> CalcQcRcKc1 { get; private set; }
 
-      public ConsumptionKc1<decimal> Calc(QcRcKc1 qcrc, CharacteristicsDgDTO cGas)
+      public CbKc Calc(QcRcKc1 qcrc, CharacteristicsDgDTO cGas)
       {
-         return new ConsumptionKc1<decimal>
+         return new CbKc
          {
             Cb1 = ConsGasQn.Calc(qcrc.Cb1.Value, cGas.CharacteristicsAVG.Qn),
             Cb2 = ConsGasQn.Calc(qcrc.Cb2.Value, cGas.CharacteristicsAVG.Qn),
@@ -30,7 +30,7 @@ namespace Business.BusinessModels.Calculations.ConsGasQn
          };
       }
 
-      public ConsumptionKc1<decimal> Calc(QcRcData data)
+      public CbKc Calc(QcRcData data)
       {
          var d1 = data as QcRcDgData;
          var charDg = d1.CharacteristicsDg;
