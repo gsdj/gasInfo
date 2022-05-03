@@ -1,6 +1,6 @@
 ﻿using Business.BusinessModels.BaseCalculations.Consumption;
 using Business.DTO;
-using Business.DTO.Consumption;
+using Business.DTO.General;
 using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
 using DataAccess.Entities;
@@ -37,21 +37,21 @@ namespace Business.BusinessModels.Calculations
       {
          DgPgChmkEbDTO dgPgChmkEbDTO = DgPgChmkEb.CalcEntity(dgpg);
 
-         var ConsumptionFv = cb.Select(p => new 
+         var ConsumptionFv = cb.Select(p => new CbAll
          { 
-            Kc1 = new ConsumptionKc1<decimal>
+            Kc1 =
             {
                Cb1 = ChargeConsFV.Calc(p.Cb1, p.OutputMultipliers.Cb1, p.OutputMultipliers.Fv),
                Cb2 = ChargeConsFV.Calc(p.Cb2, p.OutputMultipliers.Cb2, p.OutputMultipliers.Fv),
                Cb3 = ChargeConsFV.Calc(p.Cb3, p.OutputMultipliers.Cb3, p.OutputMultipliers.Fv),
                Cb4 = ChargeConsFV.Calc(p.Cb4, p.OutputMultipliers.Cb4, p.OutputMultipliers.Fv),
             },
-            Kc2 = new ConsumptionKc2<decimal>
+            Kc2 =
             {
-               Cb5 = ChargeConsFV.Calc(p.Cb5, p.OutputMultipliers.Cb5, p.OutputMultipliers.Fv),
-               Cb6 = ChargeConsFV.Calc(p.Cb6, p.OutputMultipliers.Cb6, p.OutputMultipliers.Fv),
-               Cb7 = ChargeConsFV.Calc(p.Cb7, p.OutputMultipliers.Cb7, p.OutputMultipliers.Fv),
-               Cb8 = ChargeConsFV.Calc(p.Cb8, p.OutputMultipliers.Cb8, p.OutputMultipliers.Fv),
+               Cb1 = ChargeConsFV.Calc(p.Cb5, p.OutputMultipliers.Cb5, p.OutputMultipliers.Fv),
+               Cb2 = ChargeConsFV.Calc(p.Cb6, p.OutputMultipliers.Cb6, p.OutputMultipliers.Fv),
+               Cb3 = ChargeConsFV.Calc(p.Cb7, p.OutputMultipliers.Cb7, p.OutputMultipliers.Fv),
+               Cb4 = ChargeConsFV.Calc(p.Cb8, p.OutputMultipliers.Cb8, p.OutputMultipliers.Fv),
             },
          });
 
@@ -60,7 +60,7 @@ namespace Business.BusinessModels.Calculations
          decimal sumCb3 = ConsumptionFv.Sum(p => p.Kc1.Cb3);
          decimal sumCb4 = ConsumptionFv.Sum(p => p.Kc1.Cb4);
          decimal sumKc1 = sumCb1 + sumCb2 + sumCb3 + sumCb4;
-         decimal sumGru = sumKc1 + ConsumptionFv.Sum(p => p.Kc2.Cb5 + p.Kc2.Cb6 + p.Kc2.Cb7 + p.Kc2.Cb8);
+         decimal sumGru = sumKc1 + ConsumptionFv.Sum(p => p.Kc2.Cb1 + p.Kc2.Cb2 + p.Kc2.Cb3 + p.Kc2.Cb4);
 
          return new EbChmkDTO
          {
