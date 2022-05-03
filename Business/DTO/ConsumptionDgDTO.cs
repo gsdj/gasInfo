@@ -1,10 +1,6 @@
-﻿using Business.DTO.Consumption;
+﻿using Business.DTO.General;
 using Business.DTO.QcRc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.DTO
 {
@@ -12,7 +8,7 @@ namespace Business.DTO
    {
       public DateTime Date { get; set; }
       public QcRcKc1 QcRc { get; set; }
-      public ConsumptionKc1<decimal> ConsumptionDg { get; set; }
+      public CbKc ConsumptionDg { get; set; }
       public decimal ConsumptionDgMk { get; set; }
    }
 }

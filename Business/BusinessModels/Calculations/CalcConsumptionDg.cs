@@ -1,10 +1,7 @@
-﻿using Business.BusinessModels.BaseCalculations.Qn;
-using Business.BusinessModels.DataForCalculations;
+﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
-using Business.DTO.Consumption;
-using Business.DTO.QcRc;
-using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
+using Business.Interfaces.Calculations.ConsGasQn;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,13 +10,11 @@ namespace Business.BusinessModels.Calculations
    public class CalcConsumptionDg : ICalculation<ConsumptionDgDTO>, ICalculations<ConsumptionDgDTO>
    {
       private ICalculation<DensityDTO> WetGas;
-      private IConsGasQn<ConsGasQn1000> ConsGasQn;
-      private ICalcQcRc<QcRcKc1> QcRcKc1;
-      public CalcConsumptionDg(ICalculation<DensityDTO> wetGas, ICalcQcRc<QcRcKc1> qcrcKc1, IConsGasQn<ConsGasQn1000> consGasQn)
+      private ICalcConsGasQnKc1 ConsGasQn;
+      public CalcConsumptionDg(ICalculation<DensityDTO> wetGas, ICalcConsGasQnKc1 consQn)
       {
          WetGas = wetGas;
-         QcRcKc1 = qcrcKc1;
-         ConsGasQn = consGasQn;
+         ConsGasQn = consQn;
       }
       public IEnumerable<ConsumptionDgDTO> CalcEntities(EnumerableData data)
       {
@@ -58,22 +53,15 @@ namespace Business.BusinessModels.Calculations
             WetGas = wetGas,
          };
 
-         var qcrcKc1 = QcRcKc1.Calc(QcRcDgData);
-
-         var cons = new ConsumptionKc1<decimal>
-         {
-            Cb1 = ConsGasQn.Calc(qcrcKc1.Cb1, charDg.CharacteristicsAVG.Qn),
-            Cb2 = ConsGasQn.Calc(qcrcKc1.Cb1, charDg.CharacteristicsAVG.Qn),
-            Cb3 = ConsGasQn.Calc(qcrcKc1.Cb1, charDg.CharacteristicsAVG.Qn),
-            Cb4 = ConsGasQn.Calc(qcrcKc1.Cb1, charDg.CharacteristicsAVG.Qn),
-         };
+         var qcrcKc1 = ConsGasQn.CalcQcRcKc1.Calc(QcRcDgData);
+         var consKc1 = ConsGasQn.Calc(qcrcKc1, charDg);
 
          return new ConsumptionDgDTO
          {
             Date = wetGas.Date,
             QcRc = qcrcKc1,
-            ConsumptionDg = cons,
-            ConsumptionDgMk = cons.Cb1 + cons.Cb2 + cons.Cb3 + cons.Cb4,
+            ConsumptionDg = consKc1,
+            ConsumptionDgMk = consKc1.Cb1 + consKc1.Cb2 + consKc1.Cb3 + consKc1.Cb4,
          };
       }
    }
