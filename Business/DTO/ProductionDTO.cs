@@ -1,4 +1,5 @@
 ﻿using Business.DTO.Consumption;
+using Business.DTO.General;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,7 @@ namespace Business.DTO
       public ProductionDTO()
       {
          AmmountCb = new AmmountCb<int>();
-         ConsumptionFvKc1 = new ConsumptionKc1<decimal>();
-         ConsumptionFvKc2 = new ConsumptionKc2<decimal>();
+         ConsumptionFv = new CbAll();
       }
       //Коэффициенты/выхода
       public decimal SvC { get; set; }
@@ -46,8 +46,7 @@ namespace Business.DTO
       public decimal TnConsDry { get; set; }
 
       //Расход шихты в ф.в.
-      public ConsumptionKc1<decimal> ConsumptionFvKc1 { get; set; }
-      public ConsumptionKc2<decimal> ConsumptionFvKc2 { get; set; }
+      public CbAll ConsumptionFv { get; set; }
 
       //Расход шихты в с.в.
       public decimal Cb16Sv { get; set; }
