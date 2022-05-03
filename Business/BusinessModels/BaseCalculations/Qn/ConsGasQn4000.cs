@@ -1,4 +1,4 @@
-﻿using Business.Interfaces.BaseCalculations;
+﻿using Business.Interfaces.BaseCalculations.Consumption;
 using System;
 
 namespace Business.BusinessModels.BaseCalculations.Qn
