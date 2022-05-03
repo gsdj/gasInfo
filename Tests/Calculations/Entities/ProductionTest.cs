@@ -1,10 +1,10 @@
 ﻿using Business.BusinessModels.BaseCalculations;
+using Business.BusinessModels.BaseCalculations.Consumption;
 using Business.BusinessModels.Calculations;
 using Business.DTO;
-using Business.DTO.Consumption;
 using Business.Interfaces.BaseCalculations;
+using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
-using DataAccess.Entities;
 using Newtonsoft.Json;
 using System;
 using Xunit;
@@ -49,19 +49,22 @@ namespace Tests.Calculations.Entities
             Cb16ConsDry = 5020.5547m,
             Cb78ConsDry = 1593.1739m,
             TnConsDry = 6613.7287m,
-            ConsumptionFvKc1 = new ConsumptionKc1<decimal>
+            ConsumptionFv =
             {
-               Cb1 = 1052.5086000m,
-               Cb2 = 1387.5246000m,
-               Cb3 = 0.00000m,
-               Cb4 = 1324.5540000m,
-            },
-            ConsumptionFvKc2 = new ConsumptionKc2<decimal>
-            {
-               Cb5 = 826.9932000m,
-               Cb6 = 826.9932000m,
-               Cb7 = 809.7641750m,
-               Cb8 = 909.7132000m,
+               Kc1 =
+               {
+                  Cb1 = 1052.5086000m,
+                  Cb2 = 1387.5246000m,
+                  Cb3 = 0.00000m,
+                  Cb4 = 1324.5540000m,
+               },
+               Kc2 =
+               {
+                  Cb1 = 826.9932000m,
+                  Cb2 = 826.9932000m,
+                  Cb3 = 809.7641750m,
+                  Cb4 = 909.7132000m,
+               },
             },
             PkoKpe = 4.2m,
             SpoPerKus = 24.3494857143m,
