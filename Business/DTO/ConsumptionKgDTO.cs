@@ -1,4 +1,5 @@
 ﻿using Business.DTO.Consumption;
+using Business.DTO.General;
 using Business.DTO.QcRc;
 using System;
 using System.Collections.Generic;
@@ -13,14 +14,14 @@ namespace Business.DTO
       public ConsumptionKgDTO()
       {
          QcRcCb = new QcRcKc2();
-         ConsumptionCb = new ConsumptionKc2<decimal>();
-         QcRcCpsPpk = new QcRcCpsPpk();
+         ConsumptionCb = new CbKc();
+         QcRcCpsPpk = new CpsPpkQcRc();
          ConsumptionCpsPpk = new ConsumptionCpsPpk();
       }
       public DateTime Date { get; set; }
       public QcRcKc2 QcRcCb { get; set; }
-      public ConsumptionKc2<decimal> ConsumptionCb { get; set; }
-      public QcRcCpsPpk QcRcCpsPpk { get; set; }
+      public CbKc ConsumptionCb { get; set; }
+      public CpsPpkQcRc QcRcCpsPpk { get; set; }
       public ConsumptionCpsPpk ConsumptionCpsPpk { get; set; }
       public decimal QcRcGsuf { get; set; }
       public decimal ConsumptionGsuf { get; set; }
