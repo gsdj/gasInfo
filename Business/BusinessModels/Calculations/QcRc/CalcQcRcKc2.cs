@@ -23,20 +23,20 @@ namespace Business.BusinessModels.Calculations.QcRc
          return new QcRcKc2
          {
             //Cb5 = QcRc.Calc(kip.Cb5.Consumption, wetGas.Cb5, kip.Cb5.TempBeforeHeating, charKg.Kc1.Characteristics.Density, true),
-            Cb5 =
+            Cb1 =
                {
                   Value = QcRc.Calc(kip.Kc2.Cb1.Consumption.Value, wetGas.Kc2.Cb1, kip.Kc2.Cb1.TempBeforeHeating, charKg.Kc1.Characteristics.Density, true),
                },
-            Cb6 =
+            Cb2 =
                {
                   Value = QcRc.Calc(kip.Kc2.Cb2.Consumption.Value, wetGas.Kc2.Cb2, kip.Kc2.Cb2.TempBeforeHeating, charKg.Kc1.Characteristics.Density, true),
                },
-            Cb7 =
+            Cb3 =
                {
                   Ms = QcRc.Calc(kip.Kc2.Cb3.Consumption.Ms, wetGas.Kc2.Cb3, kip.Kc2.Cb3.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
                   Ks = QcRc.Calc(kip.Kc2.Cb3.Consumption.Ks, wetGas.Kc2.Cb3, kip.Kc2.Cb3.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
                },
-            Cb8 =
+            Cb4 =
                {
                   Ms = QcRc.Calc(kip.Kc2.Cb4.Consumption.Ms, wetGas.Kc2.Cb4, kip.Kc2.Cb4.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
                   Ks = QcRc.Calc(kip.Kc2.Cb4.Consumption.Ks, wetGas.Kc2.Cb4, kip.Kc2.Cb4.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
