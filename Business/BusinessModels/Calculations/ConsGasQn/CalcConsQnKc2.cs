@@ -9,7 +9,7 @@ using Business.Interfaces.Calculations.ConsGasQn;
 
 namespace Business.BusinessModels.Calculations.ConsGasQn
 {
-   public class CalcConsQnKc2 : ICalcConsGasQnKc2<CalcConsQnKc2>
+   public class CalcConsQnKc2 : ICalcConsGasQnKc2
    {
       private IConsGasQn<ConsGasQn4000> ConsGasQn;
       public CalcConsQnKc2(ICalcQcRc<QcRcKc2> qcrc, IConsGasQn<ConsGasQn4000> consGasQn)
@@ -23,10 +23,10 @@ namespace Business.BusinessModels.Calculations.ConsGasQn
       {
          return new ConsumptionKc2<decimal>
          {
-            Cb5 = ConsGasQn.Calc(qcrc.Cb5.Value, cGas.Kc1.Characteristics.Qn),
-            Cb6 = ConsGasQn.Calc(qcrc.Cb6.Value, cGas.Kc1.Characteristics.Qn),
-            Cb7 = ConsGasQn.Calc(qcrc.Cb7.Value, cGas.Kc2.Characteristics.Qn),
-            Cb8 = ConsGasQn.Calc(qcrc.Cb8.Value, cGas.Kc2.Characteristics.Qn),
+            Cb5 = ConsGasQn.Calc(qcrc.Cb1.Value, cGas.Kc1.Characteristics.Qn),
+            Cb6 = ConsGasQn.Calc(qcrc.Cb2.Value, cGas.Kc1.Characteristics.Qn),
+            Cb7 = ConsGasQn.Calc(qcrc.Cb3.Value, cGas.Kc2.Characteristics.Qn),
+            Cb8 = ConsGasQn.Calc(qcrc.Cb4.Value, cGas.Kc2.Characteristics.Qn),
          };
       }
 

@@ -9,7 +9,7 @@ using Business.Interfaces.Calculations.ConsGasQn;
 
 namespace Business.BusinessModels.Calculations.ConsGasQn
 {
-   public class CalcConsQnKc1 : ICalcConsGasQnKc1<CalcConsQnKc1>
+   public class CalcConsQnKc1 : ICalcConsGasQnKc1
    {
       private IConsGasQn<ConsGasQn1000> ConsGasQn;
       public CalcConsQnKc1(ICalcQcRc<QcRcKc1> qcrc, IConsGasQn<ConsGasQn1000> consGasQn)
