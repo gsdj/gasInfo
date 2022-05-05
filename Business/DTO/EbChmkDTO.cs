@@ -1,5 +1,4 @@
-﻿using Business.DTO.Consumption;
-using Business.DTO.General;
+﻿using Business.DTO.General;
 using System;
 
 namespace Business.DTO
@@ -11,8 +10,8 @@ namespace Business.DTO
       public decimal ConsDgKc1Sum { get; set; }
       public CbKc UdConsumptionKc1 { get; set; }
       public int UdConsKc1Sum { get; set; }
-      public ConsumptionGru<decimal> ConsumptionGru { get; set; }
+      public Gru ConsumptionGru { get; set; }
       public decimal ConsPgUpc { get; set; }
-      public ConsumptionGru<decimal> UdConsumptionGru { get; set; }
+      public Gru UdConsumptionGru { get; set; }
    }
 }

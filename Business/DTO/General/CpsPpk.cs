@@ -1,5 +1,4 @@
-﻿
-using Business.DTO.Consumption;
+﻿using Business.DTO.Consumption;
 
 namespace Business.DTO.General
 {

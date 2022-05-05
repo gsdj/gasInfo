@@ -1,11 +1,6 @@
-﻿using Business.DTO.Consumption;
-using Business.DTO.General;
+﻿using Business.DTO.General;
 using Business.DTO.QcRc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.DTO
 {

@@ -102,7 +102,7 @@ namespace Business.BusinessModels.Calculations
 
          var consKc1 = ConsGasQn.Calc(qcrcKc1, charDg);
 
-         var consPgGru = new ConsumptionGru<decimal>
+         var consPgGru = new Gru
          {
             Gru1 = ConsPg.Calc(kip.Gru1.Consumption.Value, data.Pressure.ValuePa, kip.Gru1.Pressure, kip.Gru1.Temperature),
             Gru2 = ConsPg.Calc(kip.Gru2.Consumption.Value, data.Pressure.ValuePa, kip.Gru2.Pressure, kip.Gru2.Temperature),
@@ -116,7 +116,7 @@ namespace Business.BusinessModels.Calculations
             Cb4 = ConsPgCb.Calc(consKc1.Cb4, data1.ConsPgKc1, consKc1.Cb1 + consKc1.Cb2 + consKc1.Cb3 + consKc1.Cb4),
          };
 
-         var udConsPgGru = new ConsumptionGru<decimal>
+         var udConsPgGru = new Gru
          {
             Gru1 = consPgGru.Gru1 / data1.CbsConsFvSum / 0.4m,
             Gru2 = consPgGru.Gru2 / data1.CbsConsFvSum / 0.6m,

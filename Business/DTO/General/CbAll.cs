@@ -1,5 +1,4 @@
-﻿
-namespace Business.DTO.General
+﻿namespace Business.DTO.General
 {
    public class CbAll
    {

@@ -1,5 +1,4 @@
-﻿
-namespace Business.DTO.Devices
+﻿namespace Business.DTO.Devices
 {
    public class CpsPpkDevices
    {
