@@ -1,11 +1,9 @@
-﻿using Business.BusinessModels.BaseCalculations;
-using Business.DTO.Characteristics.CharacteristicsGas;
+﻿using Business.BusinessModels.BaseCalculations.Density;
+using Business.BusinessModels.BaseCalculations.Qn;
 using Business.Interfaces.BaseCalculations;
+using Business.Interfaces.BaseCalculations.Density;
 using DataAccess.Entities;
 using DataAccess.Entities.Characteristics;
-using Moq;
-using Newtonsoft.Json;
-using System;
 using Xunit;
 
 namespace Tests.Calculations.Base

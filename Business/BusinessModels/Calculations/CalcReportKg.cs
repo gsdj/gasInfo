@@ -100,23 +100,6 @@ namespace Business.BusinessModels.Calculations
          var consCpsPpk_2 = CpsPpkQn.Calc(qcrcCpsPpk_2, charKg);
          //--------------
 
-         //var qcrcKc2 = QcRcKc2.Calc(QcRcKgData);
-         //var qcrcCpsPpk = QcRcCpsPpk.Calc(QcRcKgData);
-
-         //var ConsKgCb = new CbKc
-         //{
-         //   Cb1 = ConsGasQn.Calc(qcrcKc2.Cb1.Value, charKg.Kc1.Characteristics.Qn),
-         //   Cb2 = ConsGasQn.Calc(qcrcKc2.Cb2.Value, charKg.Kc1.Characteristics.Qn),
-         //   Cb3 = ConsGasQn.Calc(qcrcKc2.Cb3.Value, charKg.Kc2.Characteristics.Qn),
-         //   Cb4 = ConsGasQn.Calc(qcrcKc2.Cb4.Value, charKg.Kc2.Characteristics.Qn),
-         //};
-
-         //var consCpsPpk = new ConsumptionCpsPpk
-         //{
-         //   Pko = ConsGasQn.Calc(qcrcCpsPpk.Pko.Value + qcrcCpsPpk.Uvtp, charKg.Kc1.Characteristics.Qn),
-         //   Spo = ConsGasQn.Calc(qcrcCpsPpk.Spo, charKg.Kc1.Characteristics.Qn),
-         //};
-
          var ConsumptionFvKc2 = new CbKc
          {
             Cb1 = ChargeConsFV.Calc(cbs.Cb5, cbs.OutputMultipliers.Cb5, cbs.OutputMultipliers.Fv),
@@ -124,20 +107,6 @@ namespace Business.BusinessModels.Calculations
             Cb3 = ChargeConsFV.Calc(cbs.Cb7, cbs.OutputMultipliers.Cb7, cbs.OutputMultipliers.Fv),
             Cb4 = ChargeConsFV.Calc(cbs.Cb8, cbs.OutputMultipliers.Cb8, cbs.OutputMultipliers.Fv),
          };
-
-         //var consKc2 = new ConsumptionKc2<decimal>
-         //{
-         //   Cb5 = Math.Round(consKg.ConsumptionCb.Cb5),
-         //   Cb6 = Math.Round(consKg.ConsumptionCb.Cb6),
-         //   Cb7 = Math.Round(consKg.ConsumptionCb.Cb7),
-         //   Cb8 = Math.Round(consKg.ConsumptionCb.Cb8),
-         //};
-
-         //var consCpsPpk = new ConsumptionCpsPpk
-         //{
-         //   Spo = Math.Round(consKg.ConsumptionCpsPpk.Spo),
-         //   Pko = Math.Round(consKg.QcRcCpsPpk.Pko.Value * charKg.Kc1.Characteristics.Qn / 4000),
-         //};
 
          var consFvKc2 = new CbKc
          {
@@ -169,8 +138,6 @@ namespace Business.BusinessModels.Calculations
          var data1 = new
          {
             SumKgCbsSpoGsuf = consKgCb_2.Cb1 + consKgCb_2.Cb2 + consKgCb_2.Cb3 + consKgCb_2.Cb4 + consCpsPpk_2.Spo + consGsuf,
-            //ConsKgUvtp = consCpsPpk_2.Pko.Uvtp /*qcrcCpsPpk_2.Pko.Uvtp == 0 || charKg.Kc1.Characteristics.Qn == 0 ? 0 :
-             //           Math.Round(qcrcCpsPpk_2.Pko.Uvtp * charKg.Kc1.Characteristics.Qn / 4000, 10)*/,
 
             OutKgDryPkp = Math.Round((KpeDry * cbs.OutputMultipliers.Peka) / KpeDry, 10),
             OutKgPko = Math.Round(KpeDry * cbs.OutputMultipliers.Peka, 10),
@@ -182,8 +149,6 @@ namespace Business.BusinessModels.Calculations
             OutKgMk = Math.Round((data1.SumKgCbsSpoGsuf + consCpsPpk_2.Pko.Pkp + consCpsPpk_2.Pko.Uvtp) + (tec.ChmkTecSum * 1000), 10),
             KipSpr = Math.Round(PrMk4000 + consCpsPpk_2.Pko.Pkp + consCpsPpk_2.Pko.Uvtp, 10),
             OutKgCb18 = ((data1.SumKgCbsSpoGsuf + consCpsPpk_2.Pko.Pkp + consCpsPpk_2.Pko.Uvtp) + (tec.ChmkTecSum * 1000)) - data1.OutKgPko,
-            //ConsFvPko = Math.Round((consCpsPpk_2.Pko.Pkp + consCpsPpk_2.Pko.Uvtp) / KpeDry * GasConstants.ConsFvC, 10),
-            //ConsFvCpsPpk = Math.Round((consCpsPpk_2.Spo + consCpsPpk_2.Pko.Pkp + consCpsPpk_2.Pko.Uvtp) / spoPerKus * GasConstants.ConsFvC, 10),
 
             OutKgCb16 = (cb1cb6 == 0 || mkCb == 0) ? 0 :
                         (((data1.SumKgCbsSpoGsuf + consCpsPpk_2.Pko.Pkp + consCpsPpk_2.Pko.Uvtp) +
@@ -193,12 +158,6 @@ namespace Business.BusinessModels.Calculations
                         (((data1.SumKgCbsSpoGsuf + consCpsPpk_2.Pko.Pkp + consCpsPpk_2.Pko.Uvtp) +
                         (tec.ChmkTecSum * 1000)) - data1.OutKgPko) * cb7cb8 / mkCb,
          };
-
-         //var consFvCpsPpk = new ConsumptionCpsPpk
-         //{
-         //   Spo = UdConsKgFv.Calc(consCpsPpk_2.Spo, spoPerKus),
-         //   Pko = Math.Round((consCpsPpk_2.Pko.Pkp + consCpsPpk_2.Pko.Uvtp) / KpeDry * GasConstants.ConsFvC, 10),
-         //};
 
          var consFvCpsPpk = new CpsPpk
          {

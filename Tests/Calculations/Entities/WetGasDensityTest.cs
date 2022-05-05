@@ -4,6 +4,7 @@ using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.Interfaces;
 using Business.Interfaces.BaseCalculations;
+using Business.Interfaces.BaseCalculations.Density;
 using Moq;
 using Newtonsoft.Json;
 using System;
@@ -16,7 +17,7 @@ namespace Tests.Calculations.Entities
       private Mock<ISteamCharacteristicsService> MockSteam;
       private Mock<IDryDensity> MockDryDensity;
       private Mock<IWetDensity> MockWetDensity;
-      private GasDensityData Data;
+      private Data Data;
       public WetGasDensityTest()
       {
          MockSteam = new Mock<ISteamCharacteristicsService>();
@@ -25,7 +26,7 @@ namespace Tests.Calculations.Entities
          MockDryDensity = new Mock<IDryDensity>();
          MockWetDensity = new Mock<IWetDensity>();
 
-         Data = new GasDensityData
+         Data = new Data
          {
             CharacteristicsDg = TestHelper.CharacteristicsDgData(),
             CharacteristicsKg = TestHelper.CharacteristicsKgData(),
@@ -39,20 +40,35 @@ namespace Tests.Calculations.Entities
          return new DensityDTO
          {
             Date = new DateTime(2019, 1, 1),
-            Cu1 = 0.4857840419m,
-            Cu2 = 0.4418307183m,
-            Cb5 = 0.4591238375m,
-            Cb6 = 0.4645476338m,
-            Cb7 = 0.4403959960m,
-            Cb8 = 0.4332943460m,
-            Pkc = 0.4889691785m,
-            Uvtp = 0.4893950244m,
-            Spo = 0.4789630264m,
+            Cu =
+            {
+               Cu1 = 0.4857840419m,
+               Cu2 = 0.4418307183m,
+            },
+            Kc2 =
+            {
+               Cb1 = 0.4591238375m,
+               Cb2 = 0.4645476338m,
+               Cb3 = 0.4403959960m,
+               Cb4 = 0.4332943460m,
+            },
+            CpsPpk =
+            {
+               Pko =
+               {
+                  Pkp = 0.4889691785m,
+                  Uvtp = 0.4893950244m,
+               },
+               Spo = 0.4789630264m,
+            },
             Gsuf = 0.4811577412m,
-            Cb1 = 1.2019043517m,
-            Cb2 = 1.2019043517m,
-            Cb3 = 1.2914997647m,
-            Cb4 = 1.2342532350m,
+            Kc1 =
+            {
+               Cb1 = 1.2019043517m,
+               Cb2 = 1.2019043517m,
+               Cb3 = 1.2914997647m,
+               Cb4 = 1.2342532350m,
+            },
          };
       }
 

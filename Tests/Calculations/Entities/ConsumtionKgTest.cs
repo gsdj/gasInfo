@@ -1,17 +1,17 @@
 ﻿using Business.BusinessModels.BaseCalculations;
+using Business.BusinessModels.BaseCalculations.Density;
+using Business.BusinessModels.BaseCalculations.Qn;
 using Business.BusinessModels.Calculations;
 using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.Interfaces;
 using Business.Interfaces.BaseCalculations;
+using Business.Interfaces.BaseCalculations.Consumption;
+using Business.Interfaces.BaseCalculations.Density;
 using Business.Interfaces.Calculations;
 using Moq;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Tests.Calculations.Entities
@@ -71,14 +71,14 @@ namespace Tests.Calculations.Entities
             Date = new DateTime(2019, 1, 1),
             QcRcCb =
             {
-               Cb5 = 172766.4177360802m,
-               Cb6 = 169816.6033372864m,
-               Cb7 =
+               Cb1 = { Value = 172766.4177360802m },
+               Cb2 = { Value = 169816.6033372864m },
+               Cb3 =
                {
                   Ms = 2482.9866551005m,
                   Ks = 2480.0563010622m,
                },
-               Cb8 =
+               Cb4 =
                {
                   Ms = 2477.1255244498m,
                   Ks = 2904.1164222440m,
@@ -88,23 +88,26 @@ namespace Tests.Calculations.Entities
             {
                Pko =
                {
-                  Ms = 13012.0756989220m,
-                  Ks = 12069.4865639254m,
+                  Pkp = 
+                  {
+                     Ms = 13012.0756989220m,
+                     Ks = 12069.4865639254m,
+                  },
+                  Uvtp = 19175.6077322726m,
                },
-               Uvtp = 19175.6077322726m,
                Spo = 29877.0385938227m,
             },
             QcRcGsuf = 5488.5469273737m,
             ConsumptionCb =
             {
-               Cb5 = 155489.7759624722m,
-               Cb6 = 152834.9430035578m,
-               Cb7 = 113395.6054624054m,
-               Cb8 = 122950.6159980599m,
+               Cb1 = 155489.7759624722m,
+               Cb2 = 152834.9430035578m,
+               Cb3 = 113395.6054624054m,
+               Cb4 = 122950.6159980599m,
             },
             ConsumptionCpsPpk =
             {
-               Pko = 39831.4529956080m,
+               Pko = { Total = 39831.4529956080m },
                Spo = 26889.3347344404m,
             },
             ConsumptionKc2Sum = 544670.9404264953m,

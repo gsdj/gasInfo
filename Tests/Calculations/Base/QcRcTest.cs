@@ -66,7 +66,7 @@ namespace Tests.Calculations.Base
          var ms = QcRc.Calc(consMs, wetGas, temp, densityKg);
          var ks = QcRc.Calc(consKs, wetGas, temp, densityKg);
 
-         var result = new QcRcMsKsDefault
+         var result = new QcRcDefault2
          {
             Ms = ms,
             Ks = ks,

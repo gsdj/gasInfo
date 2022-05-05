@@ -36,5 +36,7 @@ namespace Business.DTO.General
    public class PkoConsumption : Pko
    {
       public decimal Pkp { get; set; }
+      private decimal _total;
+      public decimal Total { get { return Pkp + Uvtp; } set { _total = value; } }
    }
 }

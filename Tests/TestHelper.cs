@@ -3,9 +3,6 @@ using Business.DTO.Characteristics;
 using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tests
 {
@@ -341,112 +338,127 @@ namespace Tests
          return new DevicesKipDTO
          {
             Date = new DateTime(2019, 1, 1),
-            Cu1 =
+            Cu =
             {
-               Consumption = 1664569,
-               Pressure = 1124,
-               Temperature = 34,
+               Cu1 =
+               {
+                  Consumption = { Value = 1664569 },
+                  Pressure = 1124,
+                  Temperature = 34,
+               },
+               Cu2 =
+               {
+                  Consumption = { Value = 709345 },
+                  Pressure = 744,
+                  Temperature = 31,
+               },
             },
-            Cu2 =
+            Kc2 =
             {
-               Consumption = 709345,
-               Pressure = 744,
-               Temperature = 31,
+               Cb1 =
+               {
+                  Consumption = { Value = 7435 },
+                  Pressure = 391,
+                  Temperature = 61,
+                  TempBeforeHeating = 26,
+               },
+               Cb2 =
+               {
+                  Consumption = { Value = 7218 },
+                  Pressure = 391,
+                  Temperature = 65,
+                  TempBeforeHeating = 26,
+               },
+               Cb3 =
+               {
+                  Consumption = { Ms = 2542, Ks = 2539 },
+                  Pressure = 446,
+                  Temperature = 62,
+                  TempBeforeHeating = 31,
+               },
+               Cb4 =
+               {
+                  Consumption = { Ms = 2570, Ks = 3013 },
+                  Pressure = 427,
+                  Temperature = 57,
+                  TempBeforeHeating = 30,
+               },
             },
-            Cb5 =
+            CpsPpk =
             {
-               Consumption = 7435,
-               Pressure = 391,
-               Temperature = 61,
-               TempBeforeHeating = 26,
-            },
-            Cb6 =
-            {
-               Consumption = 7218,
-               Pressure = 391,
-               Temperature = 65,
-               TempBeforeHeating = 26,
-            },
-            Cb7 =
-            {
-               ConsumptionMs = 2542,
-               ConsumptionKs = 2539,
-               Pressure = 446,
-               Temperature = 62,
-               TempBeforeHeating = 31,
-            },
-            Cb8 =
-            {
-               ConsumptionMs = 2570,
-               ConsumptionKs = 3013,
-               Pressure = 427,
-               Temperature = 57,
-               TempBeforeHeating = 30,
-            },
-            Pkc =
-            {
-               ConsumptionMs = 12576,
-               ConsumptionKs = 11665,
-               Pressure = 1030,
-               Temperature = 26,
-            },
-            Uvtp =
-            {
-               Consumption = 18516,
-               Pressure = 1040,
-               Temperature = 26,
-            },
-            Spo =
-            {
-               Consumption = 29001,
-               Pressure = 610,
-               Temperature = 19,
+               Pko =
+               {
+                  Pkp =
+                  {
+                     Consumption = { Ms = 12576, Ks = 11665 },
+                     Pressure = 1030,
+                     Temperature = 26,
+                  },
+                  Uvtp =
+                  {
+                     Consumption = { Value = 18516 },
+                     Pressure = 1040,
+                     Temperature = 26,
+                  },
+               },
+               Spo =
+               {
+                  Consumption = { Value = 29001 },
+                  Pressure = 610,
+                  Temperature = 19,
+               },
             },
             Gsuf45 =
             {
-               Consumption = 5609,
+               Consumption = { Value = 5609 },
                Pressure = 1046,
                Temperature = 36,
             },
-            Cb1 =
+            Kc1 =
             {
-               Consumption = 924484,
-               Pressure = 391,
-               Temperature = 28,
+               Cb1 =
+               {
+                  Consumption = { Value = 924484 },
+                  Pressure = 391,
+                  Temperature = 28,
+               },
+               Cb2 =
+               {
+                  Consumption = { Value = 1062402 },
+                  Pressure = 391,
+                  Temperature = 28,
+               },
+               Cb3 =
+               {
+                  Consumption = { Value = 0 },
+                  Pressure = 0,
+                  Temperature = 0,
+               },
+               Cb4 =
+               {
+                  Consumption = { Value = 1041164 },
+                  Pressure = 414,
+                  Temperature = 22,
+               },
             },
-            Cb2 =
+            Gru =
             {
-               Consumption = 1062402,
-               Pressure = 391,
-               Temperature = 28,
-            },
-            Cb3 =
-            {
-               Consumption = 0,
-               Pressure = 0,
-               Temperature = 0,
-            },
-            Cb4 =
-            {
-               Consumption = 1041164,
-               Pressure = 414,
-               Temperature = 22,
-            },
-            Gru1 =
-            {
-               Consumption = 16584,
-               Pressure = 627,
-               Temperature = -11,
-            },
-            Gru2 =
-            {
-               Consumption = 14976,
-               Pressure = 425,
-               Temperature = -10.4m,
+               Gru1 =
+               {
+                  Consumption = { Value = 16584 },
+                  Pressure = 627,
+                  Temperature = -11,
+               },
+               Gru2 =
+               {
+                  Consumption = { Value = 14976 },
+                  Pressure = 425,
+                  Temperature = -10.4m,
+               },
             },
             Grp4 =
             {
-               Consumption = 0,
+               Consumption = { Value = 0 },
                Pressure = 0,
                Temperature = 0,
             },

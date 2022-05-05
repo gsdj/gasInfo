@@ -1,12 +1,7 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.Interfaces;
-using Business.Interfaces.BaseCalculations;
+using Business.Interfaces.BaseCalculations.Density;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Tests.Calculations.Entities
@@ -16,7 +11,7 @@ namespace Tests.Calculations.Entities
       private Mock<ISteamCharacteristicsService> MockSteam;
       private Mock<IDryDensity> MockDryDensity;
       private Mock<IWetDensity> MockWetDensity;
-      private GasDensityData Data;
+      private Data Data;
       public OutputKgTest()
       {
          MockSteam = new Mock<ISteamCharacteristicsService>();
@@ -25,7 +20,7 @@ namespace Tests.Calculations.Entities
          MockDryDensity = new Mock<IDryDensity>();
          MockWetDensity = new Mock<IWetDensity>();
 
-         Data = new GasDensityData
+         Data = new Data
          {
             CharacteristicsDg = TestHelper.CharacteristicsDgData(),
             CharacteristicsKg = TestHelper.CharacteristicsKgData(),

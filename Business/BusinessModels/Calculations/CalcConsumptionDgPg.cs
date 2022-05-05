@@ -105,8 +105,8 @@ namespace Business.BusinessModels.Calculations
 
          var consPgGru = new Gru
          {
-            Gru1 = ConsPg.Calc(kip.Gru1.Consumption.Value, data.Pressure.ValuePa, kip.Gru1.Pressure, kip.Gru1.Temperature),
-            Gru2 = ConsPg.Calc(kip.Gru2.Consumption.Value, data.Pressure.ValuePa, kip.Gru2.Pressure, kip.Gru2.Temperature),
+            Gru1 = ConsPg.Calc(kip.Gru.Gru1.Consumption.Value, data.Pressure.ValuePa, kip.Gru.Gru1.Pressure, kip.Gru.Gru1.Temperature),
+            Gru2 = ConsPg.Calc(kip.Gru.Gru2.Consumption.Value, data.Pressure.ValuePa, kip.Gru.Gru2.Pressure, kip.Gru.Gru2.Temperature),
          };
 
          var consPgCb = new CbKc
