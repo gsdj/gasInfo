@@ -75,10 +75,10 @@ namespace Business.BusinessModels.Calculations
             ConsDgKc1Sum = dgPgChmkEbDTO.ConsDgKc1Sum,
             UdConsumptionKc1 =
             {
-               Cb1 = (dgPgChmkEbDTO.ConsumptionDgKc1.Cb1 == 0) ? 0 : (int)Math.Round((dgPgChmkEbDTO.ConsumptionDgKc1.Cb1 * GasConstants.UdDgC) / sumCb1, MidpointRounding.ToEven),
-               Cb2 = (dgPgChmkEbDTO.ConsumptionDgKc1.Cb2 == 0) ? 0 : (int)Math.Round((dgPgChmkEbDTO.ConsumptionDgKc1.Cb2 * GasConstants.UdDgC) / sumCb2, MidpointRounding.ToEven),
-               Cb3 = (dgPgChmkEbDTO.ConsumptionDgKc1.Cb3 == 0) ? 0 : (int)Math.Round((dgPgChmkEbDTO.ConsumptionDgKc1.Cb3 * GasConstants.UdDgC) / sumCb3, MidpointRounding.ToEven),
-               Cb4 = (dgPgChmkEbDTO.ConsumptionDgKc1.Cb4 == 0) ? 0 : (int)Math.Round((dgPgChmkEbDTO.ConsumptionDgKc1.Cb4 * GasConstants.UdDgC) / sumCb4, MidpointRounding.ToEven),
+               Cb1 = (dgPgChmkEbDTO.ConsumptionDgKc1.Cb1 == 0) ? 0 : Math.Round((dgPgChmkEbDTO.ConsumptionDgKc1.Cb1 * GasConstants.UdDgC) / sumCb1, MidpointRounding.ToEven),
+               Cb2 = (dgPgChmkEbDTO.ConsumptionDgKc1.Cb2 == 0) ? 0 : Math.Round((dgPgChmkEbDTO.ConsumptionDgKc1.Cb2 * GasConstants.UdDgC) / sumCb2, MidpointRounding.ToEven),
+               Cb3 = (dgPgChmkEbDTO.ConsumptionDgKc1.Cb3 == 0) ? 0 : Math.Round((dgPgChmkEbDTO.ConsumptionDgKc1.Cb3 * GasConstants.UdDgC) / sumCb3, MidpointRounding.ToEven),
+               Cb4 = (dgPgChmkEbDTO.ConsumptionDgKc1.Cb4 == 0) ? 0 : Math.Round((dgPgChmkEbDTO.ConsumptionDgKc1.Cb4 * GasConstants.UdDgC) / sumCb4, MidpointRounding.ToEven),
             },
             UdConsKc1Sum = (dgPgChmkEbDTO.ConsDgKc1Sum == 0) ? 0 : (int)Math.Round((dgPgChmkEbDTO.ConsDgKc1Sum * GasConstants.UdDgC) / sumKc1, MidpointRounding.ToEven),
             ConsumptionGru =

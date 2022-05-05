@@ -1,7 +1,6 @@
 ﻿using Business.BusinessModels.BaseCalculations.Consumption;
 using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
-using Business.DTO.Consumption;
 using Business.DTO.General;
 using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
@@ -73,28 +72,30 @@ namespace Business.BusinessModels.Calculations
             WetGas = wetGas,
          };
 
-         var ConsFvKc1 = new CbKc
+         var ConsFvKc = new CbAll
          {
-            Cb1 = ConsCbFv.Calc(cbs.Cb1, cbs.OutputMultipliers.Cb1, cbs.OutputMultipliers.Fv),
-            Cb2 = ConsCbFv.Calc(cbs.Cb2, cbs.OutputMultipliers.Cb2, cbs.OutputMultipliers.Fv),
-            Cb3 = ConsCbFv.Calc(cbs.Cb3, cbs.OutputMultipliers.Cb3, cbs.OutputMultipliers.Fv),
-            Cb4 = ConsCbFv.Calc(cbs.Cb4, cbs.OutputMultipliers.Cb4, cbs.OutputMultipliers.Fv),
-         };
-
-         var ConsFvKc2 = new CbKc
-         {
-            Cb1 = ConsCbFv.Calc(cbs.Cb5, cbs.OutputMultipliers.Cb5, cbs.OutputMultipliers.Fv),
-            Cb2 = ConsCbFv.Calc(cbs.Cb6, cbs.OutputMultipliers.Cb6, cbs.OutputMultipliers.Fv),
-            Cb3 = ConsCbFv.Calc(cbs.Cb7, cbs.OutputMultipliers.Cb7, cbs.OutputMultipliers.Fv),
-            Cb4 = ConsCbFv.Calc(cbs.Cb8, cbs.OutputMultipliers.Cb8, cbs.OutputMultipliers.Fv),
+            Kc1 =
+            {
+               Cb1 = ConsCbFv.Calc(cbs.Cb1, cbs.OutputMultipliers.Cb1, cbs.OutputMultipliers.Fv),
+               Cb2 = ConsCbFv.Calc(cbs.Cb2, cbs.OutputMultipliers.Cb2, cbs.OutputMultipliers.Fv),
+               Cb3 = ConsCbFv.Calc(cbs.Cb3, cbs.OutputMultipliers.Cb3, cbs.OutputMultipliers.Fv),
+               Cb4 = ConsCbFv.Calc(cbs.Cb4, cbs.OutputMultipliers.Cb4, cbs.OutputMultipliers.Fv),
+            },
+            Kc2 =
+            {
+               Cb1 = ConsCbFv.Calc(cbs.Cb5, cbs.OutputMultipliers.Cb5, cbs.OutputMultipliers.Fv),
+               Cb2 = ConsCbFv.Calc(cbs.Cb6, cbs.OutputMultipliers.Cb6, cbs.OutputMultipliers.Fv),
+               Cb3 = ConsCbFv.Calc(cbs.Cb7, cbs.OutputMultipliers.Cb7, cbs.OutputMultipliers.Fv),
+               Cb4 = ConsCbFv.Calc(cbs.Cb8, cbs.OutputMultipliers.Cb8, cbs.OutputMultipliers.Fv),
+            },
          };
 
          var data1 = new
          {
-            CbsConsFvSum = ConsFvKc1.Cb1 + ConsFvKc1.Cb2 + ConsFvKc1.Cb3 + ConsFvKc1.Cb4 +
-                  ConsFvKc2.Cb1 + ConsFvKc2.Cb2 + ConsFvKc2.Cb3 + ConsFvKc2.Cb4,
-            Kc1ConsFvSum = ConsFvKc1.Cb1 + ConsFvKc1.Cb2 + ConsFvKc1.Cb3 + ConsFvKc1.Cb4,
-            Kc2ConsFvSum = ConsFvKc2.Cb1 + ConsFvKc2.Cb2 + ConsFvKc2.Cb3 + ConsFvKc2.Cb4,
+            CbsConsFvSum = ConsFvKc.Kc1.Cb1 + ConsFvKc.Kc1.Cb2 + ConsFvKc.Kc1.Cb3 + ConsFvKc.Kc1.Cb4 +
+                           ConsFvKc.Kc2.Cb1 + ConsFvKc.Kc2.Cb2 + ConsFvKc.Kc2.Cb3 + ConsFvKc.Kc2.Cb4,
+            Kc1ConsFvSum = ConsFvKc.Kc1.Cb1 + ConsFvKc.Kc1.Cb2 + ConsFvKc.Kc1.Cb3 + ConsFvKc.Kc1.Cb4,
+            Kc2ConsFvSum = ConsFvKc.Kc2.Cb1 + ConsFvKc.Kc2.Cb2 + ConsFvKc.Kc2.Cb3 + ConsFvKc.Kc2.Cb4,
             ConsPgKc1 = ConsPg.Calc(kip.Grp4.Consumption.Value, data.Pressure.ValuePa, kip.Grp4.Pressure, kip.Grp4.Temperature),
          };
 
@@ -124,10 +125,10 @@ namespace Business.BusinessModels.Calculations
 
          var udConsKgFv = new CbKc
          {
-            Cb1 = UdConsDgFv.Calc(consKc1.Cb1, consPgCb.Cb1, ConsFvKc1.Cb1),
-            Cb2 = UdConsDgFv.Calc(consKc1.Cb2, consPgCb.Cb2, ConsFvKc1.Cb2),
-            Cb3 = UdConsDgFv.Calc(consKc1.Cb3, consPgCb.Cb3, ConsFvKc1.Cb3),
-            Cb4 = UdConsDgFv.Calc(consKc1.Cb4, consPgCb.Cb4, ConsFvKc1.Cb4),
+            Cb1 = UdConsDgFv.Calc(consKc1.Cb1, consPgCb.Cb1, ConsFvKc.Kc1.Cb1),
+            Cb2 = UdConsDgFv.Calc(consKc1.Cb2, consPgCb.Cb2, ConsFvKc.Kc1.Cb2),
+            Cb3 = UdConsDgFv.Calc(consKc1.Cb3, consPgCb.Cb3, ConsFvKc.Kc1.Cb3),
+            Cb4 = UdConsDgFv.Calc(consKc1.Cb4, consPgCb.Cb4, ConsFvKc.Kc1.Cb4),
          };
 
          return new ConsumptionDgPgDTO

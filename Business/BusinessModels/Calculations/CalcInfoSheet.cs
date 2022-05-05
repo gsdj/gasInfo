@@ -93,28 +93,36 @@ namespace Business.BusinessModels.Calculations
             DayCb = repKg.ConsumptionKc2,
             HourCb =
             {
-               Cb5 = repKg.ConsumptionKc2.Cb5 / 24,
-               Cb6 = repKg.ConsumptionKc2.Cb6 / 24,
-               Cb7 = repKg.ConsumptionKc2.Cb7 / 24,
-               Cb8 = repKg.ConsumptionKc2.Cb8 / 24,
+               Cb1 = repKg.ConsumptionKc2.Cb1 / 24,
+               Cb2 = repKg.ConsumptionKc2.Cb2 / 24,
+               Cb3 = repKg.ConsumptionKc2.Cb3 / 24,
+               Cb4 = repKg.ConsumptionKc2.Cb4 / 24,
             },
             MonthCb =
             {
-               Cb5 = Data.ReportKgDTOs.Sum(p => p.ConsumptionKc2.Cb5),
-               Cb6 = Data.ReportKgDTOs.Sum(p => p.ConsumptionKc2.Cb6),
-               Cb7 = Data.ReportKgDTOs.Sum(p => p.ConsumptionKc2.Cb7),
-               Cb8 = Data.ReportKgDTOs.Sum(p => p.ConsumptionKc2.Cb8),
+               Cb1 = Data.ReportKgDTOs.Sum(p => p.ConsumptionKc2.Cb1),
+               Cb2 = Data.ReportKgDTOs.Sum(p => p.ConsumptionKc2.Cb2),
+               Cb3 = Data.ReportKgDTOs.Sum(p => p.ConsumptionKc2.Cb3),
+               Cb4 = Data.ReportKgDTOs.Sum(p => p.ConsumptionKc2.Cb4),
             },
             UdSvCpsPpk = repKg.ConsumptionFvCpsPpk,
             DayCpsPpk = repKg.ConsumptionCpsPpk,
             HourCpsPpk =
             {
-               Pko = repKg.ConsumptionCpsPpk.Pko / 24,
+               Pko =
+               {
+                  Pkp = repKg.ConsumptionCpsPpk.Pko.Pkp / 24,
+                  Uvtp = repKg.ConsumptionCpsPpk.Pko.Uvtp / 24,
+               },
                Spo = repKg.ConsumptionCpsPpk.Spo / 24,
             },
             MonthCpsPpk =
             {
-               Pko = Data.ReportKgDTOs.Sum(p => p.ConsumptionCpsPpk.Pko),
+               Pko = 
+               {
+                  Pkp = Data.ReportKgDTOs.Sum(p => p.ConsumptionCpsPpk.Pko.Pkp),
+                  Uvtp = Data.ReportKgDTOs.Sum(p => p.ConsumptionCpsPpk.Pko.Uvtp),
+               }, 
                Spo = Data.ReportKgDTOs.Sum(p => p.ConsumptionCpsPpk.Spo),
             },
             ConsKgUdSvCpsPpk = repKg.ConsFvCpsPpkSum,
@@ -176,9 +184,9 @@ namespace Business.BusinessModels.Calculations
       {
          return new TradeKg
          {
-            TradeKgNorth4000 = outKg.Cu24000 - (consKg.ConsumptionCb.Cb7 + consKg.ConsumptionCb.Cb8),
-            TradeKgNorthH = outKg.Cu24000 - (consKg.ConsumptionCb.Cb7 + consKg.ConsumptionCb.Cb8) / 24,
-            TradeKgNorthM = sumCu2 - Data.ConsumptionKgDTOs.Sum(p => p.ConsumptionCb.Cb7 + p.ConsumptionCb.Cb8),
+            TradeKgNorth4000 = outKg.Cu24000 - (consKg.ConsumptionCb.Cb3 + consKg.ConsumptionCb.Cb4),
+            TradeKgNorthH = outKg.Cu24000 - (consKg.ConsumptionCb.Cb3 + consKg.ConsumptionCb.Cb4) / 24,
+            TradeKgNorthM = sumCu2 - Data.ConsumptionKgDTOs.Sum(p => p.ConsumptionCb.Cb3 + p.ConsumptionCb.Cb4),
 
             TradeKgSouth4000 = (outKg.Cu14000 + consKg.PkoQcRcSum) - (consKg.ConsumptionCpsPpk.Spo - consKg.ConsumptionGsuf),
             TradeKgSouthH = ((outKg.Cu14000 + consKg.PkoQcRcSum) - (consKg.ConsumptionCpsPpk.Spo - consKg.ConsumptionGsuf)) / 24,

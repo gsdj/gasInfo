@@ -82,8 +82,6 @@ namespace Business.BusinessModels.Calculations
          var cbs = Data.AmmountCb;
          var kip = Data.Kip;
          var charKg = Data.CharacteristicsKg;
-         var charDg = Data.CharacteristicsDg;
-         var pressure = Data.Pressure;
          var tec = Data.Tec;
 
          var wetGas = WetGas.CalcEntity(data);
