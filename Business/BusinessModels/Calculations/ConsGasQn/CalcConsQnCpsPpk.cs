@@ -12,14 +12,13 @@ namespace Business.BusinessModels.Calculations.ConsGasQn
 {
    public class CalcConsQnCpsPpk : ICalcConsGasQnCpsPpk
    {
-      private IConsGasQn<ConsGasQn4000> ConsGasQn;
+      public ICalcQcRc<CpsPpkQcRc> CalcQcRcCpsPpk { get; private set; }
+      public IConsGasQn<ConsGasQn4000> ConsGasQn { get; private set; }
       public CalcConsQnCpsPpk(ICalcQcRc<CpsPpkQcRc> qcrc, IConsGasQn<ConsGasQn4000> consGasQn)
       {
          CalcQcRcCpsPpk = qcrc;
          ConsGasQn = consGasQn;
       }
-      public ICalcQcRc<CpsPpkQcRc> CalcQcRcCpsPpk { get; private set; }
-
       public CpsPpk Calc(CpsPpkQcRc qcrc, CharacteristicsKgDTO cGas)
       {
          return new CpsPpk

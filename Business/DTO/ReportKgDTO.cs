@@ -1,4 +1,5 @@
 ﻿using Business.DTO.Consumption;
+using Business.DTO.General;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,15 +23,15 @@ namespace Business.DTO
       public decimal OutKgDryCb78 { get; set; }//=> Math.Round((OutKgKb78 == 0 || ConsSuhKb78 == 0) ? 0 : (OutKgKb78 / ConsSuhKb78), 10);
       public decimal OutKgDryMk { get; set; }//=> Math.Round((OutKgKb18 == 0 || TnConsSuh == 0) ? 0 : (OutKgKb18 / TnConsSuh), 10);
 
-      public ConsumptionKc2<decimal> ConsumptionKc2 { get; set; }
+      public CbKc ConsumptionKc2 { get; set; }
       public decimal ConsKgKc2Sum { get; set; }// => Math.Round((ConsKgCb5 + ConsKgCb6 + ConsKgCb7 + ConsKgCb8), 10);
-      public ConsumptionCpsPpk ConsumptionCpsPpk { get; set; }
+      public CpsPpk ConsumptionCpsPpk { get; set; }
       public decimal ConsKgUvtp { get; set; }
       public decimal ConsKgCpsPpkSum { get; set; }// => Math.Round((ConsKgSpo + ConsKgPkp + ConsKgUvtp), 10);
       public decimal ConsKgMk { get; set; }// => Math.Round((ConsKgKc2 + ConsKgCpsPpk), 10);
-      public ConsumptionKc2<decimal> ConsumptionFvKc2 { get; set; }
+      public CbKc ConsumptionFvKc2 { get; set; }
       public decimal ConsFvKc2Sum { get; set; }
-      public ConsumptionCpsPpk ConsumptionFvCpsPpk { get; set; }
+      public CpsPpk ConsumptionFvCpsPpk { get; set; }
       public decimal ConsFvCpsPpkSum { get; set; }
       public decimal ConsGsuf { get; set; }
       public decimal TradeGasChmk { get; set; }

@@ -1,10 +1,5 @@
-﻿using Business.BusinessModels.BaseCalculations.Qn;
-using Business.BusinessModels.Calculations.ConsGasQn;
-using Business.BusinessModels.DataForCalculations;
+﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
-using Business.DTO.Consumption;
-using Business.DTO.QcRc;
-using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
 using Business.Interfaces.Calculations.ConsGasQn;
 using System.Collections.Generic;
@@ -15,17 +10,11 @@ namespace Business.BusinessModels.Calculations
    public class CalcConsumptionKg : ICalculation<ConsumptionKgDTO>, ICalculations<ConsumptionKgDTO>
    {
       private ICalculation<DensityDTO> WetGas;
-      //private IConsGasQn<ConsGasQn4000> ConsGasQn;
-      //private ICalcQcRc<QcRcKc2> QcRcKc2;
-      //private ICalcQcRc<QcRcCpsPpk> QcRcCpsPpk;
       private ICalcConsGasQnKc2 Kc2Qn;
       private ICalcConsGasQnCpsPpk CpsPpkQn;
-      public CalcConsumptionKg(ICalculation<DensityDTO> wetGas, ICalcConsGasQnKc2 kc2Qn, ICalcConsGasQnCpsPpk cpsppkQn, IConsGasQn<ConsGasQn4000> gasQn, ICalcQcRc<QcRcKc2> qcrcKc2, ICalcQcRc<QcRcCpsPpk> qcrcCpsPpk)
+      public CalcConsumptionKg(ICalculation<DensityDTO> wetGas, ICalcConsGasQnKc2 kc2Qn, ICalcConsGasQnCpsPpk cpsppkQn)
       {
          WetGas = wetGas;
-         //QcRcKc2 = qcrcKc2;
-         //QcRcCpsPpk = qcrcCpsPpk;
-         //ConsGasQn = gasQn;
          Kc2Qn = kc2Qn;
          CpsPpkQn = cpsppkQn;
       }
@@ -56,9 +45,7 @@ namespace Business.BusinessModels.Calculations
       public ConsumptionKgDTO CalcEntity(Data data)
       {
          var kip = data.Kip;
-         var charDg = data.CharacteristicsDg;
          var charKg = data.CharacteristicsKg;
-         var pressure = data.Pressure;
 
          var wetGas = WetGas.CalcEntity(data);
 
@@ -75,7 +62,11 @@ namespace Business.BusinessModels.Calculations
 
          var qcrcCpsPpk = CpsPpkQn.CalcQcRcCpsPpk.Calc(QcRcKgData);
          var consCpsPpk = CpsPpkQn.Calc(qcrcCpsPpk, charKg);
-         var qcrcGsuf = QcRc.Calc(kip.Gsuf45.Consumption, wetGas.Gsuf, kip.Gsuf45.Temperature, charKg.Kc1.Characteristics.Density),
+         var qcrcGsuf = CpsPpkQn.CalcQcRcCpsPpk.QcRc.Calc(kip.Gsuf45.Consumption.Value, wetGas.Gsuf, kip.Gsuf45.Temperature, charKg.Kc1.Characteristics.Density);
+
+         var consGsuf = CpsPpkQn.ConsGasQn.Calc(qcrcGsuf, charKg.Kc1.Characteristics.Qn);
+         var consKc2Sum = consCb.Cb1 + consCb.Cb2 + consCb.Cb3 + consCb.Cb4;
+         var consCpsPpkSum = consCpsPpk.Pko.Pkp + consCpsPpk.Pko.Uvtp + consCpsPpk.Spo;
          //--------
 
          return new ConsumptionKgDTO
@@ -83,16 +74,15 @@ namespace Business.BusinessModels.Calculations
             Date = wetGas.Date,
             QcRcCb = qcrcKc2,
             QcRcCpsPpk = qcrcCpsPpk,
-            QcRcGsuf = qcrcCpsPpk.Gsuf,
+            QcRcGsuf = qcrcGsuf,
             ConsumptionCb = consCb,
-            ConsumptionKc2Sum = consCb.Cb1 + consCb.Cb2 + consCb.Cb3 + consCb.Cb4,
+            ConsumptionKc2Sum = consKc2Sum,
             PkoQcRcSum = qcrcCpsPpk.Pko.Total, // qcrcCpsPpk.Pko.Value + qcrcCpsPpk.Uvtp,
             ConsumptionCpsPpk = consCpsPpk,
-            ConsumptionCpsPpkSum = ConsGasQn.Calc(qcrcCpsPpk.Pko.Value + qcrcCpsPpk.Uvtp, charKg.Kc1.Characteristics.Qn) + ConsGasQn.Calc(qcrcCpsPpk.Spo, charKg.Kc1.Characteristics.Qn),
-            ConsumptionMkSum = consCb.Cb5 + consCb.Cb6 + consCb.Cb7 + consCb.Cb8 + consCpsPpk.Pko + consCpsPpk.Spo,
-            ConsumptionGsuf = ConsGasQn.Calc(qcrcCpsPpk.Gsuf, charKg.Kc1.Characteristics.Qn),
-            ConsumptionMkGsufSum = consCb.Cb5 + consCb.Cb6 + consCb.Cb7 + consCb.Cb8 + consCpsPpk.Pko + consCpsPpk.Spo +
-                                    ConsGasQn.Calc(qcrcCpsPpk.Gsuf, charKg.Kc1.Characteristics.Qn),
+            ConsumptionCpsPpkSum = consCpsPpkSum,
+            ConsumptionMkSum = consKc2Sum + consCpsPpkSum,
+            ConsumptionGsuf = consGsuf,
+            ConsumptionMkGsufSum = consKc2Sum + consCpsPpkSum + consGsuf,
          };
       }
    }

@@ -7,7 +7,7 @@ namespace Business.BusinessModels.Calculations.QcRc
 {
    public class CalcQcRcKc1 : ICalcQcRc<QcRcKc1>
    {
-      private IQcRc QcRc;
+      public IQcRc QcRc { get; private set; }
       public CalcQcRcKc1(IQcRc qcrc)
       {
          QcRc = qcrc;

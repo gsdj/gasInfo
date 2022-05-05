@@ -11,14 +11,13 @@ namespace Business.BusinessModels.Calculations.ConsGasQn
 {
    public class CalcConsQnKc1 : ICalcConsGasQnKc1
    {
-      private IConsGasQn<ConsGasQn1000> ConsGasQn;
+      public ICalcQcRc<QcRcKc1> CalcQcRcKc1 { get; private set; }
+      public IConsGasQn<ConsGasQn1000> ConsGasQn { get; private set; }
       public CalcConsQnKc1(ICalcQcRc<QcRcKc1> qcrc, IConsGasQn<ConsGasQn1000> consGasQn)
       {
          CalcQcRcKc1 = qcrc;
          ConsGasQn = consGasQn;
       }
-      public ICalcQcRc<QcRcKc1> CalcQcRcKc1 { get; private set; }
-
       public CbKc Calc(QcRcKc1 qcrc, CharacteristicsDgDTO cGas)
       {
          return new CbKc

@@ -7,12 +7,12 @@ namespace Business.BusinessModels.Calculations.QcRc
 {
    public class CalcQcRcCpsPpk : ICalcQcRc<CpsPpkQcRc>
    {
-      private IQcRc QcRc;
       public CalcQcRcCpsPpk(IQcRc qcrc)
       {
          QcRc = qcrc;
       }
 
+      public IQcRc QcRc { get; private set; }
       public CpsPpkQcRc Calc(QcRcData data)
       {
          QcRcKgData Data = data as QcRcKgData;
