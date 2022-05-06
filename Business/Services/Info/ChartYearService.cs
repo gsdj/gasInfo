@@ -35,58 +35,30 @@ namespace Business.Services.Info
       }
       private IEnumerable<ChartYearDTO> GetAllItems(int Year)
       {
-         var prod = Calc.Production.CalcEntities(db.AmmountCb.GetPerYear(Year));
-         var charKg = Calc.CharacteristicsKg.CalcEntities(db.CharacteristicsKg.GetPerYear(Year));
-         var charDg = Calc.CharacteristicsDg.CalcEntities(db.CharacteristicsDg.GetPerYear(Year));
+         var charKg = db.CharacteristicsKg.GetPerYear(Year);
+         var charKgC = Calc.CharacteristicsKg.CalcEntities(charKg);
+         var charDgC = Calc.CharacteristicsDg.CalcEntities(db.CharacteristicsDg.GetPerYear(Year));
          var KgChmkEb = db.KgChmkEb.GetPerYear(Year);
          var quality = db.Quality.GetPerYear(Year);
          var pressure = Pressure.GetItemsByYear(Year);
          var kip = DevicesKip.GetItemsByYear(Year);
          var asdue = Asdue.GetItemsByYear(Year);
+         var cbs = db.AmmountCb.GetPerYear(Year);
 
-         var qualityData = new QualityEnumData
-         {
-            Qualities = quality,
-            Kg = charKg,
-         };
-         var qualities = Calc.Quality.CalcEntities(qualityData);
-
-         var wetGasData = new GasDensityEnumData
-         {
-            CharacteristicsDg = charDg,
-            CharacteristicsKg = charKg,
-            Kip = kip,
-            Pressure = pressure,
-         };
-         var wetGas = Calc.WetGas.CalcEntities(wetGasData);
-
-         var consKgData = new ConsumptionKgEnumData
-         {
-            CharacteristicsKg = charKg,
-            Kip = kip,
-            //WetGas = wetGas,
-         };
-         var consKg = Calc.ConsumptionKg.CalcEntities(consKgData);
-
-         var outputKgData = new OutputKgEnumData
-         {
-            WetGas = wetGas,
-            CharacteristicsKg = charKg,
-            Kip = kip,
-            Production = prod,
-         };
-         var outputKg = Calc.OutputKg.CalcEntities(outputKgData);
+         var qualities = Calc.Quality.CalcEntities(quality, charKg);
 
          var chartData = new ChartEnumData
          {
-            CharacteristicsKg = charKg,
-            ConsKg = consKg,
-            OutputKg = outputKg,
-            Production = prod,
-            Quality = qualities,
-            KgChmkEb = KgChmkEb,
+            AmmountCbs = cbs,
             Asdue = asdue,
+            CharacteristicsDg = charDgC,
+            CharacteristicsKg = charKgC,
+            KgChmkEb = KgChmkEb,
+            Kip = kip,
+            Pressure = pressure,
+            Quality = qualities,
          };
+
          var chartYear = Calc.ChartYear.CalcEntities(chartData);
          return chartYear;
       }

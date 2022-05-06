@@ -6,13 +6,13 @@ namespace Business.Interfaces
    public interface IUnitOfCalc
    {
       public ICalculations<DensityDTO> WetGas { get; }
-      public ICalculations<QualityDTO> Quality { get; }
+      public ICalcQuality Quality { get; }
       public ICalculations<ChartMonthDTO> ChartMonth { get; }
       public ICalculations<ChartYearDTO> ChartYear { get; }
       public ICalculations<ConsumptionKgDTO> ConsumptionKg { get; }
       public ICalculations<ConsumptionDgDTO> ConsumptionDg { get; }
       public ICalculations<ConsumptionDgPgDTO> ConsumptionDgPg { get; }
-      public ICalculations<EbChmkDTO> EbChmk { get; }
+      public ICalcEbChmk EbChmk { get; }
       public ICalculations<OutputKgDTO> OutputKg { get; }
       public ICalculations<ReportKgDTO> ReportKg { get; }
       public ICalcCharacteristicsDg CharacteristicsDg { get; }

@@ -1,13 +1,10 @@
-﻿using Business.BusinessModels;
-using Business.BusinessModels.Calculations;
-using Business.BusinessModels.DataForCalculations;
+﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.Interfaces;
 using Business.Interfaces.Services;
 using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Business.Services.Reporting
 {
@@ -42,21 +39,12 @@ namespace Business.Services.Reporting
          var pressure = Pressure.GetItemsByMonth(Date);
          var kip = DevicesKip.GetItemsByMonth(Date);
 
-         var wetGasData = new GasDensityEnumData
+         var consKgData = new EnumerableData
          {
             CharacteristicsDg = charDg,
             CharacteristicsKg = charKg,
             Kip = kip,
             Pressure = pressure,
-         };
-
-         var wetGas = Calc.WetGas.CalcEntities(wetGasData);
-
-         var consKgData = new ConsumptionKgEnumData
-         {
-            CharacteristicsKg = charKg,
-            Kip = kip,
-            //WetGas = wetGas,
          };
 
          var consKg = Calc.ConsumptionKg.CalcEntities(consKgData);

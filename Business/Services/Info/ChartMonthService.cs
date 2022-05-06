@@ -1,12 +1,10 @@
-﻿using Business.BusinessModels;
-using Business.BusinessModels.DataForCalculations;
+﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.Interfaces;
 using Business.Interfaces.Services;
 using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Business.Services.Info
 {
@@ -38,58 +36,30 @@ namespace Business.Services.Info
 
       private IEnumerable<ChartMonthDTO> GetItemsByDate(DateTime Date)
       {
-         var prod = Calc.Production.CalcEntities(db.AmmountCb.GetPerMonth(Date.Year, Date.Month));
-         var charKg = Calc.CharacteristicsKg.CalcEntities(db.CharacteristicsKg.GetPerMonth(Date.Year, Date.Month));
-         var charDg = Calc.CharacteristicsDg.CalcEntities(db.CharacteristicsDg.GetPerMonth(Date.Year, Date.Month));
+         var charKg = db.CharacteristicsKg.GetPerMonth(Date.Year, Date.Month);
+         var charKgC = Calc.CharacteristicsKg.CalcEntities(charKg);
+         var charDgC = Calc.CharacteristicsDg.CalcEntities(db.CharacteristicsDg.GetPerMonth(Date.Year, Date.Month));
          var KgChmkEb = db.KgChmkEb.GetPerMonth(Date.Year, Date.Month);
          var quality = db.Quality.GetPerMonth(Date.Year, Date.Month);
          var pressure = Pressure.GetItemsByMonth(Date);
          var kip = DevicesKip.GetItemsByMonth(Date);
          var asdue = Asdue.GetItemsByMonth(Date);
+         var cbs = db.AmmountCb.GetPerMonth(Date.Year, Date.Month);
 
-         var qualityData = new QualityEnumData
-         {
-            Qualities = quality,
-            Kg = charKg,
-         };
-         var qualities = Calc.Quality.CalcEntities(qualityData);
-
-         var wetGasData = new GasDensityEnumData
-         {
-            CharacteristicsDg = charDg,
-            CharacteristicsKg = charKg,
-            Kip = kip,
-            Pressure = pressure,
-         };
-         var wetGas = Calc.WetGas.CalcEntities(wetGasData);
-
-         var consKgData = new ConsumptionKgEnumData
-         {
-            CharacteristicsKg = charKg,
-            Kip = kip,
-            //WetGas = wetGas,
-         };
-         var consKg = Calc.ConsumptionKg.CalcEntities(consKgData);
-
-         var outputKgData = new OutputKgEnumData
-         {
-            WetGas = wetGas,
-            CharacteristicsKg = charKg,
-            Kip = kip,
-            Production = prod,
-         };
-         var outputKg = Calc.OutputKg.CalcEntities(outputKgData);
+         var qualities = Calc.Quality.CalcEntities(quality, charKg);
 
          var chartData = new ChartEnumData
          {
-            CharacteristicsKg = charKg,
-            ConsKg = consKg,
-            OutputKg = outputKg,
-            Production = prod,
-            Quality = qualities,
-            KgChmkEb = KgChmkEb,
+            AmmountCbs = cbs,
             Asdue = asdue,
+            CharacteristicsDg = charDgC,
+            CharacteristicsKg = charKgC,
+            KgChmkEb = KgChmkEb,
+            Kip = kip,
+            Pressure = pressure,
+            Quality = qualities,
          };
+
          var chartMonth = Calc.ChartMonth.CalcEntities(chartData);
          return chartMonth;
 

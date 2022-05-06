@@ -38,45 +38,20 @@ namespace Business.Services.Reporting
          var charKg = Calc.CharacteristicsKg.CalcEntities(Db.CharacteristicsKg.GetPerMonth(Date.Year, Date.Month));
          var charDg = Calc.CharacteristicsDg.CalcEntities(Db.CharacteristicsDg.GetPerMonth(Date.Year, Date.Month));
          var pressure = Pressure.GetItemsByMonth(Date);
-         var prod = Calc.Production.CalcEntities(Db.AmmountCb.GetPerMonth(Date.Year, Date.Month));
          var kip = DevicesKip.GetItemsByMonth(Date);
          var tec = Calc.Tec.CalcEntities(Db.Tec.GetPerMonth(Date.Year, Date.Month));
-
-         var wetGasData = new GasDensityEnumData
-         {
-            CharacteristicsDg = charDg,
-            CharacteristicsKg = charKg,
-            Kip = kip,
-            Pressure = pressure,
-         };
-         var wetGas = Calc.WetGas.CalcEntities(wetGasData);
-
-         var consKgData = new ConsumptionKgEnumData
-         {
-            CharacteristicsKg = charKg,
-            Kip = kip,
-            //WetGas = wetGas,
-         };
-         var consKg = Calc.ConsumptionKg.CalcEntities(consKgData);
-
-         var outputKgData = new OutputKgEnumData
-         {
-            WetGas = wetGas,
-            CharacteristicsKg = charKg,
-            Kip = kip,
-            Production = prod,
-         };
-         var outputKg = Calc.OutputKg.CalcEntities(outputKgData);
+         var cbs = Db.AmmountCb.GetPerMonth(Date.Year, Date.Month);
 
          var reportKgData = new ReportKgEnumData
          {
             CharacteristicsKg = charKg,
-            ConsKg = consKg,
             Kip = kip,
-            OutputKg = outputKg,
-            Production = prod,
+            CharacteristicsDg = charDg,
+            Pressure = pressure,
+            AmmountCbs = cbs,
             Tec = tec,
          };
+
          var reportKg = Calc.ReportKg.CalcEntities(reportKgData);
 
          return reportKg;
