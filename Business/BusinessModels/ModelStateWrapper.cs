@@ -1,5 +1,5 @@
 ﻿using Business.Interfaces;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Business.BusinessModels
 {
