@@ -28,40 +28,40 @@ namespace Tests.Calculations.Entities
       private Data Data;
       public ConsumtionKgTest()
       {
-         //MockSteam = new Mock<ISteamCharacteristicsService>();
-         //MockSteam.Setup(p => p.GetCharacteristics()).Returns(TestHelper.SteamCharacteristicsData());
+         MockSteam = new Mock<ISteamCharacteristicsService>();
+         MockSteam.Setup(p => p.GetCharacteristics()).Returns(TestHelper.SteamCharacteristicsData());
 
-         //MockConsGasQn = new Mock<IConsGasQn<ConsGasQn4000>>();
-         //MockQcRc = new Mock<IQcRc>();
+         MockConsGasQn = new Mock<IConsGasQn<ConsGasQn4000>>();
+         MockQcRc = new Mock<IQcRc>();
 
-         //DryDensity = new DryDensity(MockSteam.Object);
-         //WetDensity = new WetDensity(MockSteam.Object);
-         //WetGasDensity = new CalcWetGasDensity(WetDensity, DryDensity);
+         DryDensity = new DryDensity(MockSteam.Object);
+         WetDensity = new WetDensity(MockSteam.Object);
+         WetGasDensity = new CalcWetGasDensity(WetDensity, DryDensity);
 
-         //MockQcRc.SetupProperty(p => p.SteamCharacteristicsService, MockSteam.Object);
-         //var qcrcDef = new DefaultQcRc(MockSteam.Object);
-         //var consGasQn4 = new ConsGasQn4000();
+         MockQcRc.SetupProperty(p => p.SteamCharacteristicsService, MockSteam.Object);
+         var qcrcDef = new DefaultQcRc(MockSteam.Object);
+         var consGasQn4 = new ConsGasQn4000();
 
-         //MockQcRc.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.Is<bool>(p => false)))
-         //   .Returns((decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour) =>
-         //   qcrcDef.Calc(cons, wetGas, temp, density, perHour));
+         MockQcRc.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.Is<bool>(p => false)))
+            .Returns((decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour) =>
+            qcrcDef.Calc(cons, wetGas, temp, density, perHour));
 
-         //MockQcRc.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.Is<bool>(p => true)))
-         //   .Returns((decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour) =>
-         //   qcrcDef.Calc(cons, wetGas, temp, density, perHour));
+         MockQcRc.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.Is<bool>(p => true)))
+            .Returns((decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour) =>
+            qcrcDef.Calc(cons, wetGas, temp, density, perHour));
 
-         //MockConsGasQn.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>()))
-         //   .Returns((decimal qcrc, decimal qn) => consGasQn4.Calc(qcrc, qn));
+         MockConsGasQn.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>()))
+            .Returns((decimal qcrc, decimal qn) => consGasQn4.Calc(qcrc, qn));
 
-         //ConsKg = new CalcConsumptionKg(WetGasDensity, MockQcRc.Object, MockConsGasQn.Object);
+         ConsKg = new CalcConsumptionKg(WetGasDensity, MockQcRc.Object, MockConsGasQn.Object);
 
-         //Data = new Data
-         //{
-         //   CharacteristicsDg = TestHelper.CharacteristicsDgData(),
-         //   CharacteristicsKg = TestHelper.CharacteristicsKgData(),
-         //   Kip = TestHelper.DevicesKipData(),
-         //   Pressure = TestHelper.PressureData(),
-         //};
+         Data = new Data
+         {
+            CharacteristicsDg = TestHelper.CharacteristicsDgData(),
+            CharacteristicsKg = TestHelper.CharacteristicsKgData(),
+            Kip = TestHelper.DevicesKipData(),
+            Pressure = TestHelper.PressureData(),
+         };
       }
 
       private ConsumptionKgDTO ExpectedObject()
