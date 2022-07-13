@@ -49,7 +49,7 @@ namespace Tests.Calculations.Entities
             Cb16ConsDry = 5020.5547m,
             Cb78ConsDry = 1593.1739m,
             TnConsDry = 6613.7287m,
-            ConsumptionFv =
+            CokeCbConsumptionFv =
             {
                Kc1 =
                {

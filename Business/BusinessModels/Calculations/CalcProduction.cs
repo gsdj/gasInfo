@@ -33,6 +33,7 @@ namespace Business.BusinessModels.Calculations
       }
       public ProductionDTO CalcEntity(AmmountCb cbs)
       {
+         //считать поля только из начальных данных, 
          if (cbs == null)
             throw new NullReferenceException();
          
@@ -51,6 +52,7 @@ namespace Business.BusinessModels.Calculations
                Cb8 = cbs.Cb8,
                PKP = cbs.PKP,
             },
+
             Cb16Val = Math.Round(((cbs.Cb1 * cbs.OutputMultipliers.Cb1) + (cbs.Cb2 * cbs.OutputMultipliers.Cb2) + 
                                     (cbs.Cb3 * cbs.OutputMultipliers.Cb3) + (cbs.Cb4 * cbs.OutputMultipliers.Cb4) +
                                     (cbs.Cb5 * cbs.OutputMultipliers.Cb5) + (cbs.Cb6 * cbs.OutputMultipliers.Cb6)), 4),
@@ -76,7 +78,7 @@ namespace Business.BusinessModels.Calculations
                                        DryCoke.Calc(cbs.Cb3, cbs.OutputMultipliers.Cb3) + DryCoke.Calc(cbs.Cb4, cbs.OutputMultipliers.Cb4) +
                                        DryCoke.Calc(cbs.Cb5, cbs.OutputMultipliers.Cb5) + DryCoke.Calc(cbs.Cb6, cbs.OutputMultipliers.Cb6) +
                                        DryCoke.Calc(cbs.Cb7, cbs.OutputMultipliers.Cb7) + DryCoke.Calc(cbs.Cb8, cbs.OutputMultipliers.Cb8)) * cbs.OutputMultipliers.Sv), 4),
-            ConsumptionFv =
+            CokeCbConsumptionFv =
             {
                Kc1 =
                {
