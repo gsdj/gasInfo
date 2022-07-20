@@ -1,4 +1,6 @@
-﻿using Business.BusinessModels.DataForCalculations;
+﻿using Business.BusinessModels.BaseCalculations.Density;
+using Business.BusinessModels.Calculations;
+using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.Interfaces;
 using Business.Interfaces.BaseCalculations.Density;
@@ -22,6 +24,8 @@ namespace Tests.Calculations.Entities
 
          MockDryDensity = new Mock<IDryDensity>();
          MockWetDensity = new Mock<IWetDensity>();
+
+         MockDryDensity.SetupProperty(p => p.SteamCharacteristicsService, MockSteam.Object);
 
          Data = new Data
          {
@@ -72,32 +76,32 @@ namespace Tests.Calculations.Entities
       [Fact]
       public void WetGasDensity()
       {
-         //MockDryDensity.SetupProperty(p => p.SteamCharacteristicsService, MockSteam.Object);
+         MockDryDensity.SetupProperty(p => p.SteamCharacteristicsService, MockSteam.Object);
 
-         //var DryDensity = new DryDensity(MockSteam.Object);
+         var DryDensity = new DryDensity(MockSteam.Object);
 
-         //MockDryDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>()))
-         //   .Returns((decimal pkg, decimal PPa, decimal pOver, decimal temp) =>
-         //   DryDensity.Calc(pkg, PPa, pOver, temp));
-         //MockDryDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>()))
-         //   .Returns((decimal pkg, decimal PPa, decimal pOver, decimal temp, decimal tempDo) =>
-         //   DryDensity.Calc(pkg, PPa, pOver, temp, tempDo));
+         MockDryDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>()))
+            .Returns((decimal pkg, decimal PPa, decimal pOver, decimal temp) =>
+            DryDensity.Calc(pkg, PPa, pOver, temp));
+         MockDryDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>()))
+            .Returns((decimal pkg, decimal PPa, decimal pOver, decimal temp, decimal tempDo) =>
+            DryDensity.Calc(pkg, PPa, pOver, temp, tempDo));
 
-         //var WetDensity = new WetDensity(MockSteam.Object);
+         var WetDensity = new WetDensity(MockSteam.Object);
 
-         //MockWetDensity.SetupProperty(p => p.SteamCharacteristicsService, MockSteam.Object);
+         MockWetDensity.SetupProperty(p => p.SteamCharacteristicsService, MockSteam.Object);
 
-         //MockWetDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>()))
-         //   .Returns((decimal dryGas, decimal temp) =>
-         //   WetDensity.Calc(dryGas, temp));
+         MockWetDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>()))
+            .Returns((decimal dryGas, decimal temp) =>
+            WetDensity.Calc(dryGas, temp));
 
-         //var target = new CalcWetGasDensity(MockWetDensity.Object, MockDryDensity.Object);
+         var target = new CalcWetGasDensity(MockWetDensity.Object, MockDryDensity.Object);
 
-         //var expected = JsonConvert.SerializeObject(ExpectedObject());
+         var expected = JsonConvert.SerializeObject(ExpectedObject());
 
-         //var result = JsonConvert.SerializeObject(target.CalcEntity(Data));
+         var result = JsonConvert.SerializeObject(target.CalcEntity(Data));
 
-         //Assert.Equal(expected, result);
+         Assert.Equal(expected, result);
 
       }
    }

@@ -1,10 +1,12 @@
 ﻿using Business.BusinessModels.BaseCalculations;
 using Business.BusinessModels.BaseCalculations.Consumption;
+using Business.BusinessModels.BaseCalculations.Production;
 using Business.BusinessModels.Calculations;
 using Business.DTO;
 using Business.DTO.Models.Production;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.BaseCalculations.Consumption;
+using Business.Interfaces.BaseCalculations.Production;
 using Business.Interfaces.Calculations;
 using Newtonsoft.Json;
 using System;
@@ -19,7 +21,13 @@ namespace Tests.Calculations.Entities
          IDryCokeProduction<DefaultDryCokeProduction> dryCoke = new DefaultDryCokeProduction();
          IChargeConsFV<DefaultChargeConsFV> consFv = new DefaultChargeConsFV(new DefaultDryCokeProduction());
          ISpoPerKus<DefaultSpoPerKus> perKus = new DefaultSpoPerKus();
-         return new CalcProduction(dryCoke, consFv, perKus);
+
+         ICokeCbGrossCalc GrossCalc = new CokeCbGrossCalc();
+         ICokeCbDryCalc DryCalc = new CokeCbDryCalc(dryCoke);
+         ICokeCbConsumptionDryCalc ConsumptionDryCalc = new CokeCbConsumptionDryCalc(dryCoke);
+         ICokeCbConsumptionFvCalc ConsumptionFvCalc = new CokeCbConsumptionFvCalc(consFv);
+
+         return new CalcProduction(perKus, GrossCalc, DryCalc, ConsumptionDryCalc, ConsumptionFvCalc);
       }
       [Fact]
       public void Production()
@@ -41,15 +49,67 @@ namespace Tests.Calculations.Entities
                Cb8 = 53,
                PKP = 12,
             },
-            Cb16Val = 4192.32m,
-            Cb78Val = 1330.35m,
-            Cb16Dry = 3940.7808m,
-            Cb78Dry = 1250.5290m,
-            TnDry = 5191.3098m,
-            KpeDry = 83.28m,
-            Cb16ConsDry = 5020.5547m,
-            Cb78ConsDry = 1593.1739m,
-            TnConsDry = 6613.7287m,
+            CokeCbGross =
+            {
+               Kc1 =
+               {
+                  Cb1 = 814.32m,
+                  Cb2 = 1073.52m,
+                  Cb3 = 0,
+                  Cb4 = 1024.80m,
+               },
+               Kc2 =
+               {
+                  Cb1 = 639.84m,
+                  Cb2 = 639.84m,
+                  Cb3 = 626.51m,
+                  Cb4 = 703.84m,
+               },
+            },
+            CokeCbDry =
+            {
+               Kc1 =
+               {
+                  Cb1 = 765.4608m,
+                  Cb2 = 1009.1088m,
+                  Cb3 = 0.00m,
+                  Cb4 = 963.3120m,
+               },
+               Kc2 =
+               {
+                  Cb1 = 601.4496m,
+                  Cb2 = 601.4496m,
+                  Cb3 = 588.9194m,
+                  Cb4 = 661.6096m,
+               },
+               KpeDry = 83.28m,
+            },
+            //Cb16Val = 4192.32m,
+            //Cb78Val = 1330.35m,
+            //Cb16Dry = 3940.7808m,
+            //Cb78Dry = 1250.5290m,
+            //TnDry = 5191.3098m,
+            //KpeDry = 83.28m,
+            CokeCbConsumptionDry =
+            {
+               Kc1 =
+               {
+                  Cb1 = 975.1970592m,
+                  Cb2 = 1285.6046112m,
+                  Cb3 = 0.00000m,
+                  Cb4 = 1227.2594880m,
+               },
+               Kc2 =
+               {
+                  Cb1 = 766.2467904m,
+                  Cb2 = 766.2467904m,
+                  Cb3 = 750.2833156m,
+                  Cb4 = 842.8906304m,
+               },
+            },
+            //Cb16ConsDry = 5020.5547m,
+            //Cb78ConsDry = 1593.1739m,
+            //TnConsDry = 6613.7287m,
             CokeCbConsumptionFv =
             {
                Kc1 =

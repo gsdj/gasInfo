@@ -62,16 +62,16 @@ namespace Business.BusinessModels.Calculations
          return new OutputKg
          {
             OutKgStCu1 = outKg.Cu14000 + consKg.PkoQcRcSum,
-            OutKgUdSvCu1 = (outKg.Cu14000 + consKg.PkoQcRcSum) / prodPerDate.Cb16ConsDry,
+            OutKgUdSvCu1 = (outKg.Cu14000 + consKg.PkoQcRcSum) / prodPerDate.CokeCbConsumptionDry.Cb1_6,
             OutKgSthCu1 = (outKg.Cu14000 + consKg.PkoQcRcSum) / 24,
             SumOutKgCu1 = sumCu1,
 
             OutKgStCu2 = outKg.Cu24000,
-            OutKgUdSvCu2 = outKg.Cu24000 / prodPerDate.Cb78ConsDry,
+            OutKgUdSvCu2 = outKg.Cu24000 / prodPerDate.CokeCbConsumptionDry.Cb7_8,
             OutKgSthCu2 = outKg.Cu24000 / 24,
             SumOutKgCu2 = sumCu2,
 
-            OutKgUdSvMk = (outKg.Cu14000 + consKg.PkoQcRcSum + outKg.Cu24000) / prodPerDate.TnConsDry,
+            OutKgUdSvMk = (outKg.Cu14000 + consKg.PkoQcRcSum + outKg.Cu24000) / prodPerDate.CokeCbConsumptionDry.Tn,
             OutKgStMk = outKg.Cu14000 + consKg.PkoQcRcSum + outKg.Cu24000,
             OutKgSthMk = (outKg.Cu14000 + consKg.PkoQcRcSum + outKg.Cu24000) / 24,
             SumOutKgMk = sumCu1 + sumCu2,
