@@ -1,8 +1,8 @@
 ﻿using Business.BusinessModels.BaseCalculations.Qn;
 using Business.BusinessModels.DataForCalculations;
-using Business.DTO;
-using Business.DTO.General;
-using Business.DTO.QcRc;
+using Business.DTO.Models.Characteristics.Gas;
+using Business.DTO.Models.General;
+using Business.DTO.Models.QcRc;
 using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
 using Business.Interfaces.Calculations.ConsGasQn;
@@ -18,14 +18,14 @@ namespace Business.BusinessModels.Calculations.ConsGasQn
          CalcQcRcKc1 = qcrc;
          ConsGasQn = consGasQn;
       }
-      public CbKc Calc(QcRcKc1 qcrc, CharacteristicsDgDTO cGas)
+      public CbKc Calc(QcRcKc1 qcrc, CharacteristicsDG cGas)
       {
          return new CbKc
          {
-            Cb1 = ConsGasQn.Calc(qcrc.Cb1.Value, cGas.CharacteristicsAVG.Qn),
-            Cb2 = ConsGasQn.Calc(qcrc.Cb2.Value, cGas.CharacteristicsAVG.Qn),
-            Cb3 = ConsGasQn.Calc(qcrc.Cb3.Value, cGas.CharacteristicsAVG.Qn),
-            Cb4 = ConsGasQn.Calc(qcrc.Cb4.Value, cGas.CharacteristicsAVG.Qn),
+            Cb1 = ConsGasQn.Calc(qcrc.Cb1.Value, cGas.AVG.Qn),
+            Cb2 = ConsGasQn.Calc(qcrc.Cb2.Value, cGas.AVG.Qn),
+            Cb3 = ConsGasQn.Calc(qcrc.Cb3.Value, cGas.AVG.Qn),
+            Cb4 = ConsGasQn.Calc(qcrc.Cb4.Value, cGas.AVG.Qn),
          };
       }
 

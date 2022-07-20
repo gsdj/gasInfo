@@ -1,16 +1,9 @@
-﻿using Business.DTO.Consumption;
-using Business.DTO.General;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business.DTO.Models.General;
 
 namespace Business.DTO
 {
-   public class ReportKgDTO
+   public class ReportKgDTO : Entity
    {
-      public DateTime Date { get; set; }
       public decimal OutKgPko { get; set; }
       public decimal OutKgCb16 { get; set; }// => Math.Round((Kbs16 == 0 || KbsMk == 0) ? 0 : (OutKgKb18 * (Kbs16 / KbsMk)), 10);
       public decimal OutKgCb78 { get; set; }// =>=> Math.Round((Kbs78 == 0 || KbsMk == 0) ? 0 : (OutKgKb18 * (Kbs78 / KbsMk)), 10);

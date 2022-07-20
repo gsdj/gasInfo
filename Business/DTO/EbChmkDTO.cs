@@ -1,11 +1,9 @@
-﻿using Business.DTO.General;
-using System;
+﻿using Business.DTO.Models.General;
 
 namespace Business.DTO
 {
-   public class EbChmkDTO
+   public class EbChmkDTO : Entity
    {
-      public DateTime Date { get; set; }
       public CbKc ConsumptionKc1 { get; set; }
       public decimal ConsDgKc1Sum { get; set; }
       public CbKc UdConsumptionKc1 { get; set; }

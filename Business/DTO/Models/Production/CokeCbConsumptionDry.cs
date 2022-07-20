@@ -1,9 +1,4 @@
-﻿using Business.DTO.General;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business.DTO.Models.General;
 
 namespace Business.DTO.Models.Production
 {

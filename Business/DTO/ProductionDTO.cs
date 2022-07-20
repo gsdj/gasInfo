@@ -1,15 +1,9 @@
-﻿using Business.DTO.Consumption;
-using Business.DTO.General;
+﻿using Business.DTO.Models.General;
 using Business.DTO.Models.Production;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.DTO
 {
-   public class ProductionDTO
+   public class ProductionDTO : Entity
    {
       public ProductionDTO()
       {
@@ -21,7 +15,6 @@ namespace Business.DTO
       public decimal FvC { get; set; }
       public decimal KpeC { get; set; }
 
-      public DateTime Date { get; set; }
       public AmmountCb<int> AmmountCb { get; set; }
       public int Cb1Cb2 { get; set; }
       public int Cb3Cb4 { get; set; }

@@ -1,5 +1,5 @@
 ﻿using Business.BusinessModels.Constants;
-using Business.DTO.Characteristics.CharacteristicsGas;
+using Business.DTO.Models.Components;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.BaseCalculations.Density;
 using DataAccess.Entities;

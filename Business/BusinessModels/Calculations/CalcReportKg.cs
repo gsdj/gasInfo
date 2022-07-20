@@ -3,7 +3,7 @@ using Business.BusinessModels.BaseCalculations.Consumption;
 using Business.BusinessModels.BaseCalculations.Qn;
 using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
-using Business.DTO.General;
+using Business.DTO.Models.General;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
@@ -22,11 +22,11 @@ namespace Business.BusinessModels.Calculations
       private IChargeConsFV<DefaultChargeConsFV> ChargeConsFV;
       private IDryCokeProduction<DefaultDryCokeProduction> DryCoke;
       private ISpoPerKus<DefaultSpoPerKus> SpoPerKus;
-      private IUdConsKgFv UdConsKgFv;
+      private ISpecificConsKgFv UdConsKgFv;
       private IConsGasQn<ConsGasQn4000> ConsGasQn;
       private IQcRc QcRc;
 
-      public CalcReportKg(ICalculation<DensityDTO> wetGas, IUdConsKgFv udconskgfv, IDryCokeProduction<DefaultDryCokeProduction> cbdry, 
+      public CalcReportKg(ICalculation<DensityDTO> wetGas, ISpecificConsKgFv udconskgfv, IDryCokeProduction<DefaultDryCokeProduction> cbdry, 
          ISpoPerKus<DefaultSpoPerKus> spoperkus, IChargeConsFV<DefaultChargeConsFV> consFv, ICalcConsGasQnKc2 kc2Qn, ICalcConsGasQnCpsPpk cpsppkQn)
       {
          WetGas = wetGas;
@@ -116,8 +116,8 @@ namespace Business.BusinessModels.Calculations
             Cb4 = UdConsKgFv.Calc(consKgCb_2.Cb4, ConsumptionFvKc2.Cb4),
          };
 
-         var qcrcGsuf = QcRc.Calc(kip.Gsuf45.Consumption.Value, wetGas.Gsuf, kip.Gsuf45.Temperature, charKg.Kc1.Characteristics.Density);
-         var consGsuf = ConsGasQn.Calc(qcrcGsuf, charKg.Kc1.Characteristics.Qn);
+         var qcrcGsuf = QcRc.Calc(kip.Gsuf45.Consumption.Value, wetGas.Gsuf, kip.Gsuf45.Temperature, charKg.Kc1.Density);
+         var consGsuf = ConsGasQn.Calc(qcrcGsuf, charKg.Kc1.Qn);
 
          var KpeDry = Math.Round(cbs.PKP * cbs.OutputMultipliers.PKP, 4);
          var spoPerKus = SpoPerKus.Calc(cbs.PKP, cbs.OutputMultipliers.PKP, cbs.OutputMultipliers.Peka);
@@ -132,8 +132,8 @@ namespace Business.BusinessModels.Calculations
                                        DryCoke.Calc(cbs.Cb3, cbs.OutputMultipliers.Cb3) + DryCoke.Calc(cbs.Cb4, cbs.OutputMultipliers.Cb4) +
                                        DryCoke.Calc(cbs.Cb5, cbs.OutputMultipliers.Cb5) + DryCoke.Calc(cbs.Cb6, cbs.OutputMultipliers.Cb6) +
                                        DryCoke.Calc(cbs.Cb7, cbs.OutputMultipliers.Cb7) + DryCoke.Calc(cbs.Cb8, cbs.OutputMultipliers.Cb8)) * cbs.OutputMultipliers.Sv), 4);
-         var PrMk4000 = ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu1.Consumption.Value, wetGas.Cu.Cu1, kip.Cu.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn) +
-               ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu2.Consumption.Value, wetGas.Cu.Cu2, kip.Cu.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn);
+         var PrMk4000 = ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu1.Consumption.Value, wetGas.Cu.Cu1, kip.Cu.Cu1.Temperature, charKg.Kc1.Density), charKg.Kc1.Qn) +
+               ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu2.Consumption.Value, wetGas.Cu.Cu2, kip.Cu.Cu2.Temperature, charKg.Kc2.Density), charKg.Kc1.Qn);
 
          var data1 = new
          {

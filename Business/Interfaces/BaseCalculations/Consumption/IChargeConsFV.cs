@@ -1,5 +1,4 @@
-﻿
-namespace Business.Interfaces.BaseCalculations.Consumption
+﻿namespace Business.Interfaces.BaseCalculations.Consumption
 {
    public interface IChargeConsFV<T>
    {

@@ -1,15 +1,10 @@
-﻿using Business.DTO.InfoSheet;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business.DTO.Models.General;
+using Business.DTO.Models.InfoSheet;
 
 namespace Business.DTO
 {
-   public class InfoSheetDTO
+   public class InfoSheetDTO : Entity
    {
-      public DateTime Date { get; set; }
       public CharacteristicsKgDg CharacteristicsGas { get; set; }
       //public decimal AvgMkDGQn { get; set; } = 0;
       //public decimal AvgMkDgPkg { get; set; } = 0;

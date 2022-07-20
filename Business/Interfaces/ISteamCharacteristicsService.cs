@@ -1,4 +1,4 @@
-﻿using Business.DTO.Characteristics;
+﻿using Business.DTO;
 using System.Collections.Generic;
 
 namespace Business.Interfaces

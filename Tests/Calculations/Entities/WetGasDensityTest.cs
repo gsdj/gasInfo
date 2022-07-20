@@ -1,9 +1,6 @@
-﻿using Business.BusinessModels.BaseCalculations;
-using Business.BusinessModels.Calculations;
-using Business.BusinessModels.DataForCalculations;
+﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.Interfaces;
-using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.BaseCalculations.Density;
 using Moq;
 using Newtonsoft.Json;

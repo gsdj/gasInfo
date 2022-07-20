@@ -1,5 +1,5 @@
 ﻿using Business.DTO;
-using Business.DTO.Characteristics;
+using Business.DTO.Models.Characteristics.Gas;
 using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
@@ -50,96 +50,39 @@ namespace Tests
             ValuePa = 100258,
          };
       }
-      public static CharacteristicsKgDTO CharacteristicsKgData()
+      public static CharacteristicsKG CharacteristicsKgData()
       {
-         return new CharacteristicsKgDTO
+         return new CharacteristicsKG
          {
             Date = new DateTime(2019, 1, 1),
             Kc1 =
             {
-               Components =
-               {
-                  CO2 = 2.8m,
-                  O2 = 1.7m,
-                  CO = 7.6m,
-                  CnHm = 2.0m,
-                  CH4 = 21.2m,
-                  H2 = 58.6m,
-                  N2 = 6.1m,
-               },
-               SumComponents = 100,
-               Characteristics =
-               {
-                  Qn = 3600,
-                  Density = 0.449m,
-               }
+               Qn = 3600,
+               Density = 0.449m,
             },
             Kc2 =
             {
-               Components =
-               {
-                  CO2 = 2.6m,
-                  O2 = 0.8m,
-                  CO = 7.6m,
-                  CnHm = 2.2m,
-                  CH4 = 22.9m,
-                  H2 = 60.4m,
-                  N2 = 3.5m,
-               },
-               SumComponents = 100,
-               Characteristics =
-               {
-                  Qn = 3808,
-                  Density = 0.418m,
-               }
+               Qn = 3808,
+               Density = 0.418m,
             },
          };
       }
-      public static CharacteristicsDgDTO CharacteristicsDgData()
+      public static CharacteristicsDG CharacteristicsDgData()
       {
-         return new CharacteristicsDgDTO
+         return new CharacteristicsDG
          {
             Date = new DateTime(2019, 1, 1),
             Kc1 =
             {
-               Components =
-               {
-                  H2 = 5.1m,
-                  CO = 21.2m,
-                  CO2 = 16.5m,
-                  N2 = 56.9m,
-               },
-               SumComponents = 99.7m,
-               Characteristics =
-               {
-                  Qn = 718.1m,
-                  Density = 1.219m,
-               }
+               Qn = 718.1m,
+               Density = 1.219m,
             },
             Kc2 =
             {
-               Components =
-               {
-                  H2 = 5.1m,
-                  CO = 21.2m,
-                  CO2 = 16.5m,
-                  N2 = 56.9m,
-               },
-               SumComponents = 99.7m,
-               Characteristics =
-               {
-                  Qn = 718.1m,
-                  Density = 1.219m,
-               }
+               Qn = 718.1m,
+               Density = 1.219m,
             },
-            ComponentsAVG =
-            {
-               H2 = 5.1m,
-               CO = 21.2m,
-               CO2 = 16.5m,
-               N2 = 56.9m,
-            },
-            CharacteristicsAVG =
+            AVG =
             {
                Qn = 742.03m,
                Density = 1.219m,

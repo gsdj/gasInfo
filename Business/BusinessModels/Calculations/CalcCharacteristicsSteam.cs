@@ -1,4 +1,4 @@
-﻿using Business.DTO.Characteristics;
+﻿using Business.DTO;
 using Business.Interfaces.Calculations;
 using DataAccess.Entities.Characteristics;
 using System;

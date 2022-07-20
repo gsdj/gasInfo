@@ -1,11 +1,10 @@
-﻿using Business.DTO.Characteristics.CharacteristicsGas;
-using System;
+﻿using Business.DTO.Models.Components;
+using Business.DTO.Models.General;
 
 namespace Business.DTO
 {
-   public class ComponentsKgDTO
+   public class ComponentsKgDTO : Entity
    {
-      public DateTime Date { get; set; }
       public KGasComponents Kc1 { get; set; }
       public KGasComponents Kc2 { get; set; }
    }

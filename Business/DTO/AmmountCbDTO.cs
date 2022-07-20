@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.DTO.Models.Production;
+using System;
 
 namespace Business.DTO
 {

@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Business.DTO.Models.General;
 
 namespace Business.DTO
 {
-   public class PressureDTO
+   public class PressureDTO : Entity
    {
-      public DateTime Date { get; set; }
       public decimal Value { get; set; }
       public decimal ValuePa { get; set; } 
    }

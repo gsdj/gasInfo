@@ -62,9 +62,9 @@ namespace Business.BusinessModels.Calculations
 
          var qcrcCpsPpk = CpsPpkQn.CalcQcRcCpsPpk.Calc(QcRcKgData);
          var consCpsPpk = CpsPpkQn.Calc(qcrcCpsPpk, charKg);
-         var qcrcGsuf = CpsPpkQn.CalcQcRcCpsPpk.QcRc.Calc(kip.Gsuf45.Consumption.Value, wetGas.Gsuf, kip.Gsuf45.Temperature, charKg.Kc1.Characteristics.Density);
+         var qcrcGsuf = CpsPpkQn.CalcQcRcCpsPpk.QcRc.Calc(kip.Gsuf45.Consumption.Value, wetGas.Gsuf, kip.Gsuf45.Temperature, charKg.Kc1.Density);
 
-         var consGsuf = CpsPpkQn.ConsGasQn.Calc(qcrcGsuf, charKg.Kc1.Characteristics.Qn);
+         var consGsuf = CpsPpkQn.ConsGasQn.Calc(qcrcGsuf, charKg.Kc1.Qn);
          var consKc2Sum = consCb.Cb1 + consCb.Cb2 + consCb.Cb3 + consCb.Cb4;
          var consCpsPpkSum = consCpsPpk.Pko.Pkp + consCpsPpk.Pko.Uvtp + consCpsPpk.Spo;
          //--------

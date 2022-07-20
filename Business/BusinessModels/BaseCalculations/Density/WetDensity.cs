@@ -1,4 +1,4 @@
-﻿using Business.DTO.Characteristics;
+﻿using Business.DTO;
 using Business.Interfaces;
 using Business.Interfaces.BaseCalculations.Density;
 using System;

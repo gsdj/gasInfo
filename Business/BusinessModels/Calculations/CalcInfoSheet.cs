@@ -1,6 +1,6 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
-using Business.DTO.InfoSheet;
+using Business.DTO.Models.InfoSheet;
 using Business.Interfaces.Calculations;
 using System.Linq;
 
@@ -39,18 +39,18 @@ namespace Business.BusinessModels.Calculations
          {
             CharacteristicsDG =
                {
-                  Qn = Data.CharacteristicsDg.CharacteristicsAVG.Qn,
-                  Density = Data.CharacteristicsDg.CharacteristicsAVG.Density,
+                  Qn = Data.CharacteristicsDg.AVG.Qn,
+                  Density = Data.CharacteristicsDg.AVG.Density,
                },
             CharacteristicsKGKc1 =
                {
-                  Qn = Data.CharacteristicsKg.Kc1.Characteristics.Qn,
-                  Density = Data.CharacteristicsKg.Kc1.Characteristics.Density,
+                  Qn = Data.CharacteristicsKg.Kc1.Qn,
+                  Density = Data.CharacteristicsKg.Kc1.Density,
                },
             CharacteristicsKGKc2 =
                {
-                  Qn = Data.CharacteristicsKg.Kc2.Characteristics.Qn,
-                  Density = Data.CharacteristicsKg.Kc2.Characteristics.Density,
+                  Qn = Data.CharacteristicsKg.Kc2.Qn,
+                  Density = Data.CharacteristicsKg.Kc2.Density,
                }
          };
       }

@@ -1,5 +1,4 @@
-﻿
-namespace Business.Interfaces.BaseCalculations.Density
+﻿namespace Business.Interfaces.BaseCalculations.Density
 {
    public interface IDryDensity
    {

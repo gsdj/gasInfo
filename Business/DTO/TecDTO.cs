@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business.DTO.Models.General;
 
 namespace Business.DTO
 {
-   public class TecDTO
+   public class TecDTO : Entity
    {
-      public DateTime Date { get; set; }
       public decimal Chmk { get; set; }
       public decimal TecNorth { get; set; }
       public decimal TecSouth { get; set; }

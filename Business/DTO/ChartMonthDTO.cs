@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Business.DTO.Models.General;
 
 namespace Business.DTO
 {
-   public class ChartMonthDTO
+   public class ChartMonthDTO : Entity
    {
-      public DateTime Date { get; set; }
       public decimal TheorOutKg { get; set; }
       public decimal OperOutKg { get; set; }
       public decimal TradeOutKg { get; set; }

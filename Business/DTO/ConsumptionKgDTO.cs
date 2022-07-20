@@ -1,10 +1,9 @@
-﻿using Business.DTO.General;
-using Business.DTO.QcRc;
-using System;
+﻿using Business.DTO.Models.General;
+using Business.DTO.Models.QcRc;
 
 namespace Business.DTO
 {
-   public class ConsumptionKgDTO
+   public class ConsumptionKgDTO : Entity
    {
       public ConsumptionKgDTO()
       {
@@ -13,7 +12,6 @@ namespace Business.DTO
          QcRcCpsPpk = new CpsPpkQcRc();
          ConsumptionCpsPpk = new CpsPpk();
       }
-      public DateTime Date { get; set; }
       public QcRcKc2 QcRcCb { get; set; }
       public CbKc ConsumptionCb { get; set; }
       public CpsPpkQcRc QcRcCpsPpk { get; set; }

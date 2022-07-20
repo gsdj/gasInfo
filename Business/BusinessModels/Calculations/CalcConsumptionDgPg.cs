@@ -1,7 +1,7 @@
 ﻿using Business.BusinessModels.BaseCalculations.Consumption;
 using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
-using Business.DTO.General;
+using Business.DTO.Models.General;
 using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
 using Business.Interfaces.Calculations.ConsGasQn;
@@ -16,10 +16,10 @@ namespace Business.BusinessModels.Calculations
       private ICalcConsGasQnKc1 ConsGasQn;
       private IConsPg ConsPg;
       private IConsPgCb ConsPgCb;
-      private IUdConsDgFv UdConsDgFv;
+      private ISpecificConsDgFv UdConsDgFv;
       private IChargeConsFV<DefaultChargeConsFV> ConsCbFv;
       public CalcConsumptionDgPg(ICalculation<DensityDTO> wetGas, IConsPg consPg, IConsPgCb consPgCb,
-         ICalcConsGasQnKc1 consQn, IUdConsDgFv udConsDgFv, IChargeConsFV<DefaultChargeConsFV> consFv)
+         ICalcConsGasQnKc1 consQn, ISpecificConsDgFv udConsDgFv, IChargeConsFV<DefaultChargeConsFV> consFv)
       {
          ConsPg = consPg;
          ConsPgCb = consPgCb;

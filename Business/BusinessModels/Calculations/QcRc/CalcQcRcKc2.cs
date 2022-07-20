@@ -1,5 +1,5 @@
 ﻿using Business.BusinessModels.DataForCalculations;
-using Business.DTO.QcRc;
+using Business.DTO.Models.QcRc;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.Calculations;
 
@@ -25,21 +25,21 @@ namespace Business.BusinessModels.Calculations.QcRc
             //Cb5 = QcRc.Calc(kip.Cb5.Consumption, wetGas.Cb5, kip.Cb5.TempBeforeHeating, charKg.Kc1.Characteristics.Density, true),
             Cb1 =
                {
-                  Value = QcRc.Calc(kip.Kc2.Cb1.Consumption.Value, wetGas.Kc2.Cb1, kip.Kc2.Cb1.TempBeforeHeating, charKg.Kc1.Characteristics.Density, true),
+                  Value = QcRc.Calc(kip.Kc2.Cb1.Consumption.Value, wetGas.Kc2.Cb1, kip.Kc2.Cb1.TempBeforeHeating, charKg.Kc1.Density, true),
                },
             Cb2 =
                {
-                  Value = QcRc.Calc(kip.Kc2.Cb2.Consumption.Value, wetGas.Kc2.Cb2, kip.Kc2.Cb2.TempBeforeHeating, charKg.Kc1.Characteristics.Density, true),
+                  Value = QcRc.Calc(kip.Kc2.Cb2.Consumption.Value, wetGas.Kc2.Cb2, kip.Kc2.Cb2.TempBeforeHeating, charKg.Kc1.Density, true),
                },
             Cb3 =
                {
-                  Ms = QcRc.Calc(kip.Kc2.Cb3.Consumption.Ms, wetGas.Kc2.Cb3, kip.Kc2.Cb3.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
-                  Ks = QcRc.Calc(kip.Kc2.Cb3.Consumption.Ks, wetGas.Kc2.Cb3, kip.Kc2.Cb3.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
+                  Ms = QcRc.Calc(kip.Kc2.Cb3.Consumption.Ms, wetGas.Kc2.Cb3, kip.Kc2.Cb3.TempBeforeHeating, charKg.Kc2.Density),
+                  Ks = QcRc.Calc(kip.Kc2.Cb3.Consumption.Ks, wetGas.Kc2.Cb3, kip.Kc2.Cb3.TempBeforeHeating, charKg.Kc2.Density),
                },
             Cb4 =
                {
-                  Ms = QcRc.Calc(kip.Kc2.Cb4.Consumption.Ms, wetGas.Kc2.Cb4, kip.Kc2.Cb4.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
-                  Ks = QcRc.Calc(kip.Kc2.Cb4.Consumption.Ks, wetGas.Kc2.Cb4, kip.Kc2.Cb4.TempBeforeHeating, charKg.Kc2.Characteristics.Density),
+                  Ms = QcRc.Calc(kip.Kc2.Cb4.Consumption.Ms, wetGas.Kc2.Cb4, kip.Kc2.Cb4.TempBeforeHeating, charKg.Kc2.Density),
+                  Ks = QcRc.Calc(kip.Kc2.Cb4.Consumption.Ks, wetGas.Kc2.Cb4, kip.Kc2.Cb4.TempBeforeHeating, charKg.Kc2.Density),
                },
          };
       }

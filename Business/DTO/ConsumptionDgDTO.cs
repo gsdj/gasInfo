@@ -1,12 +1,10 @@
-﻿using Business.DTO.General;
-using Business.DTO.QcRc;
-using System;
+﻿using Business.DTO.Models.General;
+using Business.DTO.Models.QcRc;
 
 namespace Business.DTO
 {
-   public class ConsumptionDgDTO
+   public class ConsumptionDgDTO : Entity
    {
-      public DateTime Date { get; set; }
       public QcRcKc1 QcRc { get; set; }
       public CbKc ConsumptionDg { get; set; }
       public decimal ConsumptionDgMk { get; set; }

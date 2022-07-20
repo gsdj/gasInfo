@@ -87,14 +87,14 @@ namespace Business.BusinessModels.Calculations
 
          var qcrcCpsPpk = CpsPpkQn.CalcQcRcCpsPpk.Calc(QcRcKgData);
          var consCpsPpk = CpsPpkQn.Calc(qcrcCpsPpk, charKg);
-         var qcrcGsuf = CpsPpkQn.CalcQcRcCpsPpk.QcRc.Calc(kip.Gsuf45.Consumption.Value, wetGas.Gsuf, kip.Gsuf45.Temperature, charKg.Kc1.Characteristics.Density);
+         var qcrcGsuf = CpsPpkQn.CalcQcRcCpsPpk.QcRc.Calc(kip.Gsuf45.Consumption.Value, wetGas.Gsuf, kip.Gsuf45.Temperature, charKg.Kc1.Density);
 
-         var consGsuf = CpsPpkQn.ConsGasQn.Calc(qcrcGsuf, charKg.Kc1.Characteristics.Qn);
+         var consGsuf = CpsPpkQn.ConsGasQn.Calc(qcrcGsuf, charKg.Kc1.Qn);
          var consKc2Sum = consCb.Cb1 + consCb.Cb2 + consCb.Cb3 + consCb.Cb4;
          var consCpsPpkSum = consCpsPpk.Pko.Pkp + consCpsPpk.Pko.Uvtp + consCpsPpk.Spo;
 
-         var PrMk4000 = ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu1.Consumption.Value, wetGas.Cu.Cu1, kip.Cu.Cu1.Temperature, charKg.Kc1.Characteristics.Density), charKg.Kc1.Characteristics.Qn) +
-                        ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu2.Consumption.Value, wetGas.Cu.Cu2, kip.Cu.Cu2.Temperature, charKg.Kc2.Characteristics.Density), charKg.Kc1.Characteristics.Qn);
+         var PrMk4000 = ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu1.Consumption.Value, wetGas.Cu.Cu1, kip.Cu.Cu1.Temperature, charKg.Kc1.Density), charKg.Kc1.Qn) +
+                        ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu2.Consumption.Value, wetGas.Cu.Cu2, kip.Cu.Cu2.Temperature, charKg.Kc2.Density), charKg.Kc1.Qn);
 
          var Cb16ConsDry = (DryCoke.Calc(cbs.Cb1, cbs.OutputMultipliers.Cb1) + DryCoke.Calc(cbs.Cb2, cbs.OutputMultipliers.Cb2) +
                            DryCoke.Calc(cbs.Cb3, cbs.OutputMultipliers.Cb3) + DryCoke.Calc(cbs.Cb4, cbs.OutputMultipliers.Cb4) +
@@ -107,7 +107,7 @@ namespace Business.BusinessModels.Calculations
          {
             Kc2Sum = (consKc2Sum + consCpsPpkSum) / 24,
             Gsuf4000 = consGsuf / 24,
-            Asdue = (Data.Asdue.StmDay / 24) * Data.CharacteristicsKg.Kc1.Characteristics.Qn / 4000,
+            Asdue = (Data.Asdue.StmDay / 24) * Data.CharacteristicsKg.Kc1.Qn / 4000,
             Oper = PrMk4000 / TnConsDry,
          };
 

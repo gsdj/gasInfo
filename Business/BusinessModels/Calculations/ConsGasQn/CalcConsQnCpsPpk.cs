@@ -1,7 +1,8 @@
 ﻿using Business.BusinessModels.BaseCalculations.Qn;
 using Business.BusinessModels.DataForCalculations;
-using Business.DTO;
-using Business.DTO.General;
+using Business.DTO.Models.Characteristics.Gas;
+using Business.DTO.Models.General;
+using Business.DTO.Models.QcRc;
 using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.Calculations;
 using Business.Interfaces.Calculations.ConsGasQn;
@@ -17,16 +18,16 @@ namespace Business.BusinessModels.Calculations.ConsGasQn
          CalcQcRcCpsPpk = qcrc;
          ConsGasQn = consGasQn;
       }
-      public CpsPpk Calc(CpsPpkQcRc qcrc, CharacteristicsKgDTO cGas)
+      public CpsPpk Calc(CpsPpkQcRc qcrc, CharacteristicsKG cGas)
       {
          return new CpsPpk
          {
             Pko = 
             {
-               Pkp = ConsGasQn.Calc(qcrc.Pko.Pkp.Value, cGas.Kc1.Characteristics.Qn),
-               Uvtp = ConsGasQn.Calc(qcrc.Pko.Uvtp, cGas.Kc1.Characteristics.Qn),
+               Pkp = ConsGasQn.Calc(qcrc.Pko.Pkp.Value, cGas.Kc1.Qn),
+               Uvtp = ConsGasQn.Calc(qcrc.Pko.Uvtp, cGas.Kc1.Qn),
             },
-            Spo = ConsGasQn.Calc(qcrc.Spo, cGas.Kc1.Characteristics.Qn),
+            Spo = ConsGasQn.Calc(qcrc.Spo, cGas.Kc1.Qn),
          };
       }
 

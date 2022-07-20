@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Business.DTO.Models.General;
 
 namespace Business.DTO
 {
-   public class AsdueDTO
+   public class AsdueDTO : Entity
    {
-      public DateTime Date { get; set; }
       public decimal TecNorth { get; set; } = 0;
       public decimal TecSouth { get; set; } = 0;
       public decimal Gps2Gss1 { get; set; } = 0;

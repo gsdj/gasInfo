@@ -1,9 +1,9 @@
-﻿using Business.DTO.Devices;
-using System;
+﻿using Business.DTO.Models.Devices;
+using Business.DTO.Models.General;
 
 namespace Business.DTO
 {
-   public class DevicesKipDTO
+   public class DevicesKipDTO : Entity
    {
       public DevicesKipDTO()
       {
@@ -15,7 +15,6 @@ namespace Business.DTO
          Gru = new GruDevices();
          Grp4 = new Device();
       }
-      public DateTime Date { get; set; }
       public CuDevices Cu { get; set; }
       public Kc2Devices Kc2 { get; set; }
       public CpsPpkDevices CpsPpk { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Business.DTO;
+using Business.DTO.Models.Characteristics.Gas;
 
 namespace Business.BusinessModels.DataForCalculations
 {
@@ -9,10 +10,10 @@ namespace Business.BusinessModels.DataForCalculations
    }
    public class QcRcDgData : QcRcData
    {
-      public CharacteristicsDgDTO CharacteristicsDg;
+      public CharacteristicsDG CharacteristicsDg;
    }
    public class QcRcKgData : QcRcData
    {
-      public CharacteristicsKgDTO CharacteristicsKg;
+      public CharacteristicsKG CharacteristicsKg;
    }
 }

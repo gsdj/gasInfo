@@ -1,8 +1,6 @@
-﻿using Business.BusinessModels.BaseCalculations;
-using Business.BusinessModels.BaseCalculations.Density;
-using Business.DTO.Characteristics;
+﻿using Business.BusinessModels.BaseCalculations.Density;
+using Business.DTO;
 using Business.Interfaces;
-using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.BaseCalculations.Density;
 using Moq;
 using System.Collections.Generic;

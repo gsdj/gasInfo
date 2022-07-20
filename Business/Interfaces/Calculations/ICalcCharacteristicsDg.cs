@@ -1,17 +1,12 @@
-﻿using Business.DTO;
-using Business.Interfaces;
+﻿using Business.DTO.Models.Characteristics.Gas;
 using DataAccess.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Interfaces.Calculations
 {
    public interface ICalcCharacteristicsDg
    {
-      IEnumerable<CharacteristicsDgDTO> CalcEntities(IEnumerable<CharacteristicsDgAll> _dgs);
-      CharacteristicsDgDTO CalcEntity(CharacteristicsDgAll dg);
+      IEnumerable<CharacteristicsDG> CalcEntities(IEnumerable<CharacteristicsDgAll> _dgs);
+      CharacteristicsDG CalcEntity(CharacteristicsDgAll dg);
    }
 }

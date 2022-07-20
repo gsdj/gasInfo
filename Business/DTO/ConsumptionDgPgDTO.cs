@@ -1,12 +1,9 @@
-﻿using Business.DTO.Consumption;
-using Business.DTO.General;
-using System;
+﻿using Business.DTO.Models.General;
 
 namespace Business.DTO
 {
-   public class ConsumptionDgPgDTO
+   public class ConsumptionDgPgDTO : Entity
    {
-      public DateTime Date { get; set; }
       public CbKc ConsumptionDgCb { get; set; }
       public decimal ConsumptionDgKc1 { get; set; }
       public CbKc ConsumptionPgCb { get; set; }

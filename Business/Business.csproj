@@ -14,20 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Settings1.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings1.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="App.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Settings1.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

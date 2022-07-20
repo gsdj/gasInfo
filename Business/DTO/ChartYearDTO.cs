@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Business.DTO.Models.General;
 
 namespace Business.DTO
 {
-   public class ChartYearDTO
+   public class ChartYearDTO : Entity
    {
-      public DateTime Date { get; set; }
       public decimal TradeGasMK { get; set; }
       public decimal TradeGasEB { get; set; }
       public decimal TradeGasAsdue { get; set; }

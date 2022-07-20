@@ -1,5 +1,6 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
+using Business.DTO.Models.Characteristics.Gas;
 using Business.Interfaces.BaseCalculations.Density;
 using Business.Interfaces.Calculations;
 using System.Collections.Generic;
@@ -16,39 +17,39 @@ namespace Business.BusinessModels.Calculations
          WetDensity = wet;
          DryDensity = dry;
       }
-      private DensityDTO CalcDryGasDensity(PressureDTO pressure, CharacteristicsKgDTO kg, CharacteristicsDgDTO dg, DevicesKipDTO kip)
+      private DensityDTO CalcDryGasDensity(PressureDTO pressure, CharacteristicsKG kg, CharacteristicsDG dg, DevicesKipDTO kip)
       {
          return new DensityDTO
          {
             Date = pressure.Date,
             Cu =
             {
-               Cu1 = DryDensity.Calc(kg.Kc1.Characteristics.Density, pressure.ValuePa, kip.Cu.Cu1.Pressure, kip.Cu.Cu1.Temperature),
-               Cu2 = DryDensity.Calc(kg.Kc2.Characteristics.Density, pressure.ValuePa, kip.Cu.Cu2.Pressure, kip.Cu.Cu2.Temperature),
+               Cu1 = DryDensity.Calc(kg.Kc1.Density, pressure.ValuePa, kip.Cu.Cu1.Pressure, kip.Cu.Cu1.Temperature),
+               Cu2 = DryDensity.Calc(kg.Kc2.Density, pressure.ValuePa, kip.Cu.Cu2.Pressure, kip.Cu.Cu2.Temperature),
             },
             Kc2 =
             {
-               Cb1 = DryDensity.Calc(kg.Kc1.Characteristics.Density, pressure.ValuePa, kip.Kc2.Cb1.Pressure, kip.Kc2.Cb1.Temperature, kip.Kc2.Cb1.TempBeforeHeating),
-               Cb2 = DryDensity.Calc(kg.Kc1.Characteristics.Density, pressure.ValuePa, kip.Kc2.Cb2.Pressure, kip.Kc2.Cb2.Temperature, kip.Kc2.Cb2.TempBeforeHeating),
-               Cb3 = DryDensity.Calc(kg.Kc2.Characteristics.Density, pressure.ValuePa, kip.Kc2.Cb3.Pressure, kip.Kc2.Cb3.Temperature, kip.Kc2.Cb3.TempBeforeHeating),
-               Cb4 = DryDensity.Calc(kg.Kc2.Characteristics.Density, pressure.ValuePa, kip.Kc2.Cb4.Pressure, kip.Kc2.Cb4.Temperature, kip.Kc2.Cb4.TempBeforeHeating),
+               Cb1 = DryDensity.Calc(kg.Kc1.Density, pressure.ValuePa, kip.Kc2.Cb1.Pressure, kip.Kc2.Cb1.Temperature, kip.Kc2.Cb1.TempBeforeHeating),
+               Cb2 = DryDensity.Calc(kg.Kc1.Density, pressure.ValuePa, kip.Kc2.Cb2.Pressure, kip.Kc2.Cb2.Temperature, kip.Kc2.Cb2.TempBeforeHeating),
+               Cb3 = DryDensity.Calc(kg.Kc2.Density, pressure.ValuePa, kip.Kc2.Cb3.Pressure, kip.Kc2.Cb3.Temperature, kip.Kc2.Cb3.TempBeforeHeating),
+               Cb4 = DryDensity.Calc(kg.Kc2.Density, pressure.ValuePa, kip.Kc2.Cb4.Pressure, kip.Kc2.Cb4.Temperature, kip.Kc2.Cb4.TempBeforeHeating),
             },
             CpsPpk =
             {
                Pko =
                {
-                  Pkp = DryDensity.Calc(kg.Kc1.Characteristics.Density, pressure.ValuePa, kip.CpsPpk.Pko.Pkp.Pressure, kip.CpsPpk.Pko.Pkp.Temperature),
-                  Uvtp = DryDensity.Calc(kg.Kc1.Characteristics.Density, pressure.ValuePa, kip.CpsPpk.Pko.Uvtp.Pressure, kip.CpsPpk.Pko.Uvtp.Temperature),
+                  Pkp = DryDensity.Calc(kg.Kc1.Density, pressure.ValuePa, kip.CpsPpk.Pko.Pkp.Pressure, kip.CpsPpk.Pko.Pkp.Temperature),
+                  Uvtp = DryDensity.Calc(kg.Kc1.Density, pressure.ValuePa, kip.CpsPpk.Pko.Uvtp.Pressure, kip.CpsPpk.Pko.Uvtp.Temperature),
                },
-               Spo = DryDensity.Calc(kg.Kc1.Characteristics.Density, pressure.ValuePa, kip.CpsPpk.Spo.Pressure, kip.CpsPpk.Spo.Temperature),
+               Spo = DryDensity.Calc(kg.Kc1.Density, pressure.ValuePa, kip.CpsPpk.Spo.Pressure, kip.CpsPpk.Spo.Temperature),
             },
-            Gsuf = DryDensity.Calc(kg.Kc1.Characteristics.Density, pressure.ValuePa, kip.Gsuf45.Pressure, kip.Gsuf45.Temperature),
+            Gsuf = DryDensity.Calc(kg.Kc1.Density, pressure.ValuePa, kip.Gsuf45.Pressure, kip.Gsuf45.Temperature),
             Kc1 =
             {
-               Cb1 = DryDensity.Calc(dg.CharacteristicsAVG.Density, pressure.ValuePa, kip.Kc1.Cb1.Pressure, kip.Kc1.Cb1.Temperature),
-               Cb2 = DryDensity.Calc(dg.CharacteristicsAVG.Density, pressure.ValuePa, kip.Kc1.Cb2.Pressure, kip.Kc1.Cb2.Temperature),
-               Cb3 = DryDensity.Calc(dg.CharacteristicsAVG.Density, pressure.ValuePa, kip.Kc1.Cb3.Pressure, kip.Kc1.Cb3.Temperature),
-               Cb4 = DryDensity.Calc(dg.CharacteristicsAVG.Density, pressure.ValuePa, kip.Kc1.Cb4.Pressure, kip.Kc1.Cb4.Temperature),
+               Cb1 = DryDensity.Calc(dg.AVG.Density, pressure.ValuePa, kip.Kc1.Cb1.Pressure, kip.Kc1.Cb1.Temperature),
+               Cb2 = DryDensity.Calc(dg.AVG.Density, pressure.ValuePa, kip.Kc1.Cb2.Pressure, kip.Kc1.Cb2.Temperature),
+               Cb3 = DryDensity.Calc(dg.AVG.Density, pressure.ValuePa, kip.Kc1.Cb3.Pressure, kip.Kc1.Cb3.Temperature),
+               Cb4 = DryDensity.Calc(dg.AVG.Density, pressure.ValuePa, kip.Kc1.Cb4.Pressure, kip.Kc1.Cb4.Temperature),
             },
          };
       }

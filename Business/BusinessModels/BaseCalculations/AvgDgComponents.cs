@@ -1,4 +1,4 @@
-﻿using Business.DTO.Characteristics.CharacteristicsGas;
+﻿using Business.DTO.Models.Components;
 using Business.Interfaces.BaseCalculations;
 using DataAccess.Entities;
 

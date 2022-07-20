@@ -1,13 +1,8 @@
 ﻿using Business.BusinessModels.BaseCalculations;
-using Business.DTO.QcRc;
+using Business.DTO.Models.QcRc;
 using Business.Interfaces;
 using Business.Interfaces.BaseCalculations;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Tests.Calculations.Base
@@ -66,7 +61,7 @@ namespace Tests.Calculations.Base
          var ms = QcRc.Calc(consMs, wetGas, temp, densityKg);
          var ks = QcRc.Calc(consKs, wetGas, temp, densityKg);
 
-         var result = new QcRcDefault2
+         var result = new QcRcDefault
          {
             Ms = ms,
             Ks = ks,

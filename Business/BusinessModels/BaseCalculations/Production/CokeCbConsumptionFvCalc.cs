@@ -1,15 +1,10 @@
 ﻿using Business.BusinessModels.BaseCalculations.Consumption;
-using Business.DTO.General;
-using Business.DTO.Models.Production;
-using Business.Interfaces.BaseCalculations;
+using Business.DTO.Models.General;
 using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.BaseCalculations.Production;
 using DataAccess.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.BusinessModels.BaseCalculations.Production
 {

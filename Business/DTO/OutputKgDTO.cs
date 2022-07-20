@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business.DTO.Models.General;
 
 namespace Business.DTO
 {
-   public class OutputKgDTO
+   public class OutputKgDTO : Entity
    {
-      public DateTime Date { get; set; }
       public decimal QcRcCu1 { get; set; }
       public decimal Cu14000 { get; set; }
       public decimal Cu1Cb16 { get; set; }
