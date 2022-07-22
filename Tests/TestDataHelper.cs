@@ -1,12 +1,13 @@
 ﻿using Business.DTO;
 using Business.DTO.Models.Characteristics.Gas;
+using Business.DTO.Models.QcRc;
 using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 
 namespace Tests
 {
-   public class TestHelper
+   public class TestDataHelper
    {
       public static AmmountCb AmmountCbData()
       {
@@ -404,6 +405,64 @@ namespace Tests
                Consumption = { Value = 0 },
                Pressure = 0,
                Temperature = 0,
+            },
+         };
+      }
+      public static DensityDTO DensityDTOData()
+      {
+         return new DensityDTO
+         {
+            Date = new DateTime(2019, 1, 1),
+            Cu =
+            {
+               Cu1 = 0.4857840419m,
+               Cu2 = 0.4418307183m,
+            },
+            Kc2 =
+            {
+               Cb1 = 0.4591238375m,
+               Cb2 = 0.4645476338m,
+               Cb3 = 0.4403959960m,
+               Cb4 = 0.4332943460m,
+            },
+            CpsPpk =
+            {
+               Pko =
+               {
+                  Pkp = 0.4889691785m,
+                  Uvtp = 0.4893950244m,
+               },
+               Spo = 0.4789630264m,
+            },
+            Gsuf = 0.4811577412m,
+            Kc1 =
+            {
+               Cb1 = 1.2019043517m,
+               Cb2 = 1.2019043517m,
+               Cb3 = 1.2914997647m,
+               Cb4 = 1.2342532350m,
+            },
+         };
+      }
+      public static QcRcKc1 QcRcKc1Data()
+      {
+         return new QcRcKc1
+         {
+            Cb1 =
+            {
+               Value = 890814.5442797562m,
+            },
+            Cb2 =
+            {
+               Value = 1023709.6082483867m,
+            },
+            Cb3 =
+            {
+               Value = 0.0m,
+            },
+            Cb4 =
+            {
+               Value = 1037536.7819241509m,
             },
          };
       }

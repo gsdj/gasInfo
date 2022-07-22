@@ -15,17 +15,17 @@ namespace Tests.Calculations.Entities
       public OutputKgTest()
       {
          MockSteam = new Mock<ISteamCharacteristicsService>();
-         MockSteam.Setup(p => p.GetCharacteristics()).Returns(TestHelper.SteamCharacteristicsData());
+         MockSteam.Setup(p => p.GetCharacteristics()).Returns(TestDataHelper.SteamCharacteristicsData());
 
          MockDryDensity = new Mock<IDryDensity>();
          MockWetDensity = new Mock<IWetDensity>();
 
          Data = new Data
          {
-            CharacteristicsDg = TestHelper.CharacteristicsDgData(),
-            CharacteristicsKg = TestHelper.CharacteristicsKgData(),
-            Kip = TestHelper.DevicesKipData(),
-            Pressure = TestHelper.PressureData(),
+            CharacteristicsDg = TestDataHelper.CharacteristicsDgData(),
+            CharacteristicsKg = TestDataHelper.CharacteristicsKgData(),
+            Kip = TestDataHelper.DevicesKipData(),
+            Pressure = TestDataHelper.PressureData(),
          };
       }
       [Fact]

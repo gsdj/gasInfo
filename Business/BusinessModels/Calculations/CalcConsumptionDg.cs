@@ -61,7 +61,7 @@ namespace Business.BusinessModels.Calculations
             Date = wetGas.Date,
             QcRc = qcrcKc1,
             ConsumptionDg = consKc1,
-            ConsumptionDgMk = consKc1.Cb1 + consKc1.Cb2 + consKc1.Cb3 + consKc1.Cb4,
+            ConsumptionDgMk = consKc1.Sum,
          };
       }
    }

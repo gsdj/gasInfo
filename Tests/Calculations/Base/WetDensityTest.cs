@@ -15,7 +15,7 @@ namespace Tests.Calculations.Base
       {
          var mock = new Mock<ISteamCharacteristicsService>();
 
-         var mockResult = TestHelper.SteamCharacteristicsData();
+         var mockResult = TestDataHelper.SteamCharacteristicsData();
 
          mock.Setup(p => p.GetCharacteristics()).Returns(mockResult);
 
