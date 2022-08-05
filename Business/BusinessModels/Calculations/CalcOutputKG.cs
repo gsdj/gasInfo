@@ -4,6 +4,7 @@ using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.BaseCalculations.Consumption;
+using Business.Interfaces.BaseCalculations.Production;
 using Business.Interfaces.Calculations;
 using System;
 using System.Collections.Generic;
@@ -16,14 +17,13 @@ namespace Business.BusinessModels.Calculations
       private IQcRc QcRc;
       private IConsGasQn<ConsGasQn4000> ConsGasQn;
       private ICalculation<DensityDTO> WetGas;
-      private IDryCokeProduction<DefaultDryCokeProduction> DryCoke;
-      public CalcOutputKG(ICalculation<DensityDTO> wetGas, IQcRc qcrc, IConsGasQn<ConsGasQn4000> qn4000, 
-                           IDryCokeProduction<DefaultDryCokeProduction> dryCoke)
+      private ICokeCbConsumptionDryCalc CbDry;
+      public CalcOutputKG(ICalculation<DensityDTO> wetGas, IQcRc qcrc, IConsGasQn<ConsGasQn4000> qn4000, ICokeCbConsumptionDryCalc cbDry)
       {
          QcRc = qcrc;
          ConsGasQn = qn4000;
-         DryCoke = dryCoke;
          WetGas = wetGas;
+         CbDry = cbDry;
       }
       public IEnumerable<OutputKgDTO> CalcEntities(EnumerableData data)
       {
@@ -62,12 +62,7 @@ namespace Business.BusinessModels.Calculations
 
          var wetGas = WetGas.CalcEntity(data);
 
-         var Cb16ConsDry = Math.Round(((DryCoke.Calc(cbs.Cb1, cbs.OutputMultipliers.Cb1) + DryCoke.Calc(cbs.Cb2, cbs.OutputMultipliers.Cb2) +
-                                       DryCoke.Calc(cbs.Cb3, cbs.OutputMultipliers.Cb3) + DryCoke.Calc(cbs.Cb4, cbs.OutputMultipliers.Cb4) +
-                                       DryCoke.Calc(cbs.Cb5, cbs.OutputMultipliers.Cb5) + DryCoke.Calc(cbs.Cb6, cbs.OutputMultipliers.Cb6)) * cbs.OutputMultipliers.Sv), 4);
-
-         var Cb78ConsDry = Math.Round((DryCoke.Calc(cbs.Cb7, cbs.OutputMultipliers.Cb7) + DryCoke.Calc(cbs.Cb8, cbs.OutputMultipliers.Cb8)) * cbs.OutputMultipliers.Sv, 4);
-
+         var CbDryConsumption = CbDry.CalcEntity(cbs);
 
          return new OutputKgDTO
          {
@@ -76,14 +71,14 @@ namespace Business.BusinessModels.Calculations
             QcRcCu2 = QcRc.Calc(kip.Cu.Cu2.Consumption.Value, wetGas.Cu.Cu2, kip.Cu.Cu2.Temperature, charKg.Kc2.Density),
             Cu14000 = ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu1.Consumption.Value, wetGas.Cu.Cu1, kip.Cu.Cu1.Temperature, charKg.Kc1.Density), charKg.Kc1.Qn),
             Cu24000 = ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu2.Consumption.Value, wetGas.Cu.Cu2, kip.Cu.Cu2.Temperature, charKg.Kc2.Density), charKg.Kc1.Qn),
-            Cu1Cb16 = ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu1.Consumption.Value, wetGas.Cu.Cu1, kip.Cu.Cu1.Temperature, charKg.Kc1.Density), charKg.Kc1.Qn) / Cb16ConsDry,
-            Cu2Cb78 = ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu2.Consumption.Value, wetGas.Cu.Cu2, kip.Cu.Cu2.Temperature, charKg.Kc2.Density), charKg.Kc1.Qn) / Cb78ConsDry,
+            Cu1Cb16 = ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu1.Consumption.Value, wetGas.Cu.Cu1, kip.Cu.Cu1.Temperature, charKg.Kc1.Density), charKg.Kc1.Qn) / CbDryConsumption.Cb1_6,
+            Cu2Cb78 = ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu2.Consumption.Value, wetGas.Cu.Cu2, kip.Cu.Cu2.Temperature, charKg.Kc2.Density), charKg.Kc1.Qn) / CbDryConsumption.Cb7_8,
             PrMk = QcRc.Calc(kip.Cu.Cu1.Consumption.Value, wetGas.Cu.Cu1, kip.Cu.Cu1.Temperature, charKg.Kc1.Density) +
             QcRc.Calc(kip.Cu.Cu2.Consumption.Value, wetGas.Cu.Cu2, kip.Cu.Cu2.Temperature, charKg.Kc2.Density),
             PrMk4000 = ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu1.Consumption.Value, wetGas.Cu.Cu1, kip.Cu.Cu1.Temperature, charKg.Kc1.Density), charKg.Kc1.Qn) +
                ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu2.Consumption.Value, wetGas.Cu.Cu2, kip.Cu.Cu2.Temperature, charKg.Kc2.Density), charKg.Kc1.Qn),
             OutCgSh = (ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu1.Consumption.Value, wetGas.Cu.Cu1, kip.Cu.Cu1.Temperature, charKg.Kc1.Density), charKg.Kc1.Qn) +
-               ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu2.Consumption.Value, wetGas.Cu.Cu2, kip.Cu.Cu2.Temperature, charKg.Kc2.Density), charKg.Kc1.Qn)) / (Cb16ConsDry + Cb78ConsDry)
+               ConsGasQn.Calc(QcRc.Calc(kip.Cu.Cu2.Consumption.Value, wetGas.Cu.Cu2, kip.Cu.Cu2.Temperature, charKg.Kc2.Density), charKg.Kc1.Qn)) / (CbDryConsumption.Cb1_6 + CbDryConsumption.Cb7_8)
          };
       }
    }

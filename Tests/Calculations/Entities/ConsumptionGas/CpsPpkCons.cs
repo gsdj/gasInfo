@@ -24,7 +24,7 @@ namespace Tests.Calculations.Entities.ConsumptionGas
       private Mock<ICalcConsGasQnCpsPpk> Target;
       public CpsPpkCons()
       {
-         MockQcRc = SetupHelper.QcRcSetup();
+         MockQcRc = SetupHelper.DefaultQcRcSetup();
          MockConsGasQn4000 = SetupHelper.Qn4000Setup();
          QcRcCpsPpkSetup();
          ConsQnCpsPpkSetup();
@@ -66,9 +66,9 @@ namespace Tests.Calculations.Entities.ConsumptionGas
       {
          var Data = new QcRcKgData
          {
-            CharacteristicsKg = TestDataHelper.CharacteristicsKgData(),
-            Kip = TestDataHelper.DevicesKipData(),
-            WetGas = TestDataHelper.DensityDTOData(),
+            CharacteristicsKg = TestCalculatedDataHelper.CharacteristicsKgData(),
+            Kip = TestCalculatedDataHelper.DevicesKipData(),
+            WetGas = TestCalculatedDataHelper.DensityDTOData(),
          };
 
          var expected = JsonConvert.SerializeObject(ExpectedObject());

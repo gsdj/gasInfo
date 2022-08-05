@@ -2,54 +2,44 @@
 using Business.BusinessModels.BaseCalculations.Qn;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.BaseCalculations.Density;
+using DataAccess.Entities;
 using DataAccess.Entities.Characteristics;
+using Moq;
 using Xunit;
 
 namespace Tests.Calculations.Base
 {
    public class CharacteristicsKgTest
    {
-      private IDensity<KG> GetTestDensityObject()
+      private CharacteristicsKgAll KgAll;
+      public CharacteristicsKgTest()
       {
-         return new DefaultDensityKg();
-      }
-      private IQn<KG> GetTestQnObject()
-      {
-         return new DefaultQnKg();
-      }
-      private KG GetDataForTest()
-      {
-         return new KG
-         {
-            CO2 = 2.4m,
-            O2 = 1.4m,
-            CO = 7.6m,
-            CnHm = 1.7m,
-            CH4 = 21.5m,
-            H2 = 59.6m,
-            N2 = 5.8m,
-         };
+         KgAll = TestDbDataHelper.CharacteristicsKgAllData();
       }
       [Fact]
-      public void Density()
+      public void DefaultDensityKg()
       {
-         IDensity<KG> target = GetTestDensityObject();
+         var MockDensity = new Mock<IDensity<KG>>();
 
-         var kg = GetDataForTest();
+         MockDensity.Setup(x => x.Calc(It.IsAny<KG>()))
+            .Returns((KG data) => new DefaultDensityKg().Calc(data));
 
-         decimal expected = 0.4333697m;
-         var actual = target.Calc(kg);
+         decimal expected = 0.4490720m;
+         var actual = MockDensity.Object.Calc(KgAll.Kc1);
+
          Assert.Equal(expected, actual);
       }
       [Fact]
-      public void Qn()
+      public void DefaultQnKg()
       {
-         IQn<KG> target = GetTestQnObject();
+         var MockQn = new Mock<IQn<KG>>();
 
-         var kg = GetDataForTest();
+         MockQn.Setup(x => x.Calc(It.IsAny<KG>()))
+            .Returns((KG data) => new DefaultQnKg().Calc(data));
 
-         decimal expected = 3604.69m;
-         var actual = target.Calc(kg);
+         decimal expected = 3600.400m;
+         var actual = MockQn.Object.Calc(KgAll.Kc1);
+
          Assert.Equal(expected, actual);
       }
    }

@@ -10,7 +10,7 @@ namespace Business.BusinessModels
                            ICalculations<ChartYearDTO> chartYear, ICalculations<ConsumptionKgDTO> consKg, ICalculations<ConsumptionDgDTO> consDg,
                            ICalculations<ConsumptionDgPgDTO> consDgPg, ICalcEbChmk ebChmk, ICalculations<OutputKgDTO> outputKg,
                            ICalculations<ReportKgDTO> reportKg, ICalcCharacteristicsDg charDg, ICalcCharacteristicsKg charKg,
-                           ICalcDgPgChmkEb dgpgChmk, ICalcProduction prod, ICalcTec tec, ICalcInfoSheet info)
+                           ICalcProduction prod, ICalcTec tec, ICalcInfoSheet info)
       {
          WetGas = wetGas;
          Quality = qual;
@@ -24,7 +24,6 @@ namespace Business.BusinessModels
          ReportKg = reportKg;
          CharacteristicsKg = charKg;
          CharacteristicsDg = charDg;
-         DgPgChmkEb = dgpgChmk;
          Production = prod;
          Tec = tec;
          InfoSheet = info;
@@ -41,7 +40,6 @@ namespace Business.BusinessModels
       public ICalculations<ReportKgDTO> ReportKg { get; private set; }
       public ICalcCharacteristicsDg CharacteristicsDg { get; private set; }
       public ICalcCharacteristicsKg CharacteristicsKg { get; private set; }
-      public ICalcDgPgChmkEb DgPgChmkEb { get; private set; }
       public ICalcProduction Production { get; private set; }
       public ICalcTec Tec { get; private set; }
       public ICalcInfoSheet InfoSheet { get; private set; }

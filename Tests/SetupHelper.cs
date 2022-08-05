@@ -1,8 +1,19 @@
 ﻿using Business.BusinessModels.BaseCalculations;
+using Business.BusinessModels.BaseCalculations.Density;
 using Business.BusinessModels.BaseCalculations.Qn;
+using Business.BusinessModels.Calculations;
+using Business.BusinessModels.Calculations.ConsGasQn;
+using Business.BusinessModels.Calculations.QcRc;
+using Business.BusinessModels.DataForCalculations;
+using Business.DTO;
+using Business.DTO.Models.Characteristics.Gas;
+using Business.DTO.Models.QcRc;
 using Business.Interfaces;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.BaseCalculations.Consumption;
+using Business.Interfaces.BaseCalculations.Density;
+using Business.Interfaces.Calculations;
+using Business.Interfaces.Calculations.ConsGasQn;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -17,10 +28,10 @@ namespace Tests
       public static Mock<ISteamCharacteristicsService> SteamSetup()
       {
          var MockSteam = new Mock<ISteamCharacteristicsService>();
-         MockSteam.Setup(p => p.GetCharacteristics()).Returns(TestDataHelper.SteamCharacteristicsData());
+         MockSteam.Setup(p => p.GetCharacteristics()).Returns(TestCalculatedDataHelper.SteamCharacteristicsData());
          return MockSteam;
       }
-      public static Mock<IQcRc> QcRcSetup()
+      public static Mock<IQcRc> DefaultQcRcSetup()
       {
          var steam = SteamSetup().Object;
          var MockQcRc = new Mock<IQcRc>();
@@ -57,11 +68,103 @@ namespace Tests
          var consGas4000 = new ConsGasQn4000();
 
          MockConsGasQn4000.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>()))
-            .Returns((decimal qcrc, decimal qn) =>
-            consGas4000.Calc(qcrc, qn));
+            .Returns((decimal qcrc, decimal qn) => consGas4000.Calc(qcrc, qn));
 
          return MockConsGasQn4000;
       }
+      public static Mock<ICalcQcRc<QcRcKc2>> QcRcKc2DefaultSetup()
+      {
+         Mock<ICalcQcRc<QcRcKc2>> MockQcRcKc2 = new Mock<ICalcQcRc<QcRcKc2>>();
+         ICalcQcRc<QcRcKc2> QcRcKc2Default = new CalcQcRcKc2(DefaultQcRcSetup().Object);
 
+         MockQcRcKc2.Setup(p => p.Calc(It.IsAny<QcRcData>()))
+         .Returns((QcRcData data) => QcRcKc2Default.Calc(data));
+
+         MockQcRcKc2.Setup(p => p.QcRc).Returns(DefaultQcRcSetup().Object);
+          
+         return MockQcRcKc2;
+      }
+      public static Mock<ICalcConsGasQnKc2> ConsQnKc2DefaultSetup()
+      {
+         Mock<ICalcQcRc<QcRcKc2>> MockQcRcKc2 = QcRcKc2DefaultSetup();
+         Mock<IConsGasQn<ConsGasQn4000>> MockQn4000 = Qn4000Setup();
+
+         Mock<ICalcConsGasQnKc2> MockConsGasQnKc2 = new Mock<ICalcConsGasQnKc2>();
+
+         MockConsGasQnKc2.Setup(p => p.CalcQcRcKc2).Returns(MockQcRcKc2.Object);
+         MockConsGasQnKc2.Setup(p => p.ConsGasQn).Returns(MockQn4000.Object);
+
+         ICalcConsGasQnKc2 consqnKc2 = new CalcConsQnKc2(MockQcRcKc2.Object, MockQn4000.Object);
+
+         MockConsGasQnKc2.Setup(p => p.Calc(It.IsAny<QcRcData>()))
+            .Returns((QcRcData data) => consqnKc2.Calc(data));
+
+         MockConsGasQnKc2.Setup(p => p.Calc(It.IsAny<QcRcKc2>(), It.IsAny<CharacteristicsKG>()))
+            .Returns((QcRcKc2 kc2, CharacteristicsKG kGas) => consqnKc2.Calc(kc2, kGas));
+
+         return MockConsGasQnKc2;
+      }
+      public static Mock<ICalcQcRc<CpsPpkQcRc>> QcRcCpsPpkDefaultSetup()
+      {
+         Mock<ICalcQcRc<CpsPpkQcRc>> MockQcRcCpsPpk = new Mock<ICalcQcRc<CpsPpkQcRc>>();
+         ICalcQcRc<CpsPpkQcRc> QcRcCpsPpkDefault = new CalcQcRcCpsPpk(DefaultQcRcSetup().Object);
+
+         MockQcRcCpsPpk.Setup(p => p.Calc(It.IsAny<QcRcData>()))
+         .Returns((QcRcData data) => QcRcCpsPpkDefault.Calc(data));
+
+         MockQcRcCpsPpk.Setup(p => p.QcRc).Returns(DefaultQcRcSetup().Object);
+
+         return MockQcRcCpsPpk;
+      }
+      public static Mock<ICalcConsGasQnCpsPpk> ConsQnCpsPpkDefaultSetup()
+      {
+         Mock<ICalcConsGasQnCpsPpk> MockConsGasQnCpsPpk = new Mock<ICalcConsGasQnCpsPpk>();
+         Mock<ICalcQcRc<CpsPpkQcRc>> MockQcRcCpsPpk = QcRcCpsPpkDefaultSetup();
+         Mock<IConsGasQn<ConsGasQn4000>> MockQn4000 = Qn4000Setup();
+
+         MockConsGasQnCpsPpk.Setup(p => p.CalcQcRcCpsPpk).Returns(MockQcRcCpsPpk.Object);
+         MockConsGasQnCpsPpk.Setup(p => p.ConsGasQn).Returns(MockQn4000.Object);
+
+         ICalcConsGasQnCpsPpk consqnCpsPpk = new CalcConsQnCpsPpk(MockQcRcCpsPpk.Object, MockQn4000.Object);
+
+         MockConsGasQnCpsPpk.Setup(p => p.Calc(It.IsAny<QcRcData>()))
+            .Returns((QcRcData data) => consqnCpsPpk.Calc(data));
+
+         MockConsGasQnCpsPpk.Setup(p => p.Calc(It.IsAny<CpsPpkQcRc>(), It.IsAny<CharacteristicsKG>()))
+            .Returns((CpsPpkQcRc qcrc, CharacteristicsKG kGas) => consqnCpsPpk.Calc(qcrc, kGas));
+
+         return MockConsGasQnCpsPpk;
+      }
+      public static Mock<ICalculation<DensityDTO>> WetGasDensityDefaultSetup()
+      {
+         Mock<ISteamCharacteristicsService> MockSteam = SteamSetup();
+         Mock<IDryDensity> MockDryDensity = new Mock<IDryDensity>();
+         Mock<IWetDensity> MockWetDensity = new Mock<IWetDensity>();
+
+         Mock<ICalculation<DensityDTO>> MockCalcWetGas = new Mock<ICalculation<DensityDTO>>();
+
+         var DryDensity1 = new DryDensity(MockSteam.Object);
+
+         MockDryDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>()))
+            .Returns((decimal pkg, decimal PPa, decimal pOver, decimal temp) =>
+            DryDensity1.Calc(pkg, PPa, pOver, temp));
+
+         MockDryDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>()))
+            .Returns((decimal pkg, decimal PPa, decimal pOver, decimal temp, decimal tempDo) =>
+            DryDensity1.Calc(pkg, PPa, pOver, temp, tempDo));
+
+         var WetDensity1 = new WetDensity(MockSteam.Object);
+
+         MockWetDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>()))
+            .Returns((decimal dryGas, decimal temp) =>
+            WetDensity1.Calc(dryGas, temp));
+
+         var CalcWetGas = new CalcWetGasDensity(MockWetDensity.Object, MockDryDensity.Object);
+
+         MockCalcWetGas.Setup(p => p.CalcEntity(It.IsAny<Data>()))
+            .Returns((Data data) => CalcWetGas.CalcEntity(data));
+
+         return MockCalcWetGas;
+      }
    }
 }

@@ -38,7 +38,7 @@ namespace Tests.Calculations.Entities.Production
       public void CokeGross()
       {
          var expected = JsonConvert.SerializeObject(ExpectedObject());
-         var result = JsonConvert.SerializeObject(TestedObject.CalcEntity(TestDataHelper.AmmountCbData()));
+         var result = JsonConvert.SerializeObject(TestedObject.CalcEntity(TestDbDataHelper.AmmountCbData()));
 
          Assert.Equal(expected, result);
       }

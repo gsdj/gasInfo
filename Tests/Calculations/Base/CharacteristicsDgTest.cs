@@ -1,74 +1,81 @@
-﻿using Business.BusinessModels.BaseCalculations.Density;
+﻿using Business.BusinessModels.BaseCalculations;
+using Business.BusinessModels.BaseCalculations.Density;
 using Business.BusinessModels.BaseCalculations.Qn;
+using Business.DTO.Models.Components;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.BaseCalculations.Density;
 using DataAccess.Entities;
 using DataAccess.Entities.Characteristics;
+using Moq;
 using Xunit;
 
 namespace Tests.Calculations.Base
 {
    public class CharacteristicsDgTest
    {
-      private IDensity<DG> GetTestDensityObject()
+      private Mock<IAvgComponents<CharacteristicsDgAll, GasComponents>> MockAvgComponents;
+      private CharacteristicsDgAll DgAll;
+      public CharacteristicsDgTest()
       {
-         return new DefaultDensityDg();
-      }
-      private IQn<DG> GetTestQnObject()
-      {
-         return new DefaultQnDg();
-      }
-      private CharacteristicsDgAll GetDgAllForTest()
-      {
-         return new CharacteristicsDgAll
-         {
-            Kc1 = new DG
-            {
-               CO2 = 16.8m,
-               CO = 24.6m,
-               H2 = 9.6m,
-               N2 = 48.6m,
-            },
-            Kc2 = new DG
-            {
-               CO2 = 16.3m,
-               CO = 24.9m,
-               H2 = 10.1m,
-               N2 = 48.1m,
-            }
-         };
+         DgAll = TestDbDataHelper.CharacteristicsDgAllData();
+
+         MockAvgComponents = new Mock<IAvgComponents<CharacteristicsDgAll, GasComponents>>();
+
+         MockAvgComponents.Setup(p => p.Calc(It.IsAny<CharacteristicsDgAll>()))
+            .Returns((CharacteristicsDgAll data) => new AvgDgComponents().Calc(data));
       }
       [Fact]
-      public void Density()
+      public void DefaultDensityDg()
       {
-         IDensity<DG> target = GetTestDensityObject();
+         var MockDensity = new Mock<IDensity<DG>>();
 
-         var dg = GetDgAllForTest();
+         MockDensity.Setup(x => x.Calc(It.IsAny<DG>()))
+            .Returns((DG data) => new DefaultDensityDg().Calc(data));
 
-         decimal kc1 = 1.1707572m;
-         decimal kc2 = 1.1596307m;
+         decimal expected = 1.21863270m;
+         var actual = MockDensity.Object.Calc(DgAll.Kc1);
 
-         var actual1 = target.Calc(dg.Kc1);
-         var actual2 = target.Calc(dg.Kc2);
-
-         Assert.Equal(kc1, actual1);
-         Assert.Equal(kc2, actual2);
+         Assert.Equal(expected, actual);
       }
       [Fact]
-      public void Qn()
+      public void DefaultQnDg()
       {
-         IQn<DG> target = GetTestQnObject();
+         var MockQn = new Mock<IQn<DG>>();
 
-         var dg = GetDgAllForTest();
+         MockQn.Setup(x => x.Calc(It.IsAny<DG>()))
+            .Returns((DG data) => new DefaultQnDg().Calc(data));
 
-         decimal kc1 = 921.66m;
-         decimal kc2 = 942.09m;
+         decimal expected = 718.1200m;
+         var actual = MockQn.Object.Calc(DgAll.Kc1);
 
-         var actual1 = target.Calc(dg.Kc1);
-         var actual2 = target.Calc(dg.Kc2);
+         Assert.Equal(expected, actual);
+      }
+      [Fact]
+      public void AvgDensityDg()
+      {
+         var mockDensityAvg = new Mock<IDensity<CharacteristicsDgAll>>();
 
-         Assert.Equal(kc1, actual1);
-         Assert.Equal(kc2, actual2);
+         mockDensityAvg.Setup(p => p.Calc(It.IsAny<CharacteristicsDgAll>()))
+            .Returns((CharacteristicsDgAll data) => new AVGDensityDg(MockAvgComponents.Object).Calc(data));
+
+         var result = mockDensityAvg.Object.Calc(DgAll);
+
+         decimal expected = 1.2188838000m;
+         Assert.Equal(expected, result);
+      }
+      [Fact]
+      public void AvgQnDg()
+      {
+         var mockQnAvg = new Mock<IQn<CharacteristicsDgAll>>();
+
+         mockQnAvg.Setup(p => p.Calc(It.IsAny<CharacteristicsDgAll>()))
+            .Returns((CharacteristicsDgAll data) => new AVGQnDg(MockAvgComponents.Object).Calc(data));
+
+         var result = mockQnAvg.Object.Calc(DgAll);
+
+         decimal expected = 742.030000m;
+
+         Assert.Equal(expected, result);
       }
    }
 }

@@ -135,7 +135,7 @@ namespace Tests.Calculations.Entities
          };
 
          var expected = JsonConvert.SerializeObject(expectedResult);
-         var result = JsonConvert.SerializeObject(target.CalcEntity(TestDataHelper.AmmountCbData()));
+         var result = JsonConvert.SerializeObject(target.CalcEntity(TestDbDataHelper.AmmountCbData()));
 
          Assert.Equal(expected, result);
       }

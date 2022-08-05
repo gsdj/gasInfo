@@ -38,5 +38,15 @@ namespace Business.BusinessModels.Calculations.ConsGasQn
 
          return Calc(qcrc, charDg);
       }
+
+      CbKc ICalcConsGasQn<CbKc, QcRcKc1, CharacteristicsDG, ConsGasQn1000>.Calc(QcRcKc1 qcrc, CharacteristicsDG cGas)
+      {
+         throw new System.NotImplementedException();
+      }
+
+      CbKc ICalcConsGasQn<CbKc, QcRcKc1, CharacteristicsDG, ConsGasQn1000>.Calc(QcRcData data)
+      {
+         throw new System.NotImplementedException();
+      }
    }
 }

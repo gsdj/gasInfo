@@ -17,7 +17,7 @@ namespace Tests.Calculations.Entities.QcRc
       private Mock<ICalcQcRc<CpsPpkQcRc>> Target;
       public CpsPpk()
       {
-         MockQcRc = SetupHelper.QcRcSetup();
+         MockQcRc = SetupHelper.DefaultQcRcSetup();
          QcRcCpsPpkSetup();
       }
       private void QcRcCpsPpkSetup()
@@ -53,9 +53,9 @@ namespace Tests.Calculations.Entities.QcRc
       {
          var Data = new QcRcKgData
          {
-            CharacteristicsKg = TestDataHelper.CharacteristicsKgData(),
-            Kip = TestDataHelper.DevicesKipData(),
-            WetGas = TestDataHelper.DensityDTOData(),
+            CharacteristicsKg = TestCalculatedDataHelper.CharacteristicsKgData(),
+            Kip = TestCalculatedDataHelper.DevicesKipData(),
+            WetGas = TestCalculatedDataHelper.DensityDTOData(),
          };
 
          var expected = JsonConvert.SerializeObject(ExpectedObject());

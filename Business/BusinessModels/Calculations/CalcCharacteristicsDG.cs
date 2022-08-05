@@ -14,15 +14,12 @@ namespace Business.BusinessModels.Calculations
    {
       private IQn<DG> Qn;
       private IDensity<DG> Density;
-      private ISumComponents SumComponents;
       private IQn<CharacteristicsDgAll> QnAvg;
       private IDensity<CharacteristicsDgAll> DensityAvg;
-      public CalcCharacteristicsDG(IQn<DG> qn, IDensity<DG> density, ISumComponents sum, 
-                                    IQn<CharacteristicsDgAll> qnAvg, IDensity<CharacteristicsDgAll> denAvg)
+      public CalcCharacteristicsDG(IQn<DG> qn, IDensity<DG> density, IQn<CharacteristicsDgAll> qnAvg, IDensity<CharacteristicsDgAll> denAvg)
       {
          Qn = qn;
          Density = density;
-         SumComponents = sum;
          QnAvg = qnAvg;
          DensityAvg = denAvg;
       }

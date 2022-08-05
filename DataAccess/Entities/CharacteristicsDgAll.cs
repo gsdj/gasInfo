@@ -10,6 +10,11 @@ namespace DataAccess.Entities
 {
    public class CharacteristicsDgAll : IGasEntity
    {
+      public CharacteristicsDgAll()
+      {
+         Kc1 = new DG();
+         Kc2 = new DG();
+      }
       public Guid Id { get; set; }
       public DateTime Date { get; set; }
       public DG Kc1 { get; set; }

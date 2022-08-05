@@ -58,7 +58,7 @@ namespace Tests.Calculations.Base
       {
          var mock = new Mock<ISteamCharacteristicsService>();
 
-         var mockResult = TestDataHelper.SteamCharacteristicsData();
+         var mockResult = TestCalculatedDataHelper.SteamCharacteristicsData();
 
          mock.Setup(p => p.GetCharacteristics()).Returns(mockResult);
 
@@ -69,7 +69,7 @@ namespace Tests.Calculations.Base
          decimal p = 744;
          decimal temp = 31;
 
-         decimal expected = 0.4097315183m;
+         decimal expected = 0.4097310713m;
          Assert.Equal(expected, target.Calc(pkg, Ppa, p, temp));
       }
       //Cb5

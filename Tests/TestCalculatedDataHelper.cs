@@ -1,47 +1,19 @@
 ﻿using Business.DTO;
 using Business.DTO.Models.Characteristics.Gas;
+using Business.DTO.Models.Characteristics.Quality;
 using Business.DTO.Models.QcRc;
 using DataAccess.Entities;
+using DataAccess.Entities.Characteristics;
 using System;
 using System.Collections.Generic;
 
 namespace Tests
 {
-   public class TestDataHelper
+   //DataDb
+   //CalculatedData
+   //EnumDbData
+   public class TestCalculatedDataHelper
    {
-      public static AmmountCb AmmountCbData()
-      {
-         var om = new OutputMultipliers
-         {
-            Date = new DateTime(2019, 1, 1),
-            Cb1 = 10.44m,
-            Cb2 = 12.78m,
-            Cb3 = 0m,
-            Cb4 = 12.81m,
-            Cb5 = 13.33m,
-            Cb6 = 13.33m,
-            Cb7 = 13.33m,
-            Cb8 = 13.28m,
-            PKP = 6.94m,
-            Peka = 420m,
-            Sv = 1.274m,
-            Fv = 1.375m,
-         };
-         return new AmmountCb
-         {
-            Date = new DateTime(2019, 1, 1),
-            Cb1 = 78,
-            Cb2 = 84,
-            Cb3 = 0,
-            Cb4 = 80,
-            Cb5 = 48,
-            Cb6 = 48,
-            Cb7 = 47,
-            Cb8 = 53,
-            PKP = 12,
-            OutputMultipliers = om,
-         };
-      }
       public static PressureDTO PressureData()
       {
          return new PressureDTO
@@ -90,6 +62,19 @@ namespace Tests
             },
          };
       }
+      public static AsdueDTO AsdueDTOData()
+      {
+         return new AsdueDTO
+         {
+            TecNorth = 1202109.25m,
+            TecSouth = 623785.25m,
+            Gps2Gss1 = 0.0m,
+            Gps2Gss2 = 0.0m,
+            NaturalGasQn = 0.0m,
+            OutPkg = 10m,
+            StmDay = 1825895m,
+         };
+      }
       public static Dictionary<int, SteamCharacteristicsDTO> SteamCharacteristicsData()
       {
          return new Dictionary<int, SteamCharacteristicsDTO>
@@ -101,9 +86,9 @@ namespace Tests
                   Pgm = 37.600m,
                   Ptopp = 37.700m,
                   Fkg = 0.0377m,
-                  PPa = 5319.5478m,
+                  PPa = 5319.5637600m,
                   PKg = 0.0376m,
-                  Rh = 1.0027m,
+                  Rh = 1.0026595745m,
                }
             },
             {31, new SteamCharacteristicsDTO
@@ -113,9 +98,9 @@ namespace Tests
                   Pgm = 32.000m,
                   Ptopp = 32.100m,
                   Fkg = 0.0321m,
-                  PPa = 4492.9648m,
+                  PPa = 4492.9648800m,
                   PKg = 0.032m,
-                  Rh = 1.0031m,
+                  Rh = 1.003125m,
                }
             },
             {26, new SteamCharacteristicsDTO
@@ -125,9 +110,9 @@ namespace Tests
                   Pgm = 24.300m,
                   Ptopp = 24.400m,
                   Fkg = 0.0244m,
-                  PPa = 3361.0476m,
+                  PPa = 3361.0577040m,
                   PKg = 0.0243m,
-                  Rh = 1.0041m,
+                  Rh = 1.0041152263m,
                }
             },
             {61, new SteamCharacteristicsDTO
@@ -137,9 +122,9 @@ namespace Tests
                   Pgm = 135.200m,
                   Ptopp = 135.900m,
                   Fkg = 0.1359m,
-                  PPa = 20864.9556m,
+                  PPa = 20864.9556000m,
                   PKg = 0.1352m,
-                  Rh = 1.0052m,
+                  Rh = 1.0051775148m,
                }
             },
             {65, new SteamCharacteristicsDTO
@@ -149,9 +134,9 @@ namespace Tests
                   Pgm = 160.100m,
                   Ptopp = 161.100m,
                   Fkg = 0.1611m,
-                  PPa = 24997.95m,
+                  PPa = 24997.9500000m,
                   PKg = 0.1601m,
-                  Rh = 1.0062m,
+                  Rh = 1.0062460962m,
                }
             },
             {62, new SteamCharacteristicsDTO
@@ -161,9 +146,9 @@ namespace Tests
                   Pgm = 141.100m,
                   Ptopp = 141.900m,
                   Fkg = 0.1419m,
-                  PPa = 21838.2091m,
+                  PPa = 21838.2091200m,
                   PKg = 0.1411m,
-                  Rh = 1.0056m,
+                  Rh = 1.0056697378m,
                }
             },
             {57, new SteamCharacteristicsDTO
@@ -173,9 +158,9 @@ namespace Tests
                   Pgm = 113.700m,
                   Ptopp = 114.100m,
                   Fkg = 0.1141m,
-                  PPa = 17305.2475m,
+                  PPa = 17305.2475200m,
                   PKg = 0.1137m,
-                  Rh = 1.0035m,
+                  Rh = 1.0035180299m,
                }
             },
             {30, new SteamCharacteristicsDTO
@@ -185,7 +170,7 @@ namespace Tests
                   Pgm = 30.400m,
                   Ptopp = 30.400m,
                   Fkg = 0.0304m,
-                  PPa = 4242.3187m,
+                  PPa = 4242.3187680m,
                   PKg = 0.0304m,
                   Rh = 1,
                }
@@ -197,9 +182,9 @@ namespace Tests
                   Pgm = 16.300m,
                   Ptopp = 16.400m,
                   Fkg = 0.0164m,
-                  PPa = 2197.1531m,
+                  PPa = 2197.1531520m,
                   PKg = 0.0163m,
-                  Rh = 1.0061m,
+                  Rh = 1.0061349693m,
                }
             },
             {36, new SteamCharacteristicsDTO
@@ -209,9 +194,9 @@ namespace Tests
                   Pgm = 41.700m,
                   Ptopp = 41.800m,
                   Fkg = 0.0418m,
-                  PPa = 5940.8461m,
+                  PPa = 5940.8461440m,
                   PKg = 0.0417m,
-                  Rh = 1.0023m,
+                  Rh = 1.0023980815m,
                }
             },
             {28, new SteamCharacteristicsDTO
@@ -221,9 +206,9 @@ namespace Tests
                   Pgm = 27.200m,
                   Ptopp = 27.300m,
                   Fkg = 0.0273m,
-                  PPa = 3779.6900m,
+                  PPa = 3779.6900400m,
                   PKg = 0.0272m,
-                  Rh = 1.0036m,
+                  Rh = 1.0036764706m,
                }
             },
             {22, new SteamCharacteristicsDTO
@@ -233,9 +218,9 @@ namespace Tests
                   Pgm = 19.400m,
                   Ptopp = 19.500m,
                   Fkg = 0.0195m,
-                  PPa = 2643.7831m,
+                  PPa = 2643.7831920m,
                   PKg = 0.0194m,
-                  Rh = 1.0051m,
+                  Rh = 1.0051546392m,
                }
             },
             {-11, new SteamCharacteristicsDTO
@@ -245,9 +230,9 @@ namespace Tests
                   Pgm = 2.400m,
                   Ptopp = 1.900m,
                   Fkg = 0.0019m,
-                  PPa = 237.3738m,
+                  PPa = 237.3138720m,
                   PKg = 0.0024m,
-                  Rh = 0.7916m,
+                  Rh = 0.7916666667m,
                }
             },
             {-10, new SteamCharacteristicsDTO
@@ -256,10 +241,10 @@ namespace Tests
                   Pmm = 1.946m,
                   Pgm = 2.600m,
                   Ptopp = 2.000m,
-                  Fkg = 0.0002m,
-                  PPa = 259.4453m,
+                  Fkg = 0.002m,
+                  PPa = 259.4453904m,
                   PKg = 0.0026m,
-                  Rh = 0.0769m,
+                  Rh = 0.7692307692m,
                }
             },
             {0, new SteamCharacteristicsDTO
@@ -269,7 +254,7 @@ namespace Tests
                   Pgm = 4.900m,
                   Ptopp = 4.900m,
                   Fkg = 0.0049m,
-                  PPa = 610.4832m,
+                  PPa = 610.4832696m,
                   PKg = 0.0049m,
                   Rh = 1,
                }
@@ -463,6 +448,27 @@ namespace Tests
             Cb4 =
             {
                Value = 1037536.7819241509m,
+            },
+         };
+      }
+      public static QualityCharacteristics QualityData()
+      {
+         return new QualityCharacteristics
+         {
+            Date = new DateTime(2019, 1, 1),
+            Kc1 =
+            {
+               Vc = 25.9233m,
+               KgFv = 14.7391082356m,
+               KgFh = 0.3282125859m,
+               Density = 0.4490720m,
+            },
+            Kc2 =
+            {
+               Vc = 25.7114m,
+               KgFv = 14.6787450558m,
+               KgFh = 0.3477601798m,
+               Density = 0.4220939m,
             },
          };
       }

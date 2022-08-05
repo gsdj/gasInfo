@@ -5,6 +5,11 @@ namespace Business.DTO
 {
    public class DgPgChmkEbDTO : Entity
    {
+      public DgPgChmkEbDTO()
+      {
+         ConsumptionDgKc1 = new CbKc();
+         ConsumptionPgGru = new Gru();
+      }
       public CbKc ConsumptionDgKc1 { get; set; }
       public decimal ConsDgKc1Sum { get; set; }// => ConsDgCb1 + ConsDgCb2 + ConsDgCb3 + ConsDgCb4;
       public Gru ConsumptionPgGru { get; set; }

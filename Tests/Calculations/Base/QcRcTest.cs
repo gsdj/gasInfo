@@ -14,7 +14,7 @@ namespace Tests.Calculations.Base
       public QcRcTest()
       {
          MockSteam = new Mock<ISteamCharacteristicsService>();
-         MockSteam.Setup(p => p.GetCharacteristics()).Returns(TestDataHelper.SteamCharacteristicsData());
+         MockSteam.Setup(p => p.GetCharacteristics()).Returns(TestCalculatedDataHelper.SteamCharacteristicsData());
 
          QcRc = new DefaultQcRc(MockSteam.Object);
       }

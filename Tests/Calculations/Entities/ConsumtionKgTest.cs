@@ -1,14 +1,8 @@
-﻿using Business.BusinessModels.BaseCalculations;
-using Business.BusinessModels.BaseCalculations.Density;
-using Business.BusinessModels.BaseCalculations.Qn;
-using Business.BusinessModels.Calculations;
+﻿using Business.BusinessModels.Calculations;
 using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
-using Business.Interfaces;
-using Business.Interfaces.BaseCalculations;
-using Business.Interfaces.BaseCalculations.Consumption;
-using Business.Interfaces.BaseCalculations.Density;
 using Business.Interfaces.Calculations;
+using Business.Interfaces.Calculations.ConsGasQn;
 using Moq;
 using Newtonsoft.Json;
 using System;
@@ -18,52 +12,28 @@ namespace Tests.Calculations.Entities
 {
    public class ConsumtionKgTest
    {
-      private Mock<ISteamCharacteristicsService> MockSteam;
-      private IDryDensity DryDensity;
-      private IWetDensity WetDensity;
-      private ICalculation<DensityDTO> WetGasDensity;
+      private Mock<ICalcConsGasQnKc2> MockConsGasQnKc2;
+      private Mock<ICalcConsGasQnCpsPpk> MockConsGasQnCpsPpk;
+      private Mock<ICalculation<DensityDTO>> MockWetGasDensity;
+
       private ICalculation<ConsumptionKgDTO> ConsKg;
-      private Mock<IQcRc> MockQcRc;
-      private Mock<IConsGasQn<ConsGasQn4000>> MockConsGasQn;
       private Data Data;
       public ConsumtionKgTest()
       {
-         //MockSteam = new Mock<ISteamCharacteristicsService>();
-         //MockSteam.Setup(p => p.GetCharacteristics()).Returns(TestHelper.SteamCharacteristicsData());
+         MockConsGasQnKc2 = SetupHelper.ConsQnKc2DefaultSetup();
+         MockConsGasQnCpsPpk = SetupHelper.ConsQnCpsPpkDefaultSetup();
+         MockWetGasDensity = SetupHelper.WetGasDensityDefaultSetup();
 
-         //MockConsGasQn = new Mock<IConsGasQn<ConsGasQn4000>>();
-         //MockQcRc = new Mock<IQcRc>();
+         ConsKg = new CalcConsumptionKg(MockWetGasDensity.Object, MockConsGasQnKc2.Object, MockConsGasQnCpsPpk.Object);
 
-         //DryDensity = new DryDensity(MockSteam.Object);
-         //WetDensity = new WetDensity(MockSteam.Object);
-         //WetGasDensity = new CalcWetGasDensity(WetDensity, DryDensity);
-
-         //MockQcRc.SetupProperty(p => p.SteamCharacteristicsService, MockSteam.Object);
-         //var qcrcDef = new DefaultQcRc(MockSteam.Object);
-         //var consGasQn4 = new ConsGasQn4000();
-
-         //MockQcRc.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.Is<bool>(p => false)))
-         //   .Returns((decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour) =>
-         //   qcrcDef.Calc(cons, wetGas, temp, density, perHour));
-
-         //MockQcRc.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.Is<bool>(p => true)))
-         //   .Returns((decimal cons, decimal wetGas, decimal temp, decimal density, bool perHour) =>
-         //   qcrcDef.Calc(cons, wetGas, temp, density, perHour));
-
-         //MockConsGasQn.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>()))
-         //   .Returns((decimal qcrc, decimal qn) => consGasQn4.Calc(qcrc, qn));
-
-         //ConsKg = new CalcConsumptionKg(WetGasDensity, MockQcRc.Object, MockConsGasQn.Object);
-
-         //Data = new Data
-         //{
-         //   CharacteristicsDg = TestHelper.CharacteristicsDgData(),
-         //   CharacteristicsKg = TestHelper.CharacteristicsKgData(),
-         //   Kip = TestHelper.DevicesKipData(),
-         //   Pressure = TestHelper.PressureData(),
-         //};
+         Data = new Data
+         {
+            CharacteristicsDg = TestCalculatedDataHelper.CharacteristicsDgData(),
+            CharacteristicsKg = TestCalculatedDataHelper.CharacteristicsKgData(),
+            Kip = TestCalculatedDataHelper.DevicesKipData(),
+            Pressure = TestCalculatedDataHelper.PressureData(),
+         };
       }
-
       private ConsumptionKgDTO ExpectedObject()
       {
          return new ConsumptionKgDTO
@@ -71,17 +41,17 @@ namespace Tests.Calculations.Entities
             Date = new DateTime(2019, 1, 1),
             QcRcCb =
             {
-               Cb1 = { Value = 172766.4177360802m },
-               Cb2 = { Value = 169816.6033372864m },
+               Cb1 = { Value = 172764.7187806236m },
+               Cb2 = { Value = 169818.8865273301m },
                Cb3 =
                {
-                  Ms = 2482.9866551005m,
-                  Ks = 2480.0563010622m,
+                  Ms = 2483.0345146359m,
+                  Ks = 2480.1041041151m,
                },
                Cb4 =
                {
-                  Ms = 2477.1255244498m,
-                  Ks = 2904.1164222440m,
+                  Ms = 2477.1381279019m,
+                  Ks = 2904.1311981978m,
                },
             },
             QcRcCpsPpk =
@@ -90,40 +60,42 @@ namespace Tests.Calculations.Entities
                {
                   Pkp = 
                   {
-                     Ms = 13012.0756989220m,
-                     Ks = 12069.4865639254m,
+                     Ms = 13012.0786034459m,
+                     Ks = 12069.4892580468m,
                   },
-                  Uvtp = 19175.6077322726m,
+                  Uvtp = 19175.6120086851m,
                },
-               Spo = 29877.0385938227m,
+               Spo = 29877.0533268474m,
             },
-            QcRcGsuf = 5488.5469273737m,
+            QcRcGsuf = 5488.5674320788m,
             ConsumptionCb =
             {
-               Cb1 = 155489.7759624722m,
-               Cb2 = 152834.9430035578m,
-               Cb3 = 113395.6054624054m,
-               Cb4 = 122950.6159980599m,
+               Cb1 = 155488.2469025612m,
+               Cb2 = 152836.9978745971m,
+               Cb3 = 113397.7911612228m,
+               Cb4 = 122951.2415627259m,
             },
             ConsumptionCpsPpk =
             {
-               Pko = { Total = 39831.4529956080m },
-               Spo = 26889.3347344404m,
+               //Pko = { Total = 39831.4529956080m },
+               Pko = 
+               { 
+                  Pkp = 22573.4110753434m,
+                  Uvtp = 17258.0508078166m, 
+               },
+               Spo = 26889.3479941627m,
             },
-            ConsumptionKc2Sum = 544670.9404264953m,
-            PkoQcRcSum = 44257.1699951200m,
-            ConsumptionCpsPpkSum = 66720.7877300484m,
-            ConsumptionGsuf = 4939.6922346363m,
-            ConsumptionMkSum = 611391.7281565437m,
-            ConsumptionMkGsufSum = 616331.4203911800m,
+            ConsumptionKc2Sum = 544674.2775011070m,
+            PkoQcRcSum = 44257.1798701778m,
+            ConsumptionCpsPpkSum = 66720.8098773227m,
+            ConsumptionGsuf = 4939.7106888709m,
+            ConsumptionMkSum = 611395.0873784297m,
+            ConsumptionMkGsufSum = 616334.7980673006m,
          };
       }
-
       [Fact]
       public void CounsumptionKg()
       {
-
-         
 
          var expected = JsonConvert.SerializeObject(ExpectedObject());
 

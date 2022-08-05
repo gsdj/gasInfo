@@ -15,7 +15,7 @@ namespace Tests.Calculations.Base
       {
          var mock = new Mock<ISteamCharacteristicsService>();
 
-         var mockResult = TestDataHelper.SteamCharacteristicsData();
+         var mockResult = TestCalculatedDataHelper.SteamCharacteristicsData();
 
          mock.Setup(p => p.GetCharacteristics()).Returns(mockResult);
 
@@ -24,7 +24,7 @@ namespace Tests.Calculations.Base
          decimal dryGas = 0.409731518254958m;
          decimal temp = 31;
 
-         decimal expected = 0.4418307183m;
+         decimal expected = 0.4418315183m;
          Assert.Equal(expected, target.Calc(dryGas,temp));
       }
    }

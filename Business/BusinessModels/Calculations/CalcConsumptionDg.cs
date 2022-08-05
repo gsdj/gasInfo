@@ -1,5 +1,6 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
+using Business.DTO.Models.QcRc;
 using Business.Interfaces.Calculations;
 using Business.Interfaces.Calculations.ConsGasQn;
 using System.Collections.Generic;
@@ -58,7 +59,8 @@ namespace Business.BusinessModels.Calculations
 
          return new ConsumptionDgDTO
          {
-            Date = wetGas.Date,
+            //Date = wetGas.Date,
+            Date = charDg.Date,
             QcRc = qcrcKc1,
             ConsumptionDg = consKc1,
             ConsumptionDgMk = consKc1.Sum,

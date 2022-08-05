@@ -17,7 +17,6 @@ namespace Business.Interfaces
       public ICalculations<ReportKgDTO> ReportKg { get; }
       public ICalcCharacteristicsDg CharacteristicsDg { get; }
       public ICalcCharacteristicsKg CharacteristicsKg { get; }
-      public ICalcDgPgChmkEb DgPgChmkEb { get; }
       public ICalcProduction Production { get; }
       public ICalcTec Tec { get; }
       public ICalcInfoSheet InfoSheet { get; }

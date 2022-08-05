@@ -36,22 +36,22 @@ namespace Business.BusinessModels.Calculations
 
       public decimal FKg(decimal ptopp)
       {
-         return Math.Round((ptopp / 1000), 15);
+         return Math.Round((ptopp / 1000), 10);
       }
 
       public decimal PKg(decimal pgm)
       {
-         return Math.Round((pgm / 1000), 15);
+         return Math.Round((pgm / 1000), 10);
       }
 
       public decimal PPa(decimal pmm)
       {
-         return Math.Round((pmm * 133.3224m), 15);
+         return Math.Round((pmm * 133.3224m), 10);
       }
 
       public decimal Rh(decimal fkg, decimal pkg)
       {
-         return fkg / pkg;
+         return Math.Round(fkg / pkg, 10);
       }
    }
 }

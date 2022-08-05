@@ -1,7 +1,5 @@
-﻿using Business.BusinessModels.BaseCalculations.Consumption;
-using Business.DTO;
-using Business.DTO.Models.General;
-using Business.Interfaces.BaseCalculations.Consumption;
+﻿using Business.DTO;
+using Business.Interfaces.BaseCalculations.Production;
 using Business.Interfaces.Calculations;
 using DataAccess.Entities;
 using System;
@@ -12,12 +10,10 @@ namespace Business.BusinessModels.Calculations
 {
    public class CalcEbChmk : ICalcEbChmk
    {
-      private IChargeConsFV<DefaultChargeConsFV> ChargeConsFV;
-      private ICalcDgPgChmkEb DgPgChmkEb;
-      public CalcEbChmk(ICalcDgPgChmkEb calceb, IChargeConsFV<DefaultChargeConsFV> consfv)
+      private ICokeCbConsumptionFvCalc CbFv;
+      public CalcEbChmk(ICokeCbConsumptionFvCalc cbFv)
       {
-         DgPgChmkEb = calceb;
-         ChargeConsFV = consfv;
+         CbFv = cbFv;
       }
 
       public IEnumerable<EbChmkDTO> CalcEntities(IEnumerable<AmmountCb> cbs, IEnumerable<DgPgChmkEb> dgpgs)
@@ -35,62 +31,45 @@ namespace Business.BusinessModels.Calculations
 
       public EbChmkDTO CalcEntity(IEnumerable<AmmountCb> cb, DgPgChmkEb dgpg)
       {
-         DgPgChmkEbDTO dgPgChmkEbDTO = DgPgChmkEb.CalcEntity(dgpg);
-
-         var ConsumptionFv = cb.Select(p => new CbAll
-         { 
-            Kc1 =
-            {
-               Cb1 = ChargeConsFV.Calc(p.Cb1, p.OutputMultipliers.Cb1, p.OutputMultipliers.Fv),
-               Cb2 = ChargeConsFV.Calc(p.Cb2, p.OutputMultipliers.Cb2, p.OutputMultipliers.Fv),
-               Cb3 = ChargeConsFV.Calc(p.Cb3, p.OutputMultipliers.Cb3, p.OutputMultipliers.Fv),
-               Cb4 = ChargeConsFV.Calc(p.Cb4, p.OutputMultipliers.Cb4, p.OutputMultipliers.Fv),
-            },
-            Kc2 =
-            {
-               Cb1 = ChargeConsFV.Calc(p.Cb5, p.OutputMultipliers.Cb5, p.OutputMultipliers.Fv),
-               Cb2 = ChargeConsFV.Calc(p.Cb6, p.OutputMultipliers.Cb6, p.OutputMultipliers.Fv),
-               Cb3 = ChargeConsFV.Calc(p.Cb7, p.OutputMultipliers.Cb7, p.OutputMultipliers.Fv),
-               Cb4 = ChargeConsFV.Calc(p.Cb8, p.OutputMultipliers.Cb8, p.OutputMultipliers.Fv),
-            },
-         });
+         var ConsumptionFv = CbFv.CalcEntities(cb);
 
          decimal sumCb1 = ConsumptionFv.Sum(p => p.Kc1.Cb1);
          decimal sumCb2 = ConsumptionFv.Sum(p => p.Kc1.Cb2);
          decimal sumCb3 = ConsumptionFv.Sum(p => p.Kc1.Cb3);
          decimal sumCb4 = ConsumptionFv.Sum(p => p.Kc1.Cb4);
          decimal sumKc1 = sumCb1 + sumCb2 + sumCb3 + sumCb4;
-         decimal sumGru = sumKc1 + ConsumptionFv.Sum(p => p.Kc2.Cb1 + p.Kc2.Cb2 + p.Kc2.Cb3 + p.Kc2.Cb4);
+         decimal sumGru = sumKc1 + ConsumptionFv.Sum(p => p.Kc2.Sum);
+         decimal consDgKc1Sum = dgpg.ConsDgCb1 + dgpg.ConsDgCb2 + dgpg.ConsDgCb3 + dgpg.ConsDgCb4;
 
          return new EbChmkDTO
          {
-            Date = dgPgChmkEbDTO.Date,
+            Date = dgpg.Date,
             ConsumptionKc1 =
             {
-               Cb1 = dgPgChmkEbDTO.ConsumptionDgKc1.Cb1,
-               Cb2 = dgPgChmkEbDTO.ConsumptionDgKc1.Cb1,
-               Cb3 = dgPgChmkEbDTO.ConsumptionDgKc1.Cb1,
-               Cb4 = dgPgChmkEbDTO.ConsumptionDgKc1.Cb1,
+               Cb1 = dgpg.ConsDgCb1,
+               Cb2 = dgpg.ConsDgCb2,
+               Cb3 = dgpg.ConsDgCb3,
+               Cb4 = dgpg.ConsDgCb4,
             },
-            ConsDgKc1Sum = dgPgChmkEbDTO.ConsDgKc1Sum,
+            ConsDgKc1Sum = consDgKc1Sum,
             UdConsumptionKc1 =
             {
-               Cb1 = (dgPgChmkEbDTO.ConsumptionDgKc1.Cb1 == 0) ? 0 : Math.Round((dgPgChmkEbDTO.ConsumptionDgKc1.Cb1 * GasConstants.UdDgC) / sumCb1, MidpointRounding.ToEven),
-               Cb2 = (dgPgChmkEbDTO.ConsumptionDgKc1.Cb2 == 0) ? 0 : Math.Round((dgPgChmkEbDTO.ConsumptionDgKc1.Cb2 * GasConstants.UdDgC) / sumCb2, MidpointRounding.ToEven),
-               Cb3 = (dgPgChmkEbDTO.ConsumptionDgKc1.Cb3 == 0) ? 0 : Math.Round((dgPgChmkEbDTO.ConsumptionDgKc1.Cb3 * GasConstants.UdDgC) / sumCb3, MidpointRounding.ToEven),
-               Cb4 = (dgPgChmkEbDTO.ConsumptionDgKc1.Cb4 == 0) ? 0 : Math.Round((dgPgChmkEbDTO.ConsumptionDgKc1.Cb4 * GasConstants.UdDgC) / sumCb4, MidpointRounding.ToEven),
+               Cb1 = (dgpg.ConsDgCb1 == 0) ? 0 : Math.Round((dgpg.ConsDgCb1 * GasConstants.UdDgC) / sumCb1, MidpointRounding.ToEven),
+               Cb2 = (dgpg.ConsDgCb2 == 0) ? 0 : Math.Round((dgpg.ConsDgCb2 * GasConstants.UdDgC) / sumCb2, MidpointRounding.ToEven),
+               Cb3 = (dgpg.ConsDgCb3 == 0) ? 0 : Math.Round((dgpg.ConsDgCb3 * GasConstants.UdDgC) / sumCb3, MidpointRounding.ToEven),
+               Cb4 = (dgpg.ConsDgCb4 == 0) ? 0 : Math.Round((dgpg.ConsDgCb4 * GasConstants.UdDgC) / sumCb4, MidpointRounding.ToEven),
             },
-            UdConsKc1Sum = (dgPgChmkEbDTO.ConsDgKc1Sum == 0) ? 0 : (int)Math.Round((dgPgChmkEbDTO.ConsDgKc1Sum * GasConstants.UdDgC) / sumKc1, MidpointRounding.ToEven),
+            UdConsKc1Sum = (consDgKc1Sum == 0) ? 0 : (int)Math.Round((consDgKc1Sum * GasConstants.UdDgC) / sumKc1, MidpointRounding.ToEven),
             ConsumptionGru =
             {
-               Gru1 = dgPgChmkEbDTO.ConsumptionPgGru.Gru1,
-               Gru2 = dgPgChmkEbDTO.ConsumptionPgGru.Gru2,
+               Gru1 = dgpg.ConsPgGru1,
+               Gru2 = dgpg.ConsPgGru2,
             },
-            ConsPgUpc = dgPgChmkEbDTO.ConsPgUpc,
+            ConsPgUpc = dgpg.ConsPgGru1 + dgpg.ConsPgGru2,
             UdConsumptionGru =
             {
-               Gru1 = Math.Round((dgPgChmkEbDTO.ConsumptionPgGru.Gru1 == 0) ? 0 : (dgPgChmkEbDTO.ConsumptionPgGru.Gru1 * GasConstants.UdPgC) / (sumGru * 0.4m), 2),
-               Gru2 = Math.Round((dgPgChmkEbDTO.ConsumptionPgGru.Gru2 == 0) ? 0 : (dgPgChmkEbDTO.ConsumptionPgGru.Gru2 * GasConstants.UdPgC) / (sumGru * 0.6m), 2),
+               Gru1 = Math.Round((dgpg.ConsPgGru1 == 0) ? 0 : (dgpg.ConsPgGru1 * GasConstants.UdPgC) / (sumGru * 0.4m), 2),
+               Gru2 = Math.Round((dgpg.ConsPgGru2 == 0) ? 0 : (dgpg.ConsPgGru2 * GasConstants.UdPgC) / (sumGru * 0.6m), 2),
             },
          };
       }
