@@ -1,10 +1,6 @@
-﻿using Business.BusinessModels.BaseCalculations;
-using Business.BusinessModels.BaseCalculations.Consumption;
-using Business.BusinessModels.BaseCalculations.Production;
+﻿using Business.BusinessModels.BaseCalculations.Production;
 using Business.BusinessModels.Calculations;
 using Business.DTO;
-using Business.Interfaces.BaseCalculations;
-using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.BaseCalculations.Production;
 using Business.Interfaces.Calculations;
 using DataAccess.Entities;
@@ -19,25 +15,11 @@ namespace Tests.Calculations.Entities
    public class DgPgChmkEbTest
    {
       private ICalcEbChmk Target;
-      private Mock<IChargeConsFV<DefaultChargeConsFV>> ChargeConsFV;
-      private Mock<IDryCokeProduction<DefaultDryCokeProduction>> dryCoke;
       private Mock<ICokeCbConsumptionFvCalc> MockCbFv;
       public DgPgChmkEbTest()
       {
-         var DryCoke = new DefaultDryCokeProduction();
-
-         dryCoke = new Mock<IDryCokeProduction<DefaultDryCokeProduction>>();
-         dryCoke.Setup(p => p.Calc(It.IsAny<int>(), It.IsAny<decimal>()))
-            .Returns((int cb, decimal cbCoef) => DryCoke.Calc(cb, cbCoef));
-
-         var chargeConsFV = new DefaultChargeConsFV(dryCoke.Object);
-
-         ChargeConsFV = new Mock<IChargeConsFV<DefaultChargeConsFV>>();
-         ChargeConsFV.Setup(p => p.Calc(It.IsAny<int>(), It.IsAny<decimal>(), It.IsAny<decimal>()))
-            .Returns((int cb, decimal cbCoef, decimal fvCoef) => chargeConsFV.Calc(cb, cbCoef, fvCoef));
-
          MockCbFv = new Mock<ICokeCbConsumptionFvCalc>();
-         var cbFv = new CokeCbConsumptionFvCalc(ChargeConsFV.Object);
+         var cbFv = new CokeCbConsumptionFvCalc(SetupHelper.DefaultChargeConsFvSetup().Object);
 
          MockCbFv.Setup(p => p.CalcEntities(It.IsAny<IEnumerable<AmmountCb>>()))
             .Returns((IEnumerable<AmmountCb> data) => cbFv.CalcEntities(data));

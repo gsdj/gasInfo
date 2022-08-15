@@ -1,4 +1,5 @@
 ﻿using Business.BusinessModels.BaseCalculations;
+using Business.BusinessModels.BaseCalculations.Consumption;
 using Business.BusinessModels.BaseCalculations.Density;
 using Business.BusinessModels.BaseCalculations.Qn;
 using Business.BusinessModels.Calculations;
@@ -15,11 +16,6 @@ using Business.Interfaces.BaseCalculations.Density;
 using Business.Interfaces.Calculations;
 using Business.Interfaces.Calculations.ConsGasQn;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tests
 {
@@ -30,6 +26,27 @@ namespace Tests
          var MockSteam = new Mock<ISteamCharacteristicsService>();
          MockSteam.Setup(p => p.GetCharacteristics()).Returns(TestCalculatedDataHelper.SteamCharacteristicsData());
          return MockSteam;
+      }
+      public static Mock<IDryCokeProduction<DefaultDryCokeProduction>> DefaultDryCokeSetup()
+      {
+         Mock<IDryCokeProduction<DefaultDryCokeProduction>> MockDryCoke = new Mock<IDryCokeProduction<DefaultDryCokeProduction>>();
+         var defaultDryCoke = new DefaultDryCokeProduction();
+
+         MockDryCoke.Setup(p => p.Calc(It.IsAny<int>(), It.IsAny<decimal>()))
+            .Returns((int cb, decimal cbCoef) => defaultDryCoke.Calc(cb, cbCoef));
+
+         return MockDryCoke;
+      }
+      public static Mock<IChargeConsFV<DefaultChargeConsFV>> DefaultChargeConsFvSetup()
+      {
+         Mock<IChargeConsFV<DefaultChargeConsFV>> MockChargeConsFV = new Mock<IChargeConsFV<DefaultChargeConsFV>>();
+
+         var chargeConsFV = new DefaultChargeConsFV(DefaultDryCokeSetup().Object);
+
+         MockChargeConsFV.Setup(p => p.Calc(It.IsAny<int>(), It.IsAny<decimal>(), It.IsAny<decimal>()))
+            .Returns((int cb, decimal cbCoef, decimal fvCoef) => chargeConsFV.Calc(cb, cbCoef, fvCoef));
+
+         return MockChargeConsFV;
       }
       public static Mock<IQcRc> DefaultQcRcSetup()
       {
@@ -56,8 +73,7 @@ namespace Tests
          var consGas1000 = new ConsGasQn1000();
 
          MockConsGasQn1000.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>()))
-            .Returns((decimal qcrc, decimal qn) =>
-            consGas1000.Calc(qcrc, qn));
+            .Returns((decimal qcrc, decimal qn) => consGas1000.Calc(qcrc, qn));
 
          return MockConsGasQn1000;
       }
@@ -72,6 +88,18 @@ namespace Tests
 
          return MockConsGasQn4000;
       }
+      public static Mock<ICalcQcRc<QcRcKc1>> QcRcKc1DefaultSetup()
+      {
+         Mock<ICalcQcRc<QcRcKc1>> MockQcRcKc1 = new Mock<ICalcQcRc<QcRcKc1>>();
+         ICalcQcRc<QcRcKc1> QcRcKc1Default = new CalcQcRcKc1(DefaultQcRcSetup().Object);
+
+         MockQcRcKc1.Setup(p => p.Calc(It.IsAny<QcRcData>()))
+         .Returns((QcRcData data) => QcRcKc1Default.Calc(data));
+
+         MockQcRcKc1.Setup(p => p.QcRc).Returns(DefaultQcRcSetup().Object);
+
+         return MockQcRcKc1;
+      }
       public static Mock<ICalcQcRc<QcRcKc2>> QcRcKc2DefaultSetup()
       {
          Mock<ICalcQcRc<QcRcKc2>> MockQcRcKc2 = new Mock<ICalcQcRc<QcRcKc2>>();
@@ -83,6 +111,26 @@ namespace Tests
          MockQcRcKc2.Setup(p => p.QcRc).Returns(DefaultQcRcSetup().Object);
           
          return MockQcRcKc2;
+      }
+      public static Mock<ICalcConsGasQnKc1> ConsQnKc1DefaultSetup()
+      {
+         Mock<ICalcQcRc<QcRcKc1>> MockQcRcKc1 = QcRcKc1DefaultSetup();
+         Mock<IConsGasQn<ConsGasQn1000>> MockQn1000 = Qn1000Setup();
+
+         Mock<ICalcConsGasQnKc1> MockConsGasQnKc1 = new Mock<ICalcConsGasQnKc1>();
+
+         MockConsGasQnKc1.Setup(p => p.CalcQcRcKc1).Returns(MockQcRcKc1.Object);
+         MockConsGasQnKc1.Setup(p => p.ConsGasQn).Returns(MockQn1000.Object);
+
+         ICalcConsGasQnKc1 consqnKc1 = new CalcConsQnKc1(MockQcRcKc1.Object, MockQn1000.Object);
+
+         MockConsGasQnKc1.Setup(p => p.Calc(It.IsAny<QcRcData>()))
+            .Returns((QcRcData data) => consqnKc1.Calc(data));
+
+         MockConsGasQnKc1.Setup(p => p.Calc(It.IsAny<QcRcKc1>(), It.IsAny<CharacteristicsDG>()))
+            .Returns((QcRcKc1 kc1, CharacteristicsDG dGas) => consqnKc1.Calc(kc1, dGas));
+
+         return MockConsGasQnKc1;
       }
       public static Mock<ICalcConsGasQnKc2> ConsQnKc2DefaultSetup()
       {

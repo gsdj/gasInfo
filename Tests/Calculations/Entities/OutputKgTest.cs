@@ -1,14 +1,7 @@
-﻿using Business.BusinessModels.BaseCalculations;
-using Business.BusinessModels.BaseCalculations.Density;
-using Business.BusinessModels.BaseCalculations.Production;
-using Business.BusinessModels.BaseCalculations.Qn;
+﻿using Business.BusinessModels.BaseCalculations.Production;
 using Business.BusinessModels.Calculations;
 using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
-using Business.Interfaces;
-using Business.Interfaces.BaseCalculations;
-using Business.Interfaces.BaseCalculations.Consumption;
-using Business.Interfaces.BaseCalculations.Density;
 using Business.Interfaces.BaseCalculations.Production;
 using Business.Interfaces.Calculations;
 using DataAccess.Entities;
@@ -21,66 +14,21 @@ namespace Tests.Calculations.Entities
 {
    public class OutputKgTest
    {
-      private Mock<IQcRc> MockQcRc;
-      private Mock<ISteamCharacteristicsService> MockSteam;
-      private Mock<IDryDensity> MockDryDensity;
-      private Mock<IWetDensity> MockWetDensity;
-      private Mock<ICalculation<DensityDTO>> MockCalcWetGas;
-      private Mock<IConsGasQn<ConsGasQn4000>> MockConsGasQn4000;
-      private Mock<IDryCokeProduction<DefaultDryCokeProduction>> MockDryCoke;
       private Mock<ICokeCbConsumptionDryCalc> MockCbDry;
       private Mock<ICalculation<OutputKgDTO>> MockOutputKG;
 
       private Data Data;
       public OutputKgTest()
       {
-         MockSteam = new Mock<ISteamCharacteristicsService>();
-         MockSteam.Setup(p => p.GetCharacteristics()).Returns(TestCalculatedDataHelper.SteamCharacteristicsData());
-
-         MockDryCoke = new Mock<IDryCokeProduction<DefaultDryCokeProduction>>();
-         MockDryCoke.Setup(p => p.Calc(It.IsAny<int>(), It.IsAny<decimal>()))
-            .Returns((int cb, decimal cbCoef) => new DefaultDryCokeProduction().Calc(cb, cbCoef));
-
          MockCbDry = new Mock<ICokeCbConsumptionDryCalc>();
-         var cbDry = new CokeCbConsumptionDryCalc(MockDryCoke.Object);
+         var cbDry = new CokeCbConsumptionDryCalc(SetupHelper.DefaultDryCokeSetup().Object);
          MockCbDry.Setup(p => p.CalcEntity(It.IsAny<AmmountCb>()))
             .Returns((AmmountCb cb) => cbDry.CalcEntity(cb));
 
-         MockQcRc = SetupHelper.DefaultQcRcSetup();
-
-         MockConsGasQn4000 = new Mock<IConsGasQn<ConsGasQn4000>>();
-         var consGasQn4 = new ConsGasQn4000();
-         MockConsGasQn4000.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>()))
-            .Returns((decimal qcrc, decimal qn) => consGasQn4.Calc(qcrc, qn));
-
-         MockDryDensity = new Mock<IDryDensity>();
-         MockWetDensity = new Mock<IWetDensity>();
-
-         var DryDensity1 = new DryDensity(MockSteam.Object);
-
-         MockDryDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>()))
-            .Returns((decimal pkg, decimal PPa, decimal pOver, decimal temp) =>
-            DryDensity1.Calc(pkg, PPa, pOver, temp));
-
-         MockDryDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>()))
-            .Returns((decimal pkg, decimal PPa, decimal pOver, decimal temp, decimal tempDo) =>
-            DryDensity1.Calc(pkg, PPa, pOver, temp, tempDo));
-
-         var WetDensity = new WetDensity(MockSteam.Object);
-
-         MockWetDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>()))
-            .Returns((decimal dryGas, decimal temp) =>
-            WetDensity.Calc(dryGas, temp));
-
-         var CalcWetGas = new CalcWetGasDensity(MockWetDensity.Object, MockDryDensity.Object);
-
-         MockCalcWetGas = new Mock<ICalculation<DensityDTO>>();
-
-         MockCalcWetGas.Setup(p => p.CalcEntity(It.IsAny<Data>()))
-            .Returns((Data data) => CalcWetGas.CalcEntity(data));
-
          MockOutputKG = new Mock<ICalculation<OutputKgDTO>>();
-         var outputKg = new CalcOutputKG(MockCalcWetGas.Object,MockQcRc.Object, MockConsGasQn4000.Object, MockCbDry.Object);
+         var outputKg = new CalcOutputKG(SetupHelper.WetGasDensityDefaultSetup().Object, SetupHelper.DefaultQcRcSetup().Object, 
+                                         SetupHelper.Qn4000Setup().Object, MockCbDry.Object);
+
          MockOutputKG.Setup(p => p.CalcEntity(It.IsAny<Data>()))
             .Returns((Data data) => outputKg.CalcEntity(data));
 

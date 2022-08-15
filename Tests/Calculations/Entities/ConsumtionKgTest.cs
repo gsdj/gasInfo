@@ -25,7 +25,6 @@ namespace Tests.Calculations.Entities
          MockWetGasDensity = SetupHelper.WetGasDensityDefaultSetup();
 
          ConsKg = new CalcConsumptionKg(MockWetGasDensity.Object, MockConsGasQnKc2.Object, MockConsGasQnCpsPpk.Object);
-
          Data = new Data
          {
             CharacteristicsDg = TestCalculatedDataHelper.CharacteristicsDgData(),

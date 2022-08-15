@@ -7,7 +7,7 @@ namespace Business.BusinessModels.BaseCalculations.Consumption
    {
       public decimal Calc(decimal consDg, decimal consPg, decimal consFv)
       {
-         if (consDg == 0 || consPg == 0 || consFv == 0)
+         if (consDg == 0 && consPg == 0 || consFv == 0)
             return 0;
 
          decimal result = ((consDg * GasConstants.UdDgC) + (consPg * GasConstants.UdPgC)) / consFv;
