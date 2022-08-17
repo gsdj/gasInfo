@@ -125,6 +125,39 @@ namespace Tests
             OutputMultipliers = om,
          };
       }
+      public static AmmountCb AmmountCbData2020()
+      {
+         var om = new OutputMultipliers
+         {
+            Date = new DateTime(2019, 1, 1),
+            Cb1 = 10.51m,
+            Cb2 = 13.11m,
+            Cb3 = 0m,
+            Cb4 = 13.20m,
+            Cb5 = 13.37m,
+            Cb6 = 13.37m,
+            Cb7 = 13.73m,
+            Cb8 = 0m,
+            PKP = 9.86m,
+            Peka = 420m,
+            Sv = 1.259m,
+            Fv = 1.375m,
+         };
+         return new AmmountCb
+         {
+            Date = new DateTime(2019, 1, 1),
+            Cb1 = 75,
+            Cb2 = 79,
+            Cb3 = 0,
+            Cb4 = 79,
+            Cb5 = 64,
+            Cb6 = 64,
+            Cb7 = 68,
+            Cb8 = 0,
+            PKP = 8,
+            OutputMultipliers = om,
+         };
+      }
       public static KgChmkEb KgChmkEbData()
       {
          return new KgChmkEb
@@ -144,6 +177,13 @@ namespace Tests
                Pmm = 39.900m,
                Pgm = 37.600m,
                Ptopp = 37.700m,
+            },
+            new SteamCharacteristics
+            {
+               Temp = 33,
+               Pmm = 37.730m,
+               Pgm = 35.700m,
+               Ptopp = 35.700m,
             },
             new SteamCharacteristics
             {
@@ -242,6 +282,69 @@ namespace Tests
                Pmm = 4.579m,
                Pgm = 4.900m,
                Ptopp = 4.900m,
+            },
+            new SteamCharacteristics
+            {
+                  Temp = -5,
+                  Pmm = 3.008m,
+                  Pgm = 3.600m,
+                  Ptopp = 3.000m,
+            },
+            new SteamCharacteristics
+            {
+                  Temp = -2,
+                  Pmm = 3.879m,
+                  Pgm = 4.300m,
+                  Ptopp = 3.900m,
+            },
+            new SteamCharacteristics
+            {
+                  Temp = 11,
+                  Pmm = 9.840m,
+                  Pgm = 10.000m,
+                  Ptopp = 10.100m,
+            },
+            new SteamCharacteristics
+            {
+                  Temp = 32,
+                  Pmm = 35.660m,
+                  Pgm = 33.800m,
+                  Ptopp = 33.900m,
+            },
+            new SteamCharacteristics
+            {
+                  Temp = 25,
+                  Pmm = 23.760m,
+                  Pgm = 23.000m,
+                  Ptopp = 23.100m,
+            },
+            new SteamCharacteristics
+            {
+                  Temp = 37,
+                  Pmm = 47.070m,
+                  Pgm = 43.900m,
+                  Ptopp = 44.800m,
+            },
+            new SteamCharacteristics
+            {
+                  Temp = 39,
+                  Pmm = 52.440m,
+                  Pgm = 48.600m,
+                  Ptopp = 48.700m,
+            },
+            new SteamCharacteristics
+            {
+                  Temp = 66,
+                  Pmm = 196.100m,
+                  Pgm = 166.800m,
+                  Ptopp = 168.100m,
+            },
+            new SteamCharacteristics
+            {
+                  Temp = 69,
+                  Pmm = 223.700m,
+                  Pgm = 188.600m,
+                  Ptopp = 199.100m,
             },
          };
       }

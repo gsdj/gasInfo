@@ -2,16 +2,11 @@
 using Business.DTO.Models.Characteristics.Gas;
 using Business.DTO.Models.Characteristics.Quality;
 using Business.DTO.Models.QcRc;
-using DataAccess.Entities;
-using DataAccess.Entities.Characteristics;
 using System;
 using System.Collections.Generic;
 
 namespace Tests
 {
-   //DataDb
-   //CalculatedData
-   //EnumDbData
    public class TestCalculatedDataHelper
    {
       public static PressureDTO PressureData()
@@ -21,6 +16,15 @@ namespace Tests
             Date = new DateTime(2019, 1, 1),
             Value = 752,
             ValuePa = 100258,
+         };
+      }
+      public static PressureDTO PressureData2020()
+      {
+         return new PressureDTO
+         {
+            Date = new DateTime(2019, 1, 1),
+            Value = 731.50m,
+            ValuePa = 97525.3356m,
          };
       }
       public static CharacteristicsKG CharacteristicsKgData()
@@ -37,6 +41,23 @@ namespace Tests
             {
                Qn = 3808,
                Density = 0.418m,
+            },
+         };
+      }
+      public static CharacteristicsKG CharacteristicsKgData2020()
+      {
+         return new CharacteristicsKG
+         {
+            Date = new DateTime(2019, 1, 1),
+            Kc1 =
+            {
+               Qn = 3604.69m,
+               Density = 0.4333697m,
+            },
+            Kc2 =
+            {
+               Qn = 3704.55m,
+               Density = 0.4393895m,
             },
          };
       }
@@ -59,6 +80,28 @@ namespace Tests
             {
                Qn = 742.03m,
                Density = 1.219m,
+            },
+         };
+      }
+      public static CharacteristicsDG CharacteristicsDgData2020()
+      {
+         return new CharacteristicsDG
+         {
+            Date = new DateTime(2019, 1, 1),
+            Kc1 =
+            {
+               Qn = 921.66m,
+               Density = 1.1707572m,
+            },
+            Kc2 =
+            {
+               Qn = 921.66m,
+               Density = 1.1707572m,
+            },
+            AVG =
+            {
+               Qn = 953.54m,
+               Density = 1.171092m,
             },
          };
       }
@@ -89,6 +132,18 @@ namespace Tests
                   PPa = 5319.5637600m,
                   PKg = 0.0376m,
                   Rh = 1.0026595745m,
+               }
+            },
+            {33, new SteamCharacteristicsDTO
+               {
+                  Temp = 33,
+                  Pmm = 37.730m,
+                  Pgm = 35.700m,
+                  Ptopp = 35.700m,
+                  Fkg = 0.0357m,
+                  PPa = 5030.2541520m,
+                  PKg = 0.0357m,
+                  Rh = 1m,
                }
             },
             {31, new SteamCharacteristicsDTO
@@ -259,7 +314,114 @@ namespace Tests
                   Rh = 1,
                }
             },
-
+            {-5, new SteamCharacteristicsDTO
+               {
+                  Temp = -5,
+                  Pmm = 3.008m,
+                  Pgm = 3.600m,
+                  Ptopp = 3.000m,
+                  Fkg = 0.003m,
+                  PPa = 401.0337792m,
+                  PKg = 0.0036m,
+                  Rh = 0.8333333333m,
+               }
+            },   
+            {-2, new SteamCharacteristicsDTO
+               {
+                  Temp = -2,
+                  Pmm = 3.879m,
+                  Pgm = 4.300m,
+                  Ptopp = 3.900m,
+                  Fkg = 0.0039m,
+                  PPa = 517.1575896m,
+                  PKg = 0.0043m,
+                  Rh = 0.9069767442m,
+               }
+            },            
+            {11, new SteamCharacteristicsDTO
+               {
+                  Temp = 11,
+                  Pmm = 9.840m,
+                  Pgm = 10.000m,
+                  Ptopp = 10.100m,
+                  Fkg = 0.0101m,
+                  PPa = 1311.8924160m,
+                  PKg = 0.010m,
+                  Rh = 1.01m,
+               }
+            },      
+            {32, new SteamCharacteristicsDTO
+               {
+                  Temp = 32,
+                  Pmm = 35.660m,
+                  Pgm = 33.800m,
+                  Ptopp = 33.900m,
+                  Fkg = 0.0339m,
+                  PPa = 4754.2767840m,
+                  PKg = 0.0338m,
+                  Rh = 1.0029585799m,
+               }
+            },            
+            {25, new SteamCharacteristicsDTO
+               {
+                  Temp = 25,
+                  Pmm = 23.760m,
+                  Pgm = 23.000m,
+                  Ptopp = 23.100m,
+                  Fkg = 0.0231m,
+                  PPa = 3167.7402240m,
+                  PKg = 0.023m,
+                  Rh = 1.0043478261m,
+               }
+            },
+            {37, new SteamCharacteristicsDTO
+               {
+                  Temp = 37,
+                  Pmm = 47.070m,
+                  Pgm = 43.900m,
+                  Ptopp = 44.800m,
+                  Fkg = 0.0448m,
+                  PPa = 6275.4853680m,
+                  PKg = 0.0439m,
+                  Rh = 1.0205011390m,
+               }
+            },
+            {39, new SteamCharacteristicsDTO
+               {
+                  Temp = 39,
+                  Pmm = 52.440m,
+                  Pgm = 48.600m,
+                  Ptopp = 48.700m,
+                  Fkg = 0.0487m,
+                  PPa = 6991.4266560m,
+                  PKg = 0.0486m,
+                  Rh = 1.0020576132m,
+               }
+            },
+            {66, new SteamCharacteristicsDTO
+               {
+                  Temp = 66,
+                  Pmm = 196.100m,
+                  Pgm = 166.800m,
+                  Ptopp = 168.100m,
+                  Fkg = 0.1681m,
+                  PPa = 26144.5226400m,
+                  PKg = 0.1668m,
+                  Rh = 1.0077937650m,
+               }
+            },
+            {69, new SteamCharacteristicsDTO
+               {
+                  Temp = 69,
+                  Pmm = 223.700m,
+                  Pgm = 188.600m,
+                  Ptopp = 199.100m,
+                  Fkg = 0.1991m,
+                  PPa = 29824.2208800m,
+                  PKg = 0.1886m,
+                  Rh = 1.0556733828m,
+               }
+            },
          };
       }
       public static DevicesKipDTO DevicesKipData()
@@ -393,6 +555,137 @@ namespace Tests
             },
          };
       }
+      public static DevicesKipDTO DevicesKipData2020()
+      {
+         return new DevicesKipDTO
+         {
+            Date = new DateTime(2019, 1, 1),
+            Cu =
+            {
+               Cu1 =
+               {
+                  Consumption = { Value = 2512611.66666667m },
+                  Pressure = 1131,
+                  Temperature = 39,
+               },
+               Cu2 =
+               {
+                  Consumption = { Value = 463892 },
+                  Pressure = 859,
+                  Temperature = 31,
+               },
+            },
+            Kc2 =
+            {
+               Cb1 =
+               {
+                  Consumption = { Value = 9143 },
+                  Pressure = 387,
+                  Temperature = 65.6m,
+                  TempBeforeHeating = 33,
+               },
+               Cb2 =
+               {
+                  Consumption = { Value = 8539 },
+                  Pressure = 379,
+                  Temperature = 69,
+                  TempBeforeHeating = 33,
+               },
+               Cb3 =
+               {
+                  Consumption = { Ms = 3464, Ks = 3724 },
+                  Pressure = 361,
+                  Temperature = 62,
+                  TempBeforeHeating = 32,
+               },
+               Cb4 =
+               {
+                  Consumption = { Ms = 941, Ks = 975 },
+                  Pressure = 639,
+                  Temperature = 61,
+                  TempBeforeHeating = 30,
+               },
+            },
+            CpsPpk =
+            {
+               Pko =
+               {
+                  Pkp =
+                  {
+                     Consumption = { Ms = 0, Ks = 19137 },
+                     Pressure = 1280,
+                     Temperature = 37,
+                  },
+                  Uvtp =
+                  {
+                     Consumption = { Value = 22925 },
+                     Pressure = 1120,
+                     Temperature = 37,
+                  },
+               },
+               Spo =
+               {
+                  Consumption = { Value = 20302 },
+                  Pressure = 1108,
+                  Temperature = 11,
+               },
+            },
+            Gsuf45 =
+            {
+               Consumption = { Value = 2497 },
+               Pressure = 1124,
+               Temperature = 25,
+            },
+            Kc1 =
+            {
+               Cb1 =
+               {
+                  Consumption = { Value = 918356 },
+                  Pressure = 462,
+                  Temperature = 31,
+               },
+               Cb2 =
+               {
+                  Consumption = { Value = 1049124 },
+                  Pressure = 462,
+                  Temperature = 31,
+               },
+               Cb3 =
+               {
+                  Consumption = { Value = 0 },
+                  Pressure = 0,
+                  Temperature = 0,
+               },
+               Cb4 =
+               {
+                  Consumption = { Value = 989663 },
+                  Pressure = 470,
+                  Temperature = 26,
+               },
+            },
+            Gru =
+            {
+               Gru1 =
+               {
+                  Consumption = { Value = 16560 },
+                  Pressure = 540,
+                  Temperature = -5,
+               },
+               Gru2 =
+               {
+                  Consumption = { Value = 16272 },
+                  Pressure = 481,
+                  Temperature = -2,
+               },
+            },
+            Grp4 =
+            {
+               Consumption = { Value = 0 },
+               Pressure = 0,
+               Temperature = 0,
+            },
+         };
+      }
       public static DensityDTO DensityDTOData()
       {
          return new DensityDTO
@@ -469,6 +762,27 @@ namespace Tests
                KgFv = 14.6787450558m,
                KgFh = 0.3477601798m,
                Density = 0.4220939m,
+            },
+         };
+      }
+      public static QualityCharacteristics QualityData2020()
+      {
+         return new QualityCharacteristics
+         {
+            Date = new DateTime(2019, 1, 1),
+            Kc1 =
+            {
+               Vc = 25.9233m,
+               KgFv = 14.7391082356m,
+               KgFh = 0.34038038751405m,
+               Density = 0.4333697m,
+            },
+            Kc2 =
+            {
+               Vc = 25.7114m,
+               KgFv = 14.6787450558m,
+               KgFh = 0.334460739249813m,
+               Density = 0.4393895m,
             },
          };
       }
