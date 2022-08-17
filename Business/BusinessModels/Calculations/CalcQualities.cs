@@ -1,4 +1,5 @@
-﻿using Business.DTO.Models.Characteristics.Quality;
+﻿using Business.BusinessModels.Constants;
+using Business.DTO.Models.Characteristics.Quality;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.BaseCalculations.Density;
 using Business.Interfaces.Calculations;

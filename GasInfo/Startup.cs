@@ -1,6 +1,8 @@
-using Business.BusinessModels.Calculations;
-using Business.DTO;
+using Business.BusinessModels.Calculations.Characteristics;
+using Business.BusinessModels.Calculations.Consumption;
+using Business.DTO.Consumption;
 using Business.Interfaces.Calculations;
+using Business.Interfaces.Calculations.Characteristics;
 using DataAccess;
 using DataAccess.Interfaces;
 using DataAccess.Repositories;

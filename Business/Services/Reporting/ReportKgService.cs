@@ -1,20 +1,19 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.Interfaces;
-using Business.Interfaces.Services;
+using Business.Interfaces.Services.Report;
 using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Business.Services.Reporting
 {
    public class ReportKgService : IReportKgService
    {
-      IUnitOfWork Db;
-      IUnitOfCalc Calc;
-      IMonthable<DevicesKipDTO> DevicesKip;
-      IMonthable<PressureDTO> Pressure;
+      private IUnitOfWork Db;
+      private IUnitOfCalc Calc;
+      private IMonthable<DevicesKipDTO> DevicesKip;
+      private IMonthable<PressureDTO> Pressure;
       public ReportKgService(IUnitOfWork uof, IUnitOfCalc calc, IMonthable<DevicesKipDTO> kip, IMonthable<PressureDTO> pressure)
       {
          Db = uof;

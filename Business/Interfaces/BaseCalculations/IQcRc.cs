@@ -1,4 +1,6 @@
-﻿namespace Business.Interfaces.BaseCalculations
+﻿using Business.Interfaces.Services;
+
+namespace Business.Interfaces.BaseCalculations
 {
    public interface IQcRc
    {

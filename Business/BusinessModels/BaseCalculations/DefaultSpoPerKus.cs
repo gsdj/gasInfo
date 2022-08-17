@@ -1,4 +1,5 @@
-﻿using Business.Interfaces.BaseCalculations;
+﻿using Business.BusinessModels.Constants;
+using Business.Interfaces.BaseCalculations;
 using System;
 
 namespace Business.BusinessModels.BaseCalculations

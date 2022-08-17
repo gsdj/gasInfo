@@ -9,12 +9,12 @@ using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
 using Business.DTO.Models.Characteristics.Gas;
 using Business.DTO.Models.QcRc;
-using Business.Interfaces;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.BaseCalculations.Density;
 using Business.Interfaces.Calculations;
 using Business.Interfaces.Calculations.ConsGasQn;
+using Business.Interfaces.Services;
 using Moq;
 
 namespace Tests

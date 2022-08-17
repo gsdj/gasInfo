@@ -1,6 +1,6 @@
 ﻿using Business.DTO;
-using Business.Interfaces;
-using Business.Interfaces.Calculations;
+using Business.Interfaces.Calculations.Characteristics;
+using Business.Interfaces.Services;
 using DataAccess.Interfaces;
 using System.Collections.Generic;
 

@@ -1,6 +1,7 @@
-﻿using Business.BusinessModels.Calculations;
+﻿using Business.BusinessModels.Calculations.Consumption;
 using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
+using Business.DTO.Consumption;
 using Business.Interfaces.Calculations;
 using Business.Interfaces.Calculations.ConsGasQn;
 using Moq;

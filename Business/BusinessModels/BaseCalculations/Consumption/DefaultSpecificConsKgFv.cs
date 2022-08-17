@@ -1,4 +1,5 @@
-﻿using Business.Interfaces.BaseCalculations.Consumption;
+﻿using Business.BusinessModels.Constants;
+using Business.Interfaces.BaseCalculations.Consumption;
 using System;
 
 namespace Business.BusinessModels.BaseCalculations.Consumption

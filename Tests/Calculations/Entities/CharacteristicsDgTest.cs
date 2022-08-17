@@ -1,21 +1,17 @@
 ﻿using Business.BusinessModels.BaseCalculations;
 using Business.BusinessModels.BaseCalculations.Density;
 using Business.BusinessModels.BaseCalculations.Qn;
-using Business.BusinessModels.Calculations;
+using Business.BusinessModels.Calculations.Characteristics;
 using Business.DTO.Models.Characteristics.Gas;
 using Business.DTO.Models.Components;
 using Business.Interfaces.BaseCalculations;
 using Business.Interfaces.BaseCalculations.Density;
-using Business.Interfaces.Calculations;
+using Business.Interfaces.Calculations.Characteristics;
 using DataAccess.Entities;
 using DataAccess.Entities.Characteristics;
 using Moq;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Tests.Calculations.Entities

@@ -1,7 +1,8 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
+using Business.DTO.Consumption;
 using Business.Interfaces;
-using Business.Interfaces.Services;
+using Business.Interfaces.Services.Report;
 using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;

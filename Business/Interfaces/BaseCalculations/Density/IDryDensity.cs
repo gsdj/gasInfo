@@ -1,4 +1,6 @@
-﻿namespace Business.Interfaces.BaseCalculations.Density
+﻿using Business.Interfaces.Services;
+
+namespace Business.Interfaces.BaseCalculations.Density
 {
    public interface IDryDensity
    {

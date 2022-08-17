@@ -1,5 +1,6 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
+using Business.DTO.Consumption;
 using Business.DTO.Models.InfoSheet;
 using Business.Interfaces.Calculations;
 using System.Linq;

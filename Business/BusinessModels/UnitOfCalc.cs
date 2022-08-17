@@ -1,6 +1,9 @@
 ﻿using Business.DTO;
+using Business.DTO.Charts;
+using Business.DTO.Consumption;
 using Business.Interfaces;
 using Business.Interfaces.Calculations;
+using Business.Interfaces.Calculations.Characteristics;
 
 namespace Business.BusinessModels
 {

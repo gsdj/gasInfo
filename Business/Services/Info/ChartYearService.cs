@@ -1,7 +1,8 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
+using Business.DTO.Charts;
 using Business.Interfaces;
-using Business.Interfaces.Services;
+using Business.Interfaces.Services.Info;
 using DataAccess.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace Business.Services.Info
 {
    public class ChartYearService : IChartYearService
    {
-      IUnitOfWork db;
-      IUnitOfCalc Calc;
+      private IUnitOfWork db;
+      private IUnitOfCalc Calc;
       private IYearable<DevicesKipDTO> DevicesKip;
       private IYearable<PressureDTO> Pressure;
       private IYearable<AsdueDTO> Asdue;

@@ -1,7 +1,6 @@
 ﻿using Business.DTO;
 using Business.Interfaces.BaseCalculations.Production;
-using Business.Interfaces.Calculations;
-using Business.Interfaces.Services;
+using Business.Interfaces.Services.Report;
 using DataAccess.Entities;
 using DataAccess.Interfaces;
 using System;

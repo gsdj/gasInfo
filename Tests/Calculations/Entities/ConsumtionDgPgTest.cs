@@ -1,8 +1,9 @@
 ﻿using Business.BusinessModels.BaseCalculations.Consumption;
 using Business.BusinessModels.BaseCalculations.Production;
-using Business.BusinessModels.Calculations;
+using Business.BusinessModels.Calculations.Consumption;
 using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
+using Business.DTO.Consumption;
 using Business.Interfaces.BaseCalculations.Consumption;
 using Business.Interfaces.BaseCalculations.Production;
 using Business.Interfaces.Calculations;
