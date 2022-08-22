@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations.Charts
 {
-   public class CalcChartYear : ICalculation<ChartYearDTO>, ICalculations<ChartYearDTO>
+   public class DefaultChartMonth : ICalculation<ChartMonthDTO>, ICalculations<ChartMonthDTO>
    {
       private ICalculation<DensityDTO> WetGas;
       private ICalcConsGasQnKc2 Kc2Qn;
@@ -21,7 +21,7 @@ namespace Business.BusinessModels.Calculations.Charts
       private IQcRc QcRc;
       private IConsGasQn<ConsGasQn4000> ConsGasQn;
       private ICokeCbConsumptionDryCalc CokeCbDry;
-      public CalcChartYear(ICalculation<DensityDTO> wetgas, ICalcConsGasQnKc2 kc2Qn, ICalcConsGasQnCpsPpk cpsppkQn, ICokeCbConsumptionDryCalc cokeCbDry)
+      public DefaultChartMonth(ICalculation<DensityDTO> wetgas, ICalcConsGasQnKc2 kc2Qn, ICalcConsGasQnCpsPpk cpsppkQn, ICokeCbConsumptionDryCalc cokeCbDry)
       {
          WetGas = wetgas;
          Kc2Qn = kc2Qn;
@@ -30,7 +30,7 @@ namespace Business.BusinessModels.Calculations.Charts
          QcRc = CpsPpkQn.CalcQcRcCpsPpk.QcRc;
          ConsGasQn = CpsPpkQn.ConsGasQn;
       }
-      public IEnumerable<ChartYearDTO> CalcEntities(EnumerableData data)
+      public IEnumerable<ChartMonthDTO> CalcEntities(EnumerableData data)
       {
          var Data = data as ChartEnumData;
 
@@ -39,7 +39,7 @@ namespace Business.BusinessModels.Calculations.Charts
          var quality = Data.Quality;
          var asdue = Data.Asdue;
          var kgChmk = Data.KgChmkEb;
-
+         
          var d =
             from t1cbs in cbs
             join t2charKg in charKg on new { t1cbs.Date } equals new { t2charKg.Date }
@@ -55,16 +55,16 @@ namespace Business.BusinessModels.Calculations.Charts
                KgChmkEb = t5kgChmk
             };
 
-         List<ChartYearDTO> chartYearDTO = new List<ChartYearDTO>(d.Count());
+         List<ChartMonthDTO> chartMonthDTO = new List<ChartMonthDTO>(d.Count());
 
          foreach (var item in d)
          {
-            chartYearDTO.Add(CalcEntity(item));
+            chartMonthDTO.Add(CalcEntity(item));
          }
-         return chartYearDTO;
+         return chartMonthDTO;
       }
 
-      public ChartYearDTO CalcEntity(Data data)
+      public ChartMonthDTO CalcEntity(Data data)
       {
          ChartData Data = data as ChartData;
 
@@ -98,32 +98,20 @@ namespace Business.BusinessModels.Calculations.Charts
 
          var data1 = new
          {
-            Kc2Sum = (consCbKc2.Sum == 0 && consCpsPpk.Pko.Total + consCpsPpk.Spo == 0) ? 0 : 
-                     (consCbKc2.Sum + consCpsPpk.Pko.Total + consCpsPpk.Spo) / 24,
-
-            GSUF4000 = (consGsuf == 0) ? 0 : consGsuf / 24,
-            PrMk4000 = (PrMk4000 == 0) ? 0 : PrMk4000 / 24,
-
-            TradeGasEB = Data.KgChmkEb.Consumption,
-            TradeGasTn = CokeCbConsDry.Tn * 10,
-
-            TradeGasAsdue = (Data.Asdue.StmDay == 0 || Data.CharacteristicsKg.Kc1.Qn == 0) ? 0 : 
-                           ((Data.Asdue.StmDay / 24) * Data.CharacteristicsKg.Kc1.Qn) / 4000,
-            
-            TheorOutKg = (CokeCbConsDry.Cb1_6 == 0 || CokeCbConsDry.Tn == 0) ? 0 :
-                       Math.Round((Data.Quality.Kc1.KgFh * (CokeCbConsDry.Cb1_6 / CokeCbConsDry.Tn) 
-                       + Data.Quality.Kc2.KgFh * (CokeCbConsDry.Cb7_8 / CokeCbConsDry.Tn)) * 1000, 0),
+            Kc2Sum = (consCbKc2.Sum + consCpsPpk.Pko.Total + consCpsPpk.Spo) / 24,
+            Gsuf4000 = consGsuf / 24,
+            Asdue = (Data.Asdue.StmDay / 24) * Data.CharacteristicsKg.Kc1.Qn / 4000,
+            Oper = PrMk4000 / CokeCbConsDry.Tn,
          };
 
-         return new ChartYearDTO
+         return new ChartMonthDTO
          {
             Date = wetGas.Date,
-            TradeGasMK = Math.Round(data1.PrMk4000 - data1.Kc2Sum - data1.GSUF4000, 0),
-            TradeGasEB = Math.Round(data1.TradeGasEB, 0),
-            TradeGasTn = Math.Round(data1.TradeGasTn, 0),
-            TradeGasAsdue = Math.Round(data1.TradeGasAsdue, 0),
-            TradeGasV = (data1.TheorOutKg == 0) ? 0 : Math.Round(CokeCbConsDry.Tn * (data1.TheorOutKg / 24) - data1.Kc2Sum - data1.GSUF4000, 0),
-            TradeGasDev = (data1.TradeGasEB == 0 || data1.TradeGasAsdue == 0) ? 0 : Math.Round((data1.TradeGasEB / data1.TradeGasAsdue) * 100, 0),
+            TheorOutKg = (CokeCbConsDry.Cb1_6 == 0 || CokeCbConsDry.Tn == 0) ? 0 :
+                           Math.Round((Data.Quality.Kc1.KgFh * (CokeCbConsDry.Cb1_6 / CokeCbConsDry.Tn) + Data.Quality.Kc2.KgFh * (CokeCbConsDry.Cb7_8 / CokeCbConsDry.Tn)) * 1000, 0),
+            OperOutKg = Math.Round(data1.Oper, 0),
+            TradeOutKg = (CokeCbConsDry.Tn == 0) ? 0 : Math.Round((data1.Kc2Sum + data1.Gsuf4000 + data1.Asdue) * 24 / CokeCbConsDry.Tn, 0),
+            TradeChmkOutKg = (CokeCbConsDry.Tn == 0) ? 0 : Math.Round((data1.Kc2Sum + data1.Gsuf4000 + Data.KgChmkEb.Consumption) * 24 / CokeCbConsDry.Tn, 0),
          };
       }
    }

@@ -12,13 +12,13 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcOutputKG : ICalculation<OutputKgDTO>, ICalculations<OutputKgDTO>
+   public class DefaultOutputKG : ICalculation<OutputKgDTO>, ICalculations<OutputKgDTO>
    {
       private IQcRc QcRc;
       private IConsGasQn<ConsGasQn4000> ConsGasQn;
       private ICalculation<DensityDTO> WetGas;
       private ICokeCbConsumptionDryCalc CbDry;
-      public CalcOutputKG(ICalculation<DensityDTO> wetGas, IQcRc qcrc, IConsGasQn<ConsGasQn4000> qn4000, ICokeCbConsumptionDryCalc cbDry)
+      public DefaultOutputKG(ICalculation<DensityDTO> wetGas, IQcRc qcrc, IConsGasQn<ConsGasQn4000> qn4000, ICokeCbConsumptionDryCalc cbDry)
       {
          QcRc = qcrc;
          ConsGasQn = qn4000;

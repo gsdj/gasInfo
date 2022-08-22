@@ -49,8 +49,8 @@ namespace Tests.Calculations.Entities
          MockConsGasQnKc2 = SetupHelper.ConsQnKc2DefaultSetup();
          MockConsGasQnCpsPpk = SetupHelper.ConsQnCpsPpkDefaultSetup();
 
-         ChartMonthData = new CalcChartMonth(WetGasDensity, MockConsGasQnKc2.Object, MockConsGasQnCpsPpk.Object, MockCbDry.Object);
-         ChartYearData = new CalcChartYear(WetGasDensity, MockConsGasQnKc2.Object, MockConsGasQnCpsPpk.Object, MockCbDry.Object);
+         ChartMonthData = new DefaultChartMonth(WetGasDensity, MockConsGasQnKc2.Object, MockConsGasQnCpsPpk.Object, MockCbDry.Object);
+         ChartYearData = new DefaultChartYear(WetGasDensity, MockConsGasQnKc2.Object, MockConsGasQnCpsPpk.Object, MockCbDry.Object);
       }
 
       private ChartMonthDTO ExpectedObjectMonth()

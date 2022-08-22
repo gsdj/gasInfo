@@ -26,7 +26,7 @@ namespace Tests.Calculations.Entities
             .Returns((AmmountCb cb) => cbDry.CalcEntity(cb));
 
          MockOutputKG = new Mock<ICalculation<OutputKgDTO>>();
-         var outputKg = new CalcOutputKG(SetupHelper.WetGasDensityDefaultSetup().Object, SetupHelper.DefaultQcRcSetup().Object, 
+         var outputKg = new DefaultOutputKG(SetupHelper.WetGasDensityDefaultSetup().Object, SetupHelper.DefaultQcRcSetup().Object, 
                                          SetupHelper.Qn4000Setup().Object, MockCbDry.Object);
 
          MockOutputKG.Setup(p => p.CalcEntity(It.IsAny<Data>()))

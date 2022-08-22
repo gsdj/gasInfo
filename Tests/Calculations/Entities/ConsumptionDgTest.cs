@@ -22,7 +22,7 @@ namespace Tests.Calculations.Entities
       {
          MockCalcWetGas = SetupHelper.WetGasDensityDefaultSetup();
          MockConsGasQnKc1 = SetupHelper.ConsQnKc1DefaultSetup();
-         Target = new CalcConsumptionDg(MockCalcWetGas.Object, MockConsGasQnKc1.Object);
+         Target = new DefaultConsumptionDg(MockCalcWetGas.Object, MockConsGasQnKc1.Object);
 
          Data = new Data
          {

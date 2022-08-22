@@ -27,7 +27,7 @@ namespace Tests.Calculations.Entities
          ICokeCbConsumptionDryCalc ConsumptionDryCalc = new CokeCbConsumptionDryCalc(dryCoke);
          ICokeCbConsumptionFvCalc ConsumptionFvCalc = new CokeCbConsumptionFvCalc(consFv);
 
-         return new CalcProduction(perKus, GrossCalc, DryCalc, ConsumptionDryCalc, ConsumptionFvCalc);
+         return new DefaultProduction(perKus, GrossCalc, DryCalc, ConsumptionDryCalc, ConsumptionFvCalc);
       }
       [Fact]
       public void Production()

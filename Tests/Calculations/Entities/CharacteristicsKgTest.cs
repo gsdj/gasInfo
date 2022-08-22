@@ -28,7 +28,7 @@ namespace Tests.Calculations.Entities
          Density.Setup(p => p.Calc(It.IsAny<KG>()))
             .Returns((KG data) => new DefaultDensityKg().Calc(data));
 
-         Target = new CalcCharacteristicsKG(Qn.Object, Density.Object);
+         Target = new DefaultCharacteristicsKG(Qn.Object, Density.Object);
       }
       private CharacteristicsKG ExpectedObject()
       {

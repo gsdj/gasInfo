@@ -11,10 +11,10 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcQualities : ICalcQuality, IKgFh, IKgFv, IVc
+   public class DefaultQualities : ICalcQuality, IKgFh, IKgFv, IVc
    {
       private IDensity<KG> Density;
-      public CalcQualities(IDensity<KG> density)
+      public DefaultQualities(IDensity<KG> density)
       {
          Density = density;
       }

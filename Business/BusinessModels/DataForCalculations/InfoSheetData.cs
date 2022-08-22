@@ -1,6 +1,7 @@
 ﻿using Business.DTO;
 using Business.DTO.Charts;
 using Business.DTO.Consumption;
+using Business.DTO.Input;
 using Business.DTO.Models.Characteristics.Gas;
 using System;
 using System.Collections.Generic;

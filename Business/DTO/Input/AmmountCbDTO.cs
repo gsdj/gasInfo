@@ -1,7 +1,7 @@
 ﻿using Business.DTO.Models.Production;
 using System;
 
-namespace Business.DTO
+namespace Business.DTO.Input
 {
    public class AmmountCbDTO : AmmountCb<int>
    {

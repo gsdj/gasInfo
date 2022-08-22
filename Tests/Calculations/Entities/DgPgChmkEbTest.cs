@@ -27,7 +27,7 @@ namespace Tests.Calculations.Entities
          MockCbFv.Setup(p => p.CalcEntity(It.IsAny<AmmountCb>()))
             .Returns((AmmountCb data) => cbFv.CalcEntity(data));
 
-         Target = new CalcEbChmk(MockCbFv.Object);
+         Target = new DefaultEbChmk(MockCbFv.Object);
       }
       private EbChmkDTO ExpectedObject()
       {

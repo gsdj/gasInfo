@@ -181,7 +181,7 @@ namespace Business.BusinessModels.Calculations
          };
       }
 
-      private TradeKg TradeKg(OutputKgDTO outKg, ConsumptionKgDTO consKg, ReportKgDTO repKg, decimal sumCu1, decimal sumCu2)
+      private TradeKg TradeKg(DTO.OutputKgDTO outKg, ConsumptionKgDTO consKg, ReportKgDTO repKg, decimal sumCu1, decimal sumCu2)
       {
          return new TradeKg
          {

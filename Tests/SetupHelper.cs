@@ -207,7 +207,7 @@ namespace Tests
             .Returns((decimal dryGas, decimal temp) =>
             WetDensity1.Calc(dryGas, temp));
 
-         var CalcWetGas = new CalcWetGasDensity(MockWetDensity.Object, MockDryDensity.Object);
+         var CalcWetGas = new DefaultWetGasDensity(MockWetDensity.Object, MockDryDensity.Object);
 
          MockCalcWetGas.Setup(p => p.CalcEntity(It.IsAny<Data>()))
             .Returns((Data data) => CalcWetGas.CalcEntity(data));

@@ -1,7 +1,7 @@
 ﻿using Business.DTO.Models.Devices;
 using Business.DTO.Models.General;
 
-namespace Business.DTO
+namespace Business.DTO.Input
 {
    public class DevicesKipDTO : Entity
    {

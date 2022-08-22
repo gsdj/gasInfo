@@ -19,7 +19,7 @@ namespace Tests.Calculations.Entities
       private ISteamCharacteristicsService Service;
       public CharacteristicsSteamTest()
       {
-         Calc = new CalcCharacteristicsSteam();
+         Calc = new DefaultCharacteristicsSteam();
       }
       private SteamCharacteristicsDTO ExpectedCalcObject()
       {
@@ -53,7 +53,7 @@ namespace Tests.Calculations.Entities
       {
          var mockCalc = new Mock<ICalcCharacteristicsSteam>();
 
-         var calcSteam = new CalcCharacteristicsSteam();
+         var calcSteam = new DefaultCharacteristicsSteam();
 
          mockCalc.Setup(p => p.CalcEntities(It.IsAny<IEnumerable<SteamCharacteristics>>()))
             .Returns((IEnumerable<SteamCharacteristics> dataList) => calcSteam.CalcEntities(dataList));

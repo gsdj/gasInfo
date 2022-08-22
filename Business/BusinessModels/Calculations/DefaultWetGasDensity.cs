@@ -1,5 +1,6 @@
 ﻿using Business.BusinessModels.DataForCalculations;
 using Business.DTO;
+using Business.DTO.Input;
 using Business.DTO.Models.Characteristics.Gas;
 using Business.Interfaces.BaseCalculations.Density;
 using Business.Interfaces.Calculations;
@@ -8,11 +9,11 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcWetGasDensity : ICalculations<DensityDTO>, ICalculation<DensityDTO>
+   public class DefaultWetGasDensity : ICalculations<DensityDTO>, ICalculation<DensityDTO>
    {
       private IWetDensity WetDensity;
       private IDryDensity DryDensity;
-      public CalcWetGasDensity(IWetDensity wet, IDryDensity dry)
+      public DefaultWetGasDensity(IWetDensity wet, IDryDensity dry)
       {
          WetDensity = wet;
          DryDensity = dry;

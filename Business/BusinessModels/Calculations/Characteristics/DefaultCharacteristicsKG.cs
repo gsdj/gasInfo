@@ -9,11 +9,11 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations.Characteristics
 {
-   public class CalcCharacteristicsKG : ICalcCharacteristicsKg
+   public class DefaultCharacteristicsKG : ICalcCharacteristicsKg
    {
       private IQn<KG> Qn;
       private IDensity<KG> Density;
-      public CalcCharacteristicsKG(IQn<KG> qn, IDensity<KG> density)
+      public DefaultCharacteristicsKG(IQn<KG> qn, IDensity<KG> density)
       {
          Qn = qn;
          Density = density;

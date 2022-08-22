@@ -9,13 +9,13 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations.Characteristics
 {
-   public class CalcCharacteristicsDG : ICalcCharacteristicsDg
+   public class DefaultCharacteristicsDG : ICalcCharacteristicsDg
    {
       private IQn<DG> Qn;
       private IDensity<DG> Density;
       private IQn<CharacteristicsDgAll> QnAvg;
       private IDensity<CharacteristicsDgAll> DensityAvg;
-      public CalcCharacteristicsDG(IQn<DG> qn, IDensity<DG> density, IQn<CharacteristicsDgAll> qnAvg, IDensity<CharacteristicsDgAll> denAvg)
+      public DefaultCharacteristicsDG(IQn<DG> qn, IDensity<DG> density, IQn<CharacteristicsDgAll> qnAvg, IDensity<CharacteristicsDgAll> denAvg)
       {
          Qn = qn;
          Density = density;

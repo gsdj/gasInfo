@@ -1,4 +1,4 @@
-﻿using Business.DTO;
+﻿using Business.DTO.Input;
 
 namespace Business.Interfaces.Services.Input
 {

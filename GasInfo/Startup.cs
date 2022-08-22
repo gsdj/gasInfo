@@ -42,7 +42,7 @@ namespace GasInfo
          services.AddDbContext<GasInfoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("GasInfoMSSql")));
          services.AddScoped<IUnitOfWork, UnitOfWork>();
          services.AddScoped(x => new SteamJsonReader(path));
-         services.AddScoped<ICalculations<ConsumptionKgDTO>, CalcConsumptionKg>();
+         services.AddScoped<ICalculations<ConsumptionKgDTO>, DefaultConsumptionKg>();
 
          services.AddScoped(typeof(IGenericRepository<>), typeof(EFGenericRepository<>));
          services.AddScoped(typeof(IGasGenericRepository<>), typeof(GasGenericRepository<>));
@@ -79,7 +79,7 @@ namespace GasInfo
    {
       public static IServiceCollection AddCalculations(this IServiceCollection services)
       {
-         services.AddScoped<ICalcCharacteristicsKg, CalcCharacteristicsKG>();
+         services.AddScoped<ICalcCharacteristicsKg, DefaultCharacteristicsKG>();
          return services;
       }
    }

@@ -47,7 +47,7 @@ namespace Tests.Calculations.Entities
             AmmountCb = TestDbDataHelper.AmmountCbData(),
          };
 
-         ConsDgPg = new CalcConsumptionDgPg(MockCalcWetGas.Object, MockConsPg.Object, MockConsPgCb.Object, MockConsGasQnKc1.Object, MockUdConsDgFv.Object, MockCbFv.Object);
+         ConsDgPg = new DefaultConsumptionDgPg(MockCalcWetGas.Object, MockConsPg.Object, MockConsPgCb.Object, MockConsGasQnKc1.Object, MockUdConsDgFv.Object, MockCbFv.Object);
       }
 
       private void ConsPgSetup()

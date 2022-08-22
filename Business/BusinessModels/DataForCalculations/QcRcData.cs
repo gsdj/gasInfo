@@ -1,4 +1,5 @@
 ﻿using Business.DTO;
+using Business.DTO.Input;
 using Business.DTO.Models.Characteristics.Gas;
 
 namespace Business.BusinessModels.DataForCalculations

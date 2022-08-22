@@ -14,7 +14,7 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcReportKg : ICalculation<ReportKgDTO>, ICalculations<ReportKgDTO>
+   public class DefaultReportKg : ICalculation<ReportKgDTO>, ICalculations<ReportKgDTO>
    {
       private ICalculation<DensityDTO> WetGas;
       private ICalcConsGasQnKc2 Kc2Qn;
@@ -26,7 +26,7 @@ namespace Business.BusinessModels.Calculations
       private IConsGasQn<ConsGasQn4000> ConsGasQn;
       private IQcRc QcRc;
 
-      public CalcReportKg(ICalculation<DensityDTO> wetGas, ISpecificConsKgFv udconskgfv, IDryCokeProduction<DefaultDryCokeProduction> cbdry, 
+      public DefaultReportKg(ICalculation<DensityDTO> wetGas, ISpecificConsKgFv udconskgfv, IDryCokeProduction<DefaultDryCokeProduction> cbdry, 
          ISpoPerKus<DefaultSpoPerKus> spoperkus, IChargeConsFV<DefaultChargeConsFV> consFv, ICalcConsGasQnKc2 kc2Qn, ICalcConsGasQnCpsPpk cpsppkQn)
       {
          WetGas = wetGas;

@@ -9,10 +9,10 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcEbChmk : ICalcEbChmk
+   public class DefaultEbChmk : ICalcEbChmk
    {
       private ICokeCbConsumptionFvCalc CbFv;
-      public CalcEbChmk(ICokeCbConsumptionFvCalc cbFv)
+      public DefaultEbChmk(ICokeCbConsumptionFvCalc cbFv)
       {
          CbFv = cbFv;
       }

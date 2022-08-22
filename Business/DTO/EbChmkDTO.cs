@@ -1,4 +1,5 @@
-﻿using Business.DTO.Models.General;
+﻿using Business.DTO.Input;
+using Business.DTO.Models.General;
 
 namespace Business.DTO
 {

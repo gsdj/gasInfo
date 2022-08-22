@@ -46,7 +46,7 @@ namespace Tests.Calculations.Entities
          DensityAvg.Setup(p => p.Calc(It.IsAny<CharacteristicsDgAll>()))
             .Returns((CharacteristicsDgAll data) => new AVGDensityDg(AvgC.Object).Calc(data));
 
-         Target = new CalcCharacteristicsDG(Qn.Object, Density.Object, QnAvg.Object, DensityAvg.Object);
+         Target = new DefaultCharacteristicsDG(Qn.Object, Density.Object, QnAvg.Object, DensityAvg.Object);
       }
       private CharacteristicsDG ExpectedObject()
       {

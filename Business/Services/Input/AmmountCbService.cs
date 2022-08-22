@@ -1,4 +1,4 @@
-﻿using Business.DTO;
+﻿using Business.DTO.Input;
 using Business.Interfaces.Service.Input;
 using DataAccess.Entities;
 using System;

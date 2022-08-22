@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations.Consumption
 {
-   public class CalcConsumptionDgPg : ICalculation<ConsumptionDgPgDTO>, ICalculations<ConsumptionDgPgDTO>
+   public class DefaultConsumptionDgPg : ICalculation<ConsumptionDgPgDTO>, ICalculations<ConsumptionDgPgDTO>
    {
       private ICalculation<DensityDTO> WetGas;
       private ICalcConsGasQnKc1 ConsGasQn;
@@ -19,7 +19,7 @@ namespace Business.BusinessModels.Calculations.Consumption
       private IConsPgCb ConsPgCb;
       private ISpecificConsDgFv UdConsDgFv;
       private ICokeCbConsumptionFvCalc CbFv;
-      public CalcConsumptionDgPg(ICalculation<DensityDTO> wetGas, IConsPg consPg, IConsPgCb consPgCb,
+      public DefaultConsumptionDgPg(ICalculation<DensityDTO> wetGas, IConsPg consPg, IConsPgCb consPgCb,
          ICalcConsGasQnKc1 consQn, ISpecificConsDgFv udConsDgFv, ICokeCbConsumptionFvCalc cbFv)
       {
          WetGas = wetGas;

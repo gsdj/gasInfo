@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations.Characteristics
 {
-   public class CalcCharacteristicsSteam : ICalcCharacteristicsSteam
+   public class DefaultCharacteristicsSteam : ICalcCharacteristicsSteam
    {
       public Dictionary<int,SteamCharacteristicsDTO> CalcEntities(IEnumerable<SteamCharacteristics> stCs)
       {

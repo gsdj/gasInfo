@@ -1,4 +1,4 @@
-﻿using Business.DTO;
+﻿using Business.DTO.Input;
 using DataAccess.Entities;
 using System.Collections.Generic;
 

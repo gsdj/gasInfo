@@ -1,4 +1,4 @@
-﻿using Business.DTO;
+﻿using Business.DTO.Input;
 using Business.DTO.Models.Characteristics.Gas;
 using Business.DTO.Models.Characteristics.Quality;
 using DataAccess.Entities;

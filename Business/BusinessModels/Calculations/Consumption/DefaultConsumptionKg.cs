@@ -8,12 +8,12 @@ using System.Linq;
 
 namespace Business.BusinessModels.Calculations.Consumption
 {
-   public class CalcConsumptionKg : ICalculation<ConsumptionKgDTO>, ICalculations<ConsumptionKgDTO>
+   public class DefaultConsumptionKg : ICalculation<ConsumptionKgDTO>, ICalculations<ConsumptionKgDTO>
    {
       private ICalculation<DensityDTO> WetGas;
       private ICalcConsGasQnKc2 Kc2Qn;
       private ICalcConsGasQnCpsPpk CpsPpkQn;
-      public CalcConsumptionKg(ICalculation<DensityDTO> wetGas, ICalcConsGasQnKc2 kc2Qn, ICalcConsGasQnCpsPpk cpsppkQn)
+      public DefaultConsumptionKg(ICalculation<DensityDTO> wetGas, ICalcConsGasQnKc2 kc2Qn, ICalcConsGasQnCpsPpk cpsppkQn)
       {
          WetGas = wetGas;
          Kc2Qn = kc2Qn;

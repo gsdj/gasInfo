@@ -1,6 +1,6 @@
 ﻿using Business.BusinessModels.DataForCalculations;
-using Business.DTO;
 using Business.DTO.Charts;
+using Business.DTO.Input;
 using Business.Interfaces;
 using Business.Interfaces.Services.Info;
 using DataAccess.Interfaces;

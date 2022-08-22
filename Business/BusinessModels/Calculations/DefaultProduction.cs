@@ -12,7 +12,7 @@ using Business.Interfaces.BaseCalculations.Production;
 
 namespace Business.BusinessModels.Calculations
 {
-   public class CalcProduction : ICalcProduction
+   public class DefaultProduction : ICalcProduction
    {
       //private IDryCokeProduction<DefaultDryCokeProduction> DryCoke;
       //private IChargeConsFV<DefaultChargeConsFV> ChargeConsFV;
@@ -21,7 +21,7 @@ namespace Business.BusinessModels.Calculations
       private ICokeCbDryCalc CokeCbDryCalc;
       private ICokeCbConsumptionDryCalc CokeCbConsumptionDryCalc;
       private ICokeCbConsumptionFvCalc CokeCbConsumptionFvCalc;
-      public CalcProduction(/*IDryCokeProduction<DefaultDryCokeProduction> dryCoke, IChargeConsFV<DefaultChargeConsFV> consFv,*/ ISpoPerKus<DefaultSpoPerKus> perKus,
+      public DefaultProduction(/*IDryCokeProduction<DefaultDryCokeProduction> dryCoke, IChargeConsFV<DefaultChargeConsFV> consFv,*/ ISpoPerKus<DefaultSpoPerKus> perKus,
          ICokeCbGrossCalc gross, ICokeCbDryCalc dry, ICokeCbConsumptionDryCalc consdry, ICokeCbConsumptionFvCalc consfv)
       {
          //DryCoke = dryCoke;
