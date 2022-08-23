@@ -1,9 +1,9 @@
-﻿using Business.BusinessModels.Calculations.Consumption;
-using Business.BusinessModels.DataForCalculations;
-using Business.DTO;
-using Business.DTO.Consumption;
-using Business.Interfaces.Calculations;
-using Business.Interfaces.Calculations.ConsGasQn;
+﻿using BLL.Calculations.Entities.Consumption;
+using BLL.DataHelpers;
+using BLL.DTO;
+using BLL.DTO.Consumption;
+using BLL.Interfaces.Calculations;
+using BLL.Interfaces.Calculations.ConsGasQn;
 using Moq;
 using Newtonsoft.Json;
 using System;

@@ -1,8 +1,8 @@
-﻿using Business.DTO;
-using Business.DTO.Input;
-using Business.DTO.Models.Characteristics.Gas;
-using Business.DTO.Models.Characteristics.Quality;
-using Business.DTO.Models.QcRc;
+﻿using BLL.DTO;
+using BLL.DTO.Input;
+using BLL.Models.BaseModels.Characteristics.Gas;
+using BLL.Models.BaseModels.Characteristics.Quality;
+using BLL.Models.BaseModels.QcRc;
 using System;
 using System.Collections.Generic;
 

@@ -1,9 +1,9 @@
-﻿using Business.BusinessModels.BaseCalculations.Production;
-using Business.BusinessModels.Calculations;
-using Business.DTO;
-using Business.Interfaces.BaseCalculations.Production;
-using Business.Interfaces.Calculations;
-using DataAccess.Entities;
+﻿using BLL.Calculations.Base.Production;
+using BLL.Calculations.Entities;
+using BLL.DTO;
+using BLL.Interfaces.BaseCalculations.Production;
+using BLL.Interfaces.Calculations;
+using DA.Entities;
 using Moq;
 using Newtonsoft.Json;
 using System;

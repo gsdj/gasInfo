@@ -1,10 +1,10 @@
-﻿using Business.BusinessModels.BaseCalculations.Density;
-using Business.BusinessModels.Calculations;
-using Business.BusinessModels.DataForCalculations;
-using Business.DTO;
+﻿using BLL.Calculations.Base.Density;
+using BLL.Calculations.Entities;
+using BLL.DataHelpers;
+using BLL.DTO;
+using BLL.Interfaces.Calculations;
+using BLL.Interfaces.Services;
 using Business.Interfaces.BaseCalculations.Density;
-using Business.Interfaces.Calculations;
-using Business.Interfaces.Services;
 using Moq;
 using Newtonsoft.Json;
 using System;
@@ -76,15 +76,15 @@ namespace Tests.Calculations.Entities
       [Fact]
       public void WetGasDensity()
       {
-         var DryDensity = new DryDensity(MockSteam.Object);
+         var DryDensity1 = new DryDensity(MockSteam.Object);
 
          MockDryDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>()))
             .Returns((decimal pkg, decimal PPa, decimal pOver, decimal temp) =>
-            DryDensity.Calc(pkg, PPa, pOver, temp));
+            DryDensity1.Calc(pkg, PPa, pOver, temp));
 
          MockDryDensity.Setup(p => p.Calc(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<decimal>()))
             .Returns((decimal pkg, decimal PPa, decimal pOver, decimal temp, decimal tempDo) =>
-            DryDensity.Calc(pkg, PPa, pOver, temp, tempDo));
+            DryDensity1.Calc(pkg, PPa, pOver, temp, tempDo));
 
          var WetDensity = new WetDensity(MockSteam.Object);
 

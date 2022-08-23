@@ -1,5 +1,5 @@
-﻿using Business.BusinessModels.BaseCalculations.Qn;
-using Business.Interfaces.BaseCalculations.Consumption;
+﻿using BLL.Calculations.Base.Qn;
+using BLL.Interfaces.BaseCalculations.Consumption;
 using Xunit;
 
 namespace Tests.Calculations.Base

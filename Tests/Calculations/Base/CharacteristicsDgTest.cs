@@ -1,11 +1,11 @@
-﻿using Business.BusinessModels.BaseCalculations;
-using Business.BusinessModels.BaseCalculations.Density;
-using Business.BusinessModels.BaseCalculations.Qn;
-using Business.DTO.Models.Components;
-using Business.Interfaces.BaseCalculations;
-using Business.Interfaces.BaseCalculations.Density;
-using DataAccess.Entities;
-using DataAccess.Entities.Characteristics;
+﻿using BLL.Calculations.Base;
+using BLL.Calculations.Base.Density;
+using BLL.Calculations.Base.Qn;
+using BLL.Interfaces.BaseCalculations;
+using BLL.Interfaces.BaseCalculations.Density;
+using BLL.Models.BaseModels.Components;
+using DA.Entities;
+using DA.Entities.Characteristics;
 using Moq;
 using Xunit;
 

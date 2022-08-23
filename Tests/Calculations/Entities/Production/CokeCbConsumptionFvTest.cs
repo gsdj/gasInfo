@@ -1,10 +1,10 @@
-﻿using Business.BusinessModels.BaseCalculations;
-using Business.BusinessModels.BaseCalculations.Consumption;
-using Business.BusinessModels.BaseCalculations.Production;
-using Business.DTO.Models.General;
-using Business.Interfaces.BaseCalculations;
-using Business.Interfaces.BaseCalculations.Consumption;
-using Business.Interfaces.BaseCalculations.Production;
+﻿using BLL.Calculations.Base;
+using BLL.Calculations.Base.Consumption;
+using BLL.Calculations.Base.Production;
+using BLL.Interfaces.BaseCalculations;
+using BLL.Interfaces.BaseCalculations.Consumption;
+using BLL.Interfaces.BaseCalculations.Production;
+using BLL.Models.BaseModels.General;
 using Newtonsoft.Json;
 using Xunit;
 

@@ -1,5 +1,5 @@
-﻿using Business.BusinessModels.BaseCalculations;
-using Business.Interfaces.BaseCalculations;
+﻿using BLL.Calculations.Base;
+using BLL.Interfaces.BaseCalculations;
 using Xunit;
 
 namespace Tests.Calculations.Base

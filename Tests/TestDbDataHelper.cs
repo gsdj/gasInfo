@@ -1,10 +1,7 @@
-﻿using DataAccess.Entities;
-using DataAccess.Entities.Characteristics;
+﻿using DA.Entities;
+using DA.Entities.Characteristics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tests
 {

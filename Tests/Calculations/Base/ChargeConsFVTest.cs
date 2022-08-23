@@ -1,7 +1,7 @@
-﻿using Business.BusinessModels.BaseCalculations;
-using Business.BusinessModels.BaseCalculations.Consumption;
-using Business.Interfaces.BaseCalculations;
-using Business.Interfaces.BaseCalculations.Consumption;
+﻿using BLL.Calculations.Base;
+using BLL.Calculations.Base.Consumption;
+using BLL.Interfaces.BaseCalculations;
+using BLL.Interfaces.BaseCalculations.Consumption;
 using Moq;
 using Xunit;
 

@@ -1,10 +1,8 @@
-﻿using Business.BusinessModels.BaseCalculations;
-using Business.BusinessModels.Calculations.QcRc;
-using Business.BusinessModels.DataForCalculations;
-using Business.DTO.Models.QcRc;
-using Business.Interfaces;
-using Business.Interfaces.BaseCalculations;
-using Business.Interfaces.Calculations;
+﻿using BLL.Calculations.Entities.QcRc;
+using BLL.DataHelpers;
+using BLL.Interfaces.BaseCalculations;
+using BLL.Interfaces.Calculations;
+using BLL.Models.BaseModels.QcRc;
 using Moq;
 using Newtonsoft.Json;
 using Xunit;

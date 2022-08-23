@@ -1,8 +1,8 @@
-﻿using Business.BusinessModels.BaseCalculations;
-using Business.BusinessModels.BaseCalculations.Production;
-using Business.DTO.Models.Production;
-using Business.Interfaces.BaseCalculations;
-using Business.Interfaces.BaseCalculations.Production;
+﻿using BLL.Calculations.Base;
+using BLL.Calculations.Base.Production;
+using BLL.Interfaces.BaseCalculations;
+using BLL.Interfaces.BaseCalculations.Production;
+using BLL.Models.BaseModels.Production;
 using Newtonsoft.Json;
 using Xunit;
 

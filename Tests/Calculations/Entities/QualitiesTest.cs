@@ -1,9 +1,9 @@
-﻿using Business.BusinessModels.BaseCalculations.Density;
-using Business.BusinessModels.Calculations;
-using Business.DTO.Models.Characteristics.Quality;
-using Business.Interfaces.BaseCalculations.Density;
-using Business.Interfaces.Calculations;
-using DataAccess.Entities.Characteristics;
+﻿using BLL.Calculations.Base.Density;
+using BLL.Calculations.Entities;
+using BLL.Interfaces.BaseCalculations.Density;
+using BLL.Interfaces.Calculations;
+using BLL.Models.BaseModels.Characteristics.Quality;
+using DA.Entities.Characteristics;
 using Moq;
 using Newtonsoft.Json;
 using System;

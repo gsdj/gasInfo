@@ -1,7 +1,7 @@
-﻿using Business.BusinessModels.BaseCalculations.Density;
-using Business.DTO;
+﻿using BLL.Calculations.Base.Density;
+using BLL.DTO;
+using BLL.Interfaces.Services;
 using Business.Interfaces.BaseCalculations.Density;
-using Business.Interfaces.Services;
 using Moq;
 using System.Collections.Generic;
 using Xunit;

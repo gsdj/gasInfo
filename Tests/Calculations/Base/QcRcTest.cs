@@ -1,7 +1,7 @@
-﻿using Business.BusinessModels.BaseCalculations;
-using Business.DTO.Models.QcRc;
-using Business.Interfaces.BaseCalculations;
-using Business.Interfaces.Services;
+﻿using BLL.Calculations.Base;
+using BLL.Interfaces.BaseCalculations;
+using BLL.Interfaces.Services;
+using BLL.Models.BaseModels.QcRc;
 using Moq;
 using Xunit;
 

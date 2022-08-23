@@ -1,10 +1,10 @@
-﻿using Business.BusinessModels.Calculations.Characteristics;
-using Business.DTO;
-using Business.Interfaces.Calculations.Characteristics;
-using Business.Interfaces.Services;
-using Business.Services;
-using DataAccess.Entities.Characteristics;
-using DataAccess.Interfaces;
+﻿using BLL.Calculations.Entities.Characteristics;
+using BLL.DTO;
+using BLL.Interfaces.Calculations.Characteristics;
+using BLL.Interfaces.Services;
+using BLL.Services;
+using DA.Entities.Characteristics;
+using DA.Interfaces;
 using Moq;
 using Newtonsoft.Json;
 using System.Collections.Generic;
