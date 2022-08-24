@@ -57,7 +57,6 @@ namespace BLL.Calculations.Entities.Consumption
             WetGas = wetGas,
          };
 
-         //---v2---
          var qcrcKc2 = Kc2Qn.CalcQcRcKc2.Calc(QcRcKgData);
          var consCb = Kc2Qn.Calc(qcrcKc2, charKg);
 
@@ -66,9 +65,7 @@ namespace BLL.Calculations.Entities.Consumption
          var qcrcGsuf = Kc2Qn.CalcQcRcKc2.QcRc.Calc(kip.Gsuf45.Consumption.Value, wetGas.Gsuf, kip.Gsuf45.Temperature, charKg.Kc1.Density);
 
          var consGsuf = CpsPpkQn.ConsGasQn.Calc(qcrcGsuf, charKg.Kc1.Qn);
-         var consKc2Sum = consCb.Cb1 + consCb.Cb2 + consCb.Cb3 + consCb.Cb4;
          var consCpsPpkSum = consCpsPpk.Pko.Total + consCpsPpk.Spo;
-         //--------
 
          return new ConsumptionKgDTO
          {
@@ -77,13 +74,13 @@ namespace BLL.Calculations.Entities.Consumption
             QcRcCpsPpk = qcrcCpsPpk,
             QcRcGsuf = qcrcGsuf,
             ConsumptionCb = consCb,
-            ConsumptionKc2Sum = consKc2Sum,
+            ConsumptionKc2Sum = consCb.Sum,
             PkoQcRcSum = qcrcCpsPpk.Pko.Total, // qcrcCpsPpk.Pko.Value + qcrcCpsPpk.Uvtp,
             ConsumptionCpsPpk = consCpsPpk,
             ConsumptionCpsPpkSum = consCpsPpkSum,
-            ConsumptionMkSum = consKc2Sum + consCpsPpkSum,
+            ConsumptionMkSum = consCb.Sum + consCpsPpkSum,
             ConsumptionGsuf = consGsuf,
-            ConsumptionMkGsufSum = consKc2Sum + consCpsPpkSum + consGsuf,
+            ConsumptionMkGsufSum = consCb.Sum + consCpsPpkSum + consGsuf,
          };
       }
    }

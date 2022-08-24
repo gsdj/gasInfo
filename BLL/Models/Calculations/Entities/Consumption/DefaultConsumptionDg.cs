@@ -59,7 +59,6 @@ namespace BLL.Calculations.Entities.Consumption
 
          return new ConsumptionDgDTO
          {
-            //Date = wetGas.Date,
             Date = charDg.Date,
             QcRc = qcrcKc1,
             ConsumptionDg = consKc1,

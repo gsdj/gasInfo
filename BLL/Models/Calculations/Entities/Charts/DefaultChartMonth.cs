@@ -81,7 +81,6 @@ namespace BLL.Calculations.Entities.Charts
             WetGas = wetGas,
          };
 
-         //---v2---
          var qcrcKc2 = Kc2Qn.CalcQcRcKc2.Calc(QcRcKgData);
          var consCbKc2 = Kc2Qn.Calc(qcrcKc2, charKg);
 

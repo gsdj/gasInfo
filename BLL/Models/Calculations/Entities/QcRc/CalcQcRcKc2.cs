@@ -22,7 +22,6 @@ namespace BLL.Calculations.Entities.QcRc
 
          return new QcRcKc2
          {
-            //Cb5 = QcRc.Calc(kip.Cb5.Consumption, wetGas.Cb5, kip.Cb5.TempBeforeHeating, charKg.Kc1.Characteristics.Density, true),
             Cb1 =
                {
                   Value = QcRc.Calc(kip.Kc2.Cb1.Consumption.Value, wetGas.Kc2.Cb1, kip.Kc2.Cb1.TempBeforeHeating, charKg.Kc1.Density, true),

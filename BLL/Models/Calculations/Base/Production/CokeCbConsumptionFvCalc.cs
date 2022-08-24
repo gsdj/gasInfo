@@ -45,5 +45,27 @@ namespace BLL.Calculations.Base.Production
             }
          };
       }
+
+      public CbKc CalcKc1(AmmountCb data)
+      {
+         return new CbKc
+         {
+            Cb1 = ChargeConsFV.Calc(data.Cb1, data.OutputMultipliers.Cb1, data.OutputMultipliers.Fv),
+            Cb2 = ChargeConsFV.Calc(data.Cb2, data.OutputMultipliers.Cb2, data.OutputMultipliers.Fv),
+            Cb3 = ChargeConsFV.Calc(data.Cb3, data.OutputMultipliers.Cb3, data.OutputMultipliers.Fv),
+            Cb4 = ChargeConsFV.Calc(data.Cb4, data.OutputMultipliers.Cb4, data.OutputMultipliers.Fv),
+         };
+      }
+
+      public CbKc CalcKc2(AmmountCb data)
+      {
+         return new CbKc
+         {
+            Cb1 = ChargeConsFV.Calc(data.Cb5, data.OutputMultipliers.Cb5, data.OutputMultipliers.Fv),
+            Cb2 = ChargeConsFV.Calc(data.Cb6, data.OutputMultipliers.Cb6, data.OutputMultipliers.Fv),
+            Cb3 = ChargeConsFV.Calc(data.Cb7, data.OutputMultipliers.Cb7, data.OutputMultipliers.Fv),
+            Cb4 = ChargeConsFV.Calc(data.Cb8, data.OutputMultipliers.Cb8, data.OutputMultipliers.Fv),
+         };
+      }
    }
 }
