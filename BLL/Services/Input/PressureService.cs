@@ -11,6 +11,18 @@ namespace BLL.Services.Input
 {
    public class PressureService : IPressureService
    {
+      //duplicate validation
+      /// <summary>
+      /// проверить есть ли такая запись : есть - обновить, нет - вставить
+      /// </summary>
+      
+      //model validation 
+      /// <summary>
+      /// отдельный валидор проверки правильности введных полей, для того чтобы не дублировать логику в presentation layer`s
+      /// return dictionary<key,value> ?
+      /// в presentation layer modelstate.adderror ?
+      /// </summary>
+      /// 
       IUnitOfWork db;
       IValidationDictionary _validationDictionary;
       IValidator<PressureDTO> Validator;
@@ -47,7 +59,7 @@ namespace BLL.Services.Input
          return db.Pressure.GetPerMonth(dateNow.Year, dateNow.Month).Select(p => ToDTO(p));
       }
 
-      public bool Upsert(PressureDTO entity)
+      public bool InsertOrUpsert(PressureDTO entity)
       {
          if (!ValidateComponents(entity))
             return false;

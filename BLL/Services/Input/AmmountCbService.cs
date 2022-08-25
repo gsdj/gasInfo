@@ -33,7 +33,7 @@ namespace BLL.Services.Input
          throw new NotImplementedException();
       }
 
-      public bool Upsert(AmmountCbDTO entity)
+      public bool InsertOrUpsert(AmmountCbDTO entity)
       {
          throw new NotImplementedException();
       }

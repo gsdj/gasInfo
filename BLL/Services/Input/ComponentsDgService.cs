@@ -45,7 +45,7 @@ namespace BLL.Services.Input
          };
       }
 
-      public bool Upsert(ComponentsDgDTO entity)
+      public bool InsertOrUpsert(ComponentsDgDTO entity)
       {
          if (!ValidateComponents(entity))
             return false;

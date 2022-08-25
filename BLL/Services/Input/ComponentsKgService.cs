@@ -51,7 +51,7 @@ namespace BLL.Services.Input
          };
       }
 
-      public bool Upsert(ComponentsKgDTO entity)
+      public bool InsertOrUpsert(ComponentsKgDTO entity)
       {
          if (!ValidateComponents(entity))
             return false;

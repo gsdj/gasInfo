@@ -175,7 +175,7 @@ namespace BLL.Services.Input
          };
       }
 
-      public bool Upsert(DevicesKipDTO entity)
+      public bool InsertOrUpsert(DevicesKipDTO entity)
       {
          throw new NotImplementedException();
       }

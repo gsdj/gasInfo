@@ -46,7 +46,7 @@ namespace BLL.Services.Input
          };
       }
 
-      public bool Upsert(AsdueDTO entity)
+      public bool InsertOrUpsert(AsdueDTO entity)
       {
          throw new NotImplementedException();
       }
