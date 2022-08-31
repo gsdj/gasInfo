@@ -1,4 +1,5 @@
 ﻿using DA.Entities;
+using DA.Entities.Devices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

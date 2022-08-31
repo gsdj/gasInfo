@@ -84,8 +84,8 @@ namespace BLL.Services.Input
                   Pressure = kip.Cb7.Pressure,
                   Consumption =
                   {
-                     Ms = kip.Cb7.ConsumptionMs,
-                     Ks = kip.Cb7.ConsumptionKs
+                     Ms = kip.Cb7.Consumption.Ms,
+                     Ks = kip.Cb7.Consumption.Ks,
                   },
                   Temperature = kip.Cb7.Temperature,
                   TempBeforeHeating = kip.Cb7.TempBeforeHeating
@@ -95,8 +95,8 @@ namespace BLL.Services.Input
                   Pressure = kip.Cb8.Pressure,
                   Consumption =
                   {
-                     Ms = kip.Cb8.ConsumptionMs,
-                     Ks = kip.Cb8.ConsumptionKs
+                     Ms = kip.Cb8.Consumption.Ms,
+                     Ks = kip.Cb8.Consumption.Ks,
                   },
                   Temperature = kip.Cb8.Temperature,
                   TempBeforeHeating = kip.Cb8.TempBeforeHeating
@@ -126,8 +126,8 @@ namespace BLL.Services.Input
                      Pressure = kip.Pkc.Pressure,
                      Consumption =
                      {
-                        Ms = kip.Pkc.ConsumptionMs,
-                        Ks = kip.Pkc.ConsumptionKs,
+                        Ms = kip.Pkc.Consumption.Ms,
+                        Ks = kip.Pkc.Consumption.Ks,
                      },
                      Temperature = kip.Pkc.Temperature,
                   },
