@@ -6,7 +6,7 @@ namespace DA.Entities
 {
    public class DevicesKip : IGasEntity
    {
-      public Guid Id { get; set; }
+      public int Id { get; set; }
       public DateTime Date { get; set; }
       public DeviceDefault Cu1 { get; set; }
       public DeviceDefault Cu2 { get; set; }

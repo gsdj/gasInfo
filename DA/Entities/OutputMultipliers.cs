@@ -6,7 +6,7 @@ namespace DA.Entities
 {
    public class OutputMultipliers : CokeBattery<decimal>, IGasEntity
    {
-      public Guid Id { get; set; }
+      public int Id { get; set; }
       public DateTime Date { get; set; }
       public decimal Sv { get; set; }
       public decimal Fv { get; set; }

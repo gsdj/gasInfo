@@ -5,7 +5,7 @@ namespace DA.Entities
 {
    public class DgPgChmkEb : IGasEntity
    {
-      public Guid Id { get; set; }
+      public int Id { get; set; }
       public DateTime Date { get; set; }
       public int ConsDgCb1 { get; set; }
       public int ConsDgCb2 { get; set; }

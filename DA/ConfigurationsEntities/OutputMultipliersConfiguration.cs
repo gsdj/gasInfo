@@ -24,6 +24,7 @@ namespace DA.ConfigurationsEntities
          builder.Property(p => p.Sv).HasColumnType("numeric").HasPrecision(14, 10);
          builder.Property(p => p.Fv).HasColumnType("numeric").HasPrecision(14, 10);
          builder.Property(p => p.Peka).HasColumnType("numeric").HasPrecision(14, 10);
+
       }
    }
 }

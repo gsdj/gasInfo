@@ -5,7 +5,7 @@ namespace DA.Entities
 {
    public class Pressure : IGasEntity
    {
-      public Guid Id { get; set; }
+      public int Id { get; set; }
       public DateTime Date { get; set; }
       public decimal Value { get; set; }
    }

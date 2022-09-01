@@ -12,15 +12,22 @@ namespace DA.ConfigurationsEntities
          builder.HasKey(p => p.Id);
          builder.HasIndex(p => p.Date).IsUnique();
          builder.Property(p => p.Date).IsRequired().HasColumnType("Date");
-         builder.Property(p => p.Kc1.H2).HasColumnType("numeric").HasPrecision(8, 3);
-         builder.Property(p => p.Kc1.N2).HasColumnType("numeric").HasPrecision(8, 3);
-         builder.Property(p => p.Kc1.CO).HasColumnType("numeric").HasPrecision(8, 3);
-         builder.Property(p => p.Kc1.CO2).HasColumnType("numeric").HasPrecision(8, 3);
 
-         builder.Property(p => p.Kc2.H2).HasColumnType("numeric").HasPrecision(8, 3);
-         builder.Property(p => p.Kc2.N2).HasColumnType("numeric").HasPrecision(8, 3);
-         builder.Property(p => p.Kc2.CO).HasColumnType("numeric").HasPrecision(8, 3);
-         builder.Property(p => p.Kc2.CO2).HasColumnType("numeric").HasPrecision(8, 3);
+         builder.OwnsOne(p => p.Kc1, a => 
+         {
+            a.Property(p => p.H2).HasColumnType("numeric").HasPrecision(8, 3);
+            a.Property(p => p.N2).HasColumnType("numeric").HasPrecision(8, 3);
+            a.Property(p => p.CO).HasColumnType("numeric").HasPrecision(8, 3);
+            a.Property(p => p.CO2).HasColumnType("numeric").HasPrecision(8, 3);
+         });
+
+         builder.OwnsOne(p => p.Kc2, a =>
+         {
+            a.Property(p => p.H2).HasColumnType("numeric").HasPrecision(8, 3);
+            a.Property(p => p.N2).HasColumnType("numeric").HasPrecision(8, 3);
+            a.Property(p => p.CO).HasColumnType("numeric").HasPrecision(8, 3);
+            a.Property(p => p.CO2).HasColumnType("numeric").HasPrecision(8, 3);
+         });
       }
    }
 }

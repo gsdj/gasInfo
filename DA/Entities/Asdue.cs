@@ -5,7 +5,7 @@ namespace DA.Entities
 {
    public class Asdue : IGasEntity
    {
-      public Guid Id { get; set; }
+      public int Id { get; set; }
       public DateTime Date { get; set; }
       public decimal TecNorth { get; set; }
       public decimal TecSouth { get; set; }

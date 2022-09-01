@@ -19,9 +19,9 @@ namespace DA.Repositories
          _dbSet.Add(entity);
       }
 
-      public virtual TEntity FindById(Guid guid)
+      public virtual TEntity FindById(int id)
       {
-         return _dbSet.Find(guid);
+         return _dbSet.Find(id);
       }
 
       public virtual void Delete(TEntity entity)

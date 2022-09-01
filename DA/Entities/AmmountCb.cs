@@ -5,9 +5,9 @@ namespace DA.Entities
 {
    public class AmmountCb : CokeBattery<int>, IGasEntity
    {
-      public Guid Id { get; set; }
+      public int Id { get; set; }
       public DateTime Date { get; set; }
-      public Guid OutputMultipliersId { get; set; }
+      public int OutputMultipliersId { get; set; }
       public OutputMultipliers OutputMultipliers { get; set; }
    }
 }

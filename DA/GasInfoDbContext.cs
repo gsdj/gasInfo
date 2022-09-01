@@ -58,10 +58,10 @@ namespace DA
          string adminLogin = "AsupAdmin";
          string adminPassword = "55914";
 
-         Role adminRole = new Role { Id = Guid.NewGuid(), Name = adminRoleName };
-         Role userRole = new Role { Id = Guid.NewGuid(), Name = userRoleName };
+         Role adminRole = new Role { Id = 1, Name = adminRoleName };
+         Role userRole = new Role { Id = 2, Name = userRoleName };
 
-         User adminUser = new User { Id = Guid.NewGuid(), Login = adminLogin, Password = adminPassword, RoleId = adminRole.Id };
+         User adminUser = new User { Id = 1, Login = adminLogin, Password = adminPassword, RoleId = adminRole.Id };
 
          modelBuilder.Entity<Role>().HasData(new Role[] { adminRole, userRole });
          modelBuilder.Entity<User>().HasData(new User[] { adminUser });
