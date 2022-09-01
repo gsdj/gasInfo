@@ -2,13 +2,17 @@
 using DA.Entities;
 using DA.Entities.Characteristics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 using System;
+using System.IO;
 
 namespace DA
 {
    public class GasInfoDbContext : DbContext
    {
       //SteamJsonReader _steamJson;
+      public GasInfoDbContext() { }
       public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options/*, SteamJsonReader steamJson*/) : base(options) 
       {
          //_steamJson = steamJson;
@@ -35,6 +39,7 @@ namespace DA
       //{
       //   optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=GasInfoDb;Trusted_Connection=True;");
       //}
+      protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
       protected override void OnModelCreating(ModelBuilder modelBuilder)
       {
          modelBuilder.ApplyConfiguration(new PressureConfiguration());
@@ -66,6 +71,25 @@ namespace DA
          modelBuilder.Entity<Role>().HasData(new Role[] { adminRole, userRole });
          modelBuilder.Entity<User>().HasData(new User[] { adminUser });
          //modelBuilder.Entity<SteamCharacteristics>().HasData(_steamJson.GetAllSteamCharacteristics());
+      }
+   }
+
+   public class GasInfoContextFactory : IDesignTimeDbContextFactory<GasInfoDbContext>
+   {
+      public GasInfoDbContext CreateDbContext(string[] args)
+      {
+         var optionsBuilder = new DbContextOptionsBuilder<GasInfoDbContext>();
+
+         // получаем конфигурацию из файла appsettings.json
+         ConfigurationBuilder builder = new ConfigurationBuilder();
+         builder.SetBasePath(Directory.GetCurrentDirectory());
+         builder.AddJsonFile("appsettings.json");
+         IConfigurationRoot config = builder.Build();
+
+         // получаем строку подключения из файла appsettings.json
+         string connectionString = config.GetConnectionString("GasInfoMSSql");
+         optionsBuilder.UseSqlServer(connectionString, opts => opts.CommandTimeout((int)TimeSpan.FromMinutes(10).TotalSeconds));
+         return new GasInfoDbContext(optionsBuilder.Options);
       }
    }
 }

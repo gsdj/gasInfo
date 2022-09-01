@@ -11,7 +11,7 @@ namespace Tests
       {
          return new CharacteristicsDgAll
          {
-            Id = Guid.NewGuid(),
+            Id = 1,
             Date = new DateTime(2019, 1, 1),
             Kc1 =
             {
@@ -33,7 +33,7 @@ namespace Tests
       {
          return new CharacteristicsKgAll
          {
-            Id = Guid.NewGuid(),
+            Id = 1,
             Date = new DateTime(2019, 1, 1),
             Kc1 =
             {
