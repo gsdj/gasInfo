@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 
-namespace DAs
+namespace DA
 {
    public class SteamJsonReader : IJsonFileReader<SteamCharacteristics>
    {
