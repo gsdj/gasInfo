@@ -1,5 +1,11 @@
+using BLL.Interfaces.Services.Account;
+using BLL.Services.Account;
+using DA;
+using DA.Interfaces;
+using DA.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +29,10 @@ namespace GasInfoAdmin
       public void ConfigureServices(IServiceCollection services)
       {
          services.AddControllersWithViews();
+         services.AddDbContext<GasInfoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("GasInfoMSSql")));
+         services.AddScoped(typeof(IGenericRepository<>), typeof(EFGenericRepository<>));
+         services.AddScoped<IUserService, UserService>();
+         services.AddScoped<IRoleService, RoleService>();
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

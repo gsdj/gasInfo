@@ -6,7 +6,6 @@ using BLL.Interfaces.Calculations.Characteristics;
 using DA;
 using DA.Interfaces;
 using DA.Repositories;
-using DAs;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

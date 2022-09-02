@@ -1,0 +1,45 @@
+﻿using BLL.DTO.Account;
+using BLL.Interfaces.Services.Account;
+using DA.Entities;
+using DA.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BLL.Services.Account
+{
+   public class UserService : IUserService
+   {
+      private IGenericRepository<User> UsersRep;
+      public UserService(IGenericRepository<User> rep)
+      {
+         UsersRep = rep;
+      }
+      public void AddUser(UserDTO newUser)
+      {
+         throw new NotImplementedException();
+      }
+
+      public void DeleteUser(int id)
+      {
+         throw new NotImplementedException();
+      }
+
+      public void EditUser(int id)
+      {
+         throw new NotImplementedException();
+      }
+
+      public IEnumerable<UserDTO> GetAll()
+      {
+         throw new NotImplementedException();
+      }
+
+      public UserDTO GetUser(int id)
+      {
+         throw new NotImplementedException();
+      }
+   }
+}
