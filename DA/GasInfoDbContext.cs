@@ -11,14 +11,10 @@ namespace DA
 {
    public class GasInfoDbContext : DbContext
    {
-      //SteamJsonReader _steamJson;
       public GasInfoDbContext() { }
-      public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options/*, SteamJsonReader steamJson*/) : base(options) 
-      {
-         //_steamJson = steamJson;
-      }
+      public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options) : base(options) { }
+
       public DbSet<Pressure> Pressure { get; set; }
-      public DbSet<SteamCharacteristics> SteamCharacteristics { get; set; }
       public DbSet<DevicesKip> DevicesKip { get; set; }
       public DbSet<CharacteristicsDgAll> CharacteristicsDg { get; set; }
       public DbSet<CharacteristicsKgAll> CharacteristicsKg { get; set; }
@@ -31,14 +27,6 @@ namespace DA
       public DbSet<DgPgChmkEb> DgPgChmkEb { get; set; }
       public DbSet<User> Users { get; set; }
       public DbSet<Role> Roles { get; set; }
-      //public GasInfoDbContext()
-      //{
-      //   Database.EnsureCreated();
-      //}
-      //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-      //{
-      //   optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=GasInfoDb;Trusted_Connection=True;");
-      //}
       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
       protected override void OnModelCreating(ModelBuilder modelBuilder)
       {
@@ -55,7 +43,6 @@ namespace DA
          modelBuilder.ApplyConfiguration(new TecConfiguration());
          modelBuilder.ApplyConfiguration(new UsersConfiguration());
          modelBuilder.ApplyConfiguration(new RolesConfiguration());
-         //modelBuilder.ApplyConfiguration(new SteamCharacteristicsConfiguration());
 
          string adminRoleName = "Admin";
          string userRoleName = "User";
@@ -70,7 +57,6 @@ namespace DA
 
          modelBuilder.Entity<Role>().HasData(new Role[] { adminRole, userRole });
          modelBuilder.Entity<User>().HasData(new User[] { adminUser });
-         //modelBuilder.Entity<SteamCharacteristics>().HasData(_steamJson.GetAllSteamCharacteristics());
       }
    }
 
