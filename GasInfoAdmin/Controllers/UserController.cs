@@ -1,4 +1,5 @@
-﻿using GasInfoAdmin.Models;
+﻿using BLL.Interfaces.Services.Account;
+using GasInfoAdmin.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +13,18 @@ namespace GasInfoAdmin.Controllers
    public class UserController : Controller
    {
       private readonly ILogger<UserController> _logger;
+      private IUserService Users;
 
-      public UserController(ILogger<UserController> logger)
+      public UserController(ILogger<UserController> logger, IUserService users)
       {
          _logger = logger;
+         Users = users;
       }
 
       public IActionResult Index()
       {
-         return View();
+         var U = Users.GetAll();
+         return View(U);
       }
 
       [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

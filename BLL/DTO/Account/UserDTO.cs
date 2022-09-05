@@ -8,7 +8,7 @@ namespace BLL.DTO.Account
 {
    public class UserDTO
    {
-      public Guid Id { get; set; }
+      public int Id { get; set; }
       public string Login { get; set; }
       public string Password { get; set; }
       public RoleDTO Role { get; set; }

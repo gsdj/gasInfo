@@ -11,7 +11,7 @@ namespace DA.Entities
       public decimal Sv { get; set; }
       public decimal Fv { get; set; }
       public decimal Peka { get; set; }
-      public ICollection<AmmountCb> AmmountCbs { get; }
+      public virtual ICollection<AmmountCb> AmmountCbs { get; }
 
       public OutputMultipliers()
       {

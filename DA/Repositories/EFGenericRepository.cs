@@ -1,6 +1,8 @@
 ﻿using DA.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DA.Repositories
 {
@@ -19,7 +21,7 @@ namespace DA.Repositories
          _dbSet.Add(entity);
       }
 
-      public virtual TEntity FindById(int id)
+      public virtual TEntity GetById(int id)
       {
          return _dbSet.Find(id);
       }
@@ -32,6 +34,11 @@ namespace DA.Repositories
       public virtual void Update(TEntity entity)
       {
          _context.Entry(entity).State = EntityState.Modified;
+      }
+
+      public virtual IEnumerable<TEntity> GetAll()
+      {
+         return _dbSet.ToList();
       }
    }
 }

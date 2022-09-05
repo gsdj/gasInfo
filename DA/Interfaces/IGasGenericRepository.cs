@@ -23,9 +23,4 @@ namespace DA.Interfaces
       IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> predicate);
 
    }
-
-   public interface IGenRepQuery<TEntity> where TEntity : class, IGasEntity
-   {
-      IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> predicate);
-   }
 }

@@ -8,6 +8,6 @@ namespace DA.Entities
       public int Id { get; set; }
       public DateTime Date { get; set; }
       public int OutputMultipliersId { get; set; }
-      public OutputMultipliers OutputMultipliers { get; set; }
+      public virtual OutputMultipliers OutputMultipliers { get; set; }
    }
 }

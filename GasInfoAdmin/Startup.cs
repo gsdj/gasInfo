@@ -29,7 +29,11 @@ namespace GasInfoAdmin
       public void ConfigureServices(IServiceCollection services)
       {
          services.AddControllersWithViews();
-         services.AddDbContext<GasInfoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("GasInfoMSSql")));
+         services.AddDbContext<GasInfoDbContext>(options =>
+         {
+            options.UseSqlServer(Configuration.GetConnectionString("GasInfoMSSql"));
+            options.UseLazyLoadingProxies();
+         });
          services.AddScoped(typeof(IGenericRepository<>), typeof(EFGenericRepository<>));
          services.AddScoped<IUserService, UserService>();
          services.AddScoped<IRoleService, RoleService>();

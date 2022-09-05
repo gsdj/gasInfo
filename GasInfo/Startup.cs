@@ -39,7 +39,13 @@ namespace GasInfo
                options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
                options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
             });
-         services.AddDbContext<GasInfoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("GasInfoMSSql")));
+
+         services.AddDbContext<GasInfoDbContext>(options =>
+         {
+            options.UseSqlServer(Configuration.GetConnectionString("GasInfoMSSql"));
+            options.UseLazyLoadingProxies();
+         });
+
          services.AddScoped<IUnitOfWork, UnitOfWork>();
          services.AddScoped(x => new SteamJsonReader(path));
          services.AddScoped<ICalculations<ConsumptionKgDTO>, DefaultConsumptionKg>();

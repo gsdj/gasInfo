@@ -34,12 +34,27 @@ namespace BLL.Services.Account
 
       public IEnumerable<UserDTO> GetAll()
       {
-         throw new NotImplementedException();
+         return UsersRep.GetAll().Select(x => ToDTO(x));
       }
 
       public UserDTO GetUser(int id)
       {
          throw new NotImplementedException();
+      }
+
+      private UserDTO ToDTO(User user)
+      {
+         return new UserDTO
+         {
+            Id = user.Id,
+            Login = user.Login,
+            Password = user.Password,
+            Role = new RoleDTO
+            {
+               Id = user.Role.Id,
+               Name = user.Role.Name,
+            },
+         };
       }
    }
 }
