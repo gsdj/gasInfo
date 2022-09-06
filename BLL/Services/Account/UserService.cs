@@ -5,6 +5,7 @@ using DA.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,17 +20,20 @@ namespace BLL.Services.Account
       }
       public void AddUser(UserDTO newUser)
       {
-         throw new NotImplementedException();
+         User U = new User()
+         {
+            Login = newUser.Login,
+            Password = PasswordToHex(newUser.Login + newUser.Password),
+            RoleId = newUser.Role.Id,
+         };
+
+         UsersRep.Create(U);
       }
 
       public void DeleteUser(int id)
       {
-         throw new NotImplementedException();
-      }
-
-      public void EditUser(int id)
-      {
-         throw new NotImplementedException();
+         var u = UsersRep.GetById(id);
+         UsersRep.Delete(u);
       }
 
       public IEnumerable<UserDTO> GetAll()
@@ -39,7 +43,8 @@ namespace BLL.Services.Account
 
       public UserDTO GetUser(int id)
       {
-         throw new NotImplementedException();
+         var user = ToDTO(UsersRep.GetById(id));
+         return user;
       }
 
       private UserDTO ToDTO(User user)
@@ -55,6 +60,26 @@ namespace BLL.Services.Account
                Name = user.Role.Name,
             },
          };
+      }
+      private string PasswordToHex(string str)
+      {
+         SHA256 sha = SHA256.Create();
+
+         var hash = sha.ComputeHash(Encoding.UTF8.GetBytes(str));
+
+         var shaPass = new StringBuilder();
+
+         for (int i = 0; i < hash.Length; i++)
+         {
+            shaPass.Append(hash[i].ToString("x2"));
+         }
+         return shaPass.ToString();
+      }
+
+      public IEnumerable<UserDTO> GetByRoleId(int id)
+      {
+         var users = UsersRep.Get(x => x.RoleId == id).Select(x => ToDTO(x));
+         return users;
       }
    }
 }

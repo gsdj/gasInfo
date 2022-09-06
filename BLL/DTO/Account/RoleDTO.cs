@@ -10,10 +10,10 @@ namespace BLL.DTO.Account
    {
       public int Id { get; set; }
       public string Name { get; set; }
-      public List<UserDTO> Users { get; set; }
-      public RoleDTO()
-      {
-         Users = new List<UserDTO>();
-      }
+      //public List<UserDTO> Users { get; set; }
+      //public RoleDTO()
+      //{
+      //   Users = new List<UserDTO>();
+      //}
    }
 }

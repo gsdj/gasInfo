@@ -24,12 +24,21 @@ namespace BLL.Services.Account
 
       public IEnumerable<RoleDTO> GetAll()
       {
-         throw new NotImplementedException();
+         var roles = RolesRep.GetAll().Select(x => ToDTO(x));
+         return roles;
       }
 
       public RoleDTO GetRole(string roleName)
       {
          throw new NotImplementedException();
+      }
+      private RoleDTO ToDTO(Role r)
+      {
+         return new RoleDTO
+         {
+            Id = r.Id,
+            Name = r.Name,
+         };
       }
    }
 }

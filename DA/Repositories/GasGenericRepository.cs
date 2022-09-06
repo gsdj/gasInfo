@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace DA.Repositories
 {
-   public class GasGenericRepository<TEntity> : EFGenericRepository<TEntity>, IGasGenericRepository<TEntity>/*, IGenRepQuery<TEntity>*/ where TEntity : class, IGasEntity
+   public class GasGenericRepository<TEntity> : EFGenericRepository<TEntity>, IGasGenericRepository<TEntity> where TEntity : class, IGasEntity
    {
       public GasGenericRepository(GasInfoDbContext context) : base(context) { }
 

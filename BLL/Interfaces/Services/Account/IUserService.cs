@@ -11,8 +11,8 @@ namespace BLL.Interfaces.Services.Account
    {
       void AddUser(UserDTO newUser);
       void DeleteUser(int id);
-      void EditUser(int id);
       UserDTO GetUser(int id);
+      IEnumerable<UserDTO> GetByRoleId(int id);
       IEnumerable<UserDTO> GetAll();
    }
 }

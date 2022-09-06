@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace DA.Interfaces
 {
@@ -9,5 +11,6 @@ namespace DA.Interfaces
       void Create(TEntity entity);
       void Delete(TEntity entity);
       void Update(TEntity entity);
+      IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> predicate);
    }
 }

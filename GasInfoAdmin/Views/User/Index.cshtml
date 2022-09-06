@@ -1,26 +1,50 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@using BLL.DTO.Account
+﻿@using BLL.DTO.Account
 @model IEnumerable<UserDTO>
-    <table class="table table-bordered">
-        <thead class="thead-light">
-            <tr>
-                <td>Id</td>
-                <td>Login</td>
-                <td>Password</td>
-                <td>RoleName</td>
-            </tr>
-        </thead>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Login</td>
-                <td>@item.Password</td>
-                <td>@item.Role.Name</td>
-            </tr>
-        }
-    </table>
+
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col">
+                <form action="/User/AddUser" data-ajax="false" data-ajax-mode="" data-ajax-update="" id="form0" method="post">
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Enter login" name="Login">
+                        </div>
+                        <div class="col">
+                            <input type="password" class="form-control" placeholder="Enter password" name="Password">
+                        </div>
+                        <input type="hidden" name="RoleID" value="@ViewBag.RoleId" />
+                        <div class="col">
+                            <input type="submit" class="btn btn-success" name="sbm" value="Добавить пользователя" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="users">
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <td>Id</td>
+                                <td>Login</td>
+                                <td>Password</td>
+                                <td>RoleName</td>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Login</td>
+                                <td>@item.Password</td>
+                                <td>@item.Role.Name</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

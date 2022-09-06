@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using BLL.DTO.Account
+@model IEnumerable<RoleDTO>
+
+<table class="table table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <td>Id</td>
+            <td>RoleName</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr id="@item.Id" onclick="">
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>
+                <input type="button" name="name" class="btn btn-light" value="удалить" />
+                <a href="/User?roleId=@item.Id" class="btn btn-link">Пользователи</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<script>
+    function GetUsers(roleId) {
+
+    }
+</script>

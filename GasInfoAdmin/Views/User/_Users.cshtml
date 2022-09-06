@@ -1,0 +1,21 @@
+﻿@using BLL.DTO.Account
+@model IEnumerable<UserDTO>
+<table class="table table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <td>Id</td>
+            <td>Login</td>
+            <td>Password</td>
+            <td>RoleName</td>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Login</td>
+            <td>@item.Password</td>
+            <td>@item.Role.Name</td>
+        </tr>
+    }
+</table>

@@ -1,4 +1,5 @@
-﻿using BLL.Interfaces.Services.Account;
+﻿using BLL.DTO.Account;
+using BLL.Interfaces.Services.Account;
 using GasInfoAdmin.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -21,10 +22,35 @@ namespace GasInfoAdmin.Controllers
          Users = users;
       }
 
-      public IActionResult Index()
+      public IActionResult Index(int roleId)
       {
-         var U = Users.GetAll();
+         var U = Users.GetByRoleId(roleId);
+         ViewBag.RoleId = roleId;
          return View(U);
+      }
+      [HttpPost]
+      public IActionResult AddUser(UserViewModel user)
+      {
+         UserDTO newuser = new UserDTO()
+         {
+            Login = user.Login,
+            Password = user.Password,
+            Role = new RoleDTO
+            {
+               Id = user.RoleId,
+            }
+         };
+         Users.AddUser(newuser);
+         //var U = Users.GetByRoleId(user.RoleId);
+         return RedirectToAction("Index", new { roleId = user.RoleId });
+         //return PartialView("Users", U);
+      }
+      [HttpDelete]
+      public IActionResult DeleteUser(int id, int roleId)
+      {
+         Users.DeleteUser(id);
+         var U = Users.GetByRoleId(roleId);
+         return PartialView("Users", U);
       }
 
       [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
