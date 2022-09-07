@@ -81,5 +81,17 @@ namespace BLL.Services.Account
          var users = UsersRep.Get(x => x.RoleId == id).Select(x => ToDTO(x));
          return users;
       }
+
+      public void Update(UserDTO user)
+      {
+         User updatedUser = new User
+         {
+            Id = user.Id,
+            Login = user.Login,
+            Password = user.Password,
+            RoleId = user.Role.Id
+         };
+         UsersRep.Update(updatedUser);         
+      }
    }
 }

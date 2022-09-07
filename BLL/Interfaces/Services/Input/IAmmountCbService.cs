@@ -2,7 +2,7 @@
 
 namespace BLL.Interfaces.Service.Input
 {
-   interface IAmmountCbService : IWritable<AmmountCbDTO>, IDatable<AmmountCbDTO>, IMonthable<AmmountCbDTO>, IYearable<AmmountCbDTO>
+   interface IAmmountCbService : IWritable<AmmountCbDTO>, IDatable<AmmountCbDTO>
    {
    }
 }

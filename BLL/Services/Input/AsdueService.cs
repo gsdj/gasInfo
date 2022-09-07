@@ -17,7 +17,7 @@ namespace BLL.Services.Input
       }
       public AsdueDTO GetItemByDate(DateTime Date)
       {
-         throw new NotImplementedException();
+         return ToDTO(db.Asdue.GetByDate(Date));
       }
 
       public IEnumerable<AsdueDTO> GetItemsByMonth(DateTime Date)
@@ -48,6 +48,40 @@ namespace BLL.Services.Input
 
       public bool InsertOrUpsert(AsdueDTO entity)
       {
+         //DateTime dtom = new DateTime(entity.Date.Year, entity.Date.Month, entity.Date.Day);
+         //OutputMultipliers om = Db.Multipliers.GetByDate(dtom);
+
+         //AmmountCb cb = new AmmountCb
+         //{
+         //   Date = entity.Date,
+         //   Cb1 = entity.Cb1,
+         //   Cb2 = entity.Cb2,
+         //   Cb3 = entity.Cb3,
+         //   Cb4 = entity.Cb4,
+         //   Cb5 = entity.Cb5,
+         //   Cb6 = entity.Cb6,
+         //   Cb7 = entity.Cb7,
+         //   Cb8 = entity.Cb8,
+         //   PKP = entity.PKP,
+         //   OutputMultipliers = om,
+         //};
+         //try
+         //{
+         //   if (Db.AmmountCb.GetByDate(entity.Date) != null)
+         //   {
+         //      Db.AmmountCb.Update(cb);
+         //   }
+         //   else
+         //   {
+         //      Db.AmmountCb.Create(cb);
+         //   }
+         //   return true;
+         //}
+         //catch (Exception ex)
+         //{
+         //   return false;
+         //}
+
          throw new NotImplementedException();
       }
 

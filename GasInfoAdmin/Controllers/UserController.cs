@@ -45,6 +45,22 @@ namespace GasInfoAdmin.Controllers
          return RedirectToAction("Index", new { roleId = user.RoleId });
          //return PartialView("Users", U);
       }
+      //проверка update rep
+      public void TestUpdate()
+      {
+         UserDTO updateUs = new UserDTO
+         {
+            Id = 2,
+            Login = "updateUser",
+            Password = "updatedUser",
+            Role = new RoleDTO
+            {
+               Id = 1,
+               Name = "Admin",
+            }
+         };
+         Users.Update(updateUs);
+      }
       [HttpDelete]
       public IActionResult DeleteUser(int id, int roleId)
       {

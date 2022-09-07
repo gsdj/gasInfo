@@ -14,5 +14,6 @@ namespace BLL.Interfaces.Services.Account
       UserDTO GetUser(int id);
       IEnumerable<UserDTO> GetByRoleId(int id);
       IEnumerable<UserDTO> GetAll();
+      void Update(UserDTO user);
    }
 }

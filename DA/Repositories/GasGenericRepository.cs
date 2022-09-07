@@ -11,11 +11,6 @@ namespace DA.Repositories
    {
       public GasGenericRepository(GasInfoDbContext context) : base(context) { }
 
-      public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
-      {
-         return _dbSet.AsNoTracking().Where(predicate).ToList();
-      }
-
       public TEntity GetByDate(DateTime Date)
       {
          return _dbSet.Find(Date);

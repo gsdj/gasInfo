@@ -20,7 +20,6 @@ namespace DA.Interfaces
       /// <returns></returns>
       IEnumerable<TEntity> GetPerYear(int Year);
       TEntity GetByDate(DateTime Date);
-      IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> predicate);
 
    }
 }

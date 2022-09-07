@@ -26,7 +26,6 @@ namespace GasInfoAdmin.Controllers
          var roles = Roles.GetAll();
          return View(roles);
       }
-
       [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
       public IActionResult Error()
       {
