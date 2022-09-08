@@ -9,22 +9,51 @@ namespace BLL.Services.Input
 {
    public class ComponentsKgService : IGasComponentsService<ComponentsKgDTO>
    {
-      IUnitOfWork db;
-      IValidationDictionary _validationDictionary;
-      public ComponentsKgService(IUnitOfWork uof, IValidationDictionary validation)
+      IUnitOfWork Db;
+      public ComponentsKgService(IUnitOfWork uof)
       {
-         db = uof;
-         _validationDictionary = validation;
-      }
-
-      protected bool ValidateComponents(ComponentsKgDTO dg)
-      {
-         return _validationDictionary.IsValid;
+         Db = uof;
       }
 
       public ComponentsKgDTO GetItemByDate(DateTime Date)
       {
-         var kg = db.CharacteristicsKg.GetByDate(Date);
+         var kg = Db.CharacteristicsKg.GetByDate(Date);
+         return ToDTO(kg);
+      }
+
+      public bool InsertOrUpdate(ComponentsKgDTO entity)
+      {
+         CharacteristicsKgAll kg = Db.CharacteristicsKg.GetByDate(entity.Date) ?? new CharacteristicsKgAll();
+         try
+         {
+            kg.Date = entity.Date;
+            kg.Kc1.CO2 = entity.Kc1.CO2;
+            kg.Kc1.CO = entity.Kc1.CO;
+            kg.Kc1.N2 = entity.Kc1.N2;
+            kg.Kc1.H2 = entity.Kc1.H2;
+            kg.Kc2.CO2 = entity.Kc2.CO2;
+            kg.Kc2.CO = entity.Kc2.CO;
+            kg.Kc2.N2 = entity.Kc2.N2;
+            kg.Kc2.H2 = entity.Kc2.H2;
+
+            if (kg.Id > 0)
+            {
+               Db.CharacteristicsKg.Update(kg);
+            }
+            else
+            {
+               Db.CharacteristicsKg.Create(kg);
+            }
+            return true;
+         }
+         catch (Exception ex)
+         {
+            return false;
+         }
+      }
+
+      private ComponentsKgDTO ToDTO(CharacteristicsKgAll kg)
+      {
          return new ComponentsKgDTO
          {
             Date = kg.Date,
@@ -49,47 +78,6 @@ namespace BLL.Services.Input
                CH4 = kg.Kc2.CH4,
             }
          };
-      }
-
-      public bool InsertOrUpsert(ComponentsKgDTO entity)
-      {
-         if (!ValidateComponents(entity))
-            return false;
-
-         try
-         {
-            CharacteristicsKgAll kg = new CharacteristicsKgAll
-            {
-               Date = entity.Date,
-               Kc1 =
-               {
-                  CO2 = entity.Kc1.CO2,
-                  CO = entity.Kc1.CO,
-                  N2 = entity.Kc1.N2,
-                  H2 = entity.Kc1.H2,
-                  O2 = entity.Kc1.O2,
-                  CnHm = entity.Kc1.CnHm,
-                  CH4 = entity.Kc1.CH4,
-               },
-               Kc2 =
-               {
-                  CO2 = entity.Kc2.CO2,
-                  CO = entity.Kc2.CO,
-                  N2 = entity.Kc2.N2,
-                  H2 = entity.Kc2.H2,
-                  O2 = entity.Kc2.O2,
-                  CnHm = entity.Kc2.CnHm,
-                  CH4 = entity.Kc2.CH4,
-               }
-            };
-            db.CharacteristicsKg.Create(kg);
-            db.Save();
-         }
-         catch (Exception)
-         {
-            return false;
-         }
-         return true;
       }
    }
 }

@@ -17,33 +17,33 @@ namespace BLL.Services.Input
       {
          return ToDTO(Db.AmmountCb.GetByDate(Date));
       }
-      public bool InsertOrUpsert(AmmountCbDTO entity)
+      public bool InsertOrUpdate(AmmountCbDTO entity)
       {
-         DateTime dtom = new DateTime(entity.Date.Year, entity.Date.Month, entity.Date.Day);
-         OutputMultipliers om = Db.Multipliers.GetByDate(dtom);
-
-         AmmountCb cb = new AmmountCb
-         {
-            Date = entity.Date,
-            Cb1 = entity.Cb1,
-            Cb2 = entity.Cb2,
-            Cb3 = entity.Cb3,
-            Cb4 = entity.Cb4,
-            Cb5 = entity.Cb5,
-            Cb6 = entity.Cb6,
-            Cb7 = entity.Cb7,
-            Cb8 = entity.Cb8,
-            PKP = entity.PKP,
-            OutputMultipliers = om,
-         };
+         AmmountCb cb = Db.AmmountCb.GetByDate(entity.Date) ?? new AmmountCb();
          try
          {
-            if (Db.AmmountCb.GetByDate(entity.Date) != null)
+            cb.Date = entity.Date;
+            cb.Cb1 = entity.Cb1;
+            cb.Cb2 = entity.Cb2;
+            cb.Cb3 = entity.Cb3;
+            cb.Cb4 = entity.Cb4;
+            cb.Cb5 = entity.Cb5;
+            cb.Cb6 = entity.Cb6;
+            cb.Cb7 = entity.Cb7;
+            cb.Cb8 = entity.Cb8;
+            cb.PKP = entity.PKP;
+
+            if (cb.Id > 0)
             {
                Db.AmmountCb.Update(cb);
             }
             else
             {
+               DateTime dtom = new DateTime(entity.Date.Year, entity.Date.Month, 1);
+               OutputMultipliers om = Db.Multipliers.GetByDate(dtom);
+
+               cb.OutputMultipliers = om;
+
                Db.AmmountCb.Create(cb);
             }
             return true;
@@ -52,7 +52,6 @@ namespace BLL.Services.Input
          {
             return false;
          }
-
       }
       private AmmountCbDTO ToDTO(AmmountCb cb)
       {

@@ -7,7 +7,7 @@ namespace BLL.DTO
    {
       public ProductionDTO()
       {
-         AmmountCb = new AmmountCb<int>();
+         AmmountCb = new Cb<int>();
          CokeCbConsumptionFv = new CbAll();
          CokeCbGross = new CokeCbGross();
          CokeCbDry = new CokeCbDry();
@@ -18,7 +18,7 @@ namespace BLL.DTO
       public decimal FvC { get; set; }
       public decimal KpeC { get; set; }
 
-      public AmmountCb<int> AmmountCb { get; set; }
+      public Cb<int> AmmountCb { get; set; }
       //public int Cb1Cb2 { get; set; }
       //public int Cb3Cb4 { get; set; }
       //public int Cb5Cb6 { get; set; }

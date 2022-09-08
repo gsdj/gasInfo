@@ -43,8 +43,11 @@ namespace BLL.Services.Account
 
       public UserDTO GetUser(int id)
       {
-         var user = ToDTO(UsersRep.GetById(id));
-         return user;
+         var user = UsersRep.GetById(id) ?? new User();
+         user.Login = "asd";
+         user.Password = "asd1";
+         var userDTO = ToDTO(user);
+         return userDTO;
       }
 
       private UserDTO ToDTO(User user)

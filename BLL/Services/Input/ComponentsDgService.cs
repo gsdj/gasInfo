@@ -9,22 +9,51 @@ namespace BLL.Services.Input
 {
    public class ComponentsDgService : IGasComponentsService<ComponentsDgDTO>
    {
-      IUnitOfWork db;
-      IValidationDictionary _validationDictionary;
-      public ComponentsDgService(IUnitOfWork uof, IValidationDictionary validation)
+      IUnitOfWork Db;
+      public ComponentsDgService(IUnitOfWork uof)
       {
-         _validationDictionary = validation;
-         db = uof;
-      }
-
-      protected bool ValidateComponents(ComponentsDgDTO dg)
-      {
-         return _validationDictionary.IsValid;
+         Db = uof;
       }
 
       public ComponentsDgDTO GetItemByDate(DateTime Date)
       {
-         var dg = db.CharacteristicsDg.GetByDate(Date);
+         var dg = Db.CharacteristicsDg.GetByDate(Date);
+         return ToDTO(dg);
+      }
+
+      public bool InsertOrUpdate(ComponentsDgDTO entity)
+      {
+         CharacteristicsDgAll dg = Db.CharacteristicsDg.GetByDate(entity.Date) ?? new CharacteristicsDgAll();
+         try
+         {
+            dg.Date = entity.Date;
+            dg.Kc1.CO2 = entity.Kc1.CO2;
+            dg.Kc1.CO = entity.Kc1.CO;
+            dg.Kc1.N2 = entity.Kc1.N2;
+            dg.Kc1.H2 = entity.Kc1.H2;
+            dg.Kc2.CO2 = entity.Kc2.CO2;
+            dg.Kc2.CO = entity.Kc2.CO;
+            dg.Kc2.N2 = entity.Kc2.N2;
+            dg.Kc2.H2 = entity.Kc2.H2;
+
+            if (dg.Id > 0)
+            {
+               Db.CharacteristicsDg.Update(dg);
+            }
+            else
+            {
+               Db.CharacteristicsDg.Create(dg);
+            }
+            return true;
+         }
+         catch (Exception ex)
+         {
+            return false;
+         }
+      }
+
+      private ComponentsDgDTO ToDTO(CharacteristicsDgAll dg)
+      {
          return new ComponentsDgDTO
          {
             Date = dg.Date,
@@ -43,41 +72,6 @@ namespace BLL.Services.Input
                H2 = dg.Kc2.H2,
             }
          };
-      }
-
-      public bool InsertOrUpsert(ComponentsDgDTO entity)
-      {
-         if (!ValidateComponents(entity))
-            return false;
-
-         try
-         {
-            CharacteristicsDgAll dg = new CharacteristicsDgAll
-            {
-               Date = entity.Date,
-               Kc1 =
-               {
-                  CO2 = entity.Kc1.CO2,
-                  CO = entity.Kc1.CO,
-                  N2 = entity.Kc1.N2,
-                  H2 = entity.Kc1.H2,
-               },
-               Kc2 =
-               {
-                  CO2 = entity.Kc2.CO2,
-                  CO = entity.Kc2.CO,
-                  N2 = entity.Kc2.N2,
-                  H2 = entity.Kc2.H2,
-               }
-            };
-            db.CharacteristicsDg.Create(dg);
-            db.Save();
-         }
-         catch (Exception)
-         {
-            return false;
-         }
-         return true;
       }
    }
 }

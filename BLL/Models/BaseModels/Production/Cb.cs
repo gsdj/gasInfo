@@ -1,6 +1,6 @@
 ﻿namespace BLL.Models.BaseModels.Production
 {
-   public class AmmountCb<T>
+   public class Cb<T>
    {
       public T Cb1 { get; set; }
       public T Cb2 { get; set; }

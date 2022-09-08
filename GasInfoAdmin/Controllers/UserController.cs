@@ -61,6 +61,10 @@ namespace GasInfoAdmin.Controllers
          };
          Users.Update(updateUs);
       }
+      public void TestGetId()
+      {
+         var u = Users.GetUser(10);
+      }
       [HttpDelete]
       public IActionResult DeleteUser(int id, int roleId)
       {

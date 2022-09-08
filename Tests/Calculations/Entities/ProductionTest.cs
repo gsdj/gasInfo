@@ -37,7 +37,7 @@ namespace Tests.Calculations.Entities
          ProductionDTO expectedResult = new ProductionDTO
          {
             Date = new DateTime(2019, 1, 1),
-            AmmountCb = new AmmountCb<int>
+            AmmountCb = new Cb<int>
             {
                Cb1 = 78,
                Cb2 = 84,

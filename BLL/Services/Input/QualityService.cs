@@ -9,71 +9,65 @@ namespace BLL.Services.Input
 {
    public class QualityService : IQualityService
    {
-      IUnitOfWork db;
-      IValidationDictionary _validationDictionary;
-      public QualityService(IUnitOfWork uof, IValidationDictionary validation)
+      IUnitOfWork Db;
+      public QualityService(IUnitOfWork uof)
       {
-         db = uof;
-         _validationDictionary = validation;
-      }
-
-      protected bool ValidateComponents(QualityComponentsDTO dg)
-      {
-         return _validationDictionary.IsValid;
+         Db = uof;
       }
 
       public QualityComponentsDTO GetItemByDate(DateTime Date)
       {
-         var qual = db.Quality.GetByDate(Date);
+         var qual = Db.Quality.GetByDate(Date);
+         return ToDTO(qual);
+      }
+
+      public bool InsertOrUpdate(QualityComponentsDTO entity)
+      {
+         QualityAll qc = Db.Quality.GetByDate(entity.Date) ?? new QualityAll();
+         try
+         {
+            qc.Date = entity.Date;
+            qc.Kc1.W = entity.Kc1.W;
+            qc.Kc1.A = entity.Kc1.A;
+            qc.Kc1.V = entity.Kc1.V;
+            qc.Kc2.W = entity.Kc2.W;
+            qc.Kc2.A = entity.Kc2.A;
+            qc.Kc2.V = entity.Kc2.V;
+
+            if (qc.Id > 0)
+            {
+               Db.Quality.Update(qc);
+            }
+            else
+            {
+               Db.Quality.Create(qc);
+            }
+            return true;
+         }
+         catch (Exception ex)
+         {
+            return false;
+         }
+      }
+
+      private QualityComponentsDTO ToDTO(QualityAll qc)
+      {
          return new QualityComponentsDTO
          {
-            Date = qual.Date,
+            Date = qc.Date,
             Kc1 =
             {
-               W = qual.Kc1.W,
-               A = qual.Kc1.A,
-               V = qual.Kc1.V,
+               W = qc.Kc1.W,
+               A = qc.Kc1.A,
+               V = qc.Kc1.V,
             },
             Kc2 =
             {
-               W = qual.Kc2.W,
-               A = qual.Kc2.A,
-               V = qual.Kc2.V,
+               W = qc.Kc2.W,
+               A = qc.Kc2.A,
+               V = qc.Kc2.V,
             }
          };
-      }
-
-      public bool InsertOrUpsert(QualityComponentsDTO entity)
-      {
-         if (!ValidateComponents(entity))
-            return false;
-
-         try
-         {
-            QualityAll qual = new QualityAll
-            {
-               Date = entity.Date,
-               Kc1 =
-               {
-                  W = entity.Kc1.W,
-                  A = entity.Kc1.A,
-                  V = entity.Kc1.V,
-               },
-               Kc2 =
-               {
-                  W = entity.Kc2.W,
-                  A = entity.Kc2.A,
-                  V = entity.Kc2.V,
-               }
-            };
-            db.Quality.Create(qual);
-            db.Save();
-         }
-         catch (Exception)
-         {
-            return false;
-         }
-         return true;
       }
    }
 }
