@@ -11,15 +11,15 @@ namespace BLL.Services.Input
 {
    public class PressureService : IPressureService
    {
-      IUnitOfWork db;
-      public PressureService(IUnitOfWork uof)
+      private IGasGenericRepository<Pressure> PressureRep;
+      public PressureService(IGasGenericRepository<Pressure> rep)
       {
-         db = uof;
+         PressureRep = rep;
       }
 
       public PressureDTO GetItemByDate(DateTime Date)
       {
-         var pressure = db.Pressure.GetByDate(Date);
+         var pressure = PressureRep.GetByDate(Date);
          return new PressureDTO
          {
             Date = pressure.Date,
@@ -29,13 +29,13 @@ namespace BLL.Services.Input
 
       public IEnumerable<PressureDTO> GetItemsByMonth(DateTime Date)
       {
-         return db.Pressure.GetPerMonth(Date.Year, Date.Month).Select(p => ToDTO(p));
+         return PressureRep.GetPerMonth(Date.Year, Date.Month).Select(p => ToDTO(p));
       }
 
       public IEnumerable<PressureDTO> GetItemsByNowMonth()
       {
          DateTime dateNow = DateTime.Now;
-         return db.Pressure.GetPerMonth(dateNow.Year, dateNow.Month).Select(p => ToDTO(p));
+         return PressureRep.GetPerMonth(dateNow.Year, dateNow.Month).Select(p => ToDTO(p));
       }
 
       public bool InsertOrUpdate(PressureDTO entity)
@@ -47,8 +47,7 @@ namespace BLL.Services.Input
                Date = entity.Date,
                Value = entity.Value,
             };
-            db.Pressure.Create(pressure);
-            db.Save();
+            PressureRep.Create(pressure);
          }
          catch (Exception)
          {
@@ -59,13 +58,13 @@ namespace BLL.Services.Input
 
       public IEnumerable<PressureDTO> GetItemsByYear(int Year)
       {
-         return db.Pressure.GetPerYear(Year).Select(p => ToDTO(p));
+         return PressureRep.GetPerYear(Year).Select(p => ToDTO(p));
       }
 
       public IEnumerable<PressureDTO> GetItemsByNowYear()
       {
          int Year = DateTime.Now.Year;
-         return db.Pressure.GetPerYear(Year).Select(p => ToDTO(p));
+         return PressureRep.GetPerYear(Year).Select(p => ToDTO(p));
       }
 
       private PressureDTO ToDTO(Pressure pressure)

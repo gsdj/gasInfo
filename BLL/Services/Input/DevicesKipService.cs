@@ -10,26 +10,26 @@ namespace BLL.Services.Input
 {
    public class DevicesKipService : IDevicesKipService
    {
-      IUnitOfWork Db;
-      public DevicesKipService(IUnitOfWork uof)
+      private IGasGenericRepository<DevicesKip> DeviceKipRep;
+      public DevicesKipService(IGasGenericRepository<DevicesKip> rep)
       {
-         Db = uof;
+         DeviceKipRep = rep;
       }
       public DevicesKipDTO GetItemByDate(DateTime Date)
       {
-         var devices = Db.DevicesKip.GetByDate(Date);
+         var devices = DeviceKipRep.GetByDate(Date);
          return ToDTO(devices);        
       }
 
       public IEnumerable<DevicesKipDTO> GetItemsByMonth(DateTime Date)
       {
-         return Db.DevicesKip.GetPerMonth(Date.Year, Date.Month).Select(p => ToDTO(p));
+         return DeviceKipRep.GetPerMonth(Date.Year, Date.Month).Select(p => ToDTO(p));
       }
 
       public IEnumerable<DevicesKipDTO> GetItemsByNowMonth()
       {
          DateTime dateNow = DateTime.Now;
-         return Db.DevicesKip.GetPerMonth(dateNow.Year,dateNow.Month).Select(p => ToDTO(p));
+         return DeviceKipRep.GetPerMonth(dateNow.Year,dateNow.Month).Select(p => ToDTO(p));
       }
 
       private DevicesKipDTO ToDTO(DevicesKip kip)
@@ -178,7 +178,7 @@ namespace BLL.Services.Input
 
       public bool InsertOrUpdate(DevicesKipDTO entity)
       {
-         DevicesKip d = Db.DevicesKip.GetByDate(entity.Date) ?? new DevicesKip();
+         DevicesKip d = DeviceKipRep.GetByDate(entity.Date) ?? new DevicesKip();
          try
          {
             d.Date = entity.Date;
@@ -260,11 +260,11 @@ namespace BLL.Services.Input
 
             if (d.Id > 0)
             {
-               Db.DevicesKip.Update(d);
+               DeviceKipRep.Update(d);
             }
             else
             {
-               Db.DevicesKip.Create(d);
+               DeviceKipRep.Create(d);
             }
             return true;
          }
@@ -276,13 +276,13 @@ namespace BLL.Services.Input
 
       public IEnumerable<DevicesKipDTO> GetItemsByYear(int Year)
       {
-         return Db.DevicesKip.GetPerYear(Year).Select(p => ToDTO(p));
+         return DeviceKipRep.GetPerYear(Year).Select(p => ToDTO(p));
       }
 
       public IEnumerable<DevicesKipDTO> GetItemsByNowYear()
       {
          int Year = DateTime.Now.Year;
-         return Db.DevicesKip.GetPerYear(Year).Select(p => ToDTO(p));
+         return DeviceKipRep.GetPerYear(Year).Select(p => ToDTO(p));
       }
    }
 }

@@ -9,21 +9,21 @@ namespace BLL.Services.Input
 {
    public class QualityService : IQualityService
    {
-      IUnitOfWork Db;
-      public QualityService(IUnitOfWork uof)
+      private IGasGenericRepository<QualityAll> QualityRep;
+      public QualityService(IGasGenericRepository<QualityAll> rep)
       {
-         Db = uof;
+         QualityRep = rep;
       }
 
       public QualityComponentsDTO GetItemByDate(DateTime Date)
       {
-         var qual = Db.Quality.GetByDate(Date);
+         var qual = QualityRep.GetByDate(Date);
          return ToDTO(qual);
       }
 
       public bool InsertOrUpdate(QualityComponentsDTO entity)
       {
-         QualityAll qc = Db.Quality.GetByDate(entity.Date) ?? new QualityAll();
+         QualityAll qc = QualityRep.GetByDate(entity.Date) ?? new QualityAll();
          try
          {
             qc.Date = entity.Date;
@@ -36,11 +36,11 @@ namespace BLL.Services.Input
 
             if (qc.Id > 0)
             {
-               Db.Quality.Update(qc);
+               QualityRep.Update(qc);
             }
             else
             {
-               Db.Quality.Create(qc);
+               QualityRep.Create(qc);
             }
             return true;
          }

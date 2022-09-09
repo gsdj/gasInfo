@@ -8,20 +8,20 @@ namespace BLL.Services.Input
 {
    public class MultipliersService : IMultipliersService
    {
-      private IUnitOfWork Db;
-      public MultipliersService(IUnitOfWork db)
+      private IGasGenericRepository<OutputMultipliers> MultipliersRep;
+      public MultipliersService(IGasGenericRepository<OutputMultipliers> rep)
       {
-         Db = db;
+         MultipliersRep = rep;
       }
       public OutputMultipliersDTO GetItemByDate(DateTime Date)
       {
-         return ToDTO(Db.Multipliers.GetByDate(Date));
+         return ToDTO(MultipliersRep.GetByDate(Date));
       }
       public bool InsertOrUpdate(OutputMultipliersDTO entity)
       {
          //подумать чё сделать
          DateTime dt = new DateTime(entity.Date.Year, entity.Date.Month, 1);
-         OutputMultipliers om = Db.Multipliers.GetByDate(dt) ?? new OutputMultipliers();
+         OutputMultipliers om = MultipliersRep.GetByDate(dt) ?? new OutputMultipliers();
          try
          {
             om.Date = entity.Date;
@@ -40,12 +40,12 @@ namespace BLL.Services.Input
 
             if (om.Id > 0)
             {
-               Db.Multipliers.Update(om);
+               MultipliersRep.Update(om);
                
             }
             else
             {
-               Db.Multipliers.Create(om);
+               MultipliersRep.Create(om);
             }
             return true;
          }

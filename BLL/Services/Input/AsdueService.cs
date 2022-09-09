@@ -10,25 +10,25 @@ namespace BLL.Services.Input
 {
    public class AsdueService : IAsdueService
    {
-      private IUnitOfWork Db;
-      public AsdueService(IUnitOfWork uof)
+      private IGasGenericRepository<Asdue> AsdueRep;
+      public AsdueService(IGasGenericRepository<Asdue> rep)
       {
-         Db = uof;
+         AsdueRep = rep;
       }
       public AsdueDTO GetItemByDate(DateTime Date)
       {
-         return ToDTO(Db.Asdue.GetByDate(Date));
+         return ToDTO(AsdueRep.GetByDate(Date));
       }
 
       public IEnumerable<AsdueDTO> GetItemsByMonth(DateTime Date)
       {
-         return Db.Asdue.GetPerMonth(Date.Year, Date.Month).Select(p => ToDTO(p));
+         return AsdueRep.GetPerMonth(Date.Year, Date.Month).Select(p => ToDTO(p));
       }
 
       public IEnumerable<AsdueDTO> GetItemsByNowMonth()
       {
          DateTime dateNow = DateTime.Now;
-         return Db.Asdue.GetPerMonth(dateNow.Year, dateNow.Month).Select(p => ToDTO(p));
+         return AsdueRep.GetPerMonth(dateNow.Year, dateNow.Month).Select(p => ToDTO(p));
       }
 
       private AsdueDTO ToDTO(Asdue asdue)
@@ -48,7 +48,7 @@ namespace BLL.Services.Input
 
       public bool InsertOrUpdate(AsdueDTO entity)
       {
-         Asdue asd = Db.Asdue.GetByDate(entity.Date) ?? new Asdue();
+         Asdue asd = AsdueRep.GetByDate(entity.Date) ?? new Asdue();
          try
          {
             asd.Date = entity.Date;
@@ -61,11 +61,11 @@ namespace BLL.Services.Input
 
             if (asd.Id > 0)
             {
-               Db.Asdue.Update(asd);
+               AsdueRep.Update(asd);
             }
             else
             {
-               Db.Asdue.Create(asd);
+               AsdueRep.Create(asd);
             }
             return true;
          }
@@ -77,13 +77,13 @@ namespace BLL.Services.Input
 
       public IEnumerable<AsdueDTO> GetItemsByYear(int Year)
       {
-         return Db.Asdue.GetPerYear(Year).Select(p => ToDTO(p));
+         return AsdueRep.GetPerYear(Year).Select(p => ToDTO(p));
       }
 
       public IEnumerable<AsdueDTO> GetItemsByNowYear()
       {
          int Year = DateTime.Now.Year;
-         return Db.Asdue.GetPerYear(Year).Select(p => ToDTO(p));
+         return AsdueRep.GetPerYear(Year).Select(p => ToDTO(p));
       }
    }
 }

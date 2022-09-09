@@ -9,21 +9,21 @@ namespace BLL.Services.Input
 {
    public class ComponentsDgService : IGasComponentsService<ComponentsDgDTO>
    {
-      IUnitOfWork Db;
-      public ComponentsDgService(IUnitOfWork uof)
+      private IGasGenericRepository<CharacteristicsDgAll> CharacteristicsDgRep;
+      public ComponentsDgService(IGasGenericRepository<CharacteristicsDgAll> rep)
       {
-         Db = uof;
+         CharacteristicsDgRep = rep;
       }
 
       public ComponentsDgDTO GetItemByDate(DateTime Date)
       {
-         var dg = Db.CharacteristicsDg.GetByDate(Date);
+         var dg = CharacteristicsDgRep.GetByDate(Date);
          return ToDTO(dg);
       }
 
       public bool InsertOrUpdate(ComponentsDgDTO entity)
       {
-         CharacteristicsDgAll dg = Db.CharacteristicsDg.GetByDate(entity.Date) ?? new CharacteristicsDgAll();
+         CharacteristicsDgAll dg = CharacteristicsDgRep.GetByDate(entity.Date) ?? new CharacteristicsDgAll();
          try
          {
             dg.Date = entity.Date;
@@ -38,11 +38,11 @@ namespace BLL.Services.Input
 
             if (dg.Id > 0)
             {
-               Db.CharacteristicsDg.Update(dg);
+               CharacteristicsDgRep.Update(dg);
             }
             else
             {
-               Db.CharacteristicsDg.Create(dg);
+               CharacteristicsDgRep.Create(dg);
             }
             return true;
          }

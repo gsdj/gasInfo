@@ -8,18 +8,18 @@ namespace BLL.Services.Input
 {
    public class TecService : ITecService
    {
-      private IUnitOfWork Db;
-      public TecService(IUnitOfWork db)
+      private IGasGenericRepository<Tec> TecRep;
+      public TecService(IGasGenericRepository<Tec> rep)
       {
-         Db = db;
+         TecRep = rep;
       }
       public TecDTO GetItemByDate(DateTime Date)
       {
-         return ToDTO(Db.Tec.GetByDate(Date));
+         return ToDTO(TecRep.GetByDate(Date));
       }
       public bool InsertOrUpdate(TecDTO entity)
       {
-         Tec t = Db.Tec.GetByDate(entity.Date) ?? new Tec();
+         Tec t = TecRep.GetByDate(entity.Date) ?? new Tec();
          try
          {
             t.Date = entity.Date;
@@ -29,11 +29,11 @@ namespace BLL.Services.Input
 
             if (t.Id > 0)
             {
-               Db.Tec.Update(t);
+               TecRep.Update(t);
             }
             else
             {
-               Db.Tec.Create(t);
+               TecRep.Create(t);
             }
             return true;
          }

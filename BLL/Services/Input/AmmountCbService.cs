@@ -8,18 +8,20 @@ namespace BLL.Services.Input
 {
    public class AmmountCbService : IAmmountCbService
    {
-      private IUnitOfWork Db;
-      public AmmountCbService(IUnitOfWork db)
+      private IGasGenericRepository<AmmountCb> AmmountCbRep;
+      private IGasGenericRepository<OutputMultipliers> MultipliersRep;
+      public AmmountCbService(IGasGenericRepository<AmmountCb> rep, IGasGenericRepository<OutputMultipliers> omrep)
       {
-         Db = db;
+         AmmountCbRep = rep;
+         MultipliersRep = omrep;
       }
       public AmmountCbDTO GetItemByDate(DateTime Date)
       {
-         return ToDTO(Db.AmmountCb.GetByDate(Date));
+         return ToDTO(AmmountCbRep.GetByDate(Date));
       }
       public bool InsertOrUpdate(AmmountCbDTO entity)
       {
-         AmmountCb cb = Db.AmmountCb.GetByDate(entity.Date) ?? new AmmountCb();
+         AmmountCb cb = AmmountCbRep.GetByDate(entity.Date) ?? new AmmountCb();
          try
          {
             cb.Date = entity.Date;
@@ -35,16 +37,16 @@ namespace BLL.Services.Input
 
             if (cb.Id > 0)
             {
-               Db.AmmountCb.Update(cb);
+               AmmountCbRep.Update(cb);
             }
             else
             {
                DateTime dtom = new DateTime(entity.Date.Year, entity.Date.Month, 1);
-               OutputMultipliers om = Db.Multipliers.GetByDate(dtom);
+               OutputMultipliers om = MultipliersRep.GetByDate(dtom);
 
                cb.OutputMultipliers = om;
 
-               Db.AmmountCb.Create(cb);
+               AmmountCbRep.Create(cb);
             }
             return true;
          }
