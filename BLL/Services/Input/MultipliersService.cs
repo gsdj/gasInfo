@@ -19,39 +19,48 @@ namespace BLL.Services.Input
       }
       public bool InsertOrUpdate(OutputMultipliersDTO entity)
       {
-         //подумать чё сделать
          DateTime dt = new DateTime(entity.Date.Year, entity.Date.Month, 1);
+         DateTime dtNextMonth = dt.AddMonths(1);
+
          OutputMultipliers om = MultipliersRep.GetByDate(dt) ?? new OutputMultipliers();
+         OutputMultipliers omNextMonth = MultipliersRep.GetByDate(dtNextMonth) ?? new OutputMultipliers();
+
          try
          {
-            om.Date = entity.Date;
-            om.Cb1 = entity.Cb1;
-            om.Cb2 = entity.Cb1;
-            om.Cb3 = entity.Cb1;
-            om.Cb4 = entity.Cb1;
-            om.Cb5 = entity.Cb1;
-            om.Cb6 = entity.Cb1;
-            om.Cb7 = entity.Cb1;
-            om.Cb8 = entity.Cb1;
-            om.PKP = entity.PKP;
-            om.Sv = entity.Sv;
-            om.Fv = entity.Fv;
-            om.Peka = entity.Peka;
-
-            if (om.Id > 0)
-            {
-               MultipliersRep.Update(om);
-               
-            }
-            else
-            {
-               MultipliersRep.Create(om);
-            }
+            InsUpd(om, entity, dt);
+            InsUpd(omNextMonth, entity, dtNextMonth);
             return true;
          }
          catch (Exception ex)
          {
             return false;
+         }
+      }
+
+      private void InsUpd(OutputMultipliers dbEntity, OutputMultipliersDTO entity, DateTime date)
+      {
+         dbEntity.Date = date;
+         dbEntity.Cb1 = entity.Cb1;
+         dbEntity.Cb2 = entity.Cb1;
+         dbEntity.Cb3 = entity.Cb1;
+         dbEntity.Cb4 = entity.Cb1;
+         dbEntity.Cb5 = entity.Cb1;
+         dbEntity.Cb6 = entity.Cb1;
+         dbEntity.Cb7 = entity.Cb1;
+         dbEntity.Cb8 = entity.Cb1;
+         dbEntity.PKP = entity.PKP;
+         dbEntity.Sv = entity.Sv;
+         dbEntity.Fv = entity.Fv;
+         dbEntity.Peka = entity.Peka;
+
+         if (dbEntity.Id > 0)
+         {
+            MultipliersRep.Update(dbEntity);
+
+         }
+         else
+         {
+            MultipliersRep.Create(dbEntity);
          }
       }
       private OutputMultipliersDTO ToDTO(OutputMultipliers om)

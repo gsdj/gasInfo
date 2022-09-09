@@ -1,8 +1,4 @@
-﻿using BLL.DTO.Input;
-using BLL.Interfaces.Service.Input;
-using DA.Entities;
-using DA.Interfaces;
-using System;
+﻿using BLL.Interfaces.Service.Input;
 
 namespace BLL.Services.Input.ChmkEb
 {
