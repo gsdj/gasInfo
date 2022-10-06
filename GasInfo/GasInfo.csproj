@@ -21,6 +21,12 @@
     <Content Update="wwwroot\files\SteamCharacteristics.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\files\TestDataJson2019\CharacteristicsDg.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\files\TestDataJson2019\CharacteristicsKg.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\files\TestDataJson2019\Pressure.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
