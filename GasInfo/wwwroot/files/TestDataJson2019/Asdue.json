@@ -1,0 +1,313 @@
+[
+  {
+    "Id": 1,
+    "Date": "01.1.2019",
+    "TecNorth": "1202109,25",
+    "TecSouth": "623785,25",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 2,
+    "Date": "01.2.2019",
+    "TecNorth": "1210836,625",
+    "TecSouth": "678807,438",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 3,
+    "Date": "01.3.2019",
+    "TecNorth": "1216379,5",
+    "TecSouth": "659785,188",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 4,
+    "Date": "01.4.2019",
+    "TecNorth": "1220913,125",
+    "TecSouth": "661455,75",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 5,
+    "Date": "01.5.2019",
+    "TecNorth": "1275228,25",
+    "TecSouth": "675696,625",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 6,
+    "Date": "01.6.2019",
+    "TecNorth": "1271219",
+    "TecSouth": "653792,062",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 7,
+    "Date": "01.7.2019",
+    "TecNorth": "1263621,75",
+    "TecSouth": "639858,562",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 8,
+    "Date": "01.8.2019",
+    "TecNorth": "1233371,5",
+    "TecSouth": "627278,5",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 9,
+    "Date": "01.9.2019",
+    "TecNorth": "1220212,125",
+    "TecSouth": "618869,5",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 10,
+    "Date": "01.10.2019",
+    "TecNorth": "1194737",
+    "TecSouth": "605011,312",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 11,
+    "Date": "01.11.2019",
+    "TecNorth": "1223113,75",
+    "TecSouth": "613180,25",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 12,
+    "Date": "01.12.2019",
+    "TecNorth": "1258818,5",
+    "TecSouth": "629169,938",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 13,
+    "Date": "01.13.2019",
+    "TecNorth": "1258085,625",
+    "TecSouth": "639324,938",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 14,
+    "Date": "01.14.2019",
+    "TecNorth": "1242764",
+    "TecSouth": "621362,375",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 15,
+    "Date": "01.15.2019",
+    "TecNorth": "1228805,125",
+    "TecSouth": "630230,875",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 16,
+    "Date": "01.16.2019",
+    "TecNorth": "1217370,125",
+    "TecSouth": "617022,875",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 17,
+    "Date": "01.17.2019",
+    "TecNorth": "1213002,5",
+    "TecSouth": "610523,875",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 18,
+    "Date": "01.18.2019",
+    "TecNorth": "1214280,625",
+    "TecSouth": "597552,568",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 19,
+    "Date": "01.19.2019",
+    "TecNorth": "1203295,25",
+    "TecSouth": "596240,875",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 20,
+    "Date": "01.20.2019",
+    "TecNorth": "1203814,375",
+    "TecSouth": "587936,062",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 21,
+    "Date": "01.21.2019",
+    "TecNorth": "1179715,25",
+    "TecSouth": "560536,938",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 22,
+    "Date": "01.22.2019",
+    "TecNorth": "1122585",
+    "TecSouth": "527059,562",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 23,
+    "Date": "01.23.2019",
+    "TecNorth": "1150668",
+    "TecSouth": "538152,75",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 24,
+    "Date": "01.24.2019",
+    "TecNorth": "1174988,875",
+    "TecSouth": "552836,375",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 25,
+    "Date": "01.25.2019",
+    "TecNorth": "1219484,75",
+    "TecSouth": "563639",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 26,
+    "Date": "01.26.2019",
+    "TecNorth": "1204480,25",
+    "TecSouth": "546306,562",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 27,
+    "Date": "01.27.2019",
+    "TecNorth": "1201333,5",
+    "TecSouth": "561174,75",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 28,
+    "Date": "01.28.2019",
+    "TecNorth": "1205495,625",
+    "TecSouth": "565309,438",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 29,
+    "Date": "01.29.2019",
+    "TecNorth": "1355796,75",
+    "TecSouth": "591316,375",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 30,
+    "Date": "01.30.2019",
+    "TecNorth": "1323448,125",
+    "TecSouth": "550431,5",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  },
+  {
+    "Id": 31,
+    "Date": "01.31.2019",
+    "TecNorth": "1296275,275",
+    "TecSouth": "577219,375",
+    "Gps2Gss1": "0",
+    "Gps2Gss2": "0",
+    "NaturalGasQn": "0",
+    "OutPkg": "0"
+  }
+
+]
