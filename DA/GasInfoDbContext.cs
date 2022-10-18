@@ -5,7 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace DA
 {
@@ -13,6 +15,12 @@ namespace DA
    {
       public GasInfoDbContext() { }
       public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options) : base(options) { }
+      public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options, Dictionary<string, InitialDataSettings> dataSettings) : base(options) 
+      {
+         DataSettings = dataSettings;
+      }
+
+      private Dictionary<string, InitialDataSettings> DataSettings;
 
       public DbSet<Pressure> Pressure { get; set; }
       public DbSet<DevicesKip> DevicesKip { get; set; }
@@ -30,33 +38,19 @@ namespace DA
       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
       protected override void OnModelCreating(ModelBuilder modelBuilder)
       {
-         modelBuilder.ApplyConfiguration(new PressureConfiguration());
-         modelBuilder.ApplyConfiguration(new AmmountCbConfiguration());
-         modelBuilder.ApplyConfiguration(new CharacteristicsDgConfiguration());
-         modelBuilder.ApplyConfiguration(new CharacteristicsKgConfiguration());
-         modelBuilder.ApplyConfiguration(new DevicesKipConfiguration());
-         modelBuilder.ApplyConfiguration(new OutputMultipliersConfiguration());
-         modelBuilder.ApplyConfiguration(new QualityConfiguration());
-         modelBuilder.ApplyConfiguration(new AsdueConfiguration());
-         modelBuilder.ApplyConfiguration(new DgPgChmkEbConfiguration());
-         modelBuilder.ApplyConfiguration(new KgChmkEbConfiguration());
-         modelBuilder.ApplyConfiguration(new TecConfiguration());
-         modelBuilder.ApplyConfiguration(new UsersConfiguration());
+         modelBuilder.ApplyConfiguration(new PressureConfiguration(DataSettings["Pressure"]));
+         modelBuilder.ApplyConfiguration(new AmmountCbConfiguration(DataSettings["AmmountCb"]));
+         modelBuilder.ApplyConfiguration(new CharacteristicsDgConfiguration(DataSettings["CharacteristicsDg"]));
+         modelBuilder.ApplyConfiguration(new CharacteristicsKgConfiguration(DataSettings["CharacteristicsKg"]));
+         modelBuilder.ApplyConfiguration(new DevicesKipConfiguration(DataSettings["DevicesKip"]));
+         modelBuilder.ApplyConfiguration(new OutputMultipliersConfiguration(DataSettings["OutputMultipliers"]));
+         modelBuilder.ApplyConfiguration(new QualityConfiguration(DataSettings["Quality"]));
+         modelBuilder.ApplyConfiguration(new AsdueConfiguration(DataSettings["Asdue"]));
+         modelBuilder.ApplyConfiguration(new DgPgChmkEbConfiguration(DataSettings["DgPgChmkEb"]));
+         modelBuilder.ApplyConfiguration(new KgChmkEbConfiguration(DataSettings["KgChmkEb"]));
+         modelBuilder.ApplyConfiguration(new TecConfiguration(DataSettings["Tec"]));
          modelBuilder.ApplyConfiguration(new RolesConfiguration());
-
-         string adminRoleName = "Admin";
-         string userRoleName = "User";
-
-         string adminLogin = "AsupAdmin";
-         string adminPassword = "55914";
-
-         Role adminRole = new Role { Id = 1, Name = adminRoleName };
-         Role userRole = new Role { Id = 2, Name = userRoleName };
-
-         User adminUser = new User { Id = 1, Login = adminLogin, Password = adminPassword, RoleId = adminRole.Id };
-
-         modelBuilder.Entity<Role>().HasData(new Role[] { adminRole, userRole });
-         modelBuilder.Entity<User>().HasData(new User[] { adminUser });
+         modelBuilder.ApplyConfiguration(new UsersConfiguration());
       }
    }
 
@@ -64,18 +58,35 @@ namespace DA
    {
       public GasInfoDbContext CreateDbContext(string[] args)
       {
+         var currentDirectory = Directory.GetCurrentDirectory();
          var optionsBuilder = new DbContextOptionsBuilder<GasInfoDbContext>();
 
-         // получаем конфигурацию из файла appsettings.json
          ConfigurationBuilder builder = new ConfigurationBuilder();
-         builder.SetBasePath(Directory.GetCurrentDirectory());
-         builder.AddJsonFile("appsettings.json");
-         IConfigurationRoot config = builder.Build();
+         builder.SetBasePath(currentDirectory);
 
-         // получаем строку подключения из файла appsettings.json
+         builder
+            .AddJsonFile("appsettings.json")
+            .AddJsonFile("InitialDataSettings.json");
+
+         IConfiguration config = builder.Build();
+         
+         var ids = config.GetSection("TestData")
+            .Get<List<InitialDataSettings>>();
+
+         ids.ForEach(x => x.Path = $"{currentDirectory}{x.Path}");
+
+         var idsD = ids.ToDictionary(x => x.FileName);
+
          string connectionString = config.GetConnectionString("GasInfoMSSql");
          optionsBuilder.UseSqlServer(connectionString, opts => opts.CommandTimeout((int)TimeSpan.FromMinutes(10).TotalSeconds));
-         return new GasInfoDbContext(optionsBuilder.Options);
+
+         return new GasInfoDbContext(optionsBuilder.Options, idsD);
       }
+   }
+
+   public class InitialDataSettings
+   {
+      public string FileName { get; set; }
+      public string Path { get; set; }
    }
 }

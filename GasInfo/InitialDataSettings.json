@@ -1,0 +1,48 @@
+{
+  "TestData": [
+    {
+      "FileName": "Pressure",
+      "Path": "\\wwwroot\\files\\TestDataJson2019\\Pressure.json"
+    },
+    {
+      "FileName": "AmmountCb",
+      "Path": "\\wwwroot\\files\\TestDataJson2019\\AmmountCb.json"
+    },
+    {
+      "FileName": "CharacteristicsDg",
+      "Path": "\\wwwroot\\files\\TestDataJson2019\\CharacteristicsDg.json"
+    },
+    {
+      "FileName": "CharacteristicsKg",
+      "Path": "\\wwwroot\\files\\TestDataJson2019\\CharacteristicsKg.json"
+    },
+    {
+      "FileName": "DevicesKip",
+      "Path": "\\wwwroot\\files\\TestDataJson2019\\DevicesKip.json"
+    },
+    {
+      "FileName": "OutputMultipliers",
+      "Path": "\\wwwroot\\files\\TestDataJson2019\\OutputMultipliers.json"
+    },
+    {
+      "FileName": "Quality",
+      "Path": "\\wwwroot\\files\\TestDataJson2019\\Quality.json"
+    },
+    {
+      "FileName": "Asdue",
+      "Path": "\\wwwroot\\files\\TestDataJson2019\\Asdue.json"
+    },
+    {
+      "FileName": "DgPgChmkEb",
+      "Path": "\\wwwroot\\files\\TestDataJson2019\\DgPgChmkEb.json"
+    },
+    {
+      "FileName": "KgChmkEb",
+      "Path": "\\wwwroot\\files\\TestDataJson2019\\KgChmkEb.json"
+    },
+    {
+      "FileName": "Tec",
+      "Path": "\\wwwroot\\files\\TestDataJson2019\\Tec.json"
+    }
+  ]
+}

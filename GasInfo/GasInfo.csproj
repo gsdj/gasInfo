@@ -21,6 +21,27 @@
     <Content Update="wwwroot\files\SteamCharacteristics.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\files\TestDataJson2019\DevicesKip.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\files\TestDataJson2019\Asdue.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\files\TestDataJson2019\DgPgChmkEb.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\files\TestDataJson2019\OutputMultipliers.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\files\TestDataJson2019\KgChmkEb.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\files\TestDataJson2019\Tec.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\files\TestDataJson2019\Quality.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\files\TestDataJson2019\CharacteristicsDg.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,13 +1,30 @@
 ﻿using DA.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
 
 namespace DA.ConfigurationsEntities
 {
    public class DevicesKipConfiguration : IEntityTypeConfiguration<DevicesKip>
    {
+      public DevicesKipConfiguration() { }
+      public DevicesKipConfiguration(InitialDataSettings initialData)
+      {
+         InitialData = initialData;
+      }
+      private InitialDataSettings InitialData;
       public void Configure(EntityTypeBuilder<DevicesKip> builder)
       {
+         IEnumerable<DevicesKip> data;
+
+         using (StreamReader r = new StreamReader(InitialData.Path))
+         {
+            string json = r.ReadToEnd();
+            data = JsonConvert.DeserializeObject<IEnumerable<DevicesKip>>(json);
+         }
+
          builder.ToTable("DevicesKip");
          builder.HasKey(p => p.Id);
          builder.HasIndex(p => p.Date).IsUnique();
@@ -70,6 +87,8 @@ namespace DA.ConfigurationsEntities
                a.Property(x => x.Ks).HasColumnType("numeric").HasPrecision(16, 6);
             });
          });
+
+         builder.HasData(data);
       }
    }
 }

@@ -32,6 +32,7 @@ namespace GasInfo
       public void ConfigureServices(IServiceCollection services)
       {
          string path = Path.Combine(_env.WebRootPath, "files", "SteamCharacteristics.json");
+
          services.AddControllersWithViews();
          services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
@@ -46,13 +47,13 @@ namespace GasInfo
             options.UseLazyLoadingProxies();
          });
 
-         services.AddScoped<IUnitOfWork, UnitOfWork>();
-         services.AddScoped(x => new SteamJsonReader(path));
-         services.AddScoped<ICalculations<ConsumptionKgDTO>, DefaultConsumptionKg>();
+         //services.AddScoped<IUnitOfWork, UnitOfWork>();
+         //services.AddScoped(x => new SteamJsonReader(path));
+         //services.AddScoped<ICalculations<ConsumptionKgDTO>, DefaultConsumptionKg>();
 
-         services.AddScoped(typeof(IGenericRepository<>), typeof(EFGenericRepository<>));
-         services.AddScoped(typeof(IGasGenericRepository<>), typeof(GasGenericRepository<>));
-         services.AddCalculations();
+         //services.AddScoped(typeof(IGenericRepository<>), typeof(EFGenericRepository<>));
+         //services.AddScoped(typeof(IGasGenericRepository<>), typeof(GasGenericRepository<>));
+         //services.AddCalculations();
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
