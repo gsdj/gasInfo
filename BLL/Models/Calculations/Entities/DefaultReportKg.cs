@@ -1,13 +1,12 @@
 ﻿using BLL.Calculations.Base;
-using BLL.Calculations.Base.Consumption;
 using BLL.Calculations.Base.Qn;
 using BLL.DataHelpers;
 using BLL.DTO;
 using BLL.Interfaces.BaseCalculations;
 using BLL.Interfaces.BaseCalculations.Consumption;
-using BLL.Interfaces.BaseCalculations.Production;
 using BLL.Interfaces.Calculations;
 using BLL.Interfaces.Calculations.ConsGasQn;
+using BLL.Interfaces.Calculations.Production;
 using BLL.Models.BaseModels.General;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ using System.Linq;
 
 namespace BLL.Calculations.Entities
 {
-   public class DefaultReportKg : ICalculation<ReportKgDTO>, ICalculations<ReportKgDTO>
+   public class DefaultReportKg : /*ICalculation<ReportKgDTO>, */ICalculations<ReportKgDTO>
    {
       private ICalculation<DensityDTO> WetGas;
       private ICalcConsGasQnKc2 Kc2Qn;
@@ -27,7 +26,7 @@ namespace BLL.Calculations.Entities
       private ICokeCbConsumptionFvCalc CokeCbConsumptionFvCalc;
       private ICokeCbConsumptionDryCalc CokeCbConsumptionDryCalc;
 
-      public DefaultReportKg(ICalculation<DensityDTO> wetGas, ISpecificConsKgFv udconskgfv, ISpoPerKus<DefaultSpoPerKus> spoperkus, 
+      public DefaultReportKg(ICalculations<DensityDTO> wetGas, ISpecificConsKgFv udconskgfv, ISpoPerKus<DefaultSpoPerKus> spoperkus, 
          ICalcConsGasQnKc2 kc2Qn, ICalcConsGasQnCpsPpk cpsppkQn, ICokeCbConsumptionFvCalc consfv, ICokeCbConsumptionDryCalc consdry)
       {
          WetGas = wetGas;

@@ -8,6 +8,6 @@ namespace DA.Entities.Devices
 {
    public class DeviceDefault : BaseDevice
    {
-      public int Consumption { get; set; } = 0;
+      public virtual int Consumption { get; set; }
    }
 }

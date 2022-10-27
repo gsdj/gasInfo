@@ -3,6 +3,7 @@ using BLL.DTO.Charts;
 using BLL.DTO.Input;
 using BLL.Interfaces;
 using BLL.Interfaces.Services.Info;
+using BLL.Interfaces.Services.Input;
 using DA.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,10 @@ namespace BLL.Services.Info
    {
       private IUnitOfWork db;
       private IUnitOfCalc Calc;
-      private IMonthable<DevicesKipDTO> DevicesKip;
-      private IMonthable<PressureDTO> Pressure;
-      private IMonthable<AsdueDTO> Asdue;
-      public ChartMonthService(IUnitOfWork uof, IUnitOfCalc calc, IMonthable<DevicesKipDTO> kip, IMonthable<PressureDTO> pressure, IMonthable<AsdueDTO> asd)
+      private IDevicesKipService DevicesKip;
+      private IPressureService Pressure;
+      private IAsdueService Asdue;
+      public ChartMonthService(IUnitOfWork uof, IUnitOfCalc calc, IDevicesKipService kip, IPressureService pressure, IAsdueService asd)
       {
          db = uof;
          Calc = calc;

@@ -8,6 +8,6 @@ namespace DA.Entities.Devices
 {
    public class DeviceTBHDefault : DeviceWithTempBeforeHeating
    {
-      public int Consumption { get; set; } = 0;
+      public virtual int Consumption { get; set; }
    }
 }

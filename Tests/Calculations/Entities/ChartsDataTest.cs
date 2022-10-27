@@ -1,11 +1,11 @@
-﻿using BLL.Calculations.Base.Production;
-using BLL.Calculations.Entities.Charts;
+﻿using BLL.Calculations.Entities.Charts;
+using BLL.Calculations.Entities.Production;
 using BLL.DataHelpers;
 using BLL.DTO;
 using BLL.DTO.Charts;
-using BLL.Interfaces.BaseCalculations.Production;
 using BLL.Interfaces.Calculations;
 using BLL.Interfaces.Calculations.ConsGasQn;
+using BLL.Interfaces.Calculations.Production;
 using DA.Entities;
 using Moq;
 using Newtonsoft.Json;
@@ -19,9 +19,9 @@ namespace Tests.Calculations.Entities
       private Mock<ICalcConsGasQnKc2> MockConsGasQnKc2;
       private Mock<ICalcConsGasQnCpsPpk> MockConsGasQnCpsPpk;
 
-      private ICalculation<DensityDTO> WetGasDensity;
-      private ICalculation<ChartYearDTO> ChartYearData;
-      private ICalculation<ChartMonthDTO> ChartMonthData;
+      private ICalculations<DensityDTO> WetGasDensity;
+      private ICalculations<ChartYearDTO> ChartYearData;
+      private ICalculations<ChartMonthDTO> ChartMonthData;
       private Mock<ICokeCbConsumptionDryCalc> MockCbDry;
 
       private Data Data;

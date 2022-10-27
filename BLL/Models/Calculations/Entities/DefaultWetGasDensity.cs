@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace BLL.Calculations.Entities
 {
-   public class DefaultWetGasDensity : ICalculations<DensityDTO>, ICalculation<DensityDTO>
+   public class DefaultWetGasDensity : ICalculations<DensityDTO>/*, ICalculation<DensityDTO>*/
    {
       private IWetDensity WetDensity;
       private IDryDensity DryDensity;

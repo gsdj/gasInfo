@@ -2,8 +2,8 @@
 {
    public class Quality
    {
-      public decimal W { get; set; }
-      public decimal A { get; set; }
-      public decimal V { get; set; }
+      public virtual decimal W { get; set; }
+      public virtual decimal A { get; set; }
+      public virtual decimal V { get; set; }
    }
 }

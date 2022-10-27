@@ -3,20 +3,20 @@ using BLL.DataHelpers;
 using BLL.DTO;
 using BLL.Interfaces.BaseCalculations;
 using BLL.Interfaces.BaseCalculations.Consumption;
-using BLL.Interfaces.BaseCalculations.Production;
 using BLL.Interfaces.Calculations;
+using BLL.Interfaces.Calculations.Production;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace BLL.Calculations.Entities
 {
-   public class DefaultOutputKG : ICalculation<OutputKgDTO>, ICalculations<OutputKgDTO>
+   public class DefaultOutputKG : /*ICalculation<OutputKgDTO>, */ICalculations<OutputKgDTO>
    {
       private IQcRc QcRc;
       private IConsGasQn<ConsGasQn4000> ConsGasQn;
       private ICalculation<DensityDTO> WetGas;
       private ICokeCbConsumptionDryCalc CbDry;
-      public DefaultOutputKG(ICalculation<DensityDTO> wetGas, IQcRc qcrc, IConsGasQn<ConsGasQn4000> qn4000, ICokeCbConsumptionDryCalc cbDry)
+      public DefaultOutputKG(ICalculations<DensityDTO> wetGas, IQcRc qcrc, IConsGasQn<ConsGasQn4000> qn4000, ICokeCbConsumptionDryCalc cbDry)
       {
          QcRc = qcrc;
          ConsGasQn = qn4000;

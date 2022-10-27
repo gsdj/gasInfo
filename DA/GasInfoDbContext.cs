@@ -1,6 +1,5 @@
 ﻿using DA.ConfigurationsEntities;
 using DA.Entities;
-using DA.Entities.Characteristics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -14,14 +13,16 @@ namespace DA
    public class GasInfoDbContext : DbContext
    {
       public GasInfoDbContext() { }
-      public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options) : base(options) { }
+      public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options, InitialData ID) : base(options) 
+      {
+         DataSettings = ID.GetDataSettings();
+      }
       public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options, Dictionary<string, InitialDataSettings> dataSettings) : base(options) 
       {
          DataSettings = dataSettings;
       }
 
       private Dictionary<string, InitialDataSettings> DataSettings;
-
       public DbSet<Pressure> Pressure { get; set; }
       public DbSet<DevicesKip> DevicesKip { get; set; }
       public DbSet<CharacteristicsDgAll> CharacteristicsDg { get; set; }
@@ -69,18 +70,20 @@ namespace DA
             .AddJsonFile("InitialDataSettings.json");
 
          IConfiguration config = builder.Build();
+
+         InitialData ID = new InitialData(config);
          
-         var ids = config.GetSection("TestData")
-            .Get<List<InitialDataSettings>>();
+         //var ids = config.GetSection("TestData")
+         //   .Get<List<InitialDataSettings>>();
 
-         ids.ForEach(x => x.Path = $"{currentDirectory}{x.Path}");
+         //ids.ForEach(x => x.Path = $"{currentDirectory}{x.Path}");
 
-         var idsD = ids.ToDictionary(x => x.FileName);
+         //var idsD = ids.ToDictionary(x => x.FileName);
 
          string connectionString = config.GetConnectionString("GasInfoMSSql");
          optionsBuilder.UseSqlServer(connectionString, opts => opts.CommandTimeout((int)TimeSpan.FromMinutes(10).TotalSeconds));
 
-         return new GasInfoDbContext(optionsBuilder.Options, idsD);
+         return new GasInfoDbContext(optionsBuilder.Options, ID.GetDataSettings());
       }
    }
 
@@ -88,5 +91,28 @@ namespace DA
    {
       public string FileName { get; set; }
       public string Path { get; set; }
+   }
+
+   public class InitialData
+   {
+      private IConfiguration Configuration;
+      public InitialData(IConfiguration config)
+      {
+         Configuration = config;
+      }
+      private Dictionary<string,InitialDataSettings> Settings { get; set; }
+
+      public Dictionary<string,InitialDataSettings> GetDataSettings()
+      {
+         var currentDirectory = Directory.GetCurrentDirectory();
+
+         var ids = Configuration.GetSection("TestData").Get<List<InitialDataSettings>>();
+
+         ids.ForEach(x => x.Path = $"{currentDirectory}{x.Path}");
+
+         Settings = ids.ToDictionary(x => x.FileName);
+
+         return Settings;
+      }
    }
 }

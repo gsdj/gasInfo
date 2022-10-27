@@ -8,10 +8,6 @@ namespace DA.Entities.Devices
 {
    public class DeviceMsKs : BaseDevice
    {
-      public DeviceMsKs()
-      {
-         Consumption = new ConsumptionMsKs();
-      }
-      public ConsumptionMsKs Consumption { get; set; }
+      public virtual ConsumptionMsKs Consumption { get; set; }
    }
 }

@@ -13,9 +13,9 @@ namespace Tests.Calculations.Entities
 {
    public class ConsumptionDgTest
    {
-      private Mock<ICalculation<DensityDTO>> MockCalcWetGas;
+      private Mock<ICalculations<DensityDTO>> MockCalcWetGas;
       private Mock<ICalcConsGasQnKc1> MockConsGasQnKc1;
-      private ICalculation<ConsumptionDgDTO> Target;
+      private ICalculations<ConsumptionDgDTO> Target;
       private Data Data;
 
       public ConsumptionDgTest()

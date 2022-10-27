@@ -1,13 +1,13 @@
 ﻿using BLL.Calculations.Base.Consumption;
-using BLL.Calculations.Base.Production;
 using BLL.Calculations.Entities.Consumption;
+using BLL.Calculations.Entities.Production;
 using BLL.DataHelpers;
 using BLL.DTO;
 using BLL.DTO.Consumption;
 using BLL.Interfaces.BaseCalculations.Consumption;
-using BLL.Interfaces.BaseCalculations.Production;
 using BLL.Interfaces.Calculations;
 using BLL.Interfaces.Calculations.ConsGasQn;
+using BLL.Interfaces.Calculations.Production;
 using DA.Entities;
 using Moq;
 using Newtonsoft.Json;
@@ -20,7 +20,7 @@ namespace Tests.Calculations.Entities
    public class ConsumtionDgPgTest
    {
       private Mock<ICalcConsGasQnKc1> MockConsGasQnKc1;
-      private Mock<ICalculation<DensityDTO>> MockCalcWetGas;
+      private Mock<ICalculations<DensityDTO>> MockCalcWetGas;
       private Mock<IConsPg> MockConsPg;
       private Mock<IConsPgCb> MockConsPgCb;
       private Mock<ISpecificConsDgFv> MockUdConsDgFv;

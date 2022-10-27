@@ -9,6 +9,10 @@ namespace DA
    public class SteamJsonReader : IJsonFileReader<SteamCharacteristics>
    {
       private string _path;
+      public SteamJsonReader()
+      {
+
+      }
       public SteamJsonReader(string path)
       {
          _path = path;

@@ -1,12 +1,12 @@
 ﻿using BLL.Calculations.Base;
 using BLL.Calculations.Base.Consumption;
-using BLL.Calculations.Base.Production;
 using BLL.Calculations.Entities;
+using BLL.Calculations.Entities.Production;
 using BLL.DTO;
 using BLL.Interfaces.BaseCalculations;
 using BLL.Interfaces.BaseCalculations.Consumption;
-using BLL.Interfaces.BaseCalculations.Production;
 using BLL.Interfaces.Calculations;
+using BLL.Interfaces.Calculations.Production;
 using BLL.Models.BaseModels.Production;
 using Newtonsoft.Json;
 using System;

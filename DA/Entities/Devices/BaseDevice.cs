@@ -2,7 +2,7 @@
 {
    public abstract class BaseDevice
    {
-      public int Pressure { get; set; } = 0;
-      public decimal Temperature { get; set; } = 0;
+      public virtual int Pressure { get; set; }
+      public virtual decimal Temperature { get; set; }
    }
 }

@@ -2,6 +2,7 @@
 using BLL.DTO.Consumption;
 using BLL.DTO.Input;
 using BLL.Interfaces;
+using BLL.Interfaces.Services.Input;
 using BLL.Interfaces.Services.Report;
 using DA.Interfaces;
 using System;
@@ -13,9 +14,9 @@ namespace BLL.Services.Reporting
    {
       private IUnitOfWork db;
       private IUnitOfCalc Calc;
-      private IMonthable<DevicesKipDTO> DevicesKip;
-      private IMonthable<PressureDTO> Pressure;
-      public ConsumptionKgService(IUnitOfWork uof, IUnitOfCalc calc, IMonthable<DevicesKipDTO> kip, IMonthable<PressureDTO> pressure)
+      private IDevicesKipService DevicesKip;
+      private IPressureService Pressure;
+      public ConsumptionKgService(IUnitOfWork uof, IUnitOfCalc calc, IDevicesKipService kip, IPressureService pressure)
       {
          db = uof;
          Calc = calc;

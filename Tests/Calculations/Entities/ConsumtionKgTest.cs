@@ -15,7 +15,7 @@ namespace Tests.Calculations.Entities
    {
       private Mock<ICalcConsGasQnKc2> MockConsGasQnKc2;
       private Mock<ICalcConsGasQnCpsPpk> MockConsGasQnCpsPpk;
-      private Mock<ICalculation<DensityDTO>> MockWetGasDensity;
+      private Mock<ICalculations<DensityDTO>> MockWetGasDensity;
 
       private ICalculation<ConsumptionKgDTO> ConsKg;
       private Data Data;

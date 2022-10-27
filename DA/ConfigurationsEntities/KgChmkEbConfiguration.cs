@@ -29,7 +29,7 @@ namespace DA.ConfigurationsEntities
          builder.HasKey(p => p.Id);
          builder.HasIndex(p => p.Date).IsUnique();
          builder.Property(p => p.Date).IsRequired().HasColumnType("Date");
-         builder.Property(p => p.Consumption).HasColumnType("numeric").HasPrecision(17, 10);
+         builder.Property(p => p.Consumption).HasColumnType("numeric").HasPrecision(20, 10);
 
          builder.HasData(data);
       }

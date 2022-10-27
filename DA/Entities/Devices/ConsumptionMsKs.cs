@@ -8,7 +8,7 @@ namespace DA.Entities.Devices
 {
    public class ConsumptionMsKs
    {
-      public decimal Ms { get; set; }
-      public decimal Ks { get; set; }
+      public virtual decimal Ms { get; set; }
+      public virtual decimal Ks { get; set; }
    }
 }

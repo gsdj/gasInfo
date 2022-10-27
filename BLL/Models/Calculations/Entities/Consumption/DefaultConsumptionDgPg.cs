@@ -2,16 +2,16 @@
 using BLL.DTO;
 using BLL.DTO.Consumption;
 using BLL.Interfaces.BaseCalculations.Consumption;
-using BLL.Interfaces.BaseCalculations.Production;
 using BLL.Interfaces.Calculations;
 using BLL.Interfaces.Calculations.ConsGasQn;
+using BLL.Interfaces.Calculations.Production;
 using BLL.Models.BaseModels.General;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace BLL.Calculations.Entities.Consumption
 {
-   public class DefaultConsumptionDgPg : ICalculation<ConsumptionDgPgDTO>, ICalculations<ConsumptionDgPgDTO>
+   public class DefaultConsumptionDgPg : /*ICalculation<ConsumptionDgPgDTO>, */ICalculations<ConsumptionDgPgDTO>
    {
       private ICalculation<DensityDTO> WetGas;
       private ICalcConsGasQnKc1 ConsGasQn;
@@ -19,7 +19,7 @@ namespace BLL.Calculations.Entities.Consumption
       private IConsPgCb ConsPgCb;
       private ISpecificConsDgFv UdConsDgFv;
       private ICokeCbConsumptionFvCalc CbFv;
-      public DefaultConsumptionDgPg(ICalculation<DensityDTO> wetGas, IConsPg consPg, IConsPgCb consPgCb,
+      public DefaultConsumptionDgPg(ICalculations<DensityDTO> wetGas, IConsPg consPg, IConsPgCb consPgCb,
          ICalcConsGasQnKc1 consQn, ISpecificConsDgFv udConsDgFv, ICokeCbConsumptionFvCalc cbFv)
       {
          WetGas = wetGas;

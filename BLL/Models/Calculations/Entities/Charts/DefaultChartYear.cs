@@ -4,16 +4,16 @@ using BLL.DTO;
 using BLL.DTO.Charts;
 using BLL.Interfaces.BaseCalculations;
 using BLL.Interfaces.BaseCalculations.Consumption;
-using BLL.Interfaces.BaseCalculations.Production;
 using BLL.Interfaces.Calculations;
 using BLL.Interfaces.Calculations.ConsGasQn;
+using BLL.Interfaces.Calculations.Production;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace BLL.Calculations.Entities.Charts
 {
-   public class DefaultChartYear : ICalculation<ChartYearDTO>, ICalculations<ChartYearDTO>
+   public class DefaultChartYear : /*ICalculation<ChartYearDTO>, */ICalculations<ChartYearDTO>
    {
       private ICalculation<DensityDTO> WetGas;
       private ICalcConsGasQnKc2 Kc2Qn;
@@ -21,7 +21,7 @@ namespace BLL.Calculations.Entities.Charts
       private IQcRc QcRc;
       private IConsGasQn<ConsGasQn4000> ConsGasQn;
       private ICokeCbConsumptionDryCalc CokeCbDry;
-      public DefaultChartYear(ICalculation<DensityDTO> wetgas, ICalcConsGasQnKc2 kc2Qn, ICalcConsGasQnCpsPpk cpsppkQn, ICokeCbConsumptionDryCalc cokeCbDry)
+      public DefaultChartYear(ICalculations<DensityDTO> wetgas, ICalcConsGasQnKc2 kc2Qn, ICalcConsGasQnCpsPpk cpsppkQn, ICokeCbConsumptionDryCalc cokeCbDry)
       {
          WetGas = wetgas;
          Kc2Qn = kc2Qn;

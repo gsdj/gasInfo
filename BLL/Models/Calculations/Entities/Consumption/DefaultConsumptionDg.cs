@@ -8,11 +8,11 @@ using System.Linq;
 
 namespace BLL.Calculations.Entities.Consumption
 {
-   public class DefaultConsumptionDg : ICalculation<ConsumptionDgDTO>, ICalculations<ConsumptionDgDTO>
+   public class DefaultConsumptionDg :/* ICalculation<ConsumptionDgDTO>, */ICalculations<ConsumptionDgDTO>
    {
       private ICalculation<DensityDTO> WetGas;
       private ICalcConsGasQnKc1 ConsGasQn;
-      public DefaultConsumptionDg(ICalculation<DensityDTO> wetGas, ICalcConsGasQnKc1 consQn)
+      public DefaultConsumptionDg(ICalculations<DensityDTO> wetGas, ICalcConsGasQnKc1 consQn)
       {
          WetGas = wetGas;
          ConsGasQn = consQn;

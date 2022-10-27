@@ -1,5 +1,5 @@
 ﻿using BLL.DTO;
-using BLL.Interfaces.BaseCalculations.Production;
+using BLL.Interfaces.Calculations.Production;
 using BLL.Interfaces.Services.Report;
 using DA.Entities;
 using DA.Interfaces;
@@ -28,14 +28,14 @@ namespace BLL.Services.Reporting
       }
       public IEnumerable<ProductionDTO> GetItemsByMonth(DateTime Date)
       {
-         return BuildProduction(db.AmmountCb.GetPerMonth(Date.Year, Date.Month));
+         return BuildProduction(db.AmmountCb.GetPerMonth(Date.Year, Date.Month).ToList());
          //return CalcProduction.CalcEntities(db.AmmountCb.GetPerMonth(Date.Year, Date.Month));
       }
 
       public IEnumerable<ProductionDTO> GetItemsByNowMonth()
       {
          DateTime dateNow = DateTime.Now;
-         return BuildProduction(db.AmmountCb.GetPerMonth(dateNow.Year, dateNow.Month));
+         return BuildProduction(db.AmmountCb.GetPerMonth(dateNow.Year, dateNow.Month).ToList());
          //return CalcProduction.CalcEntities(db.AmmountCb.GetPerMonth(dateNow.Year, dateNow.Month));
       }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BLL.Interfaces.Calculations
 {
-   public interface ICalculations<T>
+   public interface ICalculations<T> : ICalculation<T> where T : class
    {
       IEnumerable<T> CalcEntities(EnumerableData data);
    }

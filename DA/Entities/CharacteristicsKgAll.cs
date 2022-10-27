@@ -6,11 +6,6 @@ namespace DA.Entities
 {
    public class CharacteristicsKgAll : IGasEntity
    {
-      public CharacteristicsKgAll()
-      {
-         Kc1 = new KG();
-         Kc2 = new KG();
-      }
       public int Id { get; set; }
       public DateTime Date { get; set; }
       public KG Kc1 { get; set; }

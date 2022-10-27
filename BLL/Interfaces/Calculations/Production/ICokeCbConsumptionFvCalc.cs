@@ -1,7 +1,8 @@
-﻿using BLL.Models.BaseModels.General;
+﻿using BLL.Interfaces.BaseCalculations;
+using BLL.Models.BaseModels.General;
 using DA.Entities;
 
-namespace BLL.Interfaces.BaseCalculations.Production
+namespace BLL.Interfaces.Calculations.Production
 {
    public interface ICokeCbConsumptionFvCalc : ICalculations<AmmountCb, CbAll>, ICalculation<AmmountCb, CbAll> 
    {

@@ -6,11 +6,11 @@ namespace DA.Entities
 {
    public class CharacteristicsDgAll : IGasEntity
    {
-      public CharacteristicsDgAll()
-      {
-         Kc1 = new DG();
-         Kc2 = new DG();
-      }
+      //public CharacteristicsDgAll()
+      //{
+      //   Kc1 = new DG();
+      //   Kc2 = new DG();
+      //}
       public int Id { get; set; }
       public DateTime Date { get; set; }
       public DG Kc1 { get; set; }

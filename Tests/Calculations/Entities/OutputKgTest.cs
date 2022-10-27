@@ -1,9 +1,9 @@
-﻿using BLL.Calculations.Base.Production;
-using BLL.Calculations.Entities;
+﻿using BLL.Calculations.Entities;
+using BLL.Calculations.Entities.Production;
 using BLL.DataHelpers;
 using BLL.DTO;
-using BLL.Interfaces.BaseCalculations.Production;
 using BLL.Interfaces.Calculations;
+using BLL.Interfaces.Calculations.Production;
 using DA.Entities;
 using Moq;
 using Newtonsoft.Json;

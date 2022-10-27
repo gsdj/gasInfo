@@ -1,11 +1,12 @@
-﻿using BLL.Interfaces.BaseCalculations;
-using BLL.Interfaces.BaseCalculations.Production;
+﻿using BLL.Calculations.Base;
+using BLL.Interfaces.BaseCalculations;
+using BLL.Interfaces.Calculations.Production;
 using BLL.Models.BaseModels.Production;
 using DA.Entities;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BLL.Calculations.Base.Production
+namespace BLL.Calculations.Entities.Production
 {
    public class CokeCbDryCalc : ICokeCbDryCalc
    {

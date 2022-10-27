@@ -8,6 +8,6 @@ namespace DA.Entities.Devices
 {
    public abstract class DeviceWithTempBeforeHeating : BaseDevice
    {
-      public decimal TempBeforeHeating { get; set; } = 0;
+      public virtual decimal TempBeforeHeating { get; set; }
    }
 }

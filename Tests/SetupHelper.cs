@@ -183,13 +183,13 @@ namespace Tests
 
          return MockConsGasQnCpsPpk;
       }
-      public static Mock<ICalculation<DensityDTO>> WetGasDensityDefaultSetup()
+      public static Mock<ICalculations<DensityDTO>> WetGasDensityDefaultSetup()
       {
          Mock<ISteamCharacteristicsService> MockSteam = SteamSetup();
          Mock<IDryDensity> MockDryDensity = new Mock<IDryDensity>();
          Mock<IWetDensity> MockWetDensity = new Mock<IWetDensity>();
 
-         Mock<ICalculation<DensityDTO>> MockCalcWetGas = new Mock<ICalculation<DensityDTO>>();
+         Mock<ICalculations<DensityDTO>> MockCalcWetGas = new Mock<ICalculations<DensityDTO>>();
 
          var DryDensity1 = new DryDensity(MockSteam.Object);
 

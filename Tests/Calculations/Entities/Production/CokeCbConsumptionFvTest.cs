@@ -1,9 +1,9 @@
 ﻿using BLL.Calculations.Base;
 using BLL.Calculations.Base.Consumption;
-using BLL.Calculations.Base.Production;
+using BLL.Calculations.Entities.Production;
 using BLL.Interfaces.BaseCalculations;
 using BLL.Interfaces.BaseCalculations.Consumption;
-using BLL.Interfaces.BaseCalculations.Production;
+using BLL.Interfaces.Calculations.Production;
 using BLL.Models.BaseModels.General;
 using Newtonsoft.Json;
 using Xunit;
