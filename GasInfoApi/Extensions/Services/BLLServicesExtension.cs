@@ -38,8 +38,7 @@ namespace GasInfoApi.Extensions.Services
          services.AddScoped<IChmkEbService, ChmkEbService>();
          #endregion
          #region Info
-         services.AddScoped<IChartMonthService, ChartMonthService>();
-         services.AddScoped<IChartYearService, ChartYearService>();
+         services.AddScoped<IChartService, ChartService>();
          services.AddScoped<IInfoSheetService, InfoSheetService>();
          #endregion
          #region Reporting

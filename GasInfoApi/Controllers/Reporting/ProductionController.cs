@@ -1,28 +1,25 @@
 ﻿using BLL.DTO;
 using BLL.Interfaces.Services.Report;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GasInfoApi.Controllers
+namespace GasInfoApi.Controllers.Reporting
 {
+   [Route("api/Reporting/[controller]")]
+   [Produces("application/json")]
    [ApiController]
-   [Route("[controller]")]
    public class ProductionController : ControllerBase
    {
-      private readonly ILogger<ProductionController> _logger;
       private readonly IProductionService _service;
-
-      public ProductionController(ILogger<ProductionController> logger, IProductionService service)
+      public ProductionController(IProductionService service)
       {
-         _logger = logger;
          _service = service;
       }
-
-      [HttpGet]
+      // GET: api/<ProductionController>
+      [HttpGet("GetByDateMonth/{date}")]
       public IEnumerable<ProductionDTO> Get(DateTime? date)
       {
          var dt = new DateTime(2019, 01, 01);
