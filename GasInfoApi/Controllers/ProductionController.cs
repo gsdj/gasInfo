@@ -30,5 +30,13 @@ namespace GasInfoApi.Controllers
          var result = _service.GetItemsByMonth(Date);
          return result;
       }
+
+      [HttpGet("files")]
+      public async Task<ActionResult> GetFile()
+      {
+         string fn = "SteamCharacteristics.json";
+         byte[] fileContent = await System.IO.File.ReadAllBytesAsync($"wwwroot\\files\\{fn}");
+         return File(fileContent, "application/octet-stream", fn);
+      }
    }
 }
