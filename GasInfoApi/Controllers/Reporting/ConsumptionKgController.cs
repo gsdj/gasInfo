@@ -1,8 +1,8 @@
-﻿using BLL.Interfaces.Services.Report;
+﻿using BLL.DTO.Consumption;
+using BLL.Interfaces.Services.Report;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GasInfoApi.Controllers.Reporting
@@ -18,10 +18,26 @@ namespace GasInfoApi.Controllers.Reporting
          _service = service;
       }
       // GET: api/<ConsumptionKgController>
-      [HttpGet("{date}")]
-      public IEnumerable<string> Get(DateTime? date)
+      [HttpGet("GetByDateMonth/{date}")]
+      public IEnumerable<ConsumptionKgDTO> Get(DateTime? date)
       {
-         return new string[] { "value1", "value2" };
+         #if DEBUG
+            var dt = new DateTime(2019, 01, 01);
+         #else
+            var dt = DateTime.Now;
+         #endif
+
+         DateTime Date = date ?? dt;
+         var result = _service.GetItemsByMonth(Date);
+         return result;
+      }
+
+      [HttpGet("ReportExcel/{date}")]
+      public async Task<ActionResult> GetFile()
+      {
+         string fn = "SteamCharacteristics.json";
+         byte[] fileContent = await System.IO.File.ReadAllBytesAsync($"wwwroot\\files\\{fn}");
+         return File(fileContent, "application/octet-stream", fn);
       }
    }
 }

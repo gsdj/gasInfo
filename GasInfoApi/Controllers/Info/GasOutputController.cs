@@ -1,13 +1,13 @@
-﻿using BLL.Interfaces.Services.Info;
+﻿using BLL.DTO.Charts;
+using BLL.Interfaces.Services.Info;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GasInfoApi.Controllers.Info
 {
    [Route("api/Info/[controller]")]
+   [Produces("application/json")]
    [ApiController]
    public class GasOutputController : ControllerBase
    {
@@ -18,9 +18,17 @@ namespace GasInfoApi.Controllers.Info
       }
       // GET: api/<GasOutputController>
       [HttpGet("{date}")]
-      public IEnumerable<string> Get(DateTime date)
+      public IEnumerable<ChartMonthDTO> Get(DateTime? date)
       {
-         return new string[] { "value1", "value2" };
+         #if DEBUG
+            var dt = new DateTime(2019, 01, 01);
+         #else
+            var dt = DateTime.Now;
+         #endif
+
+         DateTime Date = date ?? dt;
+         var result = _service.GasOutputPerMonth(Date);
+         return result;
       }
    }
 }
