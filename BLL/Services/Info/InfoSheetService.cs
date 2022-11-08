@@ -27,17 +27,17 @@ namespace BLL.Services.Info
       }
       public InfoSheetDTO GetItemByDate(DateTime Date)
       {
-         var charKg = db.CharacteristicsKg.GetPerMonth(Date.Year, Date.Month);
+         var charKg = db.CharacteristicsKg.GetPerMonth(Date.Year, Date.Month).ToList();
          var charKgC = Calc.CharacteristicsKg.CalcEntities(charKg);
          var charDgC = Calc.CharacteristicsDg.CalcEntities(db.CharacteristicsDg.GetPerMonth(Date.Year, Date.Month));
-         var prod = Calc.Production.CalcEntities(db.AmmountCb.GetPerMonth(Date.Year, Date.Month));
+         var prod = Calc.Production.CalcEntities(db.AmmountCb.GetPerMonth(Date.Year, Date.Month).ToList());
          var pressure = Pressure.GetItemsByMonth(Date);
          var kip = DevicesKip.GetItemsByMonth(Date);
          var tec = Calc.Tec.CalcEntities(db.Tec.GetPerMonth(Date.Year, Date.Month));
          var asdue = Asdue.GetItemsByMonth(Date);
-         var KgChmkEb = db.KgChmkEb.GetPerMonth(Date.Year, Date.Month);
-         var quality = db.Quality.GetPerMonth(Date.Year, Date.Month);
-         var cbs = db.AmmountCb.GetPerMonth(Date.Year, Date.Month);
+         var KgChmkEb = db.KgChmkEb.GetPerMonth(Date.Year, Date.Month).ToList();
+         var quality = db.Quality.GetPerMonth(Date.Year, Date.Month).ToList();
+         var cbs = db.AmmountCb.GetPerMonth(Date.Year, Date.Month).ToList();
 
          var qualities = Calc.Quality.CalcEntities(quality, charKg);
 

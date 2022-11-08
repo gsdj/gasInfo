@@ -4,6 +4,17 @@ namespace BLL.Models.BaseModels.InfoSheet
 {
    public class ConsumptionKg
    {
+      public ConsumptionKg()
+      {
+         MonthCb = new CbKc();
+         DayCb = new CbKc();
+         HourCb = new CbKc();
+         UdSvCb = new CbKc();
+         MonthCpsPpk = new CpsPpk();
+         DayCpsPpk = new CpsPpk();
+         HourCpsPpk = new CpsPpk();
+         UdSvCpsPpk = new CpsPpk();
+      }
       public CbKc MonthCb { get; set; } // ст.м³ с начала месяца
       public CbKc DayCb { get; set; } // ст.м³ (4000кКал/м³)
       public CbKc HourCb { get; set; } // ст.м³/час

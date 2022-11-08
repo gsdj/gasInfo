@@ -860,7 +860,7 @@
     },
     "Pkc": {
       "Pressure": "1024",
-      "Temperature": "23,9",
+      "Temperature": "23.9",
       "Consumption": {
         "Ms": "10283",
         "Ks": "12053"
@@ -2463,7 +2463,7 @@
     "Cb5": {
       "Pressure": "368",
       "Temperature": "48.6",
-      "TempBeforeHeating": "22,3",
+      "TempBeforeHeating": "22.3",
       "Consumption": "9578"
     },
     "Cb6": {

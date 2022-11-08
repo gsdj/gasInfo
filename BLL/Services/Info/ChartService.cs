@@ -6,6 +6,7 @@ using BLL.Interfaces.Services.Input;
 using DA.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BLL.Services.Info
 {
@@ -27,15 +28,15 @@ namespace BLL.Services.Info
 
       public IEnumerable<ChartMonthDTO> GasOutputPerMonth(DateTime Date)
       {
-         var charKg = db.CharacteristicsKg.GetPerMonth(Date.Year, Date.Month);
+         var charKg = db.CharacteristicsKg.GetPerMonth(Date.Year, Date.Month).ToList();
          var charKgC = Calc.CharacteristicsKg.CalcEntities(charKg);
          var charDgC = Calc.CharacteristicsDg.CalcEntities(db.CharacteristicsDg.GetPerMonth(Date.Year, Date.Month));
-         var KgChmkEb = db.KgChmkEb.GetPerMonth(Date.Year, Date.Month);
-         var quality = db.Quality.GetPerMonth(Date.Year, Date.Month);
+         var KgChmkEb = db.KgChmkEb.GetPerMonth(Date.Year, Date.Month).ToList();
+         var quality = db.Quality.GetPerMonth(Date.Year, Date.Month).ToList();
          var pressure = Pressure.GetItemsByMonth(Date);
          var kip = DevicesKip.GetItemsByMonth(Date);
          var asdue = Asdue.GetItemsByMonth(Date);
-         var cbs = db.AmmountCb.GetPerMonth(Date.Year, Date.Month);
+         var cbs = db.AmmountCb.GetPerMonth(Date.Year, Date.Month).ToList();
 
          var qualities = Calc.Quality.CalcEntities(quality, charKg);
 
@@ -60,15 +61,15 @@ namespace BLL.Services.Info
       {
          int Year = Date.Year;
 
-         var charKg = db.CharacteristicsKg.GetPerYear(Date.Year);
+         var charKg = db.CharacteristicsKg.GetPerYear(Date.Year).ToList();
          var charKgC = Calc.CharacteristicsKg.CalcEntities(charKg);
          var charDgC = Calc.CharacteristicsDg.CalcEntities(db.CharacteristicsDg.GetPerYear(Date.Year));
-         var KgChmkEb = db.KgChmkEb.GetPerYear(Date.Year);
-         var quality = db.Quality.GetPerYear(Date.Year);
+         var KgChmkEb = db.KgChmkEb.GetPerYear(Date.Year).ToList();
+         var quality = db.Quality.GetPerYear(Date.Year).ToList();
          var pressure = Pressure.GetItemsByYear(Date.Year);
          var kip = DevicesKip.GetItemsByYear(Date.Year);
          var asdue = Asdue.GetItemsByYear(Date.Year);
-         var cbs = db.AmmountCb.GetPerYear(Date.Year);
+         var cbs = db.AmmountCb.GetPerYear(Date.Year).ToList();
 
          var qualities = Calc.Quality.CalcEntities(quality, charKg);
 

@@ -7,6 +7,7 @@ using BLL.Interfaces.Services.Report;
 using DA.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BLL.Services.Reporting
 {
@@ -41,7 +42,7 @@ namespace BLL.Services.Reporting
          var pressure = Pressure.GetItemsByMonth(Date);
          var kip = DevicesKip.GetItemsByMonth(Date);
          var tec = Calc.Tec.CalcEntities(Db.Tec.GetPerMonth(Date.Year, Date.Month));
-         var cbs = Db.AmmountCb.GetPerMonth(Date.Year, Date.Month);
+         var cbs = Db.AmmountCb.GetPerMonth(Date.Year, Date.Month).ToList();
 
          var reportKgData = new ReportKgEnumData
          {

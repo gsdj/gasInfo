@@ -5,6 +5,15 @@ namespace BLL.DTO
 {
    public class InfoSheetDTO : Entity
    {
+      public InfoSheetDTO()
+      {
+         CharacteristicsGas = new CharacteristicsKgDg();
+         OutputKg = new OutputKg();
+         ConsumptionKg = new ConsumptionKg();
+         TradeKg = new TradeKg();
+         ConsumptionDg = new ConsumptionDg();
+         ConsumptionPg = new ConsumptionPg();
+      }
       public CharacteristicsKgDg CharacteristicsGas { get; set; }
       //public decimal AvgMkDGQn { get; set; } = 0;
       //public decimal AvgMkDgPkg { get; set; } = 0;

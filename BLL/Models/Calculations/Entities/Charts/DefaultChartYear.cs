@@ -46,13 +46,19 @@ namespace BLL.Calculations.Entities.Charts
             join t3quality in quality on new { t2charKg.Date } equals new { t3quality.Date }
             join t4asdue in asdue on new { t3quality.Date } equals new { t4asdue.Date }
             join t5kgChmk in kgChmk on new { t4asdue.Date } equals new { t5kgChmk.Date }
+            join t6charDg in data.CharacteristicsDg on new { t5kgChmk.Date } equals new { t6charDg.Date }
+            join t7pressure in data.Pressure on new { t6charDg.Date } equals new { t7pressure.Date }
+            join t8kip in data.Kip on new { t7pressure.Date } equals new { t8kip.Date }
             select new ChartData
             {
                AmmountCb = t1cbs,
                CharacteristicsKg = t2charKg,
                Quality = t3quality,
                Asdue = t4asdue,
-               KgChmkEb = t5kgChmk
+               KgChmkEb = t5kgChmk,
+               CharacteristicsDg = t6charDg,
+               Pressure = t7pressure,
+               Kip = t8kip,
             };
 
          List<ChartYearDTO> chartYearDTO = new List<ChartYearDTO>(d.Count());
