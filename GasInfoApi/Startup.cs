@@ -63,6 +63,8 @@ namespace GasInfoApi
          services.AddConsQnCalculations();
          services.AddEntitiesCalculation();
          services.AddBLLServices();
+
+         services.AddCors();
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,6 +80,8 @@ namespace GasInfoApi
          app.UseDefaultFiles();
          app.UseStaticFiles();
          app.UseRouting();
+
+         app.UseCors(builder => builder.AllowAnyOrigin());
 
          app.UseAuthorization();
 
