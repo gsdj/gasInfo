@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace GasInfoApi.Controllers.Reporting
 {
@@ -39,7 +40,7 @@ namespace GasInfoApi.Controllers.Reporting
 
          List<HeaderTh> h1 = new List<HeaderTh>
          {
-            new HeaderTh { RowSpan = 1, ColSpan = 1, Name = "Дата" },
+            new HeaderTh { RowSpan = 2, ColSpan = 1, Name = "Дата" },
             new HeaderTh { RowSpan = 1, ColSpan = 2, Name = "Кц1" },
             new HeaderTh { RowSpan = 1, ColSpan = 2, Name = "Кц2" },
          };
@@ -67,6 +68,7 @@ namespace GasInfoApi.Controllers.Reporting
    {
       public int Id { get; set; }
       public DateTime Date { get; set; }
+      [JsonPropertyName("firstname")]
       public decimal Cb1 { get; set; }
       public decimal Cb2 { get; set; }
       public decimal Cb3 { get; set; }
