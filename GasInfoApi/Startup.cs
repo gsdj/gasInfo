@@ -19,8 +19,9 @@ namespace GasInfoApi
       {
          Configuration = configuration;
          _env = env;
+         
          var builder = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json")
+            .AddJsonFile($"appsettings.{_env.EnvironmentName}.json")
             .AddJsonFile("InitialDataSettings.json");
 
          Configuration = builder.Build();

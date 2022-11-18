@@ -13,14 +13,14 @@ namespace Tests
          {
             Id = 1,
             Date = new DateTime(2019, 1, 1),
-            Kc1 =
+            Kc1 = new DG
             {
                H2 = 5.10m,
                CO = 21.20m,
                CO2 = 16.50m,
                N2 = 56.90m,
             },
-            Kc2 =
+            Kc2 = new DG
             {
                H2 = 5.10m,
                CO = 21.20m,
@@ -35,7 +35,7 @@ namespace Tests
          {
             Id = 1,
             Date = new DateTime(2019, 1, 1),
-            Kc1 =
+            Kc1 = new KG
             {
                CO2 = 2.8m,
                O2 = 1.7m,
@@ -45,7 +45,7 @@ namespace Tests
                H2 = 58.6m,
                N2 = 6.1m,
             },
-            Kc2 =
+            Kc2 = new KG
             {
                CO2 = 2.8m,
                O2 = 0.8m,
@@ -62,13 +62,13 @@ namespace Tests
          return new QualityAll
          {
             Date = new DateTime(2019, 1, 1),
-            Kc1 =
+            Kc1 = new Quality
             {
                W = 8.1m,
                A = 10.3m,
                V = 28.9m,
             },
-            Kc2 =
+            Kc2 = new Quality
             {
                W = 8.1m,
                A = 10.1m,
