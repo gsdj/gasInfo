@@ -10,10 +10,19 @@ services:
       - "49153:5003"
   sqldb:
     image: mcr.microsoft.com/mssql/server:2022-latest
+    volumes: 
+      - dbdata:/var/opt/mssql/data
     container_name: sql_gas_info
     environment:
       - SA_PASSWORD=MyPass@word
       - ACCEPT_EULA=Y
       - MYSQL_PID=Express
     ports:
-      - "1440:1433"    
+      - "1440:1433"   
+volumes:
+  dbdata:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: 'd/mount/sql'
