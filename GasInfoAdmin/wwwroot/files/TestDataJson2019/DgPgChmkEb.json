@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 1,
+    "Date": "01.1.2019",
+    "ConsDgCb1": "9914000",
+    "ConsDgCb2": "10992000",
+    "ConsDgCb3": "0",
+    "ConsDgCb4": "11247000",
+    "ConsPgGru1": "157000",
+    "ConsPgGru2": "197000"
+  },
+  {
+    "Id": 2,
+    "Date": "01.2.2019",
+    "ConsDgCb1": "11686000",
+    "ConsDgCb2": "13793000",
+    "ConsDgCb3": "0",
+    "ConsDgCb4": "14300000",
+    "ConsPgGru1": "225000",
+    "ConsPgGru2": "283000"
+  }
+]

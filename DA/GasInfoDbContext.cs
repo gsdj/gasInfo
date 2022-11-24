@@ -13,6 +13,7 @@ namespace DA
    public class GasInfoDbContext : DbContext
    {
       public GasInfoDbContext() { }
+      public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options) : base(options) { }
       public GasInfoDbContext(DbContextOptions<GasInfoDbContext> options, InitialData ID) : base(options) 
       {
          DataSettings = ID.GetDataSettings();

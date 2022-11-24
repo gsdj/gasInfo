@@ -1,0 +1,3164 @@
+[
+  {
+    "Id": 1,
+    "Date": "01.1.2019",
+    "Cu1": {
+      "Pressure": "1124",
+      "Temperature": "34",
+      "Consumption": "1664569"
+    },
+    "Cu2": {
+      "Pressure": "744",
+      "Temperature": "31",
+      "Consumption": "709345"
+    },
+    "Cb5": {
+      "Pressure": "391",
+      "Temperature": "61",
+      "TempBeforeHeating": "26",
+      "Consumption": "7435"
+    },
+    "Cb6": {
+      "Pressure": "391",
+      "Temperature": "65",
+      "TempBeforeHeating": "26",
+      "Consumption": "7218"
+    },
+    "Cb7": {
+      "Pressure": "446",
+      "Temperature": "62",
+      "TempBeforeHeating": "31",
+      "Consumption": {
+        "Ms": "2542",
+        "Ks": "2539"
+      }
+    },
+    "Cb8": {
+      "Pressure": "427",
+      "Temperature": "57",
+      "TempBeforeHeating": "30",
+      "Consumption": {
+        "Ms": "2570",
+        "Ks": "3013"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1030",
+      "Temperature": "26",
+      "Consumption": {
+        "Ms": "12576",
+        "Ks": "11665"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1040",
+      "Temperature": "26",
+      "Consumption": "18516"
+    },
+    "Spo": {
+      "Pressure": "610",
+      "Temperature": "19",
+      "Consumption": "29001"
+    },
+    "Gsuf45": {
+      "Pressure": "1046",
+      "Temperature": "36",
+      "Consumption": "5609"
+    },
+    "Cb1": {
+      "Pressure": "391",
+      "Temperature": "28",
+      "Consumption": "924484"
+    },
+    "Cb2": {
+      "Pressure": "391",
+      "Temperature": "28",
+      "Consumption": "1062402"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "414",
+      "Temperature": "22",
+      "Consumption": "1041164"
+    },
+    "Gru1": {
+      "Pressure": "627",
+      "Temperature": "-11",
+      "Consumption": "16584"
+    },
+    "Gru2": {
+      "Pressure": "425",
+      "Temperature": "-10,4",
+      "Consumption": "14976"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 2,
+    "Date": "01.2.2019",
+    "Cu1": {
+      "Pressure": "1147",
+      "Temperature": "34",
+      "Consumption": "1673337"
+    },
+    "Cu2": {
+      "Pressure": "757",
+      "Temperature": "31",
+      "Consumption": "708767"
+    },
+    "Cb5": {
+      "Pressure": "381",
+      "Temperature": "58",
+      "TempBeforeHeating": "24",
+      "Consumption": "7462"
+    },
+    "Cb6": {
+      "Pressure": "388",
+      "Temperature": "62",
+      "TempBeforeHeating": "24",
+      "Consumption": "6917"
+    },
+    "Cb7": {
+      "Pressure": "469",
+      "Temperature": "61",
+      "TempBeforeHeating": "31",
+      "Consumption": {
+        "Ms": "2259",
+        "Ks": "2350"
+      }
+    },
+    "Cb8": {
+      "Pressure": "461",
+      "Temperature": "61",
+      "TempBeforeHeating": "30",
+      "Consumption": {
+        "Ms": "2227",
+        "Ks": "2672"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1043",
+      "Temperature": "27",
+      "Consumption": {
+        "Ms": "14354",
+        "Ks": "12003"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1059",
+      "Temperature": "27",
+      "Consumption": "18841"
+    },
+    "Spo": {
+      "Pressure": "893",
+      "Temperature": "9",
+      "Consumption": "29524"
+    },
+    "Gsuf45": {
+      "Pressure": "1067",
+      "Temperature": "36",
+      "Consumption": "3674"
+    },
+    "Cb1": {
+      "Pressure": "397",
+      "Temperature": "27",
+      "Consumption": "919649"
+    },
+    "Cb2": {
+      "Pressure": "397",
+      "Temperature": "27",
+      "Consumption": "1004744"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "419",
+      "Temperature": "21",
+      "Consumption": "1040120"
+    },
+    "Gru1": {
+      "Pressure": "618",
+      "Temperature": "-8",
+      "Consumption": "15600"
+    },
+    "Gru2": {
+      "Pressure": "434",
+      "Temperature": "-7.6",
+      "Consumption": "13920"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 3,
+    "Date": "01.3.2019",
+    "Cu1": {
+      "Pressure": "1138",
+      "Temperature": "34",
+      "Consumption": "1685176"
+    },
+    "Cu2": {
+      "Pressure": "679",
+      "Temperature": "30",
+      "Consumption": "733009"
+    },
+    "Cb5": {
+      "Pressure": "385",
+      "Temperature": "59",
+      "TempBeforeHeating": "25",
+      "Consumption": "7826"
+    },
+    "Cb6": {
+      "Pressure": "380",
+      "Temperature": "64",
+      "TempBeforeHeating": "25",
+      "Consumption": "7779"
+    },
+    "Cb7": {
+      "Pressure": "446",
+      "Temperature": "55",
+      "TempBeforeHeating": "32",
+      "Consumption": {
+        "Ms": "2476",
+        "Ks": "2593"
+      }
+    },
+    "Cb8": {
+      "Pressure": "410",
+      "Temperature": "62",
+      "TempBeforeHeating": "30",
+      "Consumption": {
+        "Ms": "2562",
+        "Ks": "3002"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1054",
+      "Temperature": "26",
+      "Consumption": {
+        "Ms": "10198",
+        "Ks": "11015"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1066",
+      "Temperature": "26",
+      "Consumption": "19185"
+    },
+    "Spo": {
+      "Pressure": "866",
+      "Temperature": "6",
+      "Consumption": "28485"
+    },
+    "Gsuf45": {
+      "Pressure": "1076",
+      "Temperature": "38",
+      "Consumption": "3484"
+    },
+    "Cb1": {
+      "Pressure": "392",
+      "Temperature": "28",
+      "Consumption": "923255"
+    },
+    "Cb2": {
+      "Pressure": "392",
+      "Temperature": "28",
+      "Consumption": "1032434"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "411",
+      "Temperature": "23",
+      "Consumption": "1076294"
+    },
+    "Gru1": {
+      "Pressure": "624",
+      "Temperature": "-7",
+      "Consumption": "15672"
+    },
+    "Gru2": {
+      "Pressure": "438",
+      "Temperature": "-11.4",
+      "Consumption": "14040"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 4,
+    "Date": "01.4.2019",
+    "Cu1": {
+      "Pressure": "1120",
+      "Temperature": "34",
+      "Consumption": "1699491"
+    },
+    "Cu2": {
+      "Pressure": "811",
+      "Temperature": "29",
+      "Consumption": "727462"
+    },
+    "Cb5": {
+      "Pressure": "384",
+      "Temperature": "55",
+      "TempBeforeHeating": "23",
+      "Consumption": "6991"
+    },
+    "Cb6": {
+      "Pressure": "392",
+      "Temperature": "60",
+      "TempBeforeHeating": "23",
+      "Consumption": "7455"
+    },
+    "Cb7": {
+      "Pressure": "461",
+      "Temperature": "54",
+      "TempBeforeHeating": "30",
+      "Consumption": {
+        "Ms": "2394",
+        "Ks": "2464"
+      }
+    },
+    "Cb8": {
+      "Pressure": "440",
+      "Temperature": "61",
+      "TempBeforeHeating": "28",
+      "Consumption": {
+        "Ms": "2441",
+        "Ks": "2735"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1027",
+      "Temperature": "22",
+      "Consumption": {
+        "Ms": "10001",
+        "Ks": "11424"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1035",
+      "Temperature": "22",
+      "Consumption": "19064"
+    },
+    "Spo": {
+      "Pressure": "795",
+      "Temperature": "9",
+      "Consumption": "28831"
+    },
+    "Gsuf45": {
+      "Pressure": "1049",
+      "Temperature": "36",
+      "Consumption": "5953"
+    },
+    "Cb1": {
+      "Pressure": "404",
+      "Temperature": "26",
+      "Consumption": "939789"
+    },
+    "Cb2": {
+      "Pressure": "404",
+      "Temperature": "26",
+      "Consumption": "1064600"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "430",
+      "Temperature": "20",
+      "Consumption": "1037908"
+    },
+    "Gru1": {
+      "Pressure": "630",
+      "Temperature": "-12",
+      "Consumption": "16272"
+    },
+    "Gru2": {
+      "Pressure": "429",
+      "Temperature": "-10.9",
+      "Consumption": "14664"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 5,
+    "Date": "01.5.2019",
+    "Cu1": {
+      "Pressure": "1141",
+      "Temperature": "33",
+      "Consumption": "1676852"
+    },
+    "Cu2": {
+      "Pressure": "804",
+      "Temperature": "29",
+      "Consumption": "735857"
+    },
+    "Cb5": {
+      "Pressure": "373",
+      "Temperature": "54",
+      "TempBeforeHeating": "24",
+      "Consumption": "7482"
+    },
+    "Cb6": {
+      "Pressure": "389",
+      "Temperature": "59",
+      "TempBeforeHeating": "24",
+      "Consumption": "7165"
+    },
+    "Cb7": {
+      "Pressure": "470",
+      "Temperature": "55",
+      "TempBeforeHeating": "30",
+      "Consumption": {
+        "Ms": "2425",
+        "Ks": "2577"
+      }
+    },
+    "Cb8": {
+      "Pressure": "430",
+      "Temperature": "61",
+      "TempBeforeHeating": "28",
+      "Consumption": {
+        "Ms": "2432",
+        "Ks": "2844"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1054",
+      "Temperature": "25",
+      "Consumption": {
+        "Ms": "9545",
+        "Ks": "11073"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1056",
+      "Temperature": "25",
+      "Consumption": "19182"
+    },
+    "Spo": {
+      "Pressure": "692",
+      "Temperature": "7",
+      "Consumption": "28371"
+    },
+    "Gsuf45": {
+      "Pressure": "1070",
+      "Temperature": "36",
+      "Consumption": "4960"
+    },
+    "Cb1": {
+      "Pressure": "403",
+      "Temperature": "23",
+      "Consumption": "912882"
+    },
+    "Cb2": {
+      "Pressure": "403",
+      "Temperature": "23",
+      "Consumption": "1024448"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "427",
+      "Temperature": "17",
+      "Consumption": "1024275"
+    },
+    "Gru1": {
+      "Pressure": "623",
+      "Temperature": "-12",
+      "Consumption": "16152"
+    },
+    "Gru2": {
+      "Pressure": "430",
+      "Temperature": "-11.2",
+      "Consumption": "14664"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 6,
+    "Date": "01.6.2019",
+    "Cu1": {
+      "Pressure": "1175",
+      "Temperature": "33",
+      "Consumption": "1714918"
+    },
+    "Cu2": {
+      "Pressure": "746",
+      "Temperature": "30",
+      "Consumption": "737096"
+    },
+    "Cb5": {
+      "Pressure": "390",
+      "Temperature": "56",
+      "TempBeforeHeating": "24",
+      "Consumption": "7670"
+    },
+    "Cb6": {
+      "Pressure": "389",
+      "Temperature": "61",
+      "TempBeforeHeating": "24",
+      "Consumption": "7323"
+    },
+    "Cb7": {
+      "Pressure": "463",
+      "Temperature": "59",
+      "TempBeforeHeating": "30",
+      "Consumption": {
+        "Ms": "2438",
+        "Ks": "2621"
+      }
+    },
+    "Cb8": {
+      "Pressure": "422",
+      "Temperature": "63",
+      "TempBeforeHeating": "28",
+      "Consumption": {
+        "Ms": "2463",
+        "Ks": "2892"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1069",
+      "Temperature": "28",
+      "Consumption": {
+        "Ms": "9707",
+        "Ks": "11658"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1079",
+      "Temperature": "28",
+      "Consumption": "18936"
+    },
+    "Spo": {
+      "Pressure": "903",
+      "Temperature": "11",
+      "Consumption": "28780"
+    },
+    "Gsuf45": {
+      "Pressure": "1097",
+      "Temperature": "35",
+      "Consumption": "5399"
+    },
+    "Cb1": {
+      "Pressure": "374",
+      "Temperature": "22",
+      "Consumption": "938413"
+    },
+    "Cb2": {
+      "Pressure": "374",
+      "Temperature": "22",
+      "Consumption": "1057257"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "400",
+      "Temperature": "16",
+      "Consumption": "1018196"
+    },
+    "Gru1": {
+      "Pressure": "620",
+      "Temperature": "-14",
+      "Consumption": "16008"
+    },
+    "Gru2": {
+      "Pressure": "434",
+      "Temperature": "-14",
+      "Consumption": "14640"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 7,
+    "Date": "01.7.2019",
+    "Cu1": {
+      "Pressure": "1145",
+      "Temperature": "34",
+      "Consumption": "1701660"
+    },
+    "Cu2": {
+      "Pressure": "725",
+      "Temperature": "30",
+      "Consumption": "722180"
+    },
+    "Cb5": {
+      "Pressure": "396",
+      "Temperature": "62",
+      "TempBeforeHeating": "25",
+      "Consumption": "7725"
+    },
+    "Cb6": {
+      "Pressure": "378",
+      "Temperature": "65",
+      "TempBeforeHeating": "25",
+      "Consumption": "7303"
+    },
+    "Cb7": {
+      "Pressure": "458",
+      "Temperature": "59",
+      "TempBeforeHeating": "31",
+      "Consumption": {
+        "Ms": "2483",
+        "Ks": "2595"
+      }
+    },
+    "Cb8": {
+      "Pressure": "425",
+      "Temperature": "55",
+      "TempBeforeHeating": "29",
+      "Consumption": {
+        "Ms": "2413",
+        "Ks": "2813"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1039",
+      "Temperature": "29",
+      "Consumption": {
+        "Ms": "10748",
+        "Ks": "11613"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1087",
+      "Temperature": "29",
+      "Consumption": "19037"
+    },
+    "Spo": {
+      "Pressure": "915",
+      "Temperature": "10",
+      "Consumption": "28405"
+    },
+    "Gsuf45": {
+      "Pressure": "1103",
+      "Temperature": "36",
+      "Consumption": "4596"
+    },
+    "Cb1": {
+      "Pressure": "424",
+      "Temperature": "29",
+      "Consumption": "868483"
+    },
+    "Cb2": {
+      "Pressure": "424",
+      "Temperature": "29",
+      "Consumption": "966859"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "450",
+      "Temperature": "23",
+      "Consumption": "989561"
+    },
+    "Gru1": {
+      "Pressure": "626",
+      "Temperature": "-14",
+      "Consumption": "15984"
+    },
+    "Gru2": {
+      "Pressure": "433",
+      "Temperature": "-13.5",
+      "Consumption": "14712"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 8,
+    "Date": "01.8.2019",
+    "Cu1": {
+      "Pressure": "1141",
+      "Temperature": "34",
+      "Consumption": "1698772"
+    },
+    "Cu2": {
+      "Pressure": "750",
+      "Temperature": "30",
+      "Consumption": "729908"
+    },
+    "Cb5": {
+      "Pressure": "392",
+      "Temperature": "60",
+      "TempBeforeHeating": "24",
+      "Consumption": "7800"
+    },
+    "Cb6": {
+      "Pressure": "389",
+      "Temperature": "63",
+      "TempBeforeHeating": "24",
+      "Consumption": "7402"
+    },
+    "Cb7": {
+      "Pressure": "456",
+      "Temperature": "59",
+      "TempBeforeHeating": "30",
+      "Consumption": {
+        "Ms": "2609",
+        "Ks": "2652"
+      }
+    },
+    "Cb8": {
+      "Pressure": "422",
+      "Temperature": "54",
+      "TempBeforeHeating": "28",
+      "Consumption": {
+        "Ms": "2460",
+        "Ks": "2876"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1040",
+      "Temperature": "25",
+      "Consumption": {
+        "Ms": "9046",
+        "Ks": "11688"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1060",
+      "Temperature": "25",
+      "Consumption": "18795"
+    },
+    "Spo": {
+      "Pressure": "849",
+      "Temperature": "9",
+      "Consumption": "28476"
+    },
+    "Gsuf45": {
+      "Pressure": "1074",
+      "Temperature": "36",
+      "Consumption": "5759"
+    },
+    "Cb1": {
+      "Pressure": "423",
+      "Temperature": "31",
+      "Consumption": "918677"
+    },
+    "Cb2": {
+      "Pressure": "423",
+      "Temperature": "31",
+      "Consumption": "987649"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "450",
+      "Temperature": "24",
+      "Consumption": "995020"
+    },
+    "Gru1": {
+      "Pressure": "633",
+      "Temperature": "-14",
+      "Consumption": "13752"
+    },
+    "Gru2": {
+      "Pressure": "468",
+      "Temperature": "-13",
+      "Consumption": "11472"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 9,
+    "Date": "01.9.2019",
+    "Cu1": {
+      "Pressure": "1147",
+      "Temperature": "34",
+      "Consumption": "1708982"
+    },
+    "Cu2": {
+      "Pressure": "762",
+      "Temperature": "31",
+      "Consumption": "740416"
+    },
+    "Cb5": {
+      "Pressure": "375",
+      "Temperature": "59",
+      "TempBeforeHeating": "24",
+      "Consumption": "7851"
+    },
+    "Cb6": {
+      "Pressure": "391",
+      "Temperature": "63",
+      "TempBeforeHeating": "24",
+      "Consumption": "7580"
+    },
+    "Cb7": {
+      "Pressure": "464",
+      "Temperature": "60",
+      "TempBeforeHeating": "31",
+      "Consumption": {
+        "Ms": "2462",
+        "Ks": "2550"
+      }
+    },
+    "Cb8": {
+      "Pressure": "424",
+      "Temperature": "55",
+      "TempBeforeHeating": "30",
+      "Consumption": {
+        "Ms": "2431",
+        "Ks": "2859"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1024",
+      "Temperature": "23.9",
+      "Consumption": {
+        "Ms": "10283",
+        "Ks": "12053"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1046",
+      "Temperature": "23.9",
+      "Consumption": "19093"
+    },
+    "Spo": {
+      "Pressure": "792",
+      "Temperature": "8",
+      "Consumption": "29517"
+    },
+    "Gsuf45": {
+      "Pressure": "1065",
+      "Temperature": "35",
+      "Consumption": "3516"
+    },
+    "Cb1": {
+      "Pressure": "445",
+      "Temperature": "28",
+      "Consumption": "900382"
+    },
+    "Cb2": {
+      "Pressure": "445",
+      "Temperature": "28",
+      "Consumption": "982851"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "471",
+      "Temperature": "22",
+      "Consumption": "990016"
+    },
+    "Gru1": {
+      "Pressure": "622",
+      "Temperature": "-10",
+      "Consumption": "11760"
+    },
+    "Gru2": {
+      "Pressure": "469",
+      "Temperature": "-9.8",
+      "Consumption": "10992"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 10,
+    "Date": "01.10.2019",
+    "Cu1": {
+      "Pressure": "1158",
+      "Temperature": "34",
+      "Consumption": "1533358"
+    },
+    "Cu2": {
+      "Pressure": "861",
+      "Temperature": "30",
+      "Consumption": "691937"
+    },
+    "Cb5": {
+      "Pressure": "376",
+      "Temperature": "61",
+      "TempBeforeHeating": "24",
+      "Consumption": "7821"
+    },
+    "Cb6": {
+      "Pressure": "382",
+      "Temperature": "65",
+      "TempBeforeHeating": "24",
+      "Consumption": "7448"
+    },
+    "Cb7": {
+      "Pressure": "459",
+      "Temperature": "60",
+      "TempBeforeHeating": "31",
+      "Consumption": {
+        "Ms": "2498",
+        "Ks": "2615"
+      }
+    },
+    "Cb8": {
+      "Pressure": "438",
+      "Temperature": "57",
+      "TempBeforeHeating": "31",
+      "Consumption": {
+        "Ms": "2379",
+        "Ks": "2790"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1026",
+      "Temperature": "27",
+      "Consumption": {
+        "Ms": "10144",
+        "Ks": "11016"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1063",
+      "Temperature": "27",
+      "Consumption": "18722"
+    },
+    "Spo": {
+      "Pressure": "763",
+      "Temperature": "5",
+      "Consumption": "28933"
+    },
+    "Gsuf45": {
+      "Pressure": "1088",
+      "Temperature": "37",
+      "Consumption": "3924"
+    },
+    "Cb1": {
+      "Pressure": "450",
+      "Temperature": "29",
+      "Consumption": "941103"
+    },
+    "Cb2": {
+      "Pressure": "450",
+      "Temperature": "29",
+      "Consumption": "1025022"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "477",
+      "Temperature": "24",
+      "Consumption": "1020291"
+    },
+    "Gru1": {
+      "Pressure": "637",
+      "Temperature": "-12",
+      "Consumption": "14112"
+    },
+    "Gru2": {
+      "Pressure": "472",
+      "Temperature": "-11",
+      "Consumption": "10152"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 11,
+    "Date": "01.11.2019",
+    "Cu1": {
+      "Pressure": "1112",
+      "Temperature": "35",
+      "Consumption": "1556101"
+    },
+    "Cu2": {
+      "Pressure": "798",
+      "Temperature": "29",
+      "Consumption": "660752"
+    },
+    "Cb5": {
+      "Pressure": "380",
+      "Temperature": "64",
+      "TempBeforeHeating": "25",
+      "Consumption": "7820"
+    },
+    "Cb6": {
+      "Pressure": "380",
+      "Temperature": "67",
+      "TempBeforeHeating": "25",
+      "Consumption": "7596"
+    },
+    "Cb7": {
+      "Pressure": "482",
+      "Temperature": "62",
+      "TempBeforeHeating": "30",
+      "Consumption": {
+        "Ms": "2321",
+        "Ks": "2471"
+      }
+    },
+    "Cb8": {
+      "Pressure": "440",
+      "Temperature": "61",
+      "TempBeforeHeating": "30",
+      "Consumption": {
+        "Ms": "2241",
+        "Ks": "2658"
+      }
+    },
+    "Pkc": {
+      "Pressure": "972",
+      "Temperature": "29",
+      "Consumption": {
+        "Ms": "10771",
+        "Ks": "11242"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1034",
+      "Temperature": "29",
+      "Consumption": "20299"
+    },
+    "Spo": {
+      "Pressure": "739",
+      "Temperature": "16",
+      "Consumption": "30862"
+    },
+    "Gsuf45": {
+      "Pressure": "1065",
+      "Temperature": "37",
+      "Consumption": "2369"
+    },
+    "Cb1": {
+      "Pressure": "467",
+      "Temperature": "30",
+      "Consumption": "856518"
+    },
+    "Cb2": {
+      "Pressure": "467",
+      "Temperature": "30",
+      "Consumption": "965836"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "490",
+      "Temperature": "25",
+      "Consumption": "989109"
+    },
+    "Gru1": {
+      "Pressure": "633",
+      "Temperature": "-11",
+      "Consumption": "14208"
+    },
+    "Gru2": {
+      "Pressure": "453",
+      "Temperature": "-11",
+      "Consumption": "12336"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 12,
+    "Date": "01.12.2019",
+    "Cu1": {
+      "Pressure": "1086",
+      "Temperature": "33",
+      "Consumption": "1568548"
+    },
+    "Cu2": {
+      "Pressure": "780",
+      "Temperature": "30",
+      "Consumption": "703454"
+    },
+    "Cb5": {
+      "Pressure": "387",
+      "Temperature": "55",
+      "TempBeforeHeating": "23",
+      "Consumption": "7973"
+    },
+    "Cb6": {
+      "Pressure": "397",
+      "Temperature": "59",
+      "TempBeforeHeating": "23",
+      "Consumption": "7658"
+    },
+    "Cb7": {
+      "Pressure": "459",
+      "Temperature": "59",
+      "TempBeforeHeating": "31",
+      "Consumption": {
+        "Ms": "2427",
+        "Ks": "2566"
+      }
+    },
+    "Cb8": {
+      "Pressure": "427",
+      "Temperature": "57",
+      "TempBeforeHeating": "29",
+      "Consumption": {
+        "Ms": "2333",
+        "Ks": "2768"
+      }
+    },
+    "Pkc": {
+      "Pressure": "950",
+      "Temperature": "23",
+      "Consumption": {
+        "Ms": "11336",
+        "Ks": "10013"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "976",
+      "Temperature": "23",
+      "Consumption": "19051"
+    },
+    "Spo": {
+      "Pressure": "818",
+      "Temperature": "6",
+      "Consumption": "29981"
+    },
+    "Gsuf45": {
+      "Pressure": "1002",
+      "Temperature": "35",
+      "Consumption": "3431"
+    },
+    "Cb1": {
+      "Pressure": "461",
+      "Temperature": "23",
+      "Consumption": "839624"
+    },
+    "Cb2": {
+      "Pressure": "461",
+      "Temperature": "23",
+      "Consumption": "934758"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "483",
+      "Temperature": "18",
+      "Consumption": "996163"
+    },
+    "Gru1": {
+      "Pressure": "635",
+      "Temperature": "-4",
+      "Consumption": "9096"
+    },
+    "Gru2": {
+      "Pressure": "484",
+      "Temperature": "-3.5",
+      "Consumption": "8064"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 13,
+    "Date": "01.13.2019",
+    "Cu1": {
+      "Pressure": "1149",
+      "Temperature": "34",
+      "Consumption": "1608113"
+    },
+    "Cu2": {
+      "Pressure": "898",
+      "Temperature": "31",
+      "Consumption": "740796"
+    },
+    "Cb5": {
+      "Pressure": "384",
+      "Temperature": "55",
+      "TempBeforeHeating": "24",
+      "Consumption": "8009"
+    },
+    "Cb6": {
+      "Pressure": "390",
+      "Temperature": "61",
+      "TempBeforeHeating": "24",
+      "Consumption": "7787"
+    },
+    "Cb7": {
+      "Pressure": "451",
+      "Temperature": "59",
+      "TempBeforeHeating": "32",
+      "Consumption": {
+        "Ms": "2609",
+        "Ks": "2682"
+      }
+    },
+    "Cb8": {
+      "Pressure": "420",
+      "Temperature": "58",
+      "TempBeforeHeating": "30",
+      "Consumption": {
+        "Ms": "2496",
+        "Ks": "2951"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1022",
+      "Temperature": "26",
+      "Consumption": {
+        "Ms": "11576",
+        "Ks": "9162"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1055",
+      "Temperature": "26",
+      "Consumption": "19296"
+    },
+    "Spo": {
+      "Pressure": "1066",
+      "Temperature": "21",
+      "Consumption": "30187"
+    },
+    "Gsuf45": {
+      "Pressure": "1070",
+      "Temperature": "35",
+      "Consumption": "2850"
+    },
+    "Cb1": {
+      "Pressure": "475",
+      "Temperature": "26",
+      "Consumption": "889357"
+    },
+    "Cb2": {
+      "Pressure": "475",
+      "Temperature": "26",
+      "Consumption": "960159"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "497",
+      "Temperature": "21",
+      "Consumption": "957249"
+    },
+    "Gru1": {
+      "Pressure": "633",
+      "Temperature": "-3",
+      "Consumption": "12864"
+    },
+    "Gru2": {
+      "Pressure": "442",
+      "Temperature": "-1.1",
+      "Consumption": "12576"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 14,
+    "Date": "01.14.2019",
+    "Cu1": {
+      "Pressure": "1092",
+      "Temperature": "34",
+      "Consumption": "1751963"
+    },
+    "Cu2": {
+      "Pressure": "814",
+      "Temperature": "30",
+      "Consumption": "750385"
+    },
+    "Cb5": {
+      "Pressure": "372",
+      "Temperature": "61",
+      "TempBeforeHeating": "24",
+      "Consumption": "8256"
+    },
+    "Cb6": {
+      "Pressure": "391",
+      "Temperature": "64",
+      "TempBeforeHeating": "24",
+      "Consumption": "7725"
+    },
+    "Cb7": {
+      "Pressure": "442",
+      "Temperature": "59",
+      "TempBeforeHeating": "31",
+      "Consumption": {
+        "Ms": "2671",
+        "Ks": "2749"
+      }
+    },
+    "Cb8": {
+      "Pressure": "409",
+      "Temperature": "60",
+      "TempBeforeHeating": "30",
+      "Consumption": {
+        "Ms": "2513",
+        "Ks": "2965"
+      }
+    },
+    "Pkc": {
+      "Pressure": "955",
+      "Temperature": "24",
+      "Consumption": {
+        "Ms": "10716",
+        "Ks": "9844"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1039",
+      "Temperature": "24",
+      "Consumption": "19150"
+    },
+    "Spo": {
+      "Pressure": "1058",
+      "Temperature": "3",
+      "Consumption": "31616"
+    },
+    "Gsuf45": {
+      "Pressure": "1045",
+      "Temperature": "35",
+      "Consumption": "1653"
+    },
+    "Cb1": {
+      "Pressure": "441",
+      "Temperature": "30",
+      "Consumption": "874499"
+    },
+    "Cb2": {
+      "Pressure": "441",
+      "Temperature": "30",
+      "Consumption": "1006873"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "463",
+      "Temperature": "24",
+      "Consumption": "985946"
+    },
+    "Gru1": {
+      "Pressure": "623",
+      "Temperature": "-12",
+      "Consumption": "15288"
+    },
+    "Gru2": {
+      "Pressure": "448",
+      "Temperature": "-12",
+      "Consumption": "12624"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 15,
+    "Date": "01.15.2019",
+    "Cu1": {
+      "Pressure": "1123",
+      "Temperature": "34",
+      "Consumption": "1927282"
+    },
+    "Cu2": {
+      "Pressure": "811",
+      "Temperature": "29",
+      "Consumption": "746930"
+    },
+    "Cb5": {
+      "Pressure": "366",
+      "Temperature": "58",
+      "TempBeforeHeating": "25",
+      "Consumption": "8277"
+    },
+    "Cb6": {
+      "Pressure": "385",
+      "Temperature": "62",
+      "TempBeforeHeating": "25",
+      "Consumption": "7863"
+    },
+    "Cb7": {
+      "Pressure": "447",
+      "Temperature": "58",
+      "TempBeforeHeating": "31",
+      "Consumption": {
+        "Ms": "2621",
+        "Ks": "2752"
+      }
+    },
+    "Cb8": {
+      "Pressure": "410",
+      "Temperature": "56",
+      "TempBeforeHeating": "29",
+      "Consumption": {
+        "Ms": "2537",
+        "Ks": "3010"
+      }
+    },
+    "Pkc": {
+      "Pressure": "983",
+      "Temperature": "23.9",
+      "Consumption": {
+        "Ms": "11334",
+        "Ks": "9701"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1017",
+      "Temperature": "23.9",
+      "Consumption": "18833"
+    },
+    "Spo": {
+      "Pressure": "1088",
+      "Temperature": "6",
+      "Consumption": "32563"
+    },
+    "Gsuf45": {
+      "Pressure": "1026",
+      "Temperature": "35.5",
+      "Consumption": "890"
+    },
+    "Cb1": {
+      "Pressure": "416",
+      "Temperature": "29.4",
+      "Consumption": "876085"
+    },
+    "Cb2": {
+      "Pressure": "416",
+      "Temperature": "29.4",
+      "Consumption": "1010803"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "428",
+      "Temperature": "24",
+      "Consumption": "1023193"
+    },
+    "Gru1": {
+      "Pressure": "644",
+      "Temperature": "-8",
+      "Consumption": "12048"
+    },
+    "Gru2": {
+      "Pressure": "472",
+      "Temperature": "-7.4",
+      "Consumption": "10296"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 16,
+    "Date": "01.16.2019",
+    "Cu1": {
+      "Pressure": "1124",
+      "Temperature": "31",
+      "Consumption": "1861067"
+    },
+    "Cu2": {
+      "Pressure": "786",
+      "Temperature": "30",
+      "Consumption": "699552"
+    },
+    "Cb5": {
+      "Pressure": "373",
+      "Temperature": "55",
+      "TempBeforeHeating": "23",
+      "Consumption": "7913"
+    },
+    "Cb6": {
+      "Pressure": "385",
+      "Temperature": "60",
+      "TempBeforeHeating": "23",
+      "Consumption": "7615"
+    },
+    "Cb7": {
+      "Pressure": "455",
+      "Temperature": "58",
+      "TempBeforeHeating": "31",
+      "Consumption": {
+        "Ms": "2497",
+        "Ks": "2630"
+      }
+    },
+    "Cb8": {
+      "Pressure": "418",
+      "Temperature": "56",
+      "TempBeforeHeating": "29",
+      "Consumption": {
+        "Ms": "2452",
+        "Ks": "2917"
+      }
+    },
+    "Pkc": {
+      "Pressure": "960",
+      "Temperature": "24.2",
+      "Consumption": {
+        "Ms": "10732",
+        "Ks": "10845"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1056",
+      "Temperature": "24",
+      "Consumption": "19621"
+    },
+    "Spo": {
+      "Pressure": "1088",
+      "Temperature": "5",
+      "Consumption": "31474"
+    },
+    "Gsuf45": {
+      "Pressure": "1061",
+      "Temperature": "35.5",
+      "Consumption": "1337"
+    },
+    "Cb1": {
+      "Pressure": "438",
+      "Temperature": "26.7",
+      "Consumption": "870631"
+    },
+    "Cb2": {
+      "Pressure": "438",
+      "Temperature": "26.7",
+      "Consumption": "986019"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "462",
+      "Temperature": "20.6",
+      "Consumption": "950564"
+    },
+    "Gru1": {
+      "Pressure": "635",
+      "Temperature": "-11",
+      "Consumption": "13920"
+    },
+    "Gru2": {
+      "Pressure": "448",
+      "Temperature": "-10.6",
+      "Consumption": "12792"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 17,
+    "Date": "01.17.2019",
+    "Cu1": {
+      "Pressure": "1189",
+      "Temperature": "31",
+      "Consumption": "1915373"
+    },
+    "Cu2": {
+      "Pressure": "757",
+      "Temperature": "30.8",
+      "Consumption": "746869"
+    },
+    "Cb5": {
+      "Pressure": "368",
+      "Temperature": "55",
+      "TempBeforeHeating": "23",
+      "Consumption": "8227"
+    },
+    "Cb6": {
+      "Pressure": "378",
+      "Temperature": "60",
+      "TempBeforeHeating": "23",
+      "Consumption": "7873"
+    },
+    "Cb7": {
+      "Pressure": "444",
+      "Temperature": "59",
+      "TempBeforeHeating": "31",
+      "Consumption": {
+        "Ms": "2543",
+        "Ks": "2701"
+      }
+    },
+    "Cb8": {
+      "Pressure": "416",
+      "Temperature": "57",
+      "TempBeforeHeating": "29",
+      "Consumption": {
+        "Ms": "2449",
+        "Ks": "2875"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1014",
+      "Temperature": "25",
+      "Consumption": {
+        "Ms": "11159",
+        "Ks": "10730"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1080",
+      "Temperature": "25",
+      "Consumption": "17964"
+    },
+    "Spo": {
+      "Pressure": "1173",
+      "Temperature": "9",
+      "Consumption": "29493"
+    },
+    "Gsuf45": {
+      "Pressure": "1069",
+      "Temperature": "33",
+      "Consumption": "5458"
+    },
+    "Cb1": {
+      "Pressure": "415",
+      "Temperature": "25.3",
+      "Consumption": "899508"
+    },
+    "Cb2": {
+      "Pressure": "415",
+      "Temperature": "25.3",
+      "Consumption": "997962"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "437",
+      "Temperature": "19.7",
+      "Consumption": "999598"
+    },
+    "Gru1": {
+      "Pressure": "630",
+      "Temperature": "-10",
+      "Consumption": "6732"
+    },
+    "Gru2": {
+      "Pressure": "493",
+      "Temperature": "-10.2",
+      "Consumption": "7704"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 18,
+    "Date": "01.18.2019",
+    "Cu1": {
+      "Pressure": "1117",
+      "Temperature": "32",
+      "Consumption": "1917339"
+    },
+    "Cu2": {
+      "Pressure": "707",
+      "Temperature": "31",
+      "Consumption": "738747"
+    },
+    "Cb5": {
+      "Pressure": "370",
+      "Temperature": "60",
+      "TempBeforeHeating": "24.7",
+      "Consumption": "8251"
+    },
+    "Cb6": {
+      "Pressure": "383",
+      "Temperature": "63.7",
+      "TempBeforeHeating": "24.7",
+      "Consumption": "7830"
+    },
+    "Cb7": {
+      "Pressure": "439",
+      "Temperature": "60.3",
+      "TempBeforeHeating": "32.2",
+      "Consumption": {
+        "Ms": "2588",
+        "Ks": "2728"
+      }
+    },
+    "Cb8": {
+      "Pressure": "407",
+      "Temperature": "61.6",
+      "TempBeforeHeating": "31.2",
+      "Consumption": {
+        "Ms": "2514",
+        "Ks": "2946"
+      }
+    },
+    "Pkc": {
+      "Pressure": "926",
+      "Temperature": "26",
+      "Consumption": {
+        "Ms": "10211",
+        "Ks": "10272"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1070",
+      "Temperature": "26",
+      "Consumption": "18354"
+    },
+    "Spo": {
+      "Pressure": "1093",
+      "Temperature": "6",
+      "Consumption": "25325"
+    },
+    "Gsuf45": {
+      "Pressure": "1052",
+      "Temperature": "35",
+      "Consumption": "4625"
+    },
+    "Cb1": {
+      "Pressure": "416",
+      "Temperature": "29.8",
+      "Consumption": "934485"
+    },
+    "Cb2": {
+      "Pressure": "416",
+      "Temperature": "29.8",
+      "Consumption": "1002861"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "440",
+      "Temperature": "24",
+      "Consumption": "1007676"
+    },
+    "Gru1": {
+      "Pressure": "625",
+      "Temperature": "-4",
+      "Consumption": "15360"
+    },
+    "Gru2": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 19,
+    "Date": "01.19.2019",
+    "Cu1": {
+      "Pressure": "1081",
+      "Temperature": "34",
+      "Consumption": "1858861"
+    },
+    "Cu2": {
+      "Pressure": "642",
+      "Temperature": "30",
+      "Consumption": "681303"
+    },
+    "Cb5": {
+      "Pressure": "387",
+      "Temperature": "63.4",
+      "TempBeforeHeating": "26",
+      "Consumption": "8139"
+    },
+    "Cb6": {
+      "Pressure": "389",
+      "Temperature": "66.8",
+      "TempBeforeHeating": "26",
+      "Consumption": "7544"
+    },
+    "Cb7": {
+      "Pressure": "434",
+      "Temperature": "61.1",
+      "TempBeforeHeating": "32.5",
+      "Consumption": {
+        "Ms": "2417",
+        "Ks": "2607"
+      }
+    },
+    "Cb8": {
+      "Pressure": "401",
+      "Temperature": "64.2",
+      "TempBeforeHeating": "32.3",
+      "Consumption": {
+        "Ms": "2446",
+        "Ks": "2888"
+      }
+    },
+    "Pkc": {
+      "Pressure": "882",
+      "Temperature": "28",
+      "Consumption": {
+        "Ms": "9576",
+        "Ks": "10440"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "993",
+      "Temperature": "28",
+      "Consumption": "18268"
+    },
+    "Spo": {
+      "Pressure": "1051",
+      "Temperature": "10",
+      "Consumption": "24999"
+    },
+    "Gsuf45": {
+      "Pressure": "1002",
+      "Temperature": "37",
+      "Consumption": "2232"
+    },
+    "Cb1": {
+      "Pressure": "420",
+      "Temperature": "30.2",
+      "Consumption": "860064"
+    },
+    "Cb2": {
+      "Pressure": "420",
+      "Temperature": "30.2",
+      "Consumption": "1004208"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "454",
+      "Temperature": "26",
+      "Consumption": "952659"
+    },
+    "Gru1": {
+      "Pressure": "637",
+      "Temperature": "-1",
+      "Consumption": "11568"
+    },
+    "Gru2": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 20,
+    "Date": "01.20.2019",
+    "Cu1": {
+      "Pressure": "1079",
+      "Temperature": "32",
+      "Consumption": "1912454"
+    },
+    "Cu2": {
+      "Pressure": "653",
+      "Temperature": "30",
+      "Consumption": "737773"
+    },
+    "Cb5": {
+      "Pressure": "373",
+      "Temperature": "60.4",
+      "TempBeforeHeating": "24",
+      "Consumption": "8845"
+    },
+    "Cb6": {
+      "Pressure": "368",
+      "Temperature": "64",
+      "TempBeforeHeating": "24",
+      "Consumption": "8375"
+    },
+    "Cb7": {
+      "Pressure": "429",
+      "Temperature": "53.3",
+      "TempBeforeHeating": "31.5",
+      "Consumption": {
+        "Ms": "2489",
+        "Ks": "2612"
+      }
+    },
+    "Cb8": {
+      "Pressure": "402",
+      "Temperature": "57.1",
+      "TempBeforeHeating": "30.7",
+      "Consumption": {
+        "Ms": "2384",
+        "Ks": "2763"
+      }
+    },
+    "Pkc": {
+      "Pressure": "871",
+      "Temperature": "27",
+      "Consumption": {
+        "Ms": "11036",
+        "Ks": "9682"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "983",
+      "Temperature": "27",
+      "Consumption": "18365"
+    },
+    "Spo": {
+      "Pressure": "1044",
+      "Temperature": "3",
+      "Consumption": "25863"
+    },
+    "Gsuf45": {
+      "Pressure": "993",
+      "Temperature": "36.5",
+      "Consumption": "232"
+    },
+    "Cb1": {
+      "Pressure": "426",
+      "Temperature": "29",
+      "Consumption": "859025"
+    },
+    "Cb2": {
+      "Pressure": "426",
+      "Temperature": "29",
+      "Consumption": "1007885"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "443",
+      "Temperature": "24",
+      "Consumption": "1014935"
+    },
+    "Gru1": {
+      "Pressure": "644",
+      "Temperature": "-11",
+      "Consumption": "12552"
+    },
+    "Gru2": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 21,
+    "Date": "01.21.2019",
+    "Cu1": {
+      "Pressure": "1175",
+      "Temperature": "31",
+      "Consumption": "1954729"
+    },
+    "Cu2": {
+      "Pressure": "680",
+      "Temperature": "29",
+      "Consumption": "799929"
+    },
+    "Cb5": {
+      "Pressure": "368",
+      "Temperature": "56.2",
+      "TempBeforeHeating": "22.9",
+      "Consumption": "9036"
+    },
+    "Cb6": {
+      "Pressure": "369",
+      "Temperature": "61.1",
+      "TempBeforeHeating": "22.9",
+      "Consumption": "8576"
+    },
+    "Cb7": {
+      "Pressure": "413",
+      "Temperature": "55.7",
+      "TempBeforeHeating": "30.6",
+      "Consumption": {
+        "Ms": "2740",
+        "Ks": "2845"
+      }
+    },
+    "Cb8": {
+      "Pressure": "382",
+      "Temperature": "57.9",
+      "TempBeforeHeating": "29",
+      "Consumption": {
+        "Ms": "2585",
+        "Ks": "3051"
+      }
+    },
+    "Pkc": {
+      "Pressure": "955",
+      "Temperature": "20.3",
+      "Consumption": {
+        "Ms": "11413",
+        "Ks": "9804"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1086",
+      "Temperature": "20.3",
+      "Consumption": "17368"
+    },
+    "Spo": {
+      "Pressure": "1139",
+      "Temperature": "1",
+      "Consumption": "27722"
+    },
+    "Gsuf45": {
+      "Pressure": "1095",
+      "Temperature": "34",
+      "Consumption": "3254"
+    },
+    "Cb1": {
+      "Pressure": "414",
+      "Temperature": "26.7",
+      "Consumption": "885934"
+    },
+    "Cb2": {
+      "Pressure": "414",
+      "Temperature": "26.7",
+      "Consumption": "1003317"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "436",
+      "Temperature": "21",
+      "Consumption": "1014410"
+    },
+    "Gru1": {
+      "Pressure": "645",
+      "Temperature": "-9",
+      "Consumption": "12048"
+    },
+    "Gru2": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 22,
+    "Date": "01.22.2019",
+    "Cu1": {
+      "Pressure": "1150",
+      "Temperature": "31",
+      "Consumption": "1966875"
+    },
+    "Cu2": {
+      "Pressure": "719",
+      "Temperature": "29",
+      "Consumption": "820117"
+    },
+    "Cb5": {
+      "Pressure": "365",
+      "Temperature": "58.9",
+      "TempBeforeHeating": "24",
+      "Consumption": "8774"
+    },
+    "Cb6": {
+      "Pressure": "375",
+      "Temperature": "63",
+      "TempBeforeHeating": "24",
+      "Consumption": "8291"
+    },
+    "Cb7": {
+      "Pressure": "425",
+      "Temperature": "59.9",
+      "TempBeforeHeating": "29.8",
+      "Consumption": {
+        "Ms": "2796",
+        "Ks": "2874"
+      }
+    },
+    "Cb8": {
+      "Pressure": "390",
+      "Temperature": "59.4",
+      "TempBeforeHeating": "29.4",
+      "Consumption": {
+        "Ms": "2631",
+        "Ks": "3061"
+      }
+    },
+    "Pkc": {
+      "Pressure": "900",
+      "Temperature": "20.4",
+      "Consumption": {
+        "Ms": "10951",
+        "Ks": "9605"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1075",
+      "Temperature": "20.4",
+      "Consumption": "16895"
+    },
+    "Spo": {
+      "Pressure": "1128",
+      "Temperature": "11",
+      "Consumption": "26645"
+    },
+    "Gsuf45": {
+      "Pressure": "1083",
+      "Temperature": "34",
+      "Consumption": "2880"
+    },
+    "Cb1": {
+      "Pressure": "407",
+      "Temperature": "25.8",
+      "Consumption": "881688"
+    },
+    "Cb2": {
+      "Pressure": "407",
+      "Temperature": "25.8",
+      "Consumption": "973243"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "431",
+      "Temperature": "19.9",
+      "Consumption": "977636"
+    },
+    "Gru1": {
+      "Pressure": "635",
+      "Temperature": "-14",
+      "Consumption": "15024"
+    },
+    "Gru2": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 23,
+    "Date": "01.23.2019",
+    "Cu1": {
+      "Pressure": "1154",
+      "Temperature": "30",
+      "Consumption": "1954418"
+    },
+    "Cu2": {
+      "Pressure": "760",
+      "Temperature": "29",
+      "Consumption": "833346"
+    },
+    "Cb5": {
+      "Pressure": "361",
+      "Temperature": "66.6",
+      "TempBeforeHeating": "46.7",
+      "Consumption": "10091"
+    },
+    "Cb6": {
+      "Pressure": "361",
+      "Temperature": "69.4",
+      "TempBeforeHeating": "46.7",
+      "Consumption": "9677"
+    },
+    "Cb7": {
+      "Pressure": "429",
+      "Temperature": "57.5",
+      "TempBeforeHeating": "25.9",
+      "Consumption": {
+        "Ms": "2732",
+        "Ks": "2935"
+      }
+    },
+    "Cb8": {
+      "Pressure": "403",
+      "Temperature": "52.6",
+      "TempBeforeHeating": "27.2",
+      "Consumption": {
+        "Ms": "2573",
+        "Ks": "3022"
+      }
+    },
+    "Pkc": {
+      "Pressure": "879",
+      "Temperature": "21",
+      "Consumption": {
+        "Ms": "11302",
+        "Ks": "9546"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1048",
+      "Temperature": "21",
+      "Consumption": "17789"
+    },
+    "Spo": {
+      "Pressure": "1086",
+      "Temperature": "4",
+      "Consumption": "26650"
+    },
+    "Gsuf45": {
+      "Pressure": "1066",
+      "Temperature": "34.4",
+      "Consumption": "15025"
+    },
+    "Cb1": {
+      "Pressure": "412",
+      "Temperature": "18.9",
+      "Consumption": "883484"
+    },
+    "Cb2": {
+      "Pressure": "412",
+      "Temperature": "18.9",
+      "Consumption": "1027047"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "435",
+      "Temperature": "12.9",
+      "Consumption": "1012531"
+    },
+    "Gru1": {
+      "Pressure": "637",
+      "Temperature": "-20",
+      "Consumption": "13656"
+    },
+    "Gru2": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 24,
+    "Date": "01.24.2019",
+    "Cu1": {
+      "Pressure": "1134",
+      "Temperature": "31",
+      "Consumption": "1952118"
+    },
+    "Cu2": {
+      "Pressure": "710",
+      "Temperature": "30",
+      "Consumption": "812560"
+    },
+    "Cb5": {
+      "Pressure": "363",
+      "Temperature": "62.6",
+      "TempBeforeHeating": "46.1",
+      "Consumption": "10158"
+    },
+    "Cb6": {
+      "Pressure": "361",
+      "Temperature": "64.8",
+      "TempBeforeHeating": "46.1",
+      "Consumption": "9421"
+    },
+    "Cb7": {
+      "Pressure": "435",
+      "Temperature": "59.6",
+      "TempBeforeHeating": "26",
+      "Consumption": {
+        "Ms": "2805",
+        "Ks": "2919"
+      }
+    },
+    "Cb8": {
+      "Pressure": "402",
+      "Temperature": "52.6",
+      "TempBeforeHeating": "28.1",
+      "Consumption": {
+        "Ms": "2551",
+        "Ks": "2980"
+      }
+    },
+    "Pkc": {
+      "Pressure": "816",
+      "Temperature": "23",
+      "Consumption": {
+        "Ms": "12056",
+        "Ks": "11209"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1046",
+      "Temperature": "23",
+      "Consumption": "18477"
+    },
+    "Spo": {
+      "Pressure": "1029",
+      "Temperature": "13",
+      "Consumption": "29116"
+    },
+    "Gsuf45": {
+      "Pressure": "1079",
+      "Temperature": "33",
+      "Consumption": "3829"
+    },
+    "Cb1": {
+      "Pressure": "433",
+      "Temperature": "24",
+      "Consumption": "829433"
+    },
+    "Cb2": {
+      "Pressure": "433",
+      "Temperature": "24",
+      "Consumption": "940590"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "459",
+      "Temperature": "17.5",
+      "Consumption": "960443"
+    },
+    "Gru1": {
+      "Pressure": "632",
+      "Temperature": "-16",
+      "Consumption": "15672"
+    },
+    "Gru2": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 25,
+    "Date": "01.25.2019",
+    "Cu1": {
+      "Pressure": "1147",
+      "Temperature": "30",
+      "Consumption": "1955707"
+    },
+    "Cu2": {
+      "Pressure": "710",
+      "Temperature": "29",
+      "Consumption": "805953"
+    },
+    "Cb5": {
+      "Pressure": "368",
+      "Temperature": "48.6",
+      "TempBeforeHeating": "22.3",
+      "Consumption": "9578"
+    },
+    "Cb6": {
+      "Pressure": "364",
+      "Temperature": "54.4",
+      "TempBeforeHeating": "22.3",
+      "Consumption": "8599"
+    },
+    "Cb7": {
+      "Pressure": "409",
+      "Temperature": "57.4",
+      "TempBeforeHeating": "22.6",
+      "Consumption": {
+        "Ms": "2852",
+        "Ks": "3016"
+      }
+    },
+    "Cb8": {
+      "Pressure": "388",
+      "Temperature": "57.4",
+      "TempBeforeHeating": "25.5",
+      "Consumption": {
+        "Ms": "2639",
+        "Ks": "3044"
+      }
+    },
+    "Pkc": {
+      "Pressure": "877",
+      "Temperature": "21.7",
+      "Consumption": {
+        "Ms": "11734",
+        "Ks": "12943"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1053",
+      "Temperature": "21.7",
+      "Consumption": "18506"
+    },
+    "Spo": {
+      "Pressure": "1105",
+      "Temperature": "5",
+      "Consumption": "32831"
+    },
+    "Gsuf45": {
+      "Pressure": "1092",
+      "Temperature": "32.5",
+      "Consumption": "16489"
+    },
+    "Cb1": {
+      "Pressure": "425",
+      "Temperature": "20.2",
+      "Consumption": "831096"
+    },
+    "Cb2": {
+      "Pressure": "425",
+      "Temperature": "20.2",
+      "Consumption": "923851"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "451",
+      "Temperature": "12.9",
+      "Consumption": "946388"
+    },
+    "Gru1": {
+      "Pressure": "632",
+      "Temperature": "-19",
+      "Consumption": "14352"
+    },
+    "Gru2": {
+      "Pressure": "454",
+      "Temperature": "-19",
+      "Consumption": "12312"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 26,
+    "Date": "01.26.2019",
+    "Cu1": {
+      "Pressure": "1203",
+      "Temperature": "32",
+      "Consumption": "1934729"
+    },
+    "Cu2": {
+      "Pressure": "691",
+      "Temperature": "29",
+      "Consumption": "812697"
+    },
+    "Cb5": {
+      "Pressure": "368",
+      "Temperature": "54.5",
+      "TempBeforeHeating": "22",
+      "Consumption": "9002"
+    },
+    "Cb6": {
+      "Pressure": "365",
+      "Temperature": "57.8",
+      "TempBeforeHeating": "22",
+      "Consumption": "8618"
+    },
+    "Cb7": {
+      "Pressure": "412",
+      "Temperature": "58.6",
+      "TempBeforeHeating": "20.1",
+      "Consumption": {
+        "Ms": "2987",
+        "Ks": "3073"
+      }
+    },
+    "Cb8": {
+      "Pressure": "386",
+      "Temperature": "56.9",
+      "TempBeforeHeating": "26.6",
+      "Consumption": {
+        "Ms": "2670",
+        "Ks": "3077"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1003",
+      "Temperature": "24.5",
+      "Consumption": {
+        "Ms": "11989",
+        "Ks": "13285"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1063",
+      "Temperature": "24.5",
+      "Consumption": "19626"
+    },
+    "Spo": {
+      "Pressure": "1178",
+      "Temperature": "11",
+      "Consumption": "29638"
+    },
+    "Gsuf45": {
+      "Pressure": "1108",
+      "Temperature": "33.2",
+      "Consumption": "12500"
+    },
+    "Cb1": {
+      "Pressure": "447",
+      "Temperature": "22.1",
+      "Consumption": "868643"
+    },
+    "Cb2": {
+      "Pressure": "447",
+      "Temperature": "22.1",
+      "Consumption": "934013"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "475",
+      "Temperature": "13.3",
+      "Consumption": "961052"
+    },
+    "Gru1": {
+      "Pressure": "631",
+      "Temperature": "-22",
+      "Consumption": "14496"
+    },
+    "Gru2": {
+      "Pressure": "475",
+      "Temperature": "-19",
+      "Consumption": "10416"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 27,
+    "Date": "01.27.2019",
+    "Cu1": {
+      "Pressure": "1200",
+      "Temperature": "33",
+      "Consumption": "1904849"
+    },
+    "Cu2": {
+      "Pressure": "683",
+      "Temperature": "31",
+      "Consumption": "791723"
+    },
+    "Cb5": {
+      "Pressure": "375",
+      "Temperature": "56.3",
+      "TempBeforeHeating": "24.5",
+      "Consumption": "8678"
+    },
+    "Cb6": {
+      "Pressure": "381",
+      "Temperature": "59.7",
+      "TempBeforeHeating": "24.5",
+      "Consumption": "7965"
+    },
+    "Cb7": {
+      "Pressure": "420",
+      "Temperature": "61.2",
+      "TempBeforeHeating": "24.9",
+      "Consumption": {
+        "Ms": "2870",
+        "Ks": "2964"
+      }
+    },
+    "Cb8": {
+      "Pressure": "389",
+      "Temperature": "59.8",
+      "TempBeforeHeating": "28.8",
+      "Consumption": {
+        "Ms": "2643",
+        "Ks": "3014"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1003",
+      "Temperature": "25.7",
+      "Consumption": {
+        "Ms": "11061",
+        "Ks": "13514"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1068",
+      "Temperature": "25.7",
+      "Consumption": "19312"
+    },
+    "Spo": {
+      "Pressure": "1164",
+      "Temperature": "14",
+      "Consumption": "31483"
+    },
+    "Gsuf45": {
+      "Pressure": "1124",
+      "Temperature": "35.4",
+      "Consumption": "7048"
+    },
+    "Cb1": {
+      "Pressure": "436",
+      "Temperature": "23.8",
+      "Consumption": "849986"
+    },
+    "Cb2": {
+      "Pressure": "436",
+      "Temperature": "23.8",
+      "Consumption": "905790"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "465",
+      "Temperature": "16.1",
+      "Consumption": "918830"
+    },
+    "Gru1": {
+      "Pressure": "636",
+      "Temperature": "-20",
+      "Consumption": "15096"
+    },
+    "Gru2": {
+      "Pressure": "447",
+      "Temperature": "-18.9",
+      "Consumption": "13440"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 28,
+    "Date": "01.28.2019",
+    "Cu1": {
+      "Pressure": "1172",
+      "Temperature": "33",
+      "Consumption": "1937655"
+    },
+    "Cu2": {
+      "Pressure": "696",
+      "Temperature": "30",
+      "Consumption": "819515"
+    },
+    "Cb5": {
+      "Pressure": "366",
+      "Temperature": "53.4",
+      "TempBeforeHeating": "24",
+      "Consumption": "9464"
+    },
+    "Cb6": {
+      "Pressure": "375",
+      "Temperature": "58.4",
+      "TempBeforeHeating": "24",
+      "Consumption": "8803"
+    },
+    "Cb7": {
+      "Pressure": "485",
+      "Temperature": "59.5",
+      "TempBeforeHeating": "29.8",
+      "Consumption": {
+        "Ms": "2855",
+        "Ks": "2954"
+      }
+    },
+    "Cb8": {
+      "Pressure": "395",
+      "Temperature": "56.6",
+      "TempBeforeHeating": "28.1",
+      "Consumption": {
+        "Ms": "2643",
+        "Ks": "3028"
+      }
+    },
+    "Pkc": {
+      "Pressure": "951",
+      "Temperature": "22.8",
+      "Consumption": {
+        "Ms": "11732",
+        "Ks": "14036"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1047",
+      "Temperature": "22.8",
+      "Consumption": "18036"
+    },
+    "Spo": {
+      "Pressure": "1115",
+      "Temperature": "13",
+      "Consumption": "36216"
+    },
+    "Gsuf45": {
+      "Pressure": "1115",
+      "Temperature": "34.5",
+      "Consumption": "12262"
+    },
+    "Cb1": {
+      "Pressure": "480",
+      "Temperature": "18.2",
+      "Consumption": "795320"
+    },
+    "Cb2": {
+      "Pressure": "480",
+      "Temperature": "18.2",
+      "Consumption": "847951"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "507",
+      "Temperature": "10.7",
+      "Consumption": "903540"
+    },
+    "Gru1": {
+      "Pressure": "618",
+      "Temperature": "-24",
+      "Consumption": "14640"
+    },
+    "Gru2": {
+      "Pressure": "464",
+      "Temperature": "23.9",
+      "Consumption": "11784"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 29,
+    "Date": "01.29.2019",
+    "Cu1": {
+      "Pressure": "1222",
+      "Temperature": "34",
+      "Consumption": "1973533"
+    },
+    "Cu2": {
+      "Pressure": "697",
+      "Temperature": "31",
+      "Consumption": "824131"
+    },
+    "Cb5": {
+      "Pressure": "366",
+      "Temperature": "59.7",
+      "TempBeforeHeating": "26.3",
+      "Consumption": "9469"
+    },
+    "Cb6": {
+      "Pressure": "375",
+      "Temperature": "64",
+      "TempBeforeHeating": "26.3",
+      "Consumption": "8911"
+    },
+    "Cb7": {
+      "Pressure": "429",
+      "Temperature": "60.5",
+      "TempBeforeHeating": "29.4",
+      "Consumption": {
+        "Ms": "2819",
+        "Ks": "3009"
+      }
+    },
+    "Cb8": {
+      "Pressure": "370",
+      "Temperature": "59.4",
+      "TempBeforeHeating": "29.2",
+      "Consumption": {
+        "Ms": "2731",
+        "Ks": "3209"
+      }
+    },
+    "Pkc": {
+      "Pressure": "1008",
+      "Temperature": "24.3",
+      "Consumption": {
+        "Ms": "12498",
+        "Ks": "13947"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1047",
+      "Temperature": "24.3",
+      "Consumption": "18036"
+    },
+    "Spo": {
+      "Pressure": "1162",
+      "Temperature": "13",
+      "Consumption": "35114"
+    },
+    "Gsuf45": {
+      "Pressure": "1127",
+      "Temperature": "35.7",
+      "Consumption": "9991"
+    },
+    "Cb1": {
+      "Pressure": "490",
+      "Temperature": "22.5",
+      "Consumption": "775879"
+    },
+    "Cb2": {
+      "Pressure": "490",
+      "Temperature": "22.5",
+      "Consumption": "879488"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "516",
+      "Temperature": "16",
+      "Consumption": "932230"
+    },
+    "Gru1": {
+      "Pressure": "634",
+      "Temperature": "-14",
+      "Consumption": "14880"
+    },
+    "Gru2": {
+      "Pressure": "459",
+      "Temperature": "12.4",
+      "Consumption": "11880"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 30,
+    "Date": "01.30.2019",
+    "Cu1": {
+      "Pressure": "1157",
+      "Temperature": "30",
+      "Consumption": "1887465"
+    },
+    "Cu2": {
+      "Pressure": "719",
+      "Temperature": "29",
+      "Consumption": "782414"
+    },
+    "Cb5": {
+      "Pressure": "372",
+      "Temperature": "51.7",
+      "TempBeforeHeating": "22.2",
+      "Consumption": "8749"
+    },
+    "Cb6": {
+      "Pressure": "379",
+      "Temperature": "54.4",
+      "TempBeforeHeating": "22.2",
+      "Consumption": "7991"
+    },
+    "Cb7": {
+      "Pressure": "408",
+      "Temperature": "58.2",
+      "TempBeforeHeating": "25.3",
+      "Consumption": {
+        "Ms": "2835",
+        "Ks": "2982"
+      }
+    },
+    "Cb8": {
+      "Pressure": "377",
+      "Temperature": "58.4",
+      "TempBeforeHeating": "26.8",
+      "Consumption": {
+        "Ms": "2628",
+        "Ks": "3119"
+      }
+    },
+    "Pkc": {
+      "Pressure": "947",
+      "Temperature": "23",
+      "Consumption": {
+        "Ms": "12770",
+        "Ks": "12757"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "1092",
+      "Temperature": "23",
+      "Consumption": "19403"
+    },
+    "Spo": {
+      "Pressure": "1116",
+      "Temperature": "6",
+      "Consumption": "29696"
+    },
+    "Gsuf45": {
+      "Pressure": "1143",
+      "Temperature": "34",
+      "Consumption": "13929"
+    },
+    "Cb1": {
+      "Pressure": "457",
+      "Temperature": "21.4",
+      "Consumption": "819082"
+    },
+    "Cb2": {
+      "Pressure": "457",
+      "Temperature": "21.4",
+      "Consumption": "910995"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "403",
+      "Temperature": "13.1",
+      "Consumption": "932344"
+    },
+    "Gru1": {
+      "Pressure": "625",
+      "Temperature": "-19",
+      "Consumption": "14640"
+    },
+    "Gru2": {
+      "Pressure": "457",
+      "Temperature": "-17.4",
+      "Consumption": "12576"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  },
+  {
+    "Id": 31,
+    "Date": "01.31.2019",
+    "Cu1": {
+      "Pressure": "1103",
+      "Temperature": "31",
+      "Consumption": "1839322"
+    },
+    "Cu2": {
+      "Pressure": "698",
+      "Temperature": "29",
+      "Consumption": "721658"
+    },
+    "Cb5": {
+      "Pressure": "389",
+      "Temperature": "51.9",
+      "TempBeforeHeating": "23.3",
+      "Consumption": "7807"
+    },
+    "Cb6": {
+      "Pressure": "382",
+      "Temperature": "55.5",
+      "TempBeforeHeating": "23.3",
+      "Consumption": "7469"
+    },
+    "Cb7": {
+      "Pressure": "440",
+      "Temperature": "59.4",
+      "TempBeforeHeating": "23.2",
+      "Consumption": {
+        "Ms": "2614",
+        "Ks": "2663"
+      }
+    },
+    "Cb8": {
+      "Pressure": "410",
+      "Temperature": "58.9",
+      "TempBeforeHeating": "27",
+      "Consumption": {
+        "Ms": "2416",
+        "Ks": "2863"
+      }
+    },
+    "Pkc": {
+      "Pressure": "878",
+      "Temperature": "24",
+      "Consumption": {
+        "Ms": "14165",
+        "Ks": "12939"
+      }
+    },
+    "Uvtp": {
+      "Pressure": "972",
+      "Temperature": "24",
+      "Consumption": "20009"
+    },
+    "Spo": {
+      "Pressure": "1066",
+      "Temperature": "12",
+      "Consumption": "24193"
+    },
+    "Gsuf45": {
+      "Pressure": "1040",
+      "Temperature": "33",
+      "Consumption": "5919"
+    },
+    "Cb1": {
+      "Pressure": "443",
+      "Temperature": "22.2",
+      "Consumption": "795087"
+    },
+    "Cb2": {
+      "Pressure": "443",
+      "Temperature": "22.2",
+      "Consumption": "894413"
+    },
+    "Cb3": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    },
+    "Cb4": {
+      "Pressure": "464",
+      "Temperature": "15",
+      "Consumption": "910158"
+    },
+    "Gru1": {
+      "Pressure": "631",
+      "Temperature": "-16",
+      "Consumption": "14736"
+    },
+    "Gru2": {
+      "Pressure": "448",
+      "Temperature": "-15",
+      "Consumption": "13176"
+    },
+    "Grp4": {
+      "Pressure": "0",
+      "Temperature": "0",
+      "Consumption": "0"
+    }
+  }
+]

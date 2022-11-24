@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  gasinfoadmin:
+    image: ${DOCKER_REGISTRY-}gasinfoadmin
+    build:
+      context: .
+      dockerfile: GasInfoAdmin/Dockerfile
+    ports:
+      - "49153:5003"
+  sqldb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_gas_info
+    environment:
+      - SA_PASSWORD=MyPass@word
+      - ACCEPT_EULA=Y
+      - MYSQL_PID=Express
+    ports:
+      - "1440:1433"    

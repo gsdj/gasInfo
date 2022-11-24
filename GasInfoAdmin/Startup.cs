@@ -18,9 +18,17 @@ namespace GasInfoAdmin
 {
    public class Startup
    {
-      public Startup(IConfiguration configuration)
+      IWebHostEnvironment _env;
+      public Startup(IConfiguration configuration, IWebHostEnvironment env)
       {
-         Configuration = configuration;
+         //Configuration = configuration;
+         _env = env;
+
+         var builder = new ConfigurationBuilder()
+            .AddJsonFile($"appsettings.{_env.EnvironmentName}.json")
+            .AddJsonFile("InitialDataSettings.json"); 
+
+         Configuration = builder.Build();
       }
 
       public IConfiguration Configuration { get; }
@@ -29,6 +37,9 @@ namespace GasInfoAdmin
       public void ConfigureServices(IServiceCollection services)
       {
          services.AddControllersWithViews();
+
+         services.AddSingleton(new InitialData(Configuration));
+
          services.AddDbContext<GasInfoDbContext>(options =>
          {
             options.UseSqlServer(Configuration.GetConnectionString("GasInfoMSSql"));
