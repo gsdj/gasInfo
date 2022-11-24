@@ -21,7 +21,7 @@ namespace GasInfoApi
          _env = env;
          
          var builder = new ConfigurationBuilder()
-            .AddJsonFile($"appsettings.{_env.EnvironmentName}.json") //в проде ищет appsettings.Production.json
+            .AddJsonFile($"appsettings.{_env.EnvironmentName}.json") //пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ appsettings.Production.json
             .AddJsonFile("InitialDataSettings.json");
 
          Configuration = builder.Build();
@@ -64,8 +64,6 @@ namespace GasInfoApi
          services.AddConsQnCalculations();
          services.AddEntitiesCalculation();
          services.AddBLLServices();
-
-         services.AddCors();
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,8 +79,6 @@ namespace GasInfoApi
          app.UseDefaultFiles();
          app.UseStaticFiles();
          app.UseRouting();
-
-         app.UseCors(cors => cors.AllowAnyOrigin());
 
          app.UseAuthorization();
 
