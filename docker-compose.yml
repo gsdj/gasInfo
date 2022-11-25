@@ -1,13 +1,31 @@
 version: '3.4'
 
 services:
-  gasinfoadmin:
-    image: ${DOCKER_REGISTRY-}gasinfoadmin
+  admin:
+    #image: ${DOCKER_REGISTRY-}gasinfoadmin
+    volumes:
+      - gas_info_admin:/app
     build:
       context: .
       dockerfile: GasInfoAdmin/Dockerfile
+    depends_on:
+      - sqldb
     ports:
       - "49153:5003"
+  api:
+    #image: ${DOCKER_REGISTRY-}gasinfoapi
+    volumes:
+      - gas_info_api:/app
+    build:
+      context: .
+      dockerfile: GasInfoApi/Dockerfile
+    depends_on:
+      - sqldb
+    ports:
+      #- "49152:5002"
+      - "1080:80"
+    environment:
+      - ASPNETCORE_URLS=http://+:5002;http://+:80
   sqldb:
     image: mcr.microsoft.com/mssql/server:2022-latest
     volumes: 
@@ -26,3 +44,15 @@ volumes:
       type: 'none'
       o: 'bind'
       device: 'd/mount/sql'
+  gas_info_admin:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: 'd/mount/gas_info_admin'
+  gas_info_api:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: 'd/mount/gas_info_api'

@@ -18,11 +18,19 @@ namespace GasInfoApi.Controllers.Reporting
       public ProductionController(IProductionService service, ILogger<ProductionController> l)
       {
          _logger = l;
-         _service = service;
-         _logger.LogInformation($"ctor production {Request.Path}");
+         try
+         {
+            _service = service;
+         }
+         catch (Exception ex)
+         {
+            _logger.LogError($"Error DI {ex.Message}{Environment.NewLine}{ex.StackTrace}");
+            throw;
+         }
       }
-      // GET: api/<ProductionController>
-      [HttpGet("GetByDateMonth/{date}")]
+      // GET: api/Reporting/<ProductionController>/GetByDateMonth/{date}
+      //[HttpGet("GetByDateMonth/{date}")]
+      [HttpGet("{date}")]
       public IEnumerable<ProductionDTO> Get(DateTime? date)
       {
          _logger.LogInformation($"Production {Request.Path}");
@@ -37,18 +45,19 @@ namespace GasInfoApi.Controllers.Reporting
          var result = _service.GetItemsByMonth(Date);
          return result;
       }
-      [HttpGet("GetString")]
-      public string GetString()
-      {
-         return "GetString";
-      }
+      //[HttpGet("GetString")]
+      //public string GetString()
+      //{
+      //   _logger.LogInformation($"{Request.Path}");
+      //   return "GetString";
+      //}
 
-      [HttpGet("ReportExcel/{date}")]
-      public async Task<ActionResult> GetFile()
-      {
-         string fn = "SteamCharacteristics.json";
-         byte[] fileContent = await System.IO.File.ReadAllBytesAsync($"wwwroot\\files\\{fn}");
-         return File(fileContent, "application/octet-stream", fn);
-      }
+      //[HttpGet("ReportExcel/{date}")]
+      //public async Task<ActionResult> GetFile()
+      //{
+      //   string fn = "SteamCharacteristics.json";
+      //   byte[] fileContent = await System.IO.File.ReadAllBytesAsync($"wwwroot\\files\\{fn}");
+      //   return File(fileContent, "application/octet-stream", fn);
+      //}
    }
 }

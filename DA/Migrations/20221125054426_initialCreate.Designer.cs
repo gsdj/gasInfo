@@ -7,26 +7,31 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
+#nullable disable
+
 namespace DA.Migrations
 {
     [DbContext(typeof(GasInfoDbContext))]
-    [Migration("20221027093016_initialCreate")]
+    [Migration("20221125054426_initialCreate")]
     partial class initialCreate
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.17")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("DA.Entities.AmmountCb", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Cb1")
                         .HasColumnType("int");
@@ -68,7 +73,7 @@ namespace DA.Migrations
 
                     b.HasIndex("OutputMultipliersId");
 
-                    b.ToTable("AmmountCb");
+                    b.ToTable("AmmountCb", (string)null);
 
                     b.HasData(
                         new
@@ -542,42 +547,43 @@ namespace DA.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("Date");
 
                     b.Property<decimal>("Gps2Gss1")
                         .HasPrecision(16, 6)
-                        .HasColumnType("numeric(16,6)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("Gps2Gss2")
                         .HasPrecision(16, 6)
-                        .HasColumnType("numeric(16,6)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("NaturalGasQn")
                         .HasPrecision(8, 3)
-                        .HasColumnType("numeric(8,3)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("OutPkg")
                         .HasPrecision(8, 3)
-                        .HasColumnType("numeric(8,3)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("TecNorth")
                         .HasPrecision(16, 6)
-                        .HasColumnType("numeric(16,6)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("TecSouth")
                         .HasPrecision(16, 6)
-                        .HasColumnType("numeric(16,6)");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Date")
                         .IsUnique();
 
-                    b.ToTable("Asdue");
+                    b.ToTable("Asdue", (string)null);
 
                     b.HasData(
                         new
@@ -927,8 +933,9 @@ namespace DA.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("Date");
@@ -938,7 +945,7 @@ namespace DA.Migrations
                     b.HasIndex("Date")
                         .IsUnique();
 
-                    b.ToTable("CharacteristicsDg");
+                    b.ToTable("CharacteristicsDg", (string)null);
 
                     b.HasData(
                         new
@@ -1102,8 +1109,9 @@ namespace DA.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("Date");
@@ -1113,7 +1121,7 @@ namespace DA.Migrations
                     b.HasIndex("Date")
                         .IsUnique();
 
-                    b.ToTable("CharacteristicsKg");
+                    b.ToTable("CharacteristicsKg", (string)null);
 
                     b.HasData(
                         new
@@ -1277,8 +1285,9 @@ namespace DA.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("Date");
@@ -1288,7 +1297,7 @@ namespace DA.Migrations
                     b.HasIndex("Date")
                         .IsUnique();
 
-                    b.ToTable("DevicesKip");
+                    b.ToTable("DevicesKip", (string)null);
 
                     b.HasData(
                         new
@@ -1452,8 +1461,9 @@ namespace DA.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("ConsDgCb1")
                         .HasColumnType("numeric");
@@ -1481,7 +1491,7 @@ namespace DA.Migrations
                     b.HasIndex("Date")
                         .IsUnique();
 
-                    b.ToTable("DgPgChmkEb");
+                    b.ToTable("DgPgChmkEb", (string)null);
 
                     b.HasData(
                         new
@@ -1512,12 +1522,13 @@ namespace DA.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Consumption")
                         .HasPrecision(20, 10)
-                        .HasColumnType("numeric(20,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("Date");
@@ -1527,7 +1538,7 @@ namespace DA.Migrations
                     b.HasIndex("Date")
                         .IsUnique();
 
-                    b.ToTable("KgChmkEb");
+                    b.ToTable("KgChmkEb", (string)null);
 
                     b.HasData(
                         new
@@ -1722,66 +1733,67 @@ namespace DA.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Cb1")
                         .HasPrecision(14, 10)
-                        .HasColumnType("numeric(14,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("Cb2")
                         .HasPrecision(14, 10)
-                        .HasColumnType("numeric(14,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("Cb3")
                         .HasPrecision(14, 10)
-                        .HasColumnType("numeric(14,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("Cb4")
                         .HasPrecision(14, 10)
-                        .HasColumnType("numeric(14,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("Cb5")
                         .HasPrecision(14, 10)
-                        .HasColumnType("numeric(14,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("Cb6")
                         .HasPrecision(14, 10)
-                        .HasColumnType("numeric(14,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("Cb7")
                         .HasPrecision(14, 10)
-                        .HasColumnType("numeric(14,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("Cb8")
                         .HasPrecision(14, 10)
-                        .HasColumnType("numeric(14,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("Date");
 
                     b.Property<decimal>("Fv")
                         .HasPrecision(14, 10)
-                        .HasColumnType("numeric(14,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("PKP")
                         .HasPrecision(14, 10)
-                        .HasColumnType("numeric(14,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("Peka")
                         .HasPrecision(14, 10)
-                        .HasColumnType("numeric(14,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("Sv")
                         .HasPrecision(14, 10)
-                        .HasColumnType("numeric(14,10)");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Date")
                         .IsUnique();
 
-                    b.ToTable("OutputMultipliers");
+                    b.ToTable("OutputMultipliers", (string)null);
 
                     b.HasData(
                         new
@@ -1807,22 +1819,23 @@ namespace DA.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("Date");
 
                     b.Property<decimal>("Value")
                         .HasPrecision(8, 3)
-                        .HasColumnType("numeric(8,3)");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Date")
                         .IsUnique();
 
-                    b.ToTable("Pressure");
+                    b.ToTable("Pressure", (string)null);
 
                     b.HasData(
                         new
@@ -2017,8 +2030,9 @@ namespace DA.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("Date");
@@ -2028,7 +2042,7 @@ namespace DA.Migrations
                     b.HasIndex("Date")
                         .IsUnique();
 
-                    b.ToTable("Quality");
+                    b.ToTable("Quality", (string)null);
 
                     b.HasData(
                         new
@@ -2192,15 +2206,16 @@ namespace DA.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Roles", (string)null);
 
                     b.HasData(
                         new
@@ -2219,30 +2234,31 @@ namespace DA.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Chmk")
                         .HasPrecision(16, 10)
-                        .HasColumnType("numeric(16,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("Date");
 
                     b.Property<decimal>("TecNorth")
                         .HasPrecision(16, 10)
-                        .HasColumnType("numeric(16,10)");
+                        .HasColumnType("numeric");
 
                     b.Property<decimal>("TecSouth")
                         .HasPrecision(16, 10)
-                        .HasColumnType("numeric(16,10)");
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Date")
                         .IsUnique();
 
-                    b.ToTable("Tec");
+                    b.ToTable("Tec", (string)null);
 
                     b.HasData(
                         new
@@ -2499,8 +2515,9 @@ namespace DA.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Login")
                         .HasColumnType("nvarchar(max)");
@@ -2515,7 +2532,7 @@ namespace DA.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
                     b.HasData(
                         new
@@ -2543,25 +2560,23 @@ namespace DA.Migrations
                     b.OwnsOne("DA.Entities.Characteristics.DG", "Kc1", b1 =>
                         {
                             b1.Property<int>("CharacteristicsDgAllId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("int");
 
                             b1.Property<decimal>("CO")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("CO2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("H2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("N2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.HasKey("CharacteristicsDgAllId");
 
@@ -2824,25 +2839,23 @@ namespace DA.Migrations
                     b.OwnsOne("DA.Entities.Characteristics.DG", "Kc2", b1 =>
                         {
                             b1.Property<int>("CharacteristicsDgAllId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("int");
 
                             b1.Property<decimal>("CO")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("CO2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("H2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("N2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.HasKey("CharacteristicsDgAllId");
 
@@ -3112,37 +3125,35 @@ namespace DA.Migrations
                     b.OwnsOne("DA.Entities.Characteristics.KG", "Kc1", b1 =>
                         {
                             b1.Property<int>("CharacteristicsKgAllId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("int");
 
                             b1.Property<decimal>("CH4")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("CO")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("CO2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("CnHm")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("H2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("N2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("O2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.HasKey("CharacteristicsKgAllId");
 
@@ -3498,37 +3509,35 @@ namespace DA.Migrations
                     b.OwnsOne("DA.Entities.Characteristics.KG", "Kc2", b1 =>
                         {
                             b1.Property<int>("CharacteristicsKgAllId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("int");
 
                             b1.Property<decimal>("CH4")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("CO")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("CO2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("CnHm")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("H2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("N2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("O2")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.HasKey("CharacteristicsKgAllId");
 
@@ -3888,2947 +3897,17 @@ namespace DA.Migrations
 
             modelBuilder.Entity("DA.Entities.DevicesKip", b =>
                 {
-                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Cb1", b1 =>
-                        {
-                            b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Consumption")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Pressure")
-                                .HasColumnType("int");
-
-                            b1.Property<decimal>("Temperature")
-                                .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
-
-                            b1.HasKey("DevicesKipId");
-
-                            b1.ToTable("DevicesKip");
-
-                            b1.WithOwner()
-                                .HasForeignKey("DevicesKipId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    DevicesKipId = 1,
-                                    Consumption = 924484,
-                                    Pressure = 391,
-                                    Temperature = 28m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 2,
-                                    Consumption = 919649,
-                                    Pressure = 397,
-                                    Temperature = 27m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 3,
-                                    Consumption = 923255,
-                                    Pressure = 392,
-                                    Temperature = 28m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 4,
-                                    Consumption = 939789,
-                                    Pressure = 404,
-                                    Temperature = 26m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 5,
-                                    Consumption = 912882,
-                                    Pressure = 403,
-                                    Temperature = 23m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 6,
-                                    Consumption = 938413,
-                                    Pressure = 374,
-                                    Temperature = 22m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 7,
-                                    Consumption = 868483,
-                                    Pressure = 424,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 8,
-                                    Consumption = 918677,
-                                    Pressure = 423,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 9,
-                                    Consumption = 900382,
-                                    Pressure = 445,
-                                    Temperature = 28m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 10,
-                                    Consumption = 941103,
-                                    Pressure = 450,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 11,
-                                    Consumption = 856518,
-                                    Pressure = 467,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 12,
-                                    Consumption = 839624,
-                                    Pressure = 461,
-                                    Temperature = 23m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 13,
-                                    Consumption = 889357,
-                                    Pressure = 475,
-                                    Temperature = 26m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 14,
-                                    Consumption = 874499,
-                                    Pressure = 441,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 15,
-                                    Consumption = 876085,
-                                    Pressure = 416,
-                                    Temperature = 29.4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 16,
-                                    Consumption = 870631,
-                                    Pressure = 438,
-                                    Temperature = 26.7m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 17,
-                                    Consumption = 899508,
-                                    Pressure = 415,
-                                    Temperature = 25.3m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 18,
-                                    Consumption = 934485,
-                                    Pressure = 416,
-                                    Temperature = 29.8m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 19,
-                                    Consumption = 860064,
-                                    Pressure = 420,
-                                    Temperature = 30.2m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 20,
-                                    Consumption = 859025,
-                                    Pressure = 426,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 21,
-                                    Consumption = 885934,
-                                    Pressure = 414,
-                                    Temperature = 26.7m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 22,
-                                    Consumption = 881688,
-                                    Pressure = 407,
-                                    Temperature = 25.8m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 23,
-                                    Consumption = 883484,
-                                    Pressure = 412,
-                                    Temperature = 18.9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 24,
-                                    Consumption = 829433,
-                                    Pressure = 433,
-                                    Temperature = 24m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 25,
-                                    Consumption = 831096,
-                                    Pressure = 425,
-                                    Temperature = 20.2m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 26,
-                                    Consumption = 868643,
-                                    Pressure = 447,
-                                    Temperature = 22.1m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 27,
-                                    Consumption = 849986,
-                                    Pressure = 436,
-                                    Temperature = 23.8m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 28,
-                                    Consumption = 795320,
-                                    Pressure = 480,
-                                    Temperature = 18.2m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 29,
-                                    Consumption = 775879,
-                                    Pressure = 490,
-                                    Temperature = 22.5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 30,
-                                    Consumption = 819082,
-                                    Pressure = 457,
-                                    Temperature = 21.4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 31,
-                                    Consumption = 795087,
-                                    Pressure = 443,
-                                    Temperature = 22.2m
-                                });
-                        });
-
-                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Cb2", b1 =>
-                        {
-                            b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Consumption")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Pressure")
-                                .HasColumnType("int");
-
-                            b1.Property<decimal>("Temperature")
-                                .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
-
-                            b1.HasKey("DevicesKipId");
-
-                            b1.ToTable("DevicesKip");
-
-                            b1.WithOwner()
-                                .HasForeignKey("DevicesKipId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    DevicesKipId = 1,
-                                    Consumption = 1062402,
-                                    Pressure = 391,
-                                    Temperature = 28m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 2,
-                                    Consumption = 1004744,
-                                    Pressure = 397,
-                                    Temperature = 27m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 3,
-                                    Consumption = 1032434,
-                                    Pressure = 392,
-                                    Temperature = 28m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 4,
-                                    Consumption = 1064600,
-                                    Pressure = 404,
-                                    Temperature = 26m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 5,
-                                    Consumption = 1024448,
-                                    Pressure = 403,
-                                    Temperature = 23m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 6,
-                                    Consumption = 1057257,
-                                    Pressure = 374,
-                                    Temperature = 22m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 7,
-                                    Consumption = 966859,
-                                    Pressure = 424,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 8,
-                                    Consumption = 987649,
-                                    Pressure = 423,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 9,
-                                    Consumption = 982851,
-                                    Pressure = 445,
-                                    Temperature = 28m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 10,
-                                    Consumption = 1025022,
-                                    Pressure = 450,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 11,
-                                    Consumption = 965836,
-                                    Pressure = 467,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 12,
-                                    Consumption = 934758,
-                                    Pressure = 461,
-                                    Temperature = 23m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 13,
-                                    Consumption = 960159,
-                                    Pressure = 475,
-                                    Temperature = 26m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 14,
-                                    Consumption = 1006873,
-                                    Pressure = 441,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 15,
-                                    Consumption = 1010803,
-                                    Pressure = 416,
-                                    Temperature = 29.4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 16,
-                                    Consumption = 986019,
-                                    Pressure = 438,
-                                    Temperature = 26.7m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 17,
-                                    Consumption = 997962,
-                                    Pressure = 415,
-                                    Temperature = 25.3m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 18,
-                                    Consumption = 1002861,
-                                    Pressure = 416,
-                                    Temperature = 29.8m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 19,
-                                    Consumption = 1004208,
-                                    Pressure = 420,
-                                    Temperature = 30.2m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 20,
-                                    Consumption = 1007885,
-                                    Pressure = 426,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 21,
-                                    Consumption = 1003317,
-                                    Pressure = 414,
-                                    Temperature = 26.7m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 22,
-                                    Consumption = 973243,
-                                    Pressure = 407,
-                                    Temperature = 25.8m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 23,
-                                    Consumption = 1027047,
-                                    Pressure = 412,
-                                    Temperature = 18.9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 24,
-                                    Consumption = 940590,
-                                    Pressure = 433,
-                                    Temperature = 24m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 25,
-                                    Consumption = 923851,
-                                    Pressure = 425,
-                                    Temperature = 20.2m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 26,
-                                    Consumption = 934013,
-                                    Pressure = 447,
-                                    Temperature = 22.1m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 27,
-                                    Consumption = 905790,
-                                    Pressure = 436,
-                                    Temperature = 23.8m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 28,
-                                    Consumption = 847951,
-                                    Pressure = 480,
-                                    Temperature = 18.2m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 29,
-                                    Consumption = 879488,
-                                    Pressure = 490,
-                                    Temperature = 22.5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 30,
-                                    Consumption = 910995,
-                                    Pressure = 457,
-                                    Temperature = 21.4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 31,
-                                    Consumption = 894413,
-                                    Pressure = 443,
-                                    Temperature = 22.2m
-                                });
-                        });
-
-                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Cb3", b1 =>
-                        {
-                            b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Consumption")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Pressure")
-                                .HasColumnType("int");
-
-                            b1.Property<decimal>("Temperature")
-                                .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
-
-                            b1.HasKey("DevicesKipId");
-
-                            b1.ToTable("DevicesKip");
-
-                            b1.WithOwner()
-                                .HasForeignKey("DevicesKipId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    DevicesKipId = 1,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 2,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 3,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 4,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 5,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 6,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 7,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 8,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 9,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 10,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 11,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 12,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 13,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 14,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 15,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 16,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 17,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 18,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 19,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 20,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 21,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 22,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 23,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 24,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 25,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 26,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 27,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 28,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 29,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 30,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 31,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                });
-                        });
-
-                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Cb4", b1 =>
-                        {
-                            b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Consumption")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Pressure")
-                                .HasColumnType("int");
-
-                            b1.Property<decimal>("Temperature")
-                                .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
-
-                            b1.HasKey("DevicesKipId");
-
-                            b1.ToTable("DevicesKip");
-
-                            b1.WithOwner()
-                                .HasForeignKey("DevicesKipId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    DevicesKipId = 1,
-                                    Consumption = 1041164,
-                                    Pressure = 414,
-                                    Temperature = 22m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 2,
-                                    Consumption = 1040120,
-                                    Pressure = 419,
-                                    Temperature = 21m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 3,
-                                    Consumption = 1076294,
-                                    Pressure = 411,
-                                    Temperature = 23m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 4,
-                                    Consumption = 1037908,
-                                    Pressure = 430,
-                                    Temperature = 20m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 5,
-                                    Consumption = 1024275,
-                                    Pressure = 427,
-                                    Temperature = 17m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 6,
-                                    Consumption = 1018196,
-                                    Pressure = 400,
-                                    Temperature = 16m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 7,
-                                    Consumption = 989561,
-                                    Pressure = 450,
-                                    Temperature = 23m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 8,
-                                    Consumption = 995020,
-                                    Pressure = 450,
-                                    Temperature = 24m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 9,
-                                    Consumption = 990016,
-                                    Pressure = 471,
-                                    Temperature = 22m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 10,
-                                    Consumption = 1020291,
-                                    Pressure = 477,
-                                    Temperature = 24m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 11,
-                                    Consumption = 989109,
-                                    Pressure = 490,
-                                    Temperature = 25m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 12,
-                                    Consumption = 996163,
-                                    Pressure = 483,
-                                    Temperature = 18m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 13,
-                                    Consumption = 957249,
-                                    Pressure = 497,
-                                    Temperature = 21m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 14,
-                                    Consumption = 985946,
-                                    Pressure = 463,
-                                    Temperature = 24m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 15,
-                                    Consumption = 1023193,
-                                    Pressure = 428,
-                                    Temperature = 24m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 16,
-                                    Consumption = 950564,
-                                    Pressure = 462,
-                                    Temperature = 20.6m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 17,
-                                    Consumption = 999598,
-                                    Pressure = 437,
-                                    Temperature = 19.7m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 18,
-                                    Consumption = 1007676,
-                                    Pressure = 440,
-                                    Temperature = 24m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 19,
-                                    Consumption = 952659,
-                                    Pressure = 454,
-                                    Temperature = 26m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 20,
-                                    Consumption = 1014935,
-                                    Pressure = 443,
-                                    Temperature = 24m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 21,
-                                    Consumption = 1014410,
-                                    Pressure = 436,
-                                    Temperature = 21m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 22,
-                                    Consumption = 977636,
-                                    Pressure = 431,
-                                    Temperature = 19.9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 23,
-                                    Consumption = 1012531,
-                                    Pressure = 435,
-                                    Temperature = 12.9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 24,
-                                    Consumption = 960443,
-                                    Pressure = 459,
-                                    Temperature = 17.5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 25,
-                                    Consumption = 946388,
-                                    Pressure = 451,
-                                    Temperature = 12.9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 26,
-                                    Consumption = 961052,
-                                    Pressure = 475,
-                                    Temperature = 13.3m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 27,
-                                    Consumption = 918830,
-                                    Pressure = 465,
-                                    Temperature = 16.1m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 28,
-                                    Consumption = 903540,
-                                    Pressure = 507,
-                                    Temperature = 10.7m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 29,
-                                    Consumption = 932230,
-                                    Pressure = 516,
-                                    Temperature = 16m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 30,
-                                    Consumption = 932344,
-                                    Pressure = 403,
-                                    Temperature = 13.1m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 31,
-                                    Consumption = 910158,
-                                    Pressure = 464,
-                                    Temperature = 15m
-                                });
-                        });
-
-                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Cu1", b1 =>
-                        {
-                            b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Consumption")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Pressure")
-                                .HasColumnType("int");
-
-                            b1.Property<decimal>("Temperature")
-                                .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
-
-                            b1.HasKey("DevicesKipId");
-
-                            b1.ToTable("DevicesKip");
-
-                            b1.WithOwner()
-                                .HasForeignKey("DevicesKipId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    DevicesKipId = 1,
-                                    Consumption = 1664569,
-                                    Pressure = 1124,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 2,
-                                    Consumption = 1673337,
-                                    Pressure = 1147,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 3,
-                                    Consumption = 1685176,
-                                    Pressure = 1138,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 4,
-                                    Consumption = 1699491,
-                                    Pressure = 1120,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 5,
-                                    Consumption = 1676852,
-                                    Pressure = 1141,
-                                    Temperature = 33m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 6,
-                                    Consumption = 1714918,
-                                    Pressure = 1175,
-                                    Temperature = 33m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 7,
-                                    Consumption = 1701660,
-                                    Pressure = 1145,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 8,
-                                    Consumption = 1698772,
-                                    Pressure = 1141,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 9,
-                                    Consumption = 1708982,
-                                    Pressure = 1147,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 10,
-                                    Consumption = 1533358,
-                                    Pressure = 1158,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 11,
-                                    Consumption = 1556101,
-                                    Pressure = 1112,
-                                    Temperature = 35m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 12,
-                                    Consumption = 1568548,
-                                    Pressure = 1086,
-                                    Temperature = 33m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 13,
-                                    Consumption = 1608113,
-                                    Pressure = 1149,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 14,
-                                    Consumption = 1751963,
-                                    Pressure = 1092,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 15,
-                                    Consumption = 1927282,
-                                    Pressure = 1123,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 16,
-                                    Consumption = 1861067,
-                                    Pressure = 1124,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 17,
-                                    Consumption = 1915373,
-                                    Pressure = 1189,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 18,
-                                    Consumption = 1917339,
-                                    Pressure = 1117,
-                                    Temperature = 32m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 19,
-                                    Consumption = 1858861,
-                                    Pressure = 1081,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 20,
-                                    Consumption = 1912454,
-                                    Pressure = 1079,
-                                    Temperature = 32m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 21,
-                                    Consumption = 1954729,
-                                    Pressure = 1175,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 22,
-                                    Consumption = 1966875,
-                                    Pressure = 1150,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 23,
-                                    Consumption = 1954418,
-                                    Pressure = 1154,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 24,
-                                    Consumption = 1952118,
-                                    Pressure = 1134,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 25,
-                                    Consumption = 1955707,
-                                    Pressure = 1147,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 26,
-                                    Consumption = 1934729,
-                                    Pressure = 1203,
-                                    Temperature = 32m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 27,
-                                    Consumption = 1904849,
-                                    Pressure = 1200,
-                                    Temperature = 33m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 28,
-                                    Consumption = 1937655,
-                                    Pressure = 1172,
-                                    Temperature = 33m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 29,
-                                    Consumption = 1973533,
-                                    Pressure = 1222,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 30,
-                                    Consumption = 1887465,
-                                    Pressure = 1157,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 31,
-                                    Consumption = 1839322,
-                                    Pressure = 1103,
-                                    Temperature = 31m
-                                });
-                        });
-
-                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Cu2", b1 =>
-                        {
-                            b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Consumption")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Pressure")
-                                .HasColumnType("int");
-
-                            b1.Property<decimal>("Temperature")
-                                .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
-
-                            b1.HasKey("DevicesKipId");
-
-                            b1.ToTable("DevicesKip");
-
-                            b1.WithOwner()
-                                .HasForeignKey("DevicesKipId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    DevicesKipId = 1,
-                                    Consumption = 709345,
-                                    Pressure = 744,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 2,
-                                    Consumption = 708767,
-                                    Pressure = 757,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 3,
-                                    Consumption = 733009,
-                                    Pressure = 679,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 4,
-                                    Consumption = 727462,
-                                    Pressure = 811,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 5,
-                                    Consumption = 735857,
-                                    Pressure = 804,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 6,
-                                    Consumption = 737096,
-                                    Pressure = 746,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 7,
-                                    Consumption = 722180,
-                                    Pressure = 725,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 8,
-                                    Consumption = 729908,
-                                    Pressure = 750,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 9,
-                                    Consumption = 740416,
-                                    Pressure = 762,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 10,
-                                    Consumption = 691937,
-                                    Pressure = 861,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 11,
-                                    Consumption = 660752,
-                                    Pressure = 798,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 12,
-                                    Consumption = 703454,
-                                    Pressure = 780,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 13,
-                                    Consumption = 740796,
-                                    Pressure = 898,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 14,
-                                    Consumption = 750385,
-                                    Pressure = 814,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 15,
-                                    Consumption = 746930,
-                                    Pressure = 811,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 16,
-                                    Consumption = 699552,
-                                    Pressure = 786,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 17,
-                                    Consumption = 746869,
-                                    Pressure = 757,
-                                    Temperature = 30.8m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 18,
-                                    Consumption = 738747,
-                                    Pressure = 707,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 19,
-                                    Consumption = 681303,
-                                    Pressure = 642,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 20,
-                                    Consumption = 737773,
-                                    Pressure = 653,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 21,
-                                    Consumption = 799929,
-                                    Pressure = 680,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 22,
-                                    Consumption = 820117,
-                                    Pressure = 719,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 23,
-                                    Consumption = 833346,
-                                    Pressure = 760,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 24,
-                                    Consumption = 812560,
-                                    Pressure = 710,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 25,
-                                    Consumption = 805953,
-                                    Pressure = 710,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 26,
-                                    Consumption = 812697,
-                                    Pressure = 691,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 27,
-                                    Consumption = 791723,
-                                    Pressure = 683,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 28,
-                                    Consumption = 819515,
-                                    Pressure = 696,
-                                    Temperature = 30m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 29,
-                                    Consumption = 824131,
-                                    Pressure = 697,
-                                    Temperature = 31m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 30,
-                                    Consumption = 782414,
-                                    Pressure = 719,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 31,
-                                    Consumption = 721658,
-                                    Pressure = 698,
-                                    Temperature = 29m
-                                });
-                        });
-
-                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Grp4", b1 =>
-                        {
-                            b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Consumption")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Pressure")
-                                .HasColumnType("int");
-
-                            b1.Property<decimal>("Temperature")
-                                .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
-
-                            b1.HasKey("DevicesKipId");
-
-                            b1.ToTable("DevicesKip");
-
-                            b1.WithOwner()
-                                .HasForeignKey("DevicesKipId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    DevicesKipId = 1,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 2,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 3,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 4,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 5,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 6,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 7,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 8,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 9,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 10,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 11,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 12,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 13,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 14,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 15,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 16,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 17,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 18,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 19,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 20,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 21,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 22,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 23,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 24,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 25,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 26,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 27,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 28,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 29,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 30,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 31,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                });
-                        });
-
-                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Gru1", b1 =>
-                        {
-                            b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Consumption")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Pressure")
-                                .HasColumnType("int");
-
-                            b1.Property<decimal>("Temperature")
-                                .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
-
-                            b1.HasKey("DevicesKipId");
-
-                            b1.ToTable("DevicesKip");
-
-                            b1.WithOwner()
-                                .HasForeignKey("DevicesKipId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    DevicesKipId = 1,
-                                    Consumption = 16584,
-                                    Pressure = 627,
-                                    Temperature = -11m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 2,
-                                    Consumption = 15600,
-                                    Pressure = 618,
-                                    Temperature = -8m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 3,
-                                    Consumption = 15672,
-                                    Pressure = 624,
-                                    Temperature = -7m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 4,
-                                    Consumption = 16272,
-                                    Pressure = 630,
-                                    Temperature = -12m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 5,
-                                    Consumption = 16152,
-                                    Pressure = 623,
-                                    Temperature = -12m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 6,
-                                    Consumption = 16008,
-                                    Pressure = 620,
-                                    Temperature = -14m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 7,
-                                    Consumption = 15984,
-                                    Pressure = 626,
-                                    Temperature = -14m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 8,
-                                    Consumption = 13752,
-                                    Pressure = 633,
-                                    Temperature = -14m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 9,
-                                    Consumption = 11760,
-                                    Pressure = 622,
-                                    Temperature = -10m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 10,
-                                    Consumption = 14112,
-                                    Pressure = 637,
-                                    Temperature = -12m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 11,
-                                    Consumption = 14208,
-                                    Pressure = 633,
-                                    Temperature = -11m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 12,
-                                    Consumption = 9096,
-                                    Pressure = 635,
-                                    Temperature = -4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 13,
-                                    Consumption = 12864,
-                                    Pressure = 633,
-                                    Temperature = -3m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 14,
-                                    Consumption = 15288,
-                                    Pressure = 623,
-                                    Temperature = -12m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 15,
-                                    Consumption = 12048,
-                                    Pressure = 644,
-                                    Temperature = -8m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 16,
-                                    Consumption = 13920,
-                                    Pressure = 635,
-                                    Temperature = -11m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 17,
-                                    Consumption = 6732,
-                                    Pressure = 630,
-                                    Temperature = -10m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 18,
-                                    Consumption = 15360,
-                                    Pressure = 625,
-                                    Temperature = -4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 19,
-                                    Consumption = 11568,
-                                    Pressure = 637,
-                                    Temperature = -1m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 20,
-                                    Consumption = 12552,
-                                    Pressure = 644,
-                                    Temperature = -11m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 21,
-                                    Consumption = 12048,
-                                    Pressure = 645,
-                                    Temperature = -9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 22,
-                                    Consumption = 15024,
-                                    Pressure = 635,
-                                    Temperature = -14m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 23,
-                                    Consumption = 13656,
-                                    Pressure = 637,
-                                    Temperature = -20m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 24,
-                                    Consumption = 15672,
-                                    Pressure = 632,
-                                    Temperature = -16m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 25,
-                                    Consumption = 14352,
-                                    Pressure = 632,
-                                    Temperature = -19m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 26,
-                                    Consumption = 14496,
-                                    Pressure = 631,
-                                    Temperature = -22m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 27,
-                                    Consumption = 15096,
-                                    Pressure = 636,
-                                    Temperature = -20m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 28,
-                                    Consumption = 14640,
-                                    Pressure = 618,
-                                    Temperature = -24m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 29,
-                                    Consumption = 14880,
-                                    Pressure = 634,
-                                    Temperature = -14m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 30,
-                                    Consumption = 14640,
-                                    Pressure = 625,
-                                    Temperature = -19m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 31,
-                                    Consumption = 14736,
-                                    Pressure = 631,
-                                    Temperature = -16m
-                                });
-                        });
-
-                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Gru2", b1 =>
-                        {
-                            b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Consumption")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Pressure")
-                                .HasColumnType("int");
-
-                            b1.Property<decimal>("Temperature")
-                                .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
-
-                            b1.HasKey("DevicesKipId");
-
-                            b1.ToTable("DevicesKip");
-
-                            b1.WithOwner()
-                                .HasForeignKey("DevicesKipId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    DevicesKipId = 1,
-                                    Consumption = 14976,
-                                    Pressure = 425,
-                                    Temperature = -104m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 2,
-                                    Consumption = 13920,
-                                    Pressure = 434,
-                                    Temperature = -7.6m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 3,
-                                    Consumption = 14040,
-                                    Pressure = 438,
-                                    Temperature = -11.4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 4,
-                                    Consumption = 14664,
-                                    Pressure = 429,
-                                    Temperature = -10.9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 5,
-                                    Consumption = 14664,
-                                    Pressure = 430,
-                                    Temperature = -11.2m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 6,
-                                    Consumption = 14640,
-                                    Pressure = 434,
-                                    Temperature = -14m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 7,
-                                    Consumption = 14712,
-                                    Pressure = 433,
-                                    Temperature = -13.5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 8,
-                                    Consumption = 11472,
-                                    Pressure = 468,
-                                    Temperature = -13m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 9,
-                                    Consumption = 10992,
-                                    Pressure = 469,
-                                    Temperature = -9.8m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 10,
-                                    Consumption = 10152,
-                                    Pressure = 472,
-                                    Temperature = -11m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 11,
-                                    Consumption = 12336,
-                                    Pressure = 453,
-                                    Temperature = -11m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 12,
-                                    Consumption = 8064,
-                                    Pressure = 484,
-                                    Temperature = -3.5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 13,
-                                    Consumption = 12576,
-                                    Pressure = 442,
-                                    Temperature = -1.1m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 14,
-                                    Consumption = 12624,
-                                    Pressure = 448,
-                                    Temperature = -12m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 15,
-                                    Consumption = 10296,
-                                    Pressure = 472,
-                                    Temperature = -7.4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 16,
-                                    Consumption = 12792,
-                                    Pressure = 448,
-                                    Temperature = -10.6m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 17,
-                                    Consumption = 7704,
-                                    Pressure = 493,
-                                    Temperature = -10.2m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 18,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 19,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 20,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 21,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 22,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 23,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 24,
-                                    Consumption = 0,
-                                    Pressure = 0,
-                                    Temperature = 0m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 25,
-                                    Consumption = 12312,
-                                    Pressure = 454,
-                                    Temperature = -19m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 26,
-                                    Consumption = 10416,
-                                    Pressure = 475,
-                                    Temperature = -19m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 27,
-                                    Consumption = 13440,
-                                    Pressure = 447,
-                                    Temperature = -18.9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 28,
-                                    Consumption = 11784,
-                                    Pressure = 464,
-                                    Temperature = 23.9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 29,
-                                    Consumption = 11880,
-                                    Pressure = 459,
-                                    Temperature = 12.4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 30,
-                                    Consumption = 12576,
-                                    Pressure = 457,
-                                    Temperature = -17.4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 31,
-                                    Consumption = 13176,
-                                    Pressure = 448,
-                                    Temperature = -15m
-                                });
-                        });
-
-                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Gsuf45", b1 =>
-                        {
-                            b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Consumption")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Pressure")
-                                .HasColumnType("int");
-
-                            b1.Property<decimal>("Temperature")
-                                .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
-
-                            b1.HasKey("DevicesKipId");
-
-                            b1.ToTable("DevicesKip");
-
-                            b1.WithOwner()
-                                .HasForeignKey("DevicesKipId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    DevicesKipId = 1,
-                                    Consumption = 5609,
-                                    Pressure = 1046,
-                                    Temperature = 36m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 2,
-                                    Consumption = 3674,
-                                    Pressure = 1067,
-                                    Temperature = 36m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 3,
-                                    Consumption = 3484,
-                                    Pressure = 1076,
-                                    Temperature = 38m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 4,
-                                    Consumption = 5953,
-                                    Pressure = 1049,
-                                    Temperature = 36m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 5,
-                                    Consumption = 4960,
-                                    Pressure = 1070,
-                                    Temperature = 36m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 6,
-                                    Consumption = 5399,
-                                    Pressure = 1097,
-                                    Temperature = 35m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 7,
-                                    Consumption = 4596,
-                                    Pressure = 1103,
-                                    Temperature = 36m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 8,
-                                    Consumption = 5759,
-                                    Pressure = 1074,
-                                    Temperature = 36m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 9,
-                                    Consumption = 3516,
-                                    Pressure = 1065,
-                                    Temperature = 35m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 10,
-                                    Consumption = 3924,
-                                    Pressure = 1088,
-                                    Temperature = 37m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 11,
-                                    Consumption = 2369,
-                                    Pressure = 1065,
-                                    Temperature = 37m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 12,
-                                    Consumption = 3431,
-                                    Pressure = 1002,
-                                    Temperature = 35m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 13,
-                                    Consumption = 2850,
-                                    Pressure = 1070,
-                                    Temperature = 35m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 14,
-                                    Consumption = 1653,
-                                    Pressure = 1045,
-                                    Temperature = 35m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 15,
-                                    Consumption = 890,
-                                    Pressure = 1026,
-                                    Temperature = 35.5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 16,
-                                    Consumption = 1337,
-                                    Pressure = 1061,
-                                    Temperature = 35.5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 17,
-                                    Consumption = 5458,
-                                    Pressure = 1069,
-                                    Temperature = 33m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 18,
-                                    Consumption = 4625,
-                                    Pressure = 1052,
-                                    Temperature = 35m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 19,
-                                    Consumption = 2232,
-                                    Pressure = 1002,
-                                    Temperature = 37m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 20,
-                                    Consumption = 232,
-                                    Pressure = 993,
-                                    Temperature = 36.5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 21,
-                                    Consumption = 3254,
-                                    Pressure = 1095,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 22,
-                                    Consumption = 2880,
-                                    Pressure = 1083,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 23,
-                                    Consumption = 15025,
-                                    Pressure = 1066,
-                                    Temperature = 34.4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 24,
-                                    Consumption = 3829,
-                                    Pressure = 1079,
-                                    Temperature = 33m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 25,
-                                    Consumption = 16489,
-                                    Pressure = 1092,
-                                    Temperature = 32.5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 26,
-                                    Consumption = 12500,
-                                    Pressure = 1108,
-                                    Temperature = 33.2m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 27,
-                                    Consumption = 7048,
-                                    Pressure = 1124,
-                                    Temperature = 35.4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 28,
-                                    Consumption = 12262,
-                                    Pressure = 1115,
-                                    Temperature = 34.5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 29,
-                                    Consumption = 9991,
-                                    Pressure = 1127,
-                                    Temperature = 35.7m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 30,
-                                    Consumption = 13929,
-                                    Pressure = 1143,
-                                    Temperature = 34m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 31,
-                                    Consumption = 5919,
-                                    Pressure = 1040,
-                                    Temperature = 33m
-                                });
-                        });
-
-                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Spo", b1 =>
-                        {
-                            b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Consumption")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Pressure")
-                                .HasColumnType("int");
-
-                            b1.Property<decimal>("Temperature")
-                                .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
-
-                            b1.HasKey("DevicesKipId");
-
-                            b1.ToTable("DevicesKip");
-
-                            b1.WithOwner()
-                                .HasForeignKey("DevicesKipId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    DevicesKipId = 1,
-                                    Consumption = 29001,
-                                    Pressure = 610,
-                                    Temperature = 19m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 2,
-                                    Consumption = 29524,
-                                    Pressure = 893,
-                                    Temperature = 9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 3,
-                                    Consumption = 28485,
-                                    Pressure = 866,
-                                    Temperature = 6m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 4,
-                                    Consumption = 28831,
-                                    Pressure = 795,
-                                    Temperature = 9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 5,
-                                    Consumption = 28371,
-                                    Pressure = 692,
-                                    Temperature = 7m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 6,
-                                    Consumption = 28780,
-                                    Pressure = 903,
-                                    Temperature = 11m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 7,
-                                    Consumption = 28405,
-                                    Pressure = 915,
-                                    Temperature = 10m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 8,
-                                    Consumption = 28476,
-                                    Pressure = 849,
-                                    Temperature = 9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 9,
-                                    Consumption = 29517,
-                                    Pressure = 792,
-                                    Temperature = 8m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 10,
-                                    Consumption = 28933,
-                                    Pressure = 763,
-                                    Temperature = 5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 11,
-                                    Consumption = 30862,
-                                    Pressure = 739,
-                                    Temperature = 16m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 12,
-                                    Consumption = 29981,
-                                    Pressure = 818,
-                                    Temperature = 6m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 13,
-                                    Consumption = 30187,
-                                    Pressure = 1066,
-                                    Temperature = 21m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 14,
-                                    Consumption = 31616,
-                                    Pressure = 1058,
-                                    Temperature = 3m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 15,
-                                    Consumption = 32563,
-                                    Pressure = 1088,
-                                    Temperature = 6m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 16,
-                                    Consumption = 31474,
-                                    Pressure = 1088,
-                                    Temperature = 5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 17,
-                                    Consumption = 29493,
-                                    Pressure = 1173,
-                                    Temperature = 9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 18,
-                                    Consumption = 25325,
-                                    Pressure = 1093,
-                                    Temperature = 6m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 19,
-                                    Consumption = 24999,
-                                    Pressure = 1051,
-                                    Temperature = 10m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 20,
-                                    Consumption = 25863,
-                                    Pressure = 1044,
-                                    Temperature = 3m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 21,
-                                    Consumption = 27722,
-                                    Pressure = 1139,
-                                    Temperature = 1m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 22,
-                                    Consumption = 26645,
-                                    Pressure = 1128,
-                                    Temperature = 11m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 23,
-                                    Consumption = 26650,
-                                    Pressure = 1086,
-                                    Temperature = 4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 24,
-                                    Consumption = 29116,
-                                    Pressure = 1029,
-                                    Temperature = 13m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 25,
-                                    Consumption = 32831,
-                                    Pressure = 1105,
-                                    Temperature = 5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 26,
-                                    Consumption = 29638,
-                                    Pressure = 1178,
-                                    Temperature = 11m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 27,
-                                    Consumption = 31483,
-                                    Pressure = 1164,
-                                    Temperature = 14m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 28,
-                                    Consumption = 36216,
-                                    Pressure = 1115,
-                                    Temperature = 13m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 29,
-                                    Consumption = 35114,
-                                    Pressure = 1162,
-                                    Temperature = 13m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 30,
-                                    Consumption = 29696,
-                                    Pressure = 1116,
-                                    Temperature = 6m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 31,
-                                    Consumption = 24193,
-                                    Pressure = 1066,
-                                    Temperature = 12m
-                                });
-                        });
-
-                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Uvtp", b1 =>
-                        {
-                            b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Consumption")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Pressure")
-                                .HasColumnType("int");
-
-                            b1.Property<decimal>("Temperature")
-                                .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
-
-                            b1.HasKey("DevicesKipId");
-
-                            b1.ToTable("DevicesKip");
-
-                            b1.WithOwner()
-                                .HasForeignKey("DevicesKipId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    DevicesKipId = 1,
-                                    Consumption = 18516,
-                                    Pressure = 1040,
-                                    Temperature = 26m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 2,
-                                    Consumption = 18841,
-                                    Pressure = 1059,
-                                    Temperature = 27m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 3,
-                                    Consumption = 19185,
-                                    Pressure = 1066,
-                                    Temperature = 26m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 4,
-                                    Consumption = 19064,
-                                    Pressure = 1035,
-                                    Temperature = 22m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 5,
-                                    Consumption = 19182,
-                                    Pressure = 1056,
-                                    Temperature = 25m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 6,
-                                    Consumption = 18936,
-                                    Pressure = 1079,
-                                    Temperature = 28m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 7,
-                                    Consumption = 19037,
-                                    Pressure = 1087,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 8,
-                                    Consumption = 18795,
-                                    Pressure = 1060,
-                                    Temperature = 25m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 9,
-                                    Consumption = 19093,
-                                    Pressure = 1046,
-                                    Temperature = 23.9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 10,
-                                    Consumption = 18722,
-                                    Pressure = 1063,
-                                    Temperature = 27m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 11,
-                                    Consumption = 20299,
-                                    Pressure = 1034,
-                                    Temperature = 29m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 12,
-                                    Consumption = 19051,
-                                    Pressure = 976,
-                                    Temperature = 23m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 13,
-                                    Consumption = 19296,
-                                    Pressure = 1055,
-                                    Temperature = 26m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 14,
-                                    Consumption = 19150,
-                                    Pressure = 1039,
-                                    Temperature = 24m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 15,
-                                    Consumption = 18833,
-                                    Pressure = 1017,
-                                    Temperature = 23.9m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 16,
-                                    Consumption = 19621,
-                                    Pressure = 1056,
-                                    Temperature = 24m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 17,
-                                    Consumption = 17964,
-                                    Pressure = 1080,
-                                    Temperature = 25m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 18,
-                                    Consumption = 18354,
-                                    Pressure = 1070,
-                                    Temperature = 26m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 19,
-                                    Consumption = 18268,
-                                    Pressure = 993,
-                                    Temperature = 28m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 20,
-                                    Consumption = 18365,
-                                    Pressure = 983,
-                                    Temperature = 27m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 21,
-                                    Consumption = 17368,
-                                    Pressure = 1086,
-                                    Temperature = 20.3m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 22,
-                                    Consumption = 16895,
-                                    Pressure = 1075,
-                                    Temperature = 20.4m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 23,
-                                    Consumption = 17789,
-                                    Pressure = 1048,
-                                    Temperature = 21m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 24,
-                                    Consumption = 18477,
-                                    Pressure = 1046,
-                                    Temperature = 23m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 25,
-                                    Consumption = 18506,
-                                    Pressure = 1053,
-                                    Temperature = 21.7m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 26,
-                                    Consumption = 19626,
-                                    Pressure = 1063,
-                                    Temperature = 24.5m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 27,
-                                    Consumption = 19312,
-                                    Pressure = 1068,
-                                    Temperature = 25.7m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 28,
-                                    Consumption = 18036,
-                                    Pressure = 1047,
-                                    Temperature = 22.8m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 29,
-                                    Consumption = 18036,
-                                    Pressure = 1047,
-                                    Temperature = 24.3m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 30,
-                                    Consumption = 19403,
-                                    Pressure = 1092,
-                                    Temperature = 23m
-                                },
-                                new
-                                {
-                                    DevicesKipId = 31,
-                                    Consumption = 20009,
-                                    Pressure = 972,
-                                    Temperature = 24m
-                                });
-                        });
-
                     b.OwnsOne("DA.Entities.Devices.DeviceMsKs", "Pkc", b1 =>
                         {
                             b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("int");
 
                             b1.Property<int>("Pressure")
                                 .HasColumnType("int");
 
                             b1.Property<decimal>("Temperature")
                                 .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
+                                .HasColumnType("numeric");
 
                             b1.HasKey("DevicesKipId");
 
@@ -6840,17 +3919,15 @@ namespace DA.Migrations
                             b1.OwnsOne("DA.Entities.Devices.ConsumptionMsKs", "Consumption", b2 =>
                                 {
                                     b2.Property<int>("DeviceMsKsDevicesKipId")
-                                        .ValueGeneratedOnAdd()
-                                        .HasColumnType("int")
-                                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                        .HasColumnType("int");
 
                                     b2.Property<decimal>("Ks")
                                         .HasPrecision(16, 6)
-                                        .HasColumnType("numeric(16,6)");
+                                        .HasColumnType("numeric");
 
                                     b2.Property<decimal>("Ms")
                                         .HasPrecision(16, 6)
-                                        .HasColumnType("numeric(16,6)");
+                                        .HasColumnType("numeric");
 
                                     b2.HasKey("DeviceMsKsDevicesKipId");
 
@@ -7103,7 +4180,7 @@ namespace DA.Migrations
                                 {
                                     DevicesKipId = 9,
                                     Pressure = 1024,
-                                    Temperature = 239m
+                                    Temperature = 23.9m
                                 },
                                 new
                                 {
@@ -7239,12 +4316,978 @@ namespace DA.Migrations
                                 });
                         });
 
+                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Cb1", b1 =>
+                        {
+                            b1.Property<int>("DevicesKipId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Consumption")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Pressure")
+                                .HasColumnType("int");
+
+                            b1.Property<decimal>("Temperature")
+                                .HasPrecision(5, 1)
+                                .HasColumnType("numeric");
+
+                            b1.HasKey("DevicesKipId");
+
+                            b1.ToTable("DevicesKip");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DevicesKipId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    DevicesKipId = 1,
+                                    Consumption = 924484,
+                                    Pressure = 391,
+                                    Temperature = 28m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 2,
+                                    Consumption = 919649,
+                                    Pressure = 397,
+                                    Temperature = 27m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 3,
+                                    Consumption = 923255,
+                                    Pressure = 392,
+                                    Temperature = 28m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 4,
+                                    Consumption = 939789,
+                                    Pressure = 404,
+                                    Temperature = 26m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 5,
+                                    Consumption = 912882,
+                                    Pressure = 403,
+                                    Temperature = 23m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 6,
+                                    Consumption = 938413,
+                                    Pressure = 374,
+                                    Temperature = 22m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 7,
+                                    Consumption = 868483,
+                                    Pressure = 424,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 8,
+                                    Consumption = 918677,
+                                    Pressure = 423,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 9,
+                                    Consumption = 900382,
+                                    Pressure = 445,
+                                    Temperature = 28m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 10,
+                                    Consumption = 941103,
+                                    Pressure = 450,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 11,
+                                    Consumption = 856518,
+                                    Pressure = 467,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 12,
+                                    Consumption = 839624,
+                                    Pressure = 461,
+                                    Temperature = 23m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 13,
+                                    Consumption = 889357,
+                                    Pressure = 475,
+                                    Temperature = 26m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 14,
+                                    Consumption = 874499,
+                                    Pressure = 441,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 15,
+                                    Consumption = 876085,
+                                    Pressure = 416,
+                                    Temperature = 29.4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 16,
+                                    Consumption = 870631,
+                                    Pressure = 438,
+                                    Temperature = 26.7m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 17,
+                                    Consumption = 899508,
+                                    Pressure = 415,
+                                    Temperature = 25.3m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 18,
+                                    Consumption = 934485,
+                                    Pressure = 416,
+                                    Temperature = 29.8m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 19,
+                                    Consumption = 860064,
+                                    Pressure = 420,
+                                    Temperature = 30.2m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 20,
+                                    Consumption = 859025,
+                                    Pressure = 426,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 21,
+                                    Consumption = 885934,
+                                    Pressure = 414,
+                                    Temperature = 26.7m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 22,
+                                    Consumption = 881688,
+                                    Pressure = 407,
+                                    Temperature = 25.8m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 23,
+                                    Consumption = 883484,
+                                    Pressure = 412,
+                                    Temperature = 18.9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 24,
+                                    Consumption = 829433,
+                                    Pressure = 433,
+                                    Temperature = 24m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 25,
+                                    Consumption = 831096,
+                                    Pressure = 425,
+                                    Temperature = 20.2m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 26,
+                                    Consumption = 868643,
+                                    Pressure = 447,
+                                    Temperature = 22.1m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 27,
+                                    Consumption = 849986,
+                                    Pressure = 436,
+                                    Temperature = 23.8m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 28,
+                                    Consumption = 795320,
+                                    Pressure = 480,
+                                    Temperature = 18.2m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 29,
+                                    Consumption = 775879,
+                                    Pressure = 490,
+                                    Temperature = 22.5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 30,
+                                    Consumption = 819082,
+                                    Pressure = 457,
+                                    Temperature = 21.4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 31,
+                                    Consumption = 795087,
+                                    Pressure = 443,
+                                    Temperature = 22.2m
+                                });
+                        });
+
+                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Cb2", b1 =>
+                        {
+                            b1.Property<int>("DevicesKipId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Consumption")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Pressure")
+                                .HasColumnType("int");
+
+                            b1.Property<decimal>("Temperature")
+                                .HasPrecision(5, 1)
+                                .HasColumnType("numeric");
+
+                            b1.HasKey("DevicesKipId");
+
+                            b1.ToTable("DevicesKip");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DevicesKipId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    DevicesKipId = 1,
+                                    Consumption = 1062402,
+                                    Pressure = 391,
+                                    Temperature = 28m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 2,
+                                    Consumption = 1004744,
+                                    Pressure = 397,
+                                    Temperature = 27m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 3,
+                                    Consumption = 1032434,
+                                    Pressure = 392,
+                                    Temperature = 28m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 4,
+                                    Consumption = 1064600,
+                                    Pressure = 404,
+                                    Temperature = 26m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 5,
+                                    Consumption = 1024448,
+                                    Pressure = 403,
+                                    Temperature = 23m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 6,
+                                    Consumption = 1057257,
+                                    Pressure = 374,
+                                    Temperature = 22m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 7,
+                                    Consumption = 966859,
+                                    Pressure = 424,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 8,
+                                    Consumption = 987649,
+                                    Pressure = 423,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 9,
+                                    Consumption = 982851,
+                                    Pressure = 445,
+                                    Temperature = 28m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 10,
+                                    Consumption = 1025022,
+                                    Pressure = 450,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 11,
+                                    Consumption = 965836,
+                                    Pressure = 467,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 12,
+                                    Consumption = 934758,
+                                    Pressure = 461,
+                                    Temperature = 23m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 13,
+                                    Consumption = 960159,
+                                    Pressure = 475,
+                                    Temperature = 26m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 14,
+                                    Consumption = 1006873,
+                                    Pressure = 441,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 15,
+                                    Consumption = 1010803,
+                                    Pressure = 416,
+                                    Temperature = 29.4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 16,
+                                    Consumption = 986019,
+                                    Pressure = 438,
+                                    Temperature = 26.7m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 17,
+                                    Consumption = 997962,
+                                    Pressure = 415,
+                                    Temperature = 25.3m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 18,
+                                    Consumption = 1002861,
+                                    Pressure = 416,
+                                    Temperature = 29.8m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 19,
+                                    Consumption = 1004208,
+                                    Pressure = 420,
+                                    Temperature = 30.2m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 20,
+                                    Consumption = 1007885,
+                                    Pressure = 426,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 21,
+                                    Consumption = 1003317,
+                                    Pressure = 414,
+                                    Temperature = 26.7m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 22,
+                                    Consumption = 973243,
+                                    Pressure = 407,
+                                    Temperature = 25.8m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 23,
+                                    Consumption = 1027047,
+                                    Pressure = 412,
+                                    Temperature = 18.9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 24,
+                                    Consumption = 940590,
+                                    Pressure = 433,
+                                    Temperature = 24m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 25,
+                                    Consumption = 923851,
+                                    Pressure = 425,
+                                    Temperature = 20.2m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 26,
+                                    Consumption = 934013,
+                                    Pressure = 447,
+                                    Temperature = 22.1m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 27,
+                                    Consumption = 905790,
+                                    Pressure = 436,
+                                    Temperature = 23.8m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 28,
+                                    Consumption = 847951,
+                                    Pressure = 480,
+                                    Temperature = 18.2m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 29,
+                                    Consumption = 879488,
+                                    Pressure = 490,
+                                    Temperature = 22.5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 30,
+                                    Consumption = 910995,
+                                    Pressure = 457,
+                                    Temperature = 21.4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 31,
+                                    Consumption = 894413,
+                                    Pressure = 443,
+                                    Temperature = 22.2m
+                                });
+                        });
+
+                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Cb3", b1 =>
+                        {
+                            b1.Property<int>("DevicesKipId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Consumption")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Pressure")
+                                .HasColumnType("int");
+
+                            b1.Property<decimal>("Temperature")
+                                .HasPrecision(5, 1)
+                                .HasColumnType("numeric");
+
+                            b1.HasKey("DevicesKipId");
+
+                            b1.ToTable("DevicesKip");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DevicesKipId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    DevicesKipId = 1,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 2,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 3,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 4,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 5,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 6,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 7,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 8,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 9,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 10,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 11,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 12,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 13,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 14,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 15,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 16,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 17,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 18,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 19,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 20,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 21,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 22,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 23,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 24,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 25,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 26,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 27,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 28,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 29,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 30,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 31,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                });
+                        });
+
+                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Cb4", b1 =>
+                        {
+                            b1.Property<int>("DevicesKipId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Consumption")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Pressure")
+                                .HasColumnType("int");
+
+                            b1.Property<decimal>("Temperature")
+                                .HasPrecision(5, 1)
+                                .HasColumnType("numeric");
+
+                            b1.HasKey("DevicesKipId");
+
+                            b1.ToTable("DevicesKip");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DevicesKipId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    DevicesKipId = 1,
+                                    Consumption = 1041164,
+                                    Pressure = 414,
+                                    Temperature = 22m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 2,
+                                    Consumption = 1040120,
+                                    Pressure = 419,
+                                    Temperature = 21m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 3,
+                                    Consumption = 1076294,
+                                    Pressure = 411,
+                                    Temperature = 23m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 4,
+                                    Consumption = 1037908,
+                                    Pressure = 430,
+                                    Temperature = 20m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 5,
+                                    Consumption = 1024275,
+                                    Pressure = 427,
+                                    Temperature = 17m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 6,
+                                    Consumption = 1018196,
+                                    Pressure = 400,
+                                    Temperature = 16m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 7,
+                                    Consumption = 989561,
+                                    Pressure = 450,
+                                    Temperature = 23m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 8,
+                                    Consumption = 995020,
+                                    Pressure = 450,
+                                    Temperature = 24m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 9,
+                                    Consumption = 990016,
+                                    Pressure = 471,
+                                    Temperature = 22m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 10,
+                                    Consumption = 1020291,
+                                    Pressure = 477,
+                                    Temperature = 24m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 11,
+                                    Consumption = 989109,
+                                    Pressure = 490,
+                                    Temperature = 25m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 12,
+                                    Consumption = 996163,
+                                    Pressure = 483,
+                                    Temperature = 18m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 13,
+                                    Consumption = 957249,
+                                    Pressure = 497,
+                                    Temperature = 21m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 14,
+                                    Consumption = 985946,
+                                    Pressure = 463,
+                                    Temperature = 24m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 15,
+                                    Consumption = 1023193,
+                                    Pressure = 428,
+                                    Temperature = 24m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 16,
+                                    Consumption = 950564,
+                                    Pressure = 462,
+                                    Temperature = 20.6m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 17,
+                                    Consumption = 999598,
+                                    Pressure = 437,
+                                    Temperature = 19.7m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 18,
+                                    Consumption = 1007676,
+                                    Pressure = 440,
+                                    Temperature = 24m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 19,
+                                    Consumption = 952659,
+                                    Pressure = 454,
+                                    Temperature = 26m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 20,
+                                    Consumption = 1014935,
+                                    Pressure = 443,
+                                    Temperature = 24m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 21,
+                                    Consumption = 1014410,
+                                    Pressure = 436,
+                                    Temperature = 21m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 22,
+                                    Consumption = 977636,
+                                    Pressure = 431,
+                                    Temperature = 19.9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 23,
+                                    Consumption = 1012531,
+                                    Pressure = 435,
+                                    Temperature = 12.9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 24,
+                                    Consumption = 960443,
+                                    Pressure = 459,
+                                    Temperature = 17.5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 25,
+                                    Consumption = 946388,
+                                    Pressure = 451,
+                                    Temperature = 12.9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 26,
+                                    Consumption = 961052,
+                                    Pressure = 475,
+                                    Temperature = 13.3m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 27,
+                                    Consumption = 918830,
+                                    Pressure = 465,
+                                    Temperature = 16.1m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 28,
+                                    Consumption = 903540,
+                                    Pressure = 507,
+                                    Temperature = 10.7m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 29,
+                                    Consumption = 932230,
+                                    Pressure = 516,
+                                    Temperature = 16m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 30,
+                                    Consumption = 932344,
+                                    Pressure = 403,
+                                    Temperature = 13.1m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 31,
+                                    Consumption = 910158,
+                                    Pressure = 464,
+                                    Temperature = 15m
+                                });
+                        });
+
                     b.OwnsOne("DA.Entities.Devices.DeviceTBHDefault", "Cb5", b1 =>
                         {
                             b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("int");
 
                             b1.Property<int>("Consumption")
                                 .HasColumnType("int");
@@ -7254,11 +5297,11 @@ namespace DA.Migrations
 
                             b1.Property<decimal>("TempBeforeHeating")
                                 .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("Temperature")
                                 .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
+                                .HasColumnType("numeric");
 
                             b1.HasKey("DevicesKipId");
 
@@ -7465,7 +5508,7 @@ namespace DA.Migrations
                                     DevicesKipId = 25,
                                     Consumption = 9578,
                                     Pressure = 368,
-                                    TempBeforeHeating = 223m,
+                                    TempBeforeHeating = 22.3m,
                                     Temperature = 48.6m
                                 },
                                 new
@@ -7521,9 +5564,7 @@ namespace DA.Migrations
                     b.OwnsOne("DA.Entities.Devices.DeviceTBHDefault", "Cb6", b1 =>
                         {
                             b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("int");
 
                             b1.Property<int>("Consumption")
                                 .HasColumnType("int");
@@ -7533,11 +5574,11 @@ namespace DA.Migrations
 
                             b1.Property<decimal>("TempBeforeHeating")
                                 .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("Temperature")
                                 .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
+                                .HasColumnType("numeric");
 
                             b1.HasKey("DevicesKipId");
 
@@ -7800,20 +5841,18 @@ namespace DA.Migrations
                     b.OwnsOne("DA.Entities.Devices.DeviceTBHMsKs", "Cb7", b1 =>
                         {
                             b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("int");
 
                             b1.Property<int>("Pressure")
                                 .HasColumnType("int");
 
                             b1.Property<decimal>("TempBeforeHeating")
                                 .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("Temperature")
                                 .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
+                                .HasColumnType("numeric");
 
                             b1.HasKey("DevicesKipId");
 
@@ -7825,17 +5864,15 @@ namespace DA.Migrations
                             b1.OwnsOne("DA.Entities.Devices.ConsumptionMsKs", "Consumption", b2 =>
                                 {
                                     b2.Property<int>("DeviceTBHMsKsDevicesKipId")
-                                        .ValueGeneratedOnAdd()
-                                        .HasColumnType("int")
-                                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                        .HasColumnType("int");
 
                                     b2.Property<decimal>("Ks")
                                         .HasPrecision(16, 6)
-                                        .HasColumnType("numeric(16,6)");
+                                        .HasColumnType("numeric");
 
                                     b2.Property<decimal>("Ms")
                                         .HasPrecision(16, 6)
-                                        .HasColumnType("numeric(16,6)");
+                                        .HasColumnType("numeric");
 
                                     b2.HasKey("DeviceTBHMsKsDevicesKipId");
 
@@ -8258,20 +6295,18 @@ namespace DA.Migrations
                     b.OwnsOne("DA.Entities.Devices.DeviceTBHMsKs", "Cb8", b1 =>
                         {
                             b1.Property<int>("DevicesKipId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("int");
 
                             b1.Property<int>("Pressure")
                                 .HasColumnType("int");
 
                             b1.Property<decimal>("TempBeforeHeating")
                                 .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("Temperature")
                                 .HasPrecision(5, 1)
-                                .HasColumnType("numeric(5,1)");
+                                .HasColumnType("numeric");
 
                             b1.HasKey("DevicesKipId");
 
@@ -8283,17 +6318,15 @@ namespace DA.Migrations
                             b1.OwnsOne("DA.Entities.Devices.ConsumptionMsKs", "Consumption", b2 =>
                                 {
                                     b2.Property<int>("DeviceTBHMsKsDevicesKipId")
-                                        .ValueGeneratedOnAdd()
-                                        .HasColumnType("int")
-                                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                        .HasColumnType("int");
 
                                     b2.Property<decimal>("Ks")
                                         .HasPrecision(16, 6)
-                                        .HasColumnType("numeric(16,6)");
+                                        .HasColumnType("numeric");
 
                                     b2.Property<decimal>("Ms")
                                         .HasPrecision(16, 6)
-                                        .HasColumnType("numeric(16,6)");
+                                        .HasColumnType("numeric");
 
                                     b2.HasKey("DeviceTBHMsKsDevicesKipId");
 
@@ -8713,6 +6746,1942 @@ namespace DA.Migrations
                                 });
                         });
 
+                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Cu1", b1 =>
+                        {
+                            b1.Property<int>("DevicesKipId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Consumption")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Pressure")
+                                .HasColumnType("int");
+
+                            b1.Property<decimal>("Temperature")
+                                .HasPrecision(5, 1)
+                                .HasColumnType("numeric");
+
+                            b1.HasKey("DevicesKipId");
+
+                            b1.ToTable("DevicesKip");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DevicesKipId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    DevicesKipId = 1,
+                                    Consumption = 1664569,
+                                    Pressure = 1124,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 2,
+                                    Consumption = 1673337,
+                                    Pressure = 1147,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 3,
+                                    Consumption = 1685176,
+                                    Pressure = 1138,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 4,
+                                    Consumption = 1699491,
+                                    Pressure = 1120,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 5,
+                                    Consumption = 1676852,
+                                    Pressure = 1141,
+                                    Temperature = 33m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 6,
+                                    Consumption = 1714918,
+                                    Pressure = 1175,
+                                    Temperature = 33m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 7,
+                                    Consumption = 1701660,
+                                    Pressure = 1145,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 8,
+                                    Consumption = 1698772,
+                                    Pressure = 1141,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 9,
+                                    Consumption = 1708982,
+                                    Pressure = 1147,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 10,
+                                    Consumption = 1533358,
+                                    Pressure = 1158,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 11,
+                                    Consumption = 1556101,
+                                    Pressure = 1112,
+                                    Temperature = 35m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 12,
+                                    Consumption = 1568548,
+                                    Pressure = 1086,
+                                    Temperature = 33m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 13,
+                                    Consumption = 1608113,
+                                    Pressure = 1149,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 14,
+                                    Consumption = 1751963,
+                                    Pressure = 1092,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 15,
+                                    Consumption = 1927282,
+                                    Pressure = 1123,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 16,
+                                    Consumption = 1861067,
+                                    Pressure = 1124,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 17,
+                                    Consumption = 1915373,
+                                    Pressure = 1189,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 18,
+                                    Consumption = 1917339,
+                                    Pressure = 1117,
+                                    Temperature = 32m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 19,
+                                    Consumption = 1858861,
+                                    Pressure = 1081,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 20,
+                                    Consumption = 1912454,
+                                    Pressure = 1079,
+                                    Temperature = 32m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 21,
+                                    Consumption = 1954729,
+                                    Pressure = 1175,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 22,
+                                    Consumption = 1966875,
+                                    Pressure = 1150,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 23,
+                                    Consumption = 1954418,
+                                    Pressure = 1154,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 24,
+                                    Consumption = 1952118,
+                                    Pressure = 1134,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 25,
+                                    Consumption = 1955707,
+                                    Pressure = 1147,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 26,
+                                    Consumption = 1934729,
+                                    Pressure = 1203,
+                                    Temperature = 32m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 27,
+                                    Consumption = 1904849,
+                                    Pressure = 1200,
+                                    Temperature = 33m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 28,
+                                    Consumption = 1937655,
+                                    Pressure = 1172,
+                                    Temperature = 33m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 29,
+                                    Consumption = 1973533,
+                                    Pressure = 1222,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 30,
+                                    Consumption = 1887465,
+                                    Pressure = 1157,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 31,
+                                    Consumption = 1839322,
+                                    Pressure = 1103,
+                                    Temperature = 31m
+                                });
+                        });
+
+                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Cu2", b1 =>
+                        {
+                            b1.Property<int>("DevicesKipId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Consumption")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Pressure")
+                                .HasColumnType("int");
+
+                            b1.Property<decimal>("Temperature")
+                                .HasPrecision(5, 1)
+                                .HasColumnType("numeric");
+
+                            b1.HasKey("DevicesKipId");
+
+                            b1.ToTable("DevicesKip");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DevicesKipId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    DevicesKipId = 1,
+                                    Consumption = 709345,
+                                    Pressure = 744,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 2,
+                                    Consumption = 708767,
+                                    Pressure = 757,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 3,
+                                    Consumption = 733009,
+                                    Pressure = 679,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 4,
+                                    Consumption = 727462,
+                                    Pressure = 811,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 5,
+                                    Consumption = 735857,
+                                    Pressure = 804,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 6,
+                                    Consumption = 737096,
+                                    Pressure = 746,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 7,
+                                    Consumption = 722180,
+                                    Pressure = 725,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 8,
+                                    Consumption = 729908,
+                                    Pressure = 750,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 9,
+                                    Consumption = 740416,
+                                    Pressure = 762,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 10,
+                                    Consumption = 691937,
+                                    Pressure = 861,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 11,
+                                    Consumption = 660752,
+                                    Pressure = 798,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 12,
+                                    Consumption = 703454,
+                                    Pressure = 780,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 13,
+                                    Consumption = 740796,
+                                    Pressure = 898,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 14,
+                                    Consumption = 750385,
+                                    Pressure = 814,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 15,
+                                    Consumption = 746930,
+                                    Pressure = 811,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 16,
+                                    Consumption = 699552,
+                                    Pressure = 786,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 17,
+                                    Consumption = 746869,
+                                    Pressure = 757,
+                                    Temperature = 30.8m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 18,
+                                    Consumption = 738747,
+                                    Pressure = 707,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 19,
+                                    Consumption = 681303,
+                                    Pressure = 642,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 20,
+                                    Consumption = 737773,
+                                    Pressure = 653,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 21,
+                                    Consumption = 799929,
+                                    Pressure = 680,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 22,
+                                    Consumption = 820117,
+                                    Pressure = 719,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 23,
+                                    Consumption = 833346,
+                                    Pressure = 760,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 24,
+                                    Consumption = 812560,
+                                    Pressure = 710,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 25,
+                                    Consumption = 805953,
+                                    Pressure = 710,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 26,
+                                    Consumption = 812697,
+                                    Pressure = 691,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 27,
+                                    Consumption = 791723,
+                                    Pressure = 683,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 28,
+                                    Consumption = 819515,
+                                    Pressure = 696,
+                                    Temperature = 30m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 29,
+                                    Consumption = 824131,
+                                    Pressure = 697,
+                                    Temperature = 31m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 30,
+                                    Consumption = 782414,
+                                    Pressure = 719,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 31,
+                                    Consumption = 721658,
+                                    Pressure = 698,
+                                    Temperature = 29m
+                                });
+                        });
+
+                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Grp4", b1 =>
+                        {
+                            b1.Property<int>("DevicesKipId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Consumption")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Pressure")
+                                .HasColumnType("int");
+
+                            b1.Property<decimal>("Temperature")
+                                .HasPrecision(5, 1)
+                                .HasColumnType("numeric");
+
+                            b1.HasKey("DevicesKipId");
+
+                            b1.ToTable("DevicesKip");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DevicesKipId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    DevicesKipId = 1,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 2,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 3,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 4,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 5,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 6,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 7,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 8,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 9,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 10,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 11,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 12,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 13,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 14,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 15,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 16,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 17,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 18,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 19,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 20,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 21,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 22,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 23,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 24,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 25,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 26,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 27,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 28,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 29,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 30,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 31,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                });
+                        });
+
+                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Gru1", b1 =>
+                        {
+                            b1.Property<int>("DevicesKipId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Consumption")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Pressure")
+                                .HasColumnType("int");
+
+                            b1.Property<decimal>("Temperature")
+                                .HasPrecision(5, 1)
+                                .HasColumnType("numeric");
+
+                            b1.HasKey("DevicesKipId");
+
+                            b1.ToTable("DevicesKip");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DevicesKipId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    DevicesKipId = 1,
+                                    Consumption = 16584,
+                                    Pressure = 627,
+                                    Temperature = -11m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 2,
+                                    Consumption = 15600,
+                                    Pressure = 618,
+                                    Temperature = -8m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 3,
+                                    Consumption = 15672,
+                                    Pressure = 624,
+                                    Temperature = -7m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 4,
+                                    Consumption = 16272,
+                                    Pressure = 630,
+                                    Temperature = -12m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 5,
+                                    Consumption = 16152,
+                                    Pressure = 623,
+                                    Temperature = -12m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 6,
+                                    Consumption = 16008,
+                                    Pressure = 620,
+                                    Temperature = -14m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 7,
+                                    Consumption = 15984,
+                                    Pressure = 626,
+                                    Temperature = -14m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 8,
+                                    Consumption = 13752,
+                                    Pressure = 633,
+                                    Temperature = -14m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 9,
+                                    Consumption = 11760,
+                                    Pressure = 622,
+                                    Temperature = -10m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 10,
+                                    Consumption = 14112,
+                                    Pressure = 637,
+                                    Temperature = -12m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 11,
+                                    Consumption = 14208,
+                                    Pressure = 633,
+                                    Temperature = -11m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 12,
+                                    Consumption = 9096,
+                                    Pressure = 635,
+                                    Temperature = -4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 13,
+                                    Consumption = 12864,
+                                    Pressure = 633,
+                                    Temperature = -3m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 14,
+                                    Consumption = 15288,
+                                    Pressure = 623,
+                                    Temperature = -12m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 15,
+                                    Consumption = 12048,
+                                    Pressure = 644,
+                                    Temperature = -8m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 16,
+                                    Consumption = 13920,
+                                    Pressure = 635,
+                                    Temperature = -11m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 17,
+                                    Consumption = 6732,
+                                    Pressure = 630,
+                                    Temperature = -10m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 18,
+                                    Consumption = 15360,
+                                    Pressure = 625,
+                                    Temperature = -4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 19,
+                                    Consumption = 11568,
+                                    Pressure = 637,
+                                    Temperature = -1m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 20,
+                                    Consumption = 12552,
+                                    Pressure = 644,
+                                    Temperature = -11m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 21,
+                                    Consumption = 12048,
+                                    Pressure = 645,
+                                    Temperature = -9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 22,
+                                    Consumption = 15024,
+                                    Pressure = 635,
+                                    Temperature = -14m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 23,
+                                    Consumption = 13656,
+                                    Pressure = 637,
+                                    Temperature = -20m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 24,
+                                    Consumption = 15672,
+                                    Pressure = 632,
+                                    Temperature = -16m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 25,
+                                    Consumption = 14352,
+                                    Pressure = 632,
+                                    Temperature = -19m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 26,
+                                    Consumption = 14496,
+                                    Pressure = 631,
+                                    Temperature = -22m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 27,
+                                    Consumption = 15096,
+                                    Pressure = 636,
+                                    Temperature = -20m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 28,
+                                    Consumption = 14640,
+                                    Pressure = 618,
+                                    Temperature = -24m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 29,
+                                    Consumption = 14880,
+                                    Pressure = 634,
+                                    Temperature = -14m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 30,
+                                    Consumption = 14640,
+                                    Pressure = 625,
+                                    Temperature = -19m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 31,
+                                    Consumption = 14736,
+                                    Pressure = 631,
+                                    Temperature = -16m
+                                });
+                        });
+
+                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Gru2", b1 =>
+                        {
+                            b1.Property<int>("DevicesKipId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Consumption")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Pressure")
+                                .HasColumnType("int");
+
+                            b1.Property<decimal>("Temperature")
+                                .HasPrecision(5, 1)
+                                .HasColumnType("numeric");
+
+                            b1.HasKey("DevicesKipId");
+
+                            b1.ToTable("DevicesKip");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DevicesKipId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    DevicesKipId = 1,
+                                    Consumption = 14976,
+                                    Pressure = 425,
+                                    Temperature = -104m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 2,
+                                    Consumption = 13920,
+                                    Pressure = 434,
+                                    Temperature = -7.6m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 3,
+                                    Consumption = 14040,
+                                    Pressure = 438,
+                                    Temperature = -11.4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 4,
+                                    Consumption = 14664,
+                                    Pressure = 429,
+                                    Temperature = -10.9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 5,
+                                    Consumption = 14664,
+                                    Pressure = 430,
+                                    Temperature = -11.2m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 6,
+                                    Consumption = 14640,
+                                    Pressure = 434,
+                                    Temperature = -14m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 7,
+                                    Consumption = 14712,
+                                    Pressure = 433,
+                                    Temperature = -13.5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 8,
+                                    Consumption = 11472,
+                                    Pressure = 468,
+                                    Temperature = -13m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 9,
+                                    Consumption = 10992,
+                                    Pressure = 469,
+                                    Temperature = -9.8m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 10,
+                                    Consumption = 10152,
+                                    Pressure = 472,
+                                    Temperature = -11m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 11,
+                                    Consumption = 12336,
+                                    Pressure = 453,
+                                    Temperature = -11m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 12,
+                                    Consumption = 8064,
+                                    Pressure = 484,
+                                    Temperature = -3.5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 13,
+                                    Consumption = 12576,
+                                    Pressure = 442,
+                                    Temperature = -1.1m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 14,
+                                    Consumption = 12624,
+                                    Pressure = 448,
+                                    Temperature = -12m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 15,
+                                    Consumption = 10296,
+                                    Pressure = 472,
+                                    Temperature = -7.4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 16,
+                                    Consumption = 12792,
+                                    Pressure = 448,
+                                    Temperature = -10.6m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 17,
+                                    Consumption = 7704,
+                                    Pressure = 493,
+                                    Temperature = -10.2m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 18,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 19,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 20,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 21,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 22,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 23,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 24,
+                                    Consumption = 0,
+                                    Pressure = 0,
+                                    Temperature = 0m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 25,
+                                    Consumption = 12312,
+                                    Pressure = 454,
+                                    Temperature = -19m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 26,
+                                    Consumption = 10416,
+                                    Pressure = 475,
+                                    Temperature = -19m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 27,
+                                    Consumption = 13440,
+                                    Pressure = 447,
+                                    Temperature = -18.9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 28,
+                                    Consumption = 11784,
+                                    Pressure = 464,
+                                    Temperature = 23.9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 29,
+                                    Consumption = 11880,
+                                    Pressure = 459,
+                                    Temperature = 12.4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 30,
+                                    Consumption = 12576,
+                                    Pressure = 457,
+                                    Temperature = -17.4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 31,
+                                    Consumption = 13176,
+                                    Pressure = 448,
+                                    Temperature = -15m
+                                });
+                        });
+
+                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Gsuf45", b1 =>
+                        {
+                            b1.Property<int>("DevicesKipId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Consumption")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Pressure")
+                                .HasColumnType("int");
+
+                            b1.Property<decimal>("Temperature")
+                                .HasPrecision(5, 1)
+                                .HasColumnType("numeric");
+
+                            b1.HasKey("DevicesKipId");
+
+                            b1.ToTable("DevicesKip");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DevicesKipId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    DevicesKipId = 1,
+                                    Consumption = 5609,
+                                    Pressure = 1046,
+                                    Temperature = 36m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 2,
+                                    Consumption = 3674,
+                                    Pressure = 1067,
+                                    Temperature = 36m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 3,
+                                    Consumption = 3484,
+                                    Pressure = 1076,
+                                    Temperature = 38m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 4,
+                                    Consumption = 5953,
+                                    Pressure = 1049,
+                                    Temperature = 36m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 5,
+                                    Consumption = 4960,
+                                    Pressure = 1070,
+                                    Temperature = 36m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 6,
+                                    Consumption = 5399,
+                                    Pressure = 1097,
+                                    Temperature = 35m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 7,
+                                    Consumption = 4596,
+                                    Pressure = 1103,
+                                    Temperature = 36m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 8,
+                                    Consumption = 5759,
+                                    Pressure = 1074,
+                                    Temperature = 36m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 9,
+                                    Consumption = 3516,
+                                    Pressure = 1065,
+                                    Temperature = 35m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 10,
+                                    Consumption = 3924,
+                                    Pressure = 1088,
+                                    Temperature = 37m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 11,
+                                    Consumption = 2369,
+                                    Pressure = 1065,
+                                    Temperature = 37m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 12,
+                                    Consumption = 3431,
+                                    Pressure = 1002,
+                                    Temperature = 35m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 13,
+                                    Consumption = 2850,
+                                    Pressure = 1070,
+                                    Temperature = 35m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 14,
+                                    Consumption = 1653,
+                                    Pressure = 1045,
+                                    Temperature = 35m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 15,
+                                    Consumption = 890,
+                                    Pressure = 1026,
+                                    Temperature = 35.5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 16,
+                                    Consumption = 1337,
+                                    Pressure = 1061,
+                                    Temperature = 35.5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 17,
+                                    Consumption = 5458,
+                                    Pressure = 1069,
+                                    Temperature = 33m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 18,
+                                    Consumption = 4625,
+                                    Pressure = 1052,
+                                    Temperature = 35m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 19,
+                                    Consumption = 2232,
+                                    Pressure = 1002,
+                                    Temperature = 37m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 20,
+                                    Consumption = 232,
+                                    Pressure = 993,
+                                    Temperature = 36.5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 21,
+                                    Consumption = 3254,
+                                    Pressure = 1095,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 22,
+                                    Consumption = 2880,
+                                    Pressure = 1083,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 23,
+                                    Consumption = 15025,
+                                    Pressure = 1066,
+                                    Temperature = 34.4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 24,
+                                    Consumption = 3829,
+                                    Pressure = 1079,
+                                    Temperature = 33m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 25,
+                                    Consumption = 16489,
+                                    Pressure = 1092,
+                                    Temperature = 32.5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 26,
+                                    Consumption = 12500,
+                                    Pressure = 1108,
+                                    Temperature = 33.2m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 27,
+                                    Consumption = 7048,
+                                    Pressure = 1124,
+                                    Temperature = 35.4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 28,
+                                    Consumption = 12262,
+                                    Pressure = 1115,
+                                    Temperature = 34.5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 29,
+                                    Consumption = 9991,
+                                    Pressure = 1127,
+                                    Temperature = 35.7m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 30,
+                                    Consumption = 13929,
+                                    Pressure = 1143,
+                                    Temperature = 34m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 31,
+                                    Consumption = 5919,
+                                    Pressure = 1040,
+                                    Temperature = 33m
+                                });
+                        });
+
+                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Spo", b1 =>
+                        {
+                            b1.Property<int>("DevicesKipId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Consumption")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Pressure")
+                                .HasColumnType("int");
+
+                            b1.Property<decimal>("Temperature")
+                                .HasPrecision(5, 1)
+                                .HasColumnType("numeric");
+
+                            b1.HasKey("DevicesKipId");
+
+                            b1.ToTable("DevicesKip");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DevicesKipId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    DevicesKipId = 1,
+                                    Consumption = 29001,
+                                    Pressure = 610,
+                                    Temperature = 19m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 2,
+                                    Consumption = 29524,
+                                    Pressure = 893,
+                                    Temperature = 9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 3,
+                                    Consumption = 28485,
+                                    Pressure = 866,
+                                    Temperature = 6m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 4,
+                                    Consumption = 28831,
+                                    Pressure = 795,
+                                    Temperature = 9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 5,
+                                    Consumption = 28371,
+                                    Pressure = 692,
+                                    Temperature = 7m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 6,
+                                    Consumption = 28780,
+                                    Pressure = 903,
+                                    Temperature = 11m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 7,
+                                    Consumption = 28405,
+                                    Pressure = 915,
+                                    Temperature = 10m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 8,
+                                    Consumption = 28476,
+                                    Pressure = 849,
+                                    Temperature = 9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 9,
+                                    Consumption = 29517,
+                                    Pressure = 792,
+                                    Temperature = 8m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 10,
+                                    Consumption = 28933,
+                                    Pressure = 763,
+                                    Temperature = 5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 11,
+                                    Consumption = 30862,
+                                    Pressure = 739,
+                                    Temperature = 16m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 12,
+                                    Consumption = 29981,
+                                    Pressure = 818,
+                                    Temperature = 6m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 13,
+                                    Consumption = 30187,
+                                    Pressure = 1066,
+                                    Temperature = 21m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 14,
+                                    Consumption = 31616,
+                                    Pressure = 1058,
+                                    Temperature = 3m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 15,
+                                    Consumption = 32563,
+                                    Pressure = 1088,
+                                    Temperature = 6m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 16,
+                                    Consumption = 31474,
+                                    Pressure = 1088,
+                                    Temperature = 5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 17,
+                                    Consumption = 29493,
+                                    Pressure = 1173,
+                                    Temperature = 9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 18,
+                                    Consumption = 25325,
+                                    Pressure = 1093,
+                                    Temperature = 6m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 19,
+                                    Consumption = 24999,
+                                    Pressure = 1051,
+                                    Temperature = 10m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 20,
+                                    Consumption = 25863,
+                                    Pressure = 1044,
+                                    Temperature = 3m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 21,
+                                    Consumption = 27722,
+                                    Pressure = 1139,
+                                    Temperature = 1m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 22,
+                                    Consumption = 26645,
+                                    Pressure = 1128,
+                                    Temperature = 11m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 23,
+                                    Consumption = 26650,
+                                    Pressure = 1086,
+                                    Temperature = 4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 24,
+                                    Consumption = 29116,
+                                    Pressure = 1029,
+                                    Temperature = 13m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 25,
+                                    Consumption = 32831,
+                                    Pressure = 1105,
+                                    Temperature = 5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 26,
+                                    Consumption = 29638,
+                                    Pressure = 1178,
+                                    Temperature = 11m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 27,
+                                    Consumption = 31483,
+                                    Pressure = 1164,
+                                    Temperature = 14m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 28,
+                                    Consumption = 36216,
+                                    Pressure = 1115,
+                                    Temperature = 13m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 29,
+                                    Consumption = 35114,
+                                    Pressure = 1162,
+                                    Temperature = 13m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 30,
+                                    Consumption = 29696,
+                                    Pressure = 1116,
+                                    Temperature = 6m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 31,
+                                    Consumption = 24193,
+                                    Pressure = 1066,
+                                    Temperature = 12m
+                                });
+                        });
+
+                    b.OwnsOne("DA.Entities.Devices.DeviceDefault", "Uvtp", b1 =>
+                        {
+                            b1.Property<int>("DevicesKipId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Consumption")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Pressure")
+                                .HasColumnType("int");
+
+                            b1.Property<decimal>("Temperature")
+                                .HasPrecision(5, 1)
+                                .HasColumnType("numeric");
+
+                            b1.HasKey("DevicesKipId");
+
+                            b1.ToTable("DevicesKip");
+
+                            b1.WithOwner()
+                                .HasForeignKey("DevicesKipId");
+
+                            b1.HasData(
+                                new
+                                {
+                                    DevicesKipId = 1,
+                                    Consumption = 18516,
+                                    Pressure = 1040,
+                                    Temperature = 26m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 2,
+                                    Consumption = 18841,
+                                    Pressure = 1059,
+                                    Temperature = 27m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 3,
+                                    Consumption = 19185,
+                                    Pressure = 1066,
+                                    Temperature = 26m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 4,
+                                    Consumption = 19064,
+                                    Pressure = 1035,
+                                    Temperature = 22m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 5,
+                                    Consumption = 19182,
+                                    Pressure = 1056,
+                                    Temperature = 25m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 6,
+                                    Consumption = 18936,
+                                    Pressure = 1079,
+                                    Temperature = 28m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 7,
+                                    Consumption = 19037,
+                                    Pressure = 1087,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 8,
+                                    Consumption = 18795,
+                                    Pressure = 1060,
+                                    Temperature = 25m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 9,
+                                    Consumption = 19093,
+                                    Pressure = 1046,
+                                    Temperature = 23.9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 10,
+                                    Consumption = 18722,
+                                    Pressure = 1063,
+                                    Temperature = 27m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 11,
+                                    Consumption = 20299,
+                                    Pressure = 1034,
+                                    Temperature = 29m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 12,
+                                    Consumption = 19051,
+                                    Pressure = 976,
+                                    Temperature = 23m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 13,
+                                    Consumption = 19296,
+                                    Pressure = 1055,
+                                    Temperature = 26m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 14,
+                                    Consumption = 19150,
+                                    Pressure = 1039,
+                                    Temperature = 24m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 15,
+                                    Consumption = 18833,
+                                    Pressure = 1017,
+                                    Temperature = 23.9m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 16,
+                                    Consumption = 19621,
+                                    Pressure = 1056,
+                                    Temperature = 24m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 17,
+                                    Consumption = 17964,
+                                    Pressure = 1080,
+                                    Temperature = 25m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 18,
+                                    Consumption = 18354,
+                                    Pressure = 1070,
+                                    Temperature = 26m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 19,
+                                    Consumption = 18268,
+                                    Pressure = 993,
+                                    Temperature = 28m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 20,
+                                    Consumption = 18365,
+                                    Pressure = 983,
+                                    Temperature = 27m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 21,
+                                    Consumption = 17368,
+                                    Pressure = 1086,
+                                    Temperature = 20.3m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 22,
+                                    Consumption = 16895,
+                                    Pressure = 1075,
+                                    Temperature = 20.4m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 23,
+                                    Consumption = 17789,
+                                    Pressure = 1048,
+                                    Temperature = 21m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 24,
+                                    Consumption = 18477,
+                                    Pressure = 1046,
+                                    Temperature = 23m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 25,
+                                    Consumption = 18506,
+                                    Pressure = 1053,
+                                    Temperature = 21.7m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 26,
+                                    Consumption = 19626,
+                                    Pressure = 1063,
+                                    Temperature = 24.5m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 27,
+                                    Consumption = 19312,
+                                    Pressure = 1068,
+                                    Temperature = 25.7m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 28,
+                                    Consumption = 18036,
+                                    Pressure = 1047,
+                                    Temperature = 22.8m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 29,
+                                    Consumption = 18036,
+                                    Pressure = 1047,
+                                    Temperature = 24.3m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 30,
+                                    Consumption = 19403,
+                                    Pressure = 1092,
+                                    Temperature = 23m
+                                },
+                                new
+                                {
+                                    DevicesKipId = 31,
+                                    Consumption = 20009,
+                                    Pressure = 972,
+                                    Temperature = 24m
+                                });
+                        });
+
                     b.Navigation("Cb1");
 
                     b.Navigation("Cb2");
@@ -8753,21 +8722,19 @@ namespace DA.Migrations
                     b.OwnsOne("DA.Entities.Quality", "Kc1", b1 =>
                         {
                             b1.Property<int>("QualityAllId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("int");
 
                             b1.Property<decimal>("A")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("V")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("W")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.HasKey("QualityAllId");
 
@@ -8999,21 +8966,19 @@ namespace DA.Migrations
                     b.OwnsOne("DA.Entities.Quality", "Kc2", b1 =>
                         {
                             b1.Property<int>("QualityAllId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("int");
 
                             b1.Property<decimal>("A")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("V")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.Property<decimal>("W")
                                 .HasPrecision(8, 3)
-                                .HasColumnType("numeric(8,3)");
+                                .HasColumnType("numeric");
 
                             b1.HasKey("QualityAllId");
 

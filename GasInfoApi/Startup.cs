@@ -21,7 +21,7 @@ namespace GasInfoApi
          _env = env;
          
          var builder = new ConfigurationBuilder()
-            .AddJsonFile($"appsettings.{_env.EnvironmentName}.json") //� ����� ���� appsettings.Production.json
+            .AddJsonFile($"appsettings.{_env.EnvironmentName}.json")
             .AddJsonFile("InitialDataSettings.json");
 
          Configuration = builder.Build();
@@ -70,11 +70,10 @@ namespace GasInfoApi
       public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
       {
          if (env.IsDevelopment())
-         {
             app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GasInfoApi v1"));
-         }
+
+         app.UseSwagger();
+         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GasInfoApi v1"));
 
          app.UseDefaultFiles();
          app.UseStaticFiles();
