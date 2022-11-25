@@ -3,8 +3,8 @@ version: '3.4'
 services:
   admin:
     #image: ${DOCKER_REGISTRY-}gasinfoadmin
-    volumes:
-      - gas_info_admin:/app
+    #volumes:
+      #- gas_info_admin:/app
     build:
       context: .
       dockerfile: GasInfoAdmin/Dockerfile
@@ -14,8 +14,8 @@ services:
       - "49153:5003"
   api:
     #image: ${DOCKER_REGISTRY-}gasinfoapi
-    volumes:
-      - gas_info_api:/app
+    #volumes:
+      #- gas_info_api:/app
     build:
       context: .
       dockerfile: GasInfoApi/Dockerfile

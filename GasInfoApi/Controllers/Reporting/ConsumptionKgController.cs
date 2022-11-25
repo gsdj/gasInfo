@@ -44,13 +44,13 @@ namespace GasInfoApi.Controllers.Reporting
          return result;
       }
 
-      //[HttpGet("ReportExcel/{date}")]
-      //public async Task<ActionResult> GetFile()
-      //{
-      //   _logger.LogInformation($"Request path {Request.Path}");
-      //   string fn = "SteamCharacteristics.json";
-      //   byte[] fileContent = await System.IO.File.ReadAllBytesAsync($"wwwroot\\files\\{fn}");
-      //   return File(fileContent, "application/octet-stream", fn);
-      //}
+      [HttpGet("ReportExcel/{date}")]
+      public async Task<ActionResult> GetFile()
+      {
+         _logger.LogInformation($"Request path {Request.Path}");
+         string fn = "SteamCharacteristics.json";
+         byte[] fileContent = await System.IO.File.ReadAllBytesAsync($"wwwroot\\files\\{fn}");
+         return File(fileContent, "application/octet-stream", fn);
+      }
    }
 }
