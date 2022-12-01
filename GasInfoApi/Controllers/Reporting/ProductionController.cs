@@ -45,12 +45,6 @@ namespace GasInfoApi.Controllers.Reporting
          var result = _service.GetItemsByMonth(Date);
          return result;
       }
-      [HttpGet("GetString")]
-      public string GetString()
-      {
-         _logger.LogInformation($"{Request.Path}");
-         return "GetString";
-      }
 
       [HttpGet("ReportExcel/{date}")]
       public async Task<ActionResult> GetFile()

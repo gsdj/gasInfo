@@ -74,8 +74,8 @@ namespace BLL.Calculations.Entities.Consumption
             QcRcCpsPpk = qcrcCpsPpk,
             QcRcGsuf = qcrcGsuf,
             ConsumptionCb = consCb,
-            ConsumptionKc2Sum = consCb.Sum,
-            PkoQcRcSum = qcrcCpsPpk.Pko.Total, // qcrcCpsPpk.Pko.Value + qcrcCpsPpk.Uvtp,
+            ConsumptionKc2Sum = consCb.Sum, // можно убрать
+            PkoQcRcSum = qcrcCpsPpk.Pko.Total, // qcrcCpsPpk.Pko.Value + qcrcCpsPpk.Uvtp, // можно убрать
             ConsumptionCpsPpk = consCpsPpk,
             ConsumptionCpsPpkSum = consCpsPpkSum,
             ConsumptionMkSum = consCb.Sum + consCpsPpkSum,
