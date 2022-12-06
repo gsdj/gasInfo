@@ -174,7 +174,7 @@ namespace BLL.Calculations.Entities
             ConsumptionCpsPpk = consCpsPpk_2,
             ConsKgUvtp = consCpsPpk_2.Pko.Uvtp,
             ConsumptionFvKc2 = consFvKc2,
-            ConsFvKc2Sum = consFvKc2.Sum,
+            ConsFvKc2Sum = consKgCb_2.Sum / ConsumptionFvKc2.Sum * 0.57m,//не правильно ConsumptionKc2.sum/Production.CokeCbConsumptionFv.sum*0.57
             ConsumptionFvCpsPpk = consFvCpsPpk,
             ConsKgCpsPpkSum = consFvCpsPpk.Pko.Total + consFvCpsPpk.Spo,
             ConsKgMk = consKgCb_2.Sum + consFvCpsPpk.Pko.Total + consFvCpsPpk.Spo,
