@@ -17,9 +17,7 @@ namespace BLL.DTO
       public decimal OutKgDryMk { get; set; }//=> Math.Round((OutKgKb18 == 0 || TnConsSuh == 0) ? 0 : (OutKgKb18 / TnConsSuh), 10);
 
       public CbKc ConsumptionKc2 { get; set; }
-      public decimal ConsKgKc2Sum { get; set; }// => Math.Round((ConsKgCb5 + ConsKgCb6 + ConsKgCb7 + ConsKgCb8), 10);
       public CpsPpk ConsumptionCpsPpk { get; set; }
-      public decimal ConsKgUvtp { get; set; }
       public decimal ConsKgCpsPpkSum { get; set; }// => Math.Round((ConsKgSpo + ConsKgPkp + ConsKgUvtp), 10);
       public decimal ConsKgMk { get; set; }// => Math.Round((ConsKgKc2 + ConsKgCpsPpk), 10);
       public CbKc ConsumptionFvKc2 { get; set; }

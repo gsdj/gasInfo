@@ -129,9 +129,9 @@ namespace Tests.Calculations.Entities
             },
             PkoKpe = 4.2m,
             SpoPerKus = 24.3494857143m,
-            SvC = 1.274m,
-            FvC = 1.375m,
-            KpeC = 420,
+            //SvC = 1.274m,
+            //FvC = 1.375m,
+            //KpeC = 420,
          };
 
          var expected = JsonConvert.SerializeObject(expectedResult);

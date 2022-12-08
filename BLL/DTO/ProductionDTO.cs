@@ -13,10 +13,6 @@ namespace BLL.DTO
          CokeCbDry = new CokeCbDry();
          CokeCbConsumptionDry = new CokeCbConsumptionDry();
       }
-      //Коэффициенты/выхода
-      public decimal SvC { get; set; }
-      public decimal FvC { get; set; }
-      public decimal KpeC { get; set; }
 
       public Cb<int> AmmountCb { get; set; }
       //public int Cb1Cb2 { get; set; }

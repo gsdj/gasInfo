@@ -170,15 +170,12 @@ namespace BLL.Calculations.Entities
             OutKgDryCb78 = (cb7cb8 == 0 || mkCb == 0 || CokeCbConsumptionDry.Cb7_8 == 0) ? 0 : Math.Round(data2.OutKgCb78 / CokeCbConsumptionDry.Cb7_8, 10),
             OutKgDryMk = (data2.OutKgCb18 == 0 || CokeCbConsumptionDry.Tn == 0) ? 0 : Math.Round(data2.OutKgCb18 / CokeCbConsumptionDry.Tn, 10),
             ConsumptionKc2 = consKgCb_2,
-            ConsKgKc2Sum = consKgCb_2.Sum,
             ConsumptionCpsPpk = consCpsPpk_2,
-            ConsKgUvtp = consCpsPpk_2.Pko.Uvtp,
             ConsumptionFvKc2 = consFvKc2,
-            ConsFvKc2Sum = consKgCb_2.Sum / ConsumptionFvKc2.Sum * 0.57m,//не правильно ConsumptionKc2.sum/Production.CokeCbConsumptionFv.sum*0.57
+            ConsFvKc2Sum = UdConsKgFv.Calc(consKgCb_2.Sum, ConsumptionFvKc2.Sum),//не правильно ConsumptionKc2.sum/Production.CokeCbConsumptionFv.sum*0.57
             ConsumptionFvCpsPpk = consFvCpsPpk,
-            ConsKgCpsPpkSum = consFvCpsPpk.Pko.Total + consFvCpsPpk.Spo,
-            ConsKgMk = consKgCb_2.Sum + consFvCpsPpk.Pko.Total + consFvCpsPpk.Spo,
-            ConsFvCpsPpkSum = UdConsKgFv.Calc(consFvCpsPpk.Pko.Total + consFvCpsPpk.Spo, KpeDry),//UdConsKgCpsPpk
+            ConsKgMk = consKgCb_2.Sum + consFvCpsPpk.Sum,
+            ConsFvCpsPpkSum = UdConsKgFv.Calc(consCpsPpk_2.Sum, spoPerKus),//UdConsKgCpsPpk
             ConsGsuf = consGsuf,
             TradeGasChmk = Math.Round(tec.ChmkTecSum * 1000, 10),
          };

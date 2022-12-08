@@ -60,9 +60,6 @@ namespace BLL.Calculations.Entities
             CokeCbConsumptionFv = CokeCbConsumptionFvCalc.CalcEntity(cbs),
             PkoKpe = (cbs.OutputMultipliers.Peka == 0) ? 0 : Math.Round(cbs.OutputMultipliers.Peka / 100, 4),
             SpoPerKus = (cbs.OutputMultipliers.Peka == 0) ? 0 : SpoPerKus.Calc(cbs.PKP, cbs.OutputMultipliers.PKP, cbs.OutputMultipliers.Peka),
-            SvC = cbs.OutputMultipliers.Sv,
-            FvC = cbs.OutputMultipliers.Fv,
-            KpeC = cbs.OutputMultipliers.Peka,
          };
       }
    }
